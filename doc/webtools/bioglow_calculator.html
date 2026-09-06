@@ -1,354 +1,866 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BIOGLOW Interactive Scoring Calculator</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f7f6;
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            padding-bottom: 100px; /* Space for sticky header */
-        }
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        h1 {
-            color: #2c3e50;
-        }
-        .score-board {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: #27ae60;
-            color: white;
-            text-align: center;
-            padding: 15px 0;
-            font-size: 2em;
-            font-weight: bold;
-            box-shadow: 0 -4px 6px rgba(0,0,0,0.1);
-            z-index: 1000;
-        }
-        .mission {
-            background-color: white;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            border-left: 5px solid #3498db;
-        }
-        .mission h3 {
-            margin-top: 0;
-            color: #2980b9;
-            display: flex;
-            justify-content: space-between;
-        }
-        .mission-points {
-            font-size: 0.9em;
-            color: #7f8c8d;
-        }
-        .task {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .task label {
-            flex-grow: 1;
-            margin-left: 10px;
-            cursor: pointer;
-        }
-        input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-        }
-        input[type="number"] {
-            width: 60px;
-            padding: 5px;
-            margin-left: 10px;
-            border: 1px solid #bdc3c7;
-            border-radius: 4px;
-        }
-        select {
-            padding: 5px;
-            margin-left: 10px;
-            border: 1px solid #bdc3c7;
-            border-radius: 4px;
-        }
-        
-        /* Specific task styles */
-        .slider-container {
-             display: flex;
-             align-items: center;
-             margin-top: 5px;
-        }
-        
-        .slider-container input[type="range"] {
-            flex-grow: 1;
-            margin: 0 10px;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BIOGLOW Interactive Scoring & Strategy Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #0d1117;
+      --card-bg: rgba(22, 27, 34, 0.85);
+      --card-border: rgba(56, 139, 253, 0.25);
+      --accent-green: #2ea043;
+      --accent-cyan: #388bfd;
+      --accent-purple: #8957e5;
+      --accent-warn: #d29922;
+      --accent-danger: #f85149;
+      --text-main: #f0f6fc;
+      --text-muted: #8b949e;
+    }
 
-    </style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: radial-gradient(circle at top center, #161b22 0%, #0d1117 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+      padding: 1.5rem 1rem 120px 1rem;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .nav-back {
+      margin-bottom: 1.5rem;
+    }
+
+    .nav-back a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent-cyan);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-back a:hover {
+      color: #58a6ff;
+      text-decoration: underline;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .badge-season {
+      display: inline-block;
+      background: linear-gradient(135deg, rgba(56,139,253,0.2), rgba(137,87,229,0.2));
+      border: 1px solid var(--accent-cyan);
+      color: var(--accent-cyan);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      padding: 0.35rem 1rem;
+      border-radius: 20px;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #58a6ff 0%, #3fb950 50%, #bc8cff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    p.subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    /* Controls Bar */
+    .toolbar {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .toolbar-group {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .toolbar label {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .toolbar select, .toolbar button {
+      font-family: 'Space Grotesk', sans-serif;
+      background: #21262d;
+      color: var(--text-main);
+      border: 1px solid rgba(240, 246, 252, 0.2);
+      border-radius: 6px;
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .toolbar select:hover, .toolbar button:hover {
+      background: #30363d;
+      border-color: var(--accent-cyan);
+    }
+
+    .btn-reset {
+      background: rgba(248, 81, 73, 0.15) !important;
+      color: #ff7b72 !important;
+      border-color: rgba(248, 81, 73, 0.4) !important;
+    }
+
+    .btn-reset:hover {
+      background: rgba(248, 81, 73, 0.3) !important;
+    }
+
+    /* Mission Cards */
+    .mission-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .mission {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 1.25rem 1.5rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .mission:hover {
+      border-color: rgba(88, 166, 255, 0.4);
+    }
+
+    .mission-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .mission-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #58a6ff;
+    }
+
+    .meta-badges {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .badge-diff {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.25rem 0.6rem;
+      border-radius: 12px;
+      text-transform: uppercase;
+    }
+
+    .diff-1 {
+      background: rgba(46, 160, 67, 0.2);
+      border: 1px solid var(--accent-green);
+      color: #3fb950;
+    }
+
+    .diff-2 {
+      background: rgba(210, 153, 34, 0.2);
+      border: 1px solid var(--accent-warn);
+      color: #d29922;
+    }
+
+    .diff-3 {
+      background: rgba(248, 81, 73, 0.2);
+      border: 1px solid var(--accent-danger);
+      color: #ff7b72;
+    }
+
+    .badge-ratio {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.25rem 0.6rem;
+      border-radius: 12px;
+      background: rgba(137, 87, 229, 0.2);
+      border: 1px solid var(--accent-purple);
+      color: #d2a8ff;
+    }
+
+    .mission-points {
+      font-family: 'Space Grotesk', monospace;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--text-muted);
+    }
+
+    .mission-points.maxed {
+      color: #3fb950;
+      text-shadow: 0 0 10px rgba(46, 160, 67, 0.5);
+    }
+
+    .strategy-box {
+      background: rgba(56, 139, 253, 0.08);
+      border-left: 3px solid var(--accent-cyan);
+      padding: 0.6rem 0.8rem;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.88rem;
+      color: #c9d1d9;
+      margin-bottom: 1rem;
+    }
+
+    .strategy-box strong {
+      color: #58a6ff;
+    }
+
+    .tasks-container {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .task {
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 0.6rem 0.8rem;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .task label {
+      flex-grow: 1;
+      margin-left: 0.75rem;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--accent-green);
+      cursor: pointer;
+    }
+
+    select.dropdown {
+      font-family: 'Outfit', sans-serif;
+      background: #161b22;
+      color: var(--text-main);
+      border: 1px solid rgba(240, 246, 252, 0.2);
+      padding: 0.4rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+    }
+
+    .slider-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .slider-container input[type="range"] {
+      flex-grow: 1;
+      accent-color: var(--accent-cyan);
+      cursor: pointer;
+    }
+
+    /* Sticky Scoreboard Footer */
+    .scoreboard-footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(13, 17, 23, 0.92);
+      backdrop-filter: blur(16px);
+      border-top: 1px solid var(--card-border);
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+    }
+
+    .score-stat {
+      text-align: center;
+    }
+
+    .score-stat .stat-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .score-stat .stat-value {
+      font-family: 'Space Grotesk', monospace;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #3fb950;
+    }
+
+    .score-stat .stat-value.ratio {
+      color: #d2a8ff;
+    }
+
+    .score-stat .stat-value.count {
+      color: #58a6ff;
+    }
+
+    @media(max-width: 600px) {
+      h1 { font-size: 1.8rem; }
+      .score-stat .stat-value { font-size: 1.3rem; }
+      .toolbar { flex-direction: column; align-items: stretch; }
+    }
+  </style>
 </head>
 <body>
 
-<div class="score-board">
-    Total Score: <span id="total-score">0</span>
+<div class="container">
+
+  <div class="nav-back">
+    <a href="index.html">← Back to BIOGLOW Web Tools Hub</a>
+  </div>
+
+  <header>
+    <div class="badge-season">FIRST LEGO League • BIOGLOW 2026</div>
+    <h1>Interactive Mission Calculator</h1>
+    <p class="subtitle">Real-time Score Calculation • Difficulty Ratings • Pts/Difficulty Ratios</p>
+  </header>
+
+  <!-- Controls Toolbar -->
+  <div class="toolbar">
+    <div class="toolbar-group">
+      <label for="sort-select">Sort Missions By:</label>
+      <select id="sort-select" onchange="sortMissions(this.value)">
+        <option value="number">Mission # (Default)</option>
+        <option value="ratio">Pts / Difficulty Ratio (High → Low)</option>
+        <option value="difficulty">Difficulty (Easy → Hard)</option>
+        <option value="points">Max Points (High → Low)</option>
+      </select>
+    </div>
+
+    <button class="btn-reset" onclick="resetCalculator()">↺ Reset All Scores</button>
+  </div>
+
+  <!-- Form & Mission Cards -->
+  <form id="calculator-form">
+    <div id="missions-container" class="mission-list">
+      
+      <!-- M01 -->
+      <div class="mission" data-mission-id="m01" data-difficulty="1" data-ratio="30" data-points="30" data-order="1">
+        <div class="mission-header">
+          <div class="mission-title">M01: Drone Survey</div>
+          <div class="meta-badges">
+            <span class="badge-diff diff-1">Diff: 1 (Easy)</span>
+            <span class="badge-ratio">Ratio: 30.0</span>
+            <span class="mission-points" id="pts-m01">0 / 30</span>
+          </div>
+        </div>
+        <div class="strategy-box">
+          <strong>💡 Strategy:</strong> Push the scan marker to release the drone and flip the map.
+        </div>
+        <div class="tasks-container">
+          <div class="task">
+            <input type="checkbox" id="m01-drone" value="20" class="score-input" data-mission="m01">
+            <label for="m01-drone">Drone is completely off the mat (20 pts)</label>
+          </div>
+          <div class="task">
+            <input type="checkbox" id="m01-map" value="10" class="score-input" data-mission="m01">
+            <label for="m01-map">LiDAR map is flipped (10 pts)</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- M02 -->
+      <div class="mission" data-mission-id="m02" data-difficulty="2" data-ratio="10" data-points="20" data-order="2">
+        <div class="mission-header">
+          <div class="mission-title">M02: Exploding Seeds</div>
+          <div class="meta-badges">
+            <span class="badge-diff diff-2">Diff: 2 (Med)</span>
+            <span class="badge-ratio">Ratio: 10.0</span>
+            <span class="mission-points" id="pts-m02">0 / 20</span>
+          </div>
+        </div>
+        <div class="strategy-box">
+          <strong>💡 Strategy:</strong> Trigger the stalk mechanism to pop the seeds off.
+        </div>
+        <div class="tasks-container">
+          <div class="task slider-container">
+            <label for="m02-seeds">Seeds released (10 pts each): <strong id="m02-val">0</strong></label>
+            <input type="range" id="m02-seeds" min="0" max="2" value="0" class="score-input multiplier" data-pts="10" data-mission="m02" oninput="document.getElementById('m02-val').innerText = this.value">
+          </div>
+        </div>
+      </div>
+
+      <!-- M03 -->
+      <div class="mission" data-mission-id="m03" data-difficulty="1" data-ratio="30" data-points="30" data-order="3">
+        <div class="mission-header">
+          <div class="mission-title">M03: Flip the Rock</div>
+          <div class="meta-badges">
+            <span class="badge-diff diff-1">Diff: 1 (Easy)</span>
+            <span class="badge-ratio">Ratio: 30.0</span>
+            <span class="mission-points" id="pts-m03">0 / 30</span>
+          </div>
+        </div>
+        <div class="strategy-box">
+          <strong>💡 Strategy:</strong> Push the rock to drop the flag, then drag the rock back into the home area.
+        </div>
+        <div class="tasks-container">
+          <div class="task">
+            <input type="checkbox" id="m03-flag" value="20" class="score-input" data-mission="m03">
+            <label for="m03-flag">Research flag is down (20 pts)</label>
+          </div>
+          <div class="task">
+            <input type="checkbox" id="m03-rock" value="10" class="score-input" data-mission="m03">
+            <label for="m03-rock">Rock is returned to base (10 pts)</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- M04 -->
+      <div class="mission" data-mission-id="m04" data-difficulty="2" data-ratio="15" data-points="30" data-order="4">
+        <div class="mission-header">
+          <div class="mission-title">M04: Lucky Leaves</div>
+          <div class="meta-badges">
+            <span class="badge-diff diff-2">Diff: 2 (Med)</span>
+            <span class="badge-ratio">Ratio: 15.0</span>
+            <span class="mission-points" id="pts-m04">0 / 30</span>
+          </div>
+        </div>
+        <div class="strategy-box">
+          <strong>💡 Strategy:</strong> A precision collection task. You must retrieve the leaves without disturbing the katydid.
+        </div>
+        <div class="tasks-container">
+          <div class="task">
+            <input type="checkbox" id="m04-leaf1" value="10" class="score-input" data-mission="m04">
+            <label for="m04-leaf1">First leaf removed (10 pts)</label>
+          </div>
+          <div class="task">
+            <input type="checkbox" id="m04-leaf2" value="20" class="score-input" data-mission="m04">
+            <label for="m04-leaf2">Second leaf removed AND Katydid safe (20 pts)</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- M05 -->
+      <div class="mission" data-mission-id="m05" data-difficulty="1" data-ratio="30" data-points="30" data-order="5">
+        <div class="mission-header">
+          <div class="mission-title">M05: Reaching Roots</div>
+          <div class="meta-badges">
+            <span class="badge-diff diff-1">Diff: 1 (Easy)</span>
+            <span class="badge-ratio">Ratio: 30.0</span>
+            <span class="mission-points" id="pts-m05">0 / 30</span>
+          </div>
+        </div>
+        <div class="strategy-box">
+          <strong>💡 Strategy:</strong> Use a fast rotational move to extend the plant root across the forest boundary.
+        </div>
+        <div class="tasks-container">
+          <div class="task">
+            <label for="m05-ext">Root Extension:</label>
+            <select id="m05-ext" class="score-input dropdown" data-mission="m05">
+              <option value="0">None (0 pts)</option>
+              <option value="10">Partially Extended (10 pts)</option>
+              <option value="20">Completely Extended (20 pts)</option>
+            </select>
+          </div>
+          <div class="task">
+            <input type="checkbox" id="m05-coop" value="10" class="score-input" data-mission="m05">
+            <label for="m05-coop">Coopertition Team Connection (10 pts)</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- M06 -->
+      <div class="mission" data-mission-id="m06" data-difficulty="2" data-ratio="15" data-points="30" data-order="6">
+        <div class="mission-header">
+          <div class="mission-title">M06: Leafcutter Frenzy</div>
+          <div class="meta-badges">
+            <span class="badge-diff diff-2">Diff: 2 (Med)</span>
+            <span class="badge-ratio">Ratio: 15.0</span>
+            <span class="mission-points" id="pts-m06">0 / 30</span>
+          </div>
+        </div>
+        <div class="strategy-box">
+          <strong>💡 Strategy:</strong> Push the ant back to its nest at a controlled speed so the leaf fragments don't scatter.
+        </div>
+        <div class="tasks-container">
+          <div class="task slider-container">
+            <label for="m06-frags">Leaf fragments in nest (10 pts each): <strong id="m06-val">0</strong></label>
+            <input type="range" id="m06-frags" min="0" max="3" value="0" class="score-input multiplier" data-pts="10" data-mission="m06" oninput="document.getElementById('m06-val').innerText = this.value">
+          </div>
+        </div>
+      </div>
+
+      <!-- M07 -->
+      <div class="mission" data-mission-id="m07" data-difficulty="2" data-ratio="15" data-points="30" data-order="7">
+        <div class="mission-header">
+          <div class="mission-title">M07: Humongous Fungus</div>
+          <div class="meta-badges">
+            <span class="badge-diff diff-2">Diff: 2 (Med)</span>
+            <span class="badge-ratio">Ratio: 15.0</span>
+            <span class="mission-points" id="pts-m07">0 / 30</span>
+          </div>
+        </div>
+        <div class="strategy-box">
+          <strong>💡 Strategy:</strong> Pull a red lever to extend the network.
+        </div>
+        <div class="tasks-container">
+          <div class="task">
+            <input type="checkbox" id="m07-myc" value="20" class="score-input" data-mission="m07">
+            <label for="m07-myc">Mycelium completely extended (20 pts)</label>
+          </div>
+          <div class="task">
+            <input type="checkbox" id="m07-coop" value="10" class="score-input" data-mission="m07">
+            <label for="m07-coop">Coopertition Connection (10 pts)</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- M08 -->
+      <div class="mission" data-mission-id="m08" data-difficulty="3" data-ratio="6.6" data-points="20" data-order="8">
+        <div class="mission-header">
+          <div class="mission-title">M08: Tangled</div>
+          <div class="meta-badges">
+            <span class="badge-diff diff-3">Diff: 3 (Hard)</span>
+            <span class="badge-ratio">Ratio: 6.6</span>
+            <span class="mission-points" id="pts-m08">0 / 20</span>
+          </div>
+        </div>
+        <div class="strategy-box">
+          <strong>💡 Strategy:</strong> Complex physical interaction to untangle the model without incurring penalties.
+        </div>
+        <div class="tasks-container">
+          <div class="task">
+            <input type="checkbox" id="m08-untangle" value="20" class="score-input" data-mission="m08">
+            <label for="m08-untangle">Untangled properly (20 pts)</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- M09 -->
+      <div class="mission" data-mission-id="m09" data-difficulty="3" data-ratio="6.6" data-points="20" data-order="9">
+        <div class="mission-header">
+          <div class="mission-title">M09: Research Platform</div>
+          <div class="meta-badges">
+            <span class="badge-diff diff-3">Diff: 3 (Hard)</span>
+            <span class="badge-ratio">Ratio: 6.6</span>
+            <span class="mission-points" id="pts-m09">0 / 20</span>
+          </div>
+        </div>
+        <div class="strategy-box">
+          <strong>💡 Strategy:</strong> Align with the platform and secure it.
+        </div>
+        <div class="tasks-container">
+          <div class="task">
+            <input type="checkbox" id="m09-secure" value="20" class="score-input" data-mission="m09">
+            <label for="m09-secure">Platform secured/activated (20 pts)</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- M10 -->
+      <div class="mission" data-mission-id="m10" data-difficulty="3" data-ratio="6.6" data-points="20" data-order="10">
+        <div class="mission-header">
+          <div class="mission-title">M10: Fragile Microhabitats</div>
+          <div class="meta-badges">
+            <span class="badge-diff diff-3">Diff: 3 (Hard)</span>
+            <span class="badge-ratio">Ratio: 6.6</span>
+            <span class="mission-points" id="pts-m10">0 / 20</span>
+          </div>
+        </div>
+        <div class="strategy-box">
+          <strong>💡 Strategy:</strong> Requires a smooth, low-vibration chassis.
+        </div>
+        <div class="tasks-container">
+          <div class="task">
+            <input type="checkbox" id="m10-deliver" value="20" class="score-input" data-mission="m10">
+            <label for="m10-deliver">Microhabitat safely delivered (20 pts)</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- M11 -->
+      <div class="mission" data-mission-id="m11" data-difficulty="2" data-ratio="10" data-points="20" data-order="11">
+        <div class="mission-header">
+          <div class="mission-title">M11: Window to the Past</div>
+          <div class="meta-badges">
+            <span class="badge-diff diff-2">Diff: 2 (Med)</span>
+            <span class="badge-ratio">Ratio: 10.0</span>
+            <span class="mission-points" id="pts-m11">0 / 20</span>
+          </div>
+        </div>
+        <div class="strategy-box">
+          <strong>💡 Strategy:</strong> Navigate to the model and actuate the mechanism to open the root window.
+        </div>
+        <div class="tasks-container">
+          <div class="task">
+            <input type="checkbox" id="m11-open" value="20" class="score-input" data-mission="m11">
+            <label for="m11-open">Root window opened (20 pts)</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- M12 -->
+      <div class="mission" data-mission-id="m12" data-difficulty="3" data-ratio="10" data-points="30" data-order="12">
+        <div class="mission-header">
+          <div class="mission-title">M12: Forest Elder</div>
+          <div class="meta-badges">
+            <span class="badge-diff diff-3">Diff: 3 (Hard)</span>
+            <span class="badge-ratio">Ratio: 10.0</span>
+            <span class="mission-points" id="pts-m12">0 / 30</span>
+          </div>
+        </div>
+        <div class="strategy-box">
+          <strong>💡 Strategy:</strong> Grab the tie and drop it over the post, then raise the cane to support the tree.
+        </div>
+        <div class="tasks-container">
+          <div class="task">
+            <input type="checkbox" id="m12-tie" value="10" class="score-input" data-mission="m12">
+            <label for="m12-tie">Support tie dropped over post (10 pts)</label>
+          </div>
+          <div class="task">
+            <input type="checkbox" id="m12-cane" value="20" class="score-input" data-mission="m12">
+            <label for="m12-cane">Cane raised to support tree (20 pts)</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- M13 -->
+      <div class="mission" data-mission-id="m13" data-difficulty="3" data-ratio="6.6" data-points="20" data-order="13">
+        <div class="mission-header">
+          <div class="mission-title">M13: Keystone Species</div>
+          <div class="meta-badges">
+            <span class="badge-diff diff-3">Diff: 3 (Hard)</span>
+            <span class="badge-ratio">Ratio: 6.6</span>
+            <span class="mission-points" id="pts-m13">0 / 20</span>
+          </div>
+        </div>
+        <div class="strategy-box">
+          <strong>💡 Strategy:</strong> Target-specific delivery or manipulation deep in the field.
+        </div>
+        <div class="tasks-container">
+          <div class="task">
+            <input type="checkbox" id="m13-deliver" value="20" class="score-input" data-mission="m13">
+            <label for="m13-deliver">Species successfully delivered (20 pts)</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- M14 -->
+      <div class="mission" data-mission-id="m14" data-difficulty="2" data-ratio="10" data-points="20" data-order="14">
+        <div class="mission-header">
+          <div class="mission-title">M14: Seeds of Renewal</div>
+          <div class="meta-badges">
+            <span class="badge-diff diff-2">Diff: 2 (Med)</span>
+            <span class="badge-ratio">Ratio: 10.0</span>
+            <span class="mission-points" id="pts-m14">0 / 20</span>
+          </div>
+        </div>
+        <div class="strategy-box">
+          <strong>💡 Strategy:</strong> Transporting elements across the mat.
+        </div>
+        <div class="tasks-container">
+          <div class="task slider-container">
+            <label for="m14-seeds">Seeds delivered (10 pts each): <strong id="m14-val">0</strong></label>
+            <input type="range" id="m14-seeds" min="0" max="2" value="0" class="score-input multiplier" data-pts="10" data-mission="m14" oninput="document.getElementById('m14-val').innerText = this.value">
+          </div>
+        </div>
+      </div>
+
+      <!-- M15 -->
+      <div class="mission" data-mission-id="m15" data-difficulty="3" data-ratio="10" data-points="30" data-order="15">
+        <div class="mission-header">
+          <div class="mission-title">M15: Biocentric Architecture</div>
+          <div class="meta-badges">
+            <span class="badge-diff diff-3">Diff: 3 (Hard)</span>
+            <span class="badge-ratio">Ratio: 10.0</span>
+            <span class="mission-points" id="pts-m15">0 / 30</span>
+          </div>
+        </div>
+        <div class="strategy-box">
+          <strong>💡 Strategy:</strong> A multi-step mission requiring high precision.
+        </div>
+        <div class="tasks-container">
+          <div class="task">
+            <input type="checkbox" id="m15-canopy" value="10" class="score-input" data-mission="m15">
+            <label for="m15-canopy">Canopy raised (10 pts)</label>
+          </div>
+          <div class="task">
+            <input type="checkbox" id="m15-sky" value="10" class="score-input" data-mission="m15">
+            <label for="m15-sky">Skylight pushed in (10 pts)</label>
+          </div>
+          <div class="task">
+            <input type="checkbox" id="m15-hatch" value="10" class="score-input" data-mission="m15">
+            <label for="m15-hatch">Compost hatch opened (10 pts)</label>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </form>
+
 </div>
 
-<div class="container">
-    <div style="margin-bottom: 15px;">
-        <a href="index.html" style="color: #2980b9; text-decoration: none; font-weight: bold;">← Back to BIOGLOW Web Tools Hub</a>
-    </div>
-    <header>
-        <h1>FLL BIOGLOW Scoring Calculator</h1>
-        <p>Select the tasks your robot completed to calculate your score.</p>
-    </header>
-
-    <form id="calculator-form">
-        <!-- M01 -->
-        <div class="mission">
-            <h3>M01: Drone Survey <span class="mission-points" id="pts-m01">0 / 30</span></h3>
-            <div class="task">
-                <input type="checkbox" id="m01-drone" value="20" class="score-input" data-mission="m01">
-                <label for="m01-drone">Drone is completely off the mat (20 pts)</label>
-            </div>
-            <div class="task">
-                <input type="checkbox" id="m01-map" value="10" class="score-input" data-mission="m01">
-                <label for="m01-map">LiDAR map is flipped (10 pts)</label>
-            </div>
-        </div>
-
-        <!-- M02 -->
-        <div class="mission">
-            <h3>M02: Exploding Seeds <span class="mission-points" id="pts-m02">0 / 20</span></h3>
-            <div class="task slider-container">
-                <label for="m02-seeds">Seeds released (10 pts each): <span id="m02-val">0</span></label>
-                <input type="range" id="m02-seeds" min="0" max="2" value="0" class="score-input multiplier" data-pts="10" data-mission="m02" oninput="document.getElementById('m02-val').innerText = this.value">
-            </div>
-        </div>
-
-        <!-- M03 -->
-        <div class="mission">
-            <h3>M03: Flip the Rock <span class="mission-points" id="pts-m03">0 / 30</span></h3>
-            <div class="task">
-                <input type="checkbox" id="m03-flag" value="20" class="score-input" data-mission="m03">
-                <label for="m03-flag">Research flag is down (20 pts)</label>
-            </div>
-            <div class="task">
-                <input type="checkbox" id="m03-rock" value="10" class="score-input" data-mission="m03">
-                <label for="m03-rock">Rock is returned to start (10 pts)</label>
-            </div>
-        </div>
-
-        <!-- M04 -->
-        <div class="mission">
-            <h3>M04: Lucky Leaves <span class="mission-points" id="pts-m04">0 / 30</span></h3>
-            <div class="task">
-                <input type="checkbox" id="m04-leaf1" value="10" class="score-input" data-mission="m04">
-                <label for="m04-leaf1">First leaf removed (10 pts)</label>
-            </div>
-            <div class="task">
-                <input type="checkbox" id="m04-leaf2" value="20" class="score-input" data-mission="m04">
-                <label for="m04-leaf2">Second leaf removed AND Katydid safe (20 pts)</label>
-            </div>
-        </div>
-
-        <!-- M05 -->
-        <div class="mission">
-            <h3>M05: Reaching Roots <span class="mission-points" id="pts-m05">0 / 30</span></h3>
-            <div class="task">
-                <label for="m05-ext">Root Extension:</label>
-                <select id="m05-ext" class="score-input dropdown" data-mission="m05">
-                    <option value="0">None (0 pts)</option>
-                    <option value="10">Partially Extended (10 pts)</option>
-                    <option value="20">Completely Extended (20 pts)</option>
-                </select>
-            </div>
-            <div class="task">
-                <input type="checkbox" id="m05-coop" value="10" class="score-input" data-mission="m05">
-                <label for="m05-coop">Coopertition Team Connection (10 pts)</label>
-            </div>
-        </div>
-        
-        <!-- M06 -->
-        <div class="mission">
-            <h3>M06: Leafcutter Frenzy <span class="mission-points" id="pts-m06">0 / 30</span></h3>
-            <div class="task slider-container">
-                <label for="m06-frags">Leaf fragments in nest (10 pts each): <span id="m06-val">0</span></label>
-                <input type="range" id="m06-frags" min="0" max="3" value="0" class="score-input multiplier" data-pts="10" data-mission="m06" oninput="document.getElementById('m06-val').innerText = this.value">
-            </div>
-        </div>
-
-        <!-- M07 -->
-        <div class="mission">
-            <h3>M07: Humongous Fungus <span class="mission-points" id="pts-m07">0 / 30</span></h3>
-            <div class="task">
-                <input type="checkbox" id="m07-myc" value="20" class="score-input" data-mission="m07">
-                <label for="m07-myc">Mycelium completely extended (20 pts)</label>
-            </div>
-            <div class="task">
-                <input type="checkbox" id="m07-coop" value="10" class="score-input" data-mission="m07">
-                <label for="m07-coop">Coopertition Connection (10 pts)</label>
-            </div>
-        </div>
-
-        <!-- M08 -->
-        <div class="mission">
-            <h3>M08: Tangled <span class="mission-points" id="pts-m08">0 / 20</span></h3>
-            <div class="task">
-                <input type="checkbox" id="m08-untangle" value="20" class="score-input" data-mission="m08">
-                <label for="m08-untangle">Untangled properly (20 pts)</label>
-            </div>
-        </div>
-
-        <!-- M09 -->
-        <div class="mission">
-            <h3>M09: Research Platform <span class="mission-points" id="pts-m09">0 / 20</span></h3>
-            <div class="task">
-                <input type="checkbox" id="m09-secure" value="20" class="score-input" data-mission="m09">
-                <label for="m09-secure">Platform secured/activated (20 pts)</label>
-            </div>
-        </div>
-
-        <!-- M10 -->
-        <div class="mission">
-            <h3>M10: Fragile Microhabitats <span class="mission-points" id="pts-m10">0 / 20</span></h3>
-            <div class="task">
-                <input type="checkbox" id="m10-deliver" value="20" class="score-input" data-mission="m10">
-                <label for="m10-deliver">Microhabitat safely delivered (20 pts)</label>
-            </div>
-        </div>
-
-        <!-- M11 -->
-        <div class="mission">
-            <h3>M11: Window to the Past <span class="mission-points" id="pts-m11">0 / 20</span></h3>
-            <div class="task">
-                <input type="checkbox" id="m11-open" value="20" class="score-input" data-mission="m11">
-                <label for="m11-open">Root window opened (20 pts)</label>
-            </div>
-        </div>
-
-        <!-- M12 -->
-        <div class="mission">
-            <h3>M12: Forest Elder <span class="mission-points" id="pts-m12">0 / 30</span></h3>
-            <div class="task">
-                <input type="checkbox" id="m12-tie" value="10" class="score-input" data-mission="m12">
-                <label for="m12-tie">Support tie dropped over post (10 pts)</label>
-            </div>
-            <div class="task">
-                <input type="checkbox" id="m12-cane" value="20" class="score-input" data-mission="m12">
-                <label for="m12-cane">Cane raised to support tree (20 pts)</label>
-            </div>
-        </div>
-
-        <!-- M13 -->
-        <div class="mission">
-            <h3>M13: Keystone Species <span class="mission-points" id="pts-m13">0 / 20</span></h3>
-            <div class="task">
-                <input type="checkbox" id="m13-deliver" value="20" class="score-input" data-mission="m13">
-                <label for="m13-deliver">Species successfully delivered (20 pts)</label>
-            </div>
-        </div>
-        
-        <!-- M14 -->
-        <div class="mission">
-            <h3>M14: Seeds of Renewal <span class="mission-points" id="pts-m14">0 / 20</span></h3>
-            <div class="task slider-container">
-                <label for="m14-seeds">Seeds delivered (10 pts each): <span id="m14-val">0</span></label>
-                <input type="range" id="m14-seeds" min="0" max="2" value="0" class="score-input multiplier" data-pts="10" data-mission="m14" oninput="document.getElementById('m14-val').innerText = this.value">
-            </div>
-        </div>
-
-        <!-- M15 -->
-        <div class="mission">
-            <h3>M15: Biocentric Architecture <span class="mission-points" id="pts-m15">0 / 30</span></h3>
-            <div class="task">
-                <input type="checkbox" id="m15-canopy" value="10" class="score-input" data-mission="m15">
-                <label for="m15-canopy">Canopy raised (10 pts)</label>
-            </div>
-            <div class="task">
-                <input type="checkbox" id="m15-sky" value="10" class="score-input" data-mission="m15">
-                <label for="m15-sky">Skylight pushed in (10 pts)</label>
-            </div>
-            <div class="task">
-                <input type="checkbox" id="m15-hatch" value="10" class="score-input" data-mission="m15">
-                <label for="m15-hatch">Compost hatch opened (10 pts)</label>
-            </div>
-        </div>
-
-    </form>
+<!-- Sticky Score Board Footer -->
+<div class="scoreboard-footer">
+  <div class="score-stat">
+    <div class="stat-label">Total Score</div>
+    <div class="stat-value" id="total-score">0 / 390</div>
+  </div>
+  <div class="score-stat">
+    <div class="stat-label">Avg Selected Efficiency</div>
+    <div class="stat-value ratio" id="avg-ratio">0.0</div>
+  </div>
+  <div class="score-stat">
+    <div class="stat-label">Completed Missions</div>
+    <div class="stat-value count" id="completed-count">0 / 15</div>
+  </div>
 </div>
 
 <script>
-    const form = document.getElementById('calculator-form');
-    const totalScoreDisplay = document.getElementById('total-score');
-    
-    // Mission max points
-    const missionMax = {
-        m01: 30, m02: 20, m03: 30, m04: 30, m05: 30,
-        m06: 30, m07: 30, m08: 20, m09: 20, m10: 20,
-        m11: 20, m12: 30, m13: 20, m14: 20, m15: 30
-    };
+  const form = document.getElementById('calculator-form');
+  const totalScoreDisplay = document.getElementById('total-score');
+  const avgRatioDisplay = document.getElementById('avg-ratio');
+  const completedCountDisplay = document.getElementById('completed-count');
+  
+  const missionMax = {
+    m01: 30, m02: 20, m03: 30, m04: 30, m05: 30,
+    m06: 30, m07: 30, m08: 20, m09: 20, m10: 20,
+    m11: 20, m12: 30, m13: 20, m14: 20, m15: 30
+  };
 
-    function calculateScore() {
-        let totalScore = 0;
-        let missionScores = {};
-        
-        // Initialize mission scores
-        for(let key in missionMax) {
-            missionScores[key] = 0;
-        }
+  const missionRatios = {
+    m01: 30.0, m02: 10.0, m03: 30.0, m04: 15.0, m05: 30.0,
+    m06: 15.0, m07: 15.0, m08: 6.6,  m09: 6.6,  m10: 6.6,
+    m11: 10.0, m12: 10.0, m13: 6.6,  m14: 10.0, m15: 10.0
+  };
 
-        const inputs = document.querySelectorAll('.score-input');
-        
-        inputs.forEach(input => {
-            let pts = 0;
-            const mission = input.getAttribute('data-mission');
-            
-            if (input.type === 'checkbox') {
-                if (input.checked) pts = parseInt(input.value);
-            } else if (input.classList.contains('multiplier')) {
-                pts = parseInt(input.value) * parseInt(input.getAttribute('data-pts'));
-            } else if (input.classList.contains('dropdown')) {
-                pts = parseInt(input.value);
-            }
-            
-            missionScores[mission] += pts;
-            totalScore += pts;
-        });
+  function calculateScore() {
+    let totalScore = 0;
+    let missionScores = {};
+    let activeMissions = 0;
+    let activeRatioSum = 0;
 
-        totalScoreDisplay.innerText = totalScore;
-        
-        // Update individual mission displays
-        for(let key in missionScores) {
-            const display = document.getElementById(`pts-${key}`);
-            if(display) {
-                display.innerText = `${missionScores[key]} / ${missionMax[key]}`;
-                if (missionScores[key] === missionMax[key]) {
-                    display.style.color = '#27ae60'; // Green if maxed
-                    display.style.fontWeight = 'bold';
-                } else {
-                    display.style.color = '#7f8c8d';
-                    display.style.fontWeight = 'normal';
-                }
-            }
-        }
+    for (let key in missionMax) {
+      missionScores[key] = 0;
     }
 
-    // Attach event listeners
-    form.addEventListener('input', calculateScore);
+    const inputs = document.querySelectorAll('.score-input');
+    
+    inputs.forEach(input => {
+      let pts = 0;
+      const mission = input.getAttribute('data-mission');
+      
+      if (input.type === 'checkbox') {
+        if (input.checked) pts = parseInt(input.value);
+      } else if (input.classList.contains('multiplier')) {
+        pts = parseInt(input.value) * parseInt(input.getAttribute('data-pts'));
+      } else if (input.classList.contains('dropdown')) {
+        pts = parseInt(input.value);
+      }
+      
+      missionScores[mission] += pts;
+      totalScore += pts;
+    });
+
+    for (let key in missionScores) {
+      const display = document.getElementById(`pts-${key}`);
+      if (display) {
+        display.innerText = `${missionScores[key]} / ${missionMax[key]}`;
+        if (missionScores[key] === missionMax[key]) {
+          display.classList.add('maxed');
+        } else {
+          display.classList.remove('maxed');
+        }
+      }
+
+      if (missionScores[key] > 0) {
+        activeMissions++;
+        activeRatioSum += missionRatios[key];
+      }
+    }
+
+    totalScoreDisplay.innerText = `${totalScore} / 390`;
+    completedCountDisplay.innerText = `${activeMissions} / 15`;
+    
+    const avgRatio = activeMissions > 0 ? (activeRatioSum / activeMissions).toFixed(1) : '0.0';
+    avgRatioDisplay.innerText = `${avgRatio} pts/diff`;
+  }
+
+  function sortMissions(criterion) {
+    const container = document.getElementById('missions-container');
+    const missions = Array.from(container.children);
+
+    missions.sort((a, b) => {
+      if (criterion === 'number') {
+        return parseInt(a.getAttribute('data-order')) - parseInt(b.getAttribute('data-order'));
+      } else if (criterion === 'ratio') {
+        return parseFloat(b.getAttribute('data-ratio')) - parseFloat(a.getAttribute('data-ratio'));
+      } else if (criterion === 'difficulty') {
+        return parseInt(a.getAttribute('data-difficulty')) - parseInt(b.getAttribute('data-difficulty'));
+      } else if (criterion === 'points') {
+        return parseInt(b.getAttribute('data-points')) - parseInt(a.getAttribute('data-points'));
+      }
+    });
+
+    missions.forEach(m => container.appendChild(m));
+  }
+
+  function resetCalculator() {
+    form.reset();
+    document.querySelectorAll('.multiplier').forEach(slider => {
+      const targetId = slider.getAttribute('id').replace('-seeds', '-val').replace('-frags', '-val');
+      const valElem = document.getElementById(targetId);
+      if (valElem) valElem.innerText = '0';
+    });
+    calculateScore();
+  }
+
+  form.addEventListener('input', calculateScore);
+  calculateScore();
 </script>
 
 </body>
