@@ -1,8 +1,9 @@
 # FLL Team 76265 — 2026 BIOGLOW
 
-[![Deploy Web Tools to GitHub Pages](https://github.com/jaimeyu/FLL_76265_2026_BIOGLOW/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/jaimeyu/FLL_76265_2026_BIOGLOW/actions/workflows/deploy-pages.yml)
+[![Deploy Documentation to GitHub Pages](https://github.com/jaimeyu/FLL_76265_2026_BIOGLOW/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/jaimeyu/FLL_76265_2026_BIOGLOW/actions/workflows/deploy-pages.yml)
 [![Security & Privacy Scans](https://github.com/jaimeyu/FLL_76265_2026_BIOGLOW/actions/workflows/security-scan.yml/badge.svg)](https://github.com/jaimeyu/FLL_76265_2026_BIOGLOW/actions/workflows/security-scan.yml)
-[![GitHub Pages Hub](https://img.shields.io/badge/GitHub%20Pages-BIOGLOW%20Hub-2ea043?style=flat&logo=github)](https://jaimeyu.github.io/FLL_76265_2026_BIOGLOW/)
+[![GitHub Pages Documentation](https://img.shields.io/badge/GitHub%20Pages-Documentation%20Portal-2ea043?style=flat&logo=github)](https://jaimeyu.github.io/FLL_76265_2026_BIOGLOW/)
+[![Material for MkDocs](https://img.shields.io/badge/Docs%20Engine-Material%20for%20MkDocs-526cfe?style=flat&logo=materialformkdocs)](https://squidfunk.github.io/mkdocs-material/)
 [![FLL Season](https://img.shields.io/badge/FLL%20Season-2026%20BIOGLOW-388bfd?style=flat)](https://www.firstlegoleague.org/)
 [![Team 76265](https://img.shields.io/badge/FLL%20Team-%2376265-8957e5?style=flat)](#)
 [![AI Safety Policy](https://img.shields.io/badge/AI%20Policy-Enforced-success?style=flat&logo=shield)](AI_CONSTITUTION.md)
@@ -29,21 +30,26 @@ Safety, privacy, and *Gracious Professionalism*® are fundamental to our team. A
 FLL_76265_2026_BIOGLOW/
 ├── README.md                  # This file: repository overview & guidelines
 ├── AI_CONSTITUTION.md         # Privacy, safety, and AI collaboration policy
+├── mkdocs.yml                 # Material for MkDocs documentation portal configuration
 │
 ├── code/                      # Robot Programs & Scripts
 │   ├── common/                # Shared routines (gyro drivebase, line followers, attachment helpers)
-│   └── missions/              # Mission-specific programs (LEGO SPIKE Scratch / MicroPython)
+│   └── missions/              # Mission-specific programs (LEGO SPIKE Scratch)
 │
-└── doc/                       # Primary Documentation Hub
+└── doc/                       # Primary Documentation Hub (Compiled by MkDocs)
+    ├── index.md               # Website homepage & quick navigation
+    ├── guides/
+    │   └── how_to_update_docs.md # Kid-friendly tutorial: how to write in Markdown & auto-publish
     ├── notes/
     │   └── missions/          # Mission breakdowns, field pathing, and scoring strategy
-    ├── webtools/              # Interactive HTML/JS tools (published via GitHub Pages)
+    ├── webtools/              # Interactive HTML/JS tools (Timer & Scoring Calculator)
     ├── blog/                  # Markdown posts capturing team milestones & updates
     ├── ideas/                 # Innovation project brainstorming & robot mechanism concepts
     ├── journal/               # Meeting notes, decision logs, and engineering notebook records
     ├── responsibilities/      # Job roles matrix and member task tracking
-    ├── marketing/             # Team branding, logo design, outreach & sponsor relations
-    └── presentations/         # Innovation Project decks & Robot Design judging scripts
+    ├── marketing/             # Team branding, outreach, flyer & download QR sheets
+    ├── presentations/         # Presentation decks, SPIKE App setup guide & judging scripts
+    └── mentors/               # Coach strategies & meeting agendas
 ```
 
 ---
@@ -51,28 +57,31 @@ FLL_76265_2026_BIOGLOW/
 ## 🛠️ Folder Guide
 
 ### 🤖 Code (`code/`)
-- **`code/common/`**: Modular, reusable helper routines written in LEGO SPIKE Scratch format (or exported MicroPython scripts). Includes gyro-assisted straight driving, line squaring, and attachment motor controllers.
+- **`code/common/`**: Modular, reusable helper routines written in LEGO SPIKE Scratch format. Includes gyro-assisted straight driving, line squaring, and attachment motor controllers.
 - **`code/missions/`**: Organized by run sequence or mission number for clear field execution.
 
 ### 📚 Documentation (`doc/`)
-- **`doc/notes/missions/`**: Detailed analysis of table missions, point values, risk levels, and mechanical requirements.
-- **`doc/webtools/`**: Web applications (e.g., mission timers, score calculators, strategy maps) designed to be hosted directly on **GitHub Pages**.
-- **`doc/blog/`**: Progress updates and reflection posts written in Markdown.
-- **`doc/ideas/`**: Repository for wild ideas, mechanism designs, and project innovations before formal selection.
+- **`doc/index.md`**: Main homepage for the live documentation portal.
+- **`doc/guides/how_to_update_docs.md`**: [Student Guide on Updating Documentation](doc/guides/how_to_update_docs.md) — How kids write notes in Markdown and how GitHub Actions translates them into web pages.
 - **`doc/journal/`**: Dated logs from each team meetup detailing goals set, testing results, and next steps.
-- **`doc/responsibilities/`**: Role assignments (e.g., Project Lead, Hardware Lead, Software Lead, Strategy Lead) and task status.
+- **`doc/notes/missions/`**: Detailed analysis of table missions, point values, risk levels, and mechanical requirements.
+- **`doc/webtools/`**: Web applications (interactive 2:30 match timer and mission scoring calculator).
+- **`doc/ideas/`**: Repository for brainstorming, mechanism sketches, and innovation research.
+- **`doc/responsibilities/`**: Role assignments and task status board.
 - **`doc/marketing/`**: Team identity assets, flyers, community outreach materials, and sponsorship letters.
-- **`doc/presentations/`**: Slide decks, outlines, and speaking scripts for judging sessions (Robot Design & Innovation Project).
+- **`doc/presentations/`**: Slide decks, outlines, and speaking scripts for judging sessions.
 
 ---
 
-## 🌐 GitHub Pages Setup (`doc/webtools/` / `doc/webutils/`)
+## 🌐 Automated GitHub Pages Publishing
 
-To publish and host the web applications in `doc/webtools/`:
-1. Go to repository **Settings** on GitHub.
-2. Select **Pages** from the sidebar.
-3. Under **Build and deployment**, set **Source** to **GitHub Actions**.
-4. Pushes to the `main` branch will automatically trigger `.github/workflows/deploy-pages.yml` to publish the web tools to `https://<username>.github.io/FLL_76265_2026_BIOGLOW/`.
+Whenever students or coaches commit changes to Markdown files in `doc/`:
+1. **GitHub Actions** automatically runs the `.github/workflows/deploy-pages.yml` workflow.
+2. It compiles all Markdown notes using **Material for MkDocs** into a responsive, searchable website.
+3. The site is deployed live to:  
+   👉 **`https://jaimeyu.github.io/FLL_76265_2026_BIOGLOW/`**
+
+For full instructions, read our [Student Guide on Updating Documentation](doc/guides/how_to_update_docs.md).
 
 ---
 

@@ -55,10 +55,17 @@ def is_excluded(filepath, excluded_patterns):
 
 def scan_file(filepath, repo_root, config):
     full_path = os.path.join(repo_root, filepath)
-    allowed_emails = set(config.get("allowed_emails", []))
-    
     findings = []
-    
+
+    # Skip binary files (images, archives, compiled files)
+    try:
+        with open(full_path, 'rb') as bf:
+            chunk = bf.read(1024)
+            if b'\0' in chunk:
+                return []
+    except Exception:
+        pass
+
     try:
         with open(full_path, 'r', encoding='utf-8', errors='ignore') as f:
             for line_no, line in enumerate(f, 1):

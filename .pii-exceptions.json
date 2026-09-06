@@ -19,7 +19,8 @@
     "\\.pii-exceptions\\.json$",
     "package-lock\\.json$",
     "yarn\\.lock$",
-    "brain/.*"
+    "brain/.*",
+    ".*\\.(png|jpg|jpeg|gif|ico|webp|woff|woff2|ttf|eot|llsp3|pyc|zip|gz)$"
   ],
   "rules": {
     "scan_emails": true,

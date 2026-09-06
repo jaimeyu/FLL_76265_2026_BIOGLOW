@@ -1,7 +1,7 @@
 # Team 76265 Job Roles & Responsibility Matrix
 
 **Season**: 2026 BIOGLOW  
-*(Note: Refer to team members by first name or role identifier in accordance with the [AI Constitution](../../AI_CONSTITUTION.md))*
+*(Note: Refer to team members by first name or role identifier in accordance with the [AI Constitution](../AI_CONSTITUTION.md))*
 
 ---
 

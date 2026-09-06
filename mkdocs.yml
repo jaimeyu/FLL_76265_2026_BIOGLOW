@@ -1,0 +1,87 @@
+site_name: FLL Team #76265 • BIOGLOW
+site_description: Official Documentation, Engineering Notebook & Web Tools for FIRST LEGO League Team 76265 BIOGLOW (2026 Season)
+site_author: FLL Team #76265
+docs_dir: doc
+site_dir: site
+
+theme:
+  name: material
+  language: en
+  palette:
+    # Dark mode default (matching BIOGLOW aesthetic)
+    - scheme: slate
+      primary: blue
+      accent: teal
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+    # Light mode
+    - scheme: default
+      primary: blue
+      accent: teal
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.action.edit
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - attr_list
+  - tables
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - 📓 Engineering Journal:
+      - Overview: journal/README.md
+  - 🎯 Mission Notes:
+      - Overview: notes/missions/README.md
+  - 💡 Innovation Project:
+      - Overview: ideas/README.md
+  - 👥 Team Roles:
+      - Overview: responsibilities/README.md
+      - Roles Matrix: responsibilities/roles_matrix.md
+  - 🧭 Mentors & Coaches:
+      - Meeting Plans: mentors/plan/2026-sept-13.md
+  - 📰 Team Blog:
+      - Overview: blog/README.md
+  - 📣 Marketing & Outreach:
+      - Overview: marketing/README.md
+      - 📱 SPIKE App Flyer: marketing/spike_app/spike_app_flyer.html
+  - 🛠️ Web Tools Hub:
+      - Overview & Guide: webtools/overview.md
+      - ⏱️ Launch Match Timer: webtools/index.html
+      - 🧮 Launch Calculator: webtools/bioglow_calculator.html
+  - 🚀 Presentations & Guides:
+      - Overview: presentations/README.md
+      - SPIKE App Setup Slides: presentations/spike_app_installation_guide.md
+  - 📚 Student Guide:
+      - How to Update Docs: guides/how_to_update_docs.md
+  - 🛡️ AI Constitution: AI_CONSTITUTION.md

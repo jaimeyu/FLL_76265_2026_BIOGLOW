@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LEGO SPIKE App Setup & Parent Guide — FLL Team #76265</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #388bfd;
+      --accent-green: #2ea043;
+      --accent-purple: #8957e5;
+      --accent-amber: #d29922;
+      --accent-cyan: #39c5bb;
+      --dark-bg: #0d1117;
+      --card-bg: #161b22;
+      --card-border: rgba(56, 139, 253, 0.28);
+      --text-main: #f0f6fc;
+      --text-muted: #8b949e;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top center, #161b22 0%, #0d1117 100%);
+      color: var(--text-main);
+      padding: 2rem 1rem;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* Container */
+    .flyer-container {
+      width: 100%;
+      max-width: 900px;
+      background: linear-gradient(145deg, #161b22 0%, #0e131a 100%);
+      border: 2px solid var(--card-border);
+      border-radius: 16px;
+      padding: 2.2rem 2.5rem;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.65);
+      position: relative;
+    }
+
+    .nav-back {
+      margin-bottom: 1.25rem;
+    }
+
+    .nav-back a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-back a:hover {
+      color: #79c0ff;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 1.75rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 1.25rem;
+    }
+
+    .badge {
+      display: inline-block;
+      background: linear-gradient(135deg, rgba(56,139,253,0.18), rgba(137,87,229,0.18));
+      border: 1px solid var(--primary);
+      color: #79c0ff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      padding: 0.3rem 0.9rem;
+      border-radius: 20px;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.15rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #58a6ff 0%, #3fb950 50%, #bc8cff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.35rem;
+      line-height: 1.2;
+    }
+
+    p.tagline {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    /* Print Button */
+    .print-btn {
+      position: absolute;
+      top: 1.75rem;
+      right: 2rem;
+      background: #238636;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: background 0.2s ease, transform 0.1s ease;
+    }
+
+    .print-btn:hover {
+      background: #2ea043;
+      transform: translateY(-1px);
+    }
+
+    /* Section Headings */
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #58a6ff;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Parent Guide Box */
+    .parent-guide-container {
+      background: rgba(22, 27, 34, 0.85);
+      border: 1px solid rgba(56, 139, 253, 0.25);
+      border-radius: 14px;
+      padding: 1.35rem;
+      margin-bottom: 1.75rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    }
+
+    .parent-hero {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 1.35rem;
+      align-items: start;
+    }
+
+    @media (max-width: 740px) {
+      .parent-hero {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Small Screenshot Card */
+    .screenshot-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 0.6rem;
+      text-align: center;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+      transition: border-color 0.2s ease;
+    }
+
+    .screenshot-card:hover {
+      border-color: var(--primary);
+    }
+
+    .screenshot-img-wrap {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: #000;
+    }
+
+    .screenshot-img-wrap img {
+      display: block;
+      width: 100%;
+      height: auto;
+      transition: transform 0.25s ease;
+    }
+
+    .screenshot-card:hover img {
+      transform: scale(1.02);
+    }
+
+    .screenshot-caption {
+      margin-top: 0.5rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.35;
+    }
+
+    .screenshot-caption strong {
+      color: #79c0ff;
+      display: block;
+      font-size: 0.82rem;
+    }
+
+    .app-meta-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.35rem;
+      margin-top: 0.5rem;
+    }
+
+    .mini-tag {
+      font-size: 0.7rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      background: rgba(56, 139, 253, 0.12);
+      border: 1px solid rgba(56, 139, 253, 0.3);
+      color: #a5d6ff;
+      font-weight: 600;
+    }
+
+    /* Dual Columns: What It Does & Tutorials */
+    .parent-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    @media (max-width: 740px) {
+      .parent-columns {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .info-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 0.9rem 1rem;
+    }
+
+    .info-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #f0f6fc;
+      margin-bottom: 0.65rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .info-card.what-it-does h3 {
+      color: #58a6ff;
+      border-bottom-color: rgba(56, 139, 253, 0.3);
+    }
+
+    .info-card.tutorials h3 {
+      color: #7ee787;
+      border-bottom-color: rgba(46, 160, 67, 0.3);
+    }
+
+    .bullet-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .bullet-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      font-size: 0.83rem;
+      line-height: 1.35;
+      color: #e6edf3;
+    }
+
+    .bullet-list li .emoji-icon {
+      font-size: 1rem;
+      line-height: 1.1;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .bullet-list li strong {
+      color: #ffffff;
+    }
+
+    .parent-note {
+      margin-top: 0.85rem;
+      padding: 0.55rem 0.85rem;
+      background: rgba(46, 160, 67, 0.1);
+      border-left: 3px solid #3fb950;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      color: #7ee787;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Grid of Download Links & QR Codes */
+    .qr-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.9rem;
+      margin-bottom: 1.75rem;
+    }
+
+    @media (max-width: 700px) {
+      .qr-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .qr-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 0.9rem 0.6rem;
+      text-align: center;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .qr-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .qr-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #58a6ff;
+      margin-bottom: 0.15rem;
+    }
+
+    .qr-platform {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-bottom: 0.55rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .qr-box {
+      background: #ffffff;
+      padding: 0.45rem;
+      border-radius: 8px;
+      display: inline-block;
+      margin-bottom: 0.55rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .qr-box img {
+      display: block;
+      width: 105px;
+      height: 105px;
+    }
+
+    .qr-card a.btn-link {
+      display: inline-block;
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--text-main);
+      background: rgba(56,139,253,0.15);
+      border: 1px solid var(--primary);
+      border-radius: 6px;
+      padding: 0.35rem 0.65rem;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+
+    .qr-card a.btn-link:hover {
+      background: rgba(56,139,253,0.3);
+    }
+
+    /* Steps Section */
+    .steps-section {
+      background: rgba(56, 139, 253, 0.05);
+      border-left: 4px solid var(--primary);
+      border-radius: 0 12px 12px 0;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .steps-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #58a6ff;
+      margin-bottom: 0.65rem;
+    }
+
+    .steps-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.9rem;
+    }
+
+    @media (max-width: 650px) {
+      .steps-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .steps-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.55rem;
+      font-size: 0.84rem;
+      line-height: 1.35;
+    }
+
+    .step-num {
+      background: var(--primary);
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 0.72rem;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 1rem;
+    }
+
+    /* Print Styles for 8.5x11 Single Page Handout */
+    @media print {
+      @page {
+        size: letter portrait;
+        margin: 0.4in;
+      }
+
+      body {
+        background: #ffffff !important;
+        color: #111111 !important;
+        padding: 0 !important;
+        min-height: auto;
+      }
+
+      .nav-back, .print-btn {
+        display: none !important;
+      }
+
+      .flyer-container {
+        border: none !important;
+        box-shadow: none !important;
+        background: #ffffff !important;
+        color: #111111 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+
+      header {
+        margin-bottom: 0.8rem !important;
+        padding-bottom: 0.6rem !important;
+        border-bottom: 1.5px solid #222 !important;
+      }
+
+      h1 {
+        background: none !important;
+        -webkit-text-fill-color: initial !important;
+        color: #000000 !important;
+        font-size: 1.7rem !important;
+      }
+
+      p.tagline {
+        color: #444444 !important;
+        font-size: 0.88rem !important;
+      }
+
+      .badge {
+        border-color: #222 !important;
+        color: #222 !important;
+        background: none !important;
+        font-size: 0.75rem !important;
+      }
+
+      .parent-guide-container {
+        background: #f8fafc !important;
+        border: 1px solid #cbd5e1 !important;
+        box-shadow: none !important;
+        padding: 0.75rem !important;
+        margin-bottom: 0.9rem !important;
+      }
+
+      .parent-hero {
+        grid-template-columns: 190px 1fr !important;
+        gap: 0.8rem !important;
+      }
+
+      .screenshot-card {
+        background: #ffffff !important;
+        border: 1px solid #cbd5e1 !important;
+        box-shadow: none !important;
+        padding: 0.4rem !important;
+      }
+
+      .screenshot-caption strong {
+        color: #111111 !important;
+      }
+
+      .screenshot-caption {
+        color: #555555 !important;
+      }
+
+      .mini-tag {
+        border-color: #94a3b8 !important;
+        color: #334155 !important;
+        background: #f1f5f9 !important;
+      }
+
+      .info-card {
+        background: #ffffff !important;
+        border: 1px solid #e2e8f0 !important;
+        padding: 0.6rem 0.75rem !important;
+      }
+
+      .info-card.what-it-does h3 {
+        color: #0f4c81 !important;
+        border-bottom-color: #0f4c81 !important;
+      }
+
+      .info-card.tutorials h3 {
+        color: #1a7f37 !important;
+        border-bottom-color: #1a7f37 !important;
+      }
+
+      .bullet-list li {
+        color: #1e293b !important;
+        font-size: 0.75rem !important;
+        gap: 0.4rem !important;
+      }
+
+      .bullet-list li strong {
+        color: #0f172a !important;
+      }
+
+      .parent-note {
+        background: #f0fdf4 !important;
+        border-left-color: #16a34a !important;
+        color: #15803d !important;
+        font-size: 0.75rem !important;
+        margin-top: 0.5rem !important;
+        padding: 0.35rem 0.6rem !important;
+      }
+
+      .section-title {
+        color: #0f172a !important;
+        font-size: 1.05rem !important;
+        margin-bottom: 0.5rem !important;
+      }
+
+      .qr-grid {
+        gap: 0.6rem !important;
+        margin-bottom: 0.9rem !important;
+      }
+
+      .qr-card {
+        background: #ffffff !important;
+        border: 1px solid #cbd5e1 !important;
+        padding: 0.55rem 0.4rem !important;
+      }
+
+      .qr-title {
+        color: #0f172a !important;
+        font-size: 0.85rem !important;
+      }
+
+      .qr-platform {
+        color: #64748b !important;
+        font-size: 0.68rem !important;
+      }
+
+      .qr-box {
+        box-shadow: none !important;
+        padding: 0.25rem !important;
+        border: 1px solid #e2e8f0 !important;
+      }
+
+      .qr-box img {
+        width: 80px !important;
+        height: 80px !important;
+      }
+
+      .qr-card a.btn-link {
+        display: none !important;
+      }
+
+      .steps-section {
+        background: #f8fafc !important;
+        border-left-color: #0f4c81 !important;
+        padding: 0.65rem 0.85rem !important;
+        margin-bottom: 0.75rem !important;
+      }
+
+      .steps-title {
+        color: #0f172a !important;
+        font-size: 0.92rem !important;
+        margin-bottom: 0.45rem !important;
+      }
+
+      .steps-list li {
+        font-size: 0.75rem !important;
+      }
+
+      .step-num {
+        background: #0f4c81 !important;
+        width: 17px !important;
+        height: 17px !important;
+        font-size: 0.65rem !important;
+      }
+
+      footer {
+        color: #64748b !important;
+        font-size: 0.72rem !important;
+        border-top: 1px solid #e2e8f0 !important;
+        padding-top: 0.5rem !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="flyer-container">
+    <button class="print-btn" onclick="window.print()">🖨️ Print / Save PDF</button>
+
+    <div class="nav-back">
+      <a href="../../webtools/index.html">← Back to BIOGLOW Web Tools Hub</a>
+    </div>
+
+    <header>
+      <div class="badge">FIRST LEGO League • Team #76265</div>
+      <h1>LEGO® SPIKE™ App Setup & Parent Guide</h1>
+      <p class="tagline">Official Download Links, App Capabilities & STEAM Learning Tutorials for Families</p>
+    </header>
+
+    <!-- Parents Guide Section -->
+    <div class="parent-guide-container">
+      <div class="section-header">
+        <div class="section-title">👨‍👩‍👧‍👦 Parent & Student Overview</div>
+      </div>
+
+      <div class="parent-hero">
+        <!-- Small Screenshot Card -->
+        <div class="screenshot-card">
+          <div class="screenshot-img-wrap">
+            <img src="Screenshot 2026-09-06 at 17.04.19.png" alt="LEGO SPIKE App Home Screen">
+          </div>
+          <div class="screenshot-caption">
+            <strong>📸 SPIKE™ Prime Home Lobby</strong>
+            <span>Official coding & curriculum hub</span>
+          </div>
+          <div class="app-meta-tags">
+            <span class="mini-tag">Scratch Blocks</span>
+            <span class="mini-tag">Beginner Friendly</span>
+            <span class="mini-tag">Bluetooth</span>
+          </div>
+        </div>
+
+        <!-- Dual Columns: What It Does & Tutorials -->
+        <div class="parent-columns">
+          
+          <!-- Column 1: What the App Does -->
+          <div class="info-card what-it-does">
+            <h3>🤖 What the App Does</h3>
+            <ul class="bullet-list">
+              <li>
+                <span class="emoji-icon">🧩</span>
+                <div><strong>Drag & Drop Scratch Blocks:</strong> Students assemble intuitive code blocks to move wheels, spin arms, and play fun sounds—no typing frustration!</div>
+              </li>
+              <li>
+                <span class="emoji-icon">🛡️</span>
+                <div><strong>Zero Frustration (No Typos):</strong> Blocks snap together like puzzle pieces with zero syntax errors to worry about—pure problem-solving and fun!</div>
+              </li>
+              <li>
+                <span class="emoji-icon">📡</span>
+                <div><strong>Wireless Bluetooth Link:</strong> Connects directly to the robot Hub to upload code, run tests, and debug in real time without messy cables.</div>
+              </li>
+              <li>
+                <span class="emoji-icon">⚡</span>
+                <div><strong>Live Sensor Telemetry:</strong> Shows real-time readouts from ultrasonic distance, gyro tilt, and color sensors so students see data science in action.</div>
+              </li>
+              <li>
+                <span class="emoji-icon">💾</span>
+                <div><strong>Portable Mission Files:</strong> Saves team projects locally so students can practice coding on any Chromebook, tablet, or home computer.</div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Column 2: Tutorials to Help Students -->
+          <div class="info-card tutorials">
+            <h3>🎓 Tutorials to Help Students</h3>
+            <ul class="bullet-list">
+              <li>
+                <span class="emoji-icon">🚀</span>
+                <div><strong>"Start" 6-Step Launch:</strong> Guided interactive lessons that walk students through their first motor spins and sensor reactions in under 10 minutes.</div>
+              </li>
+              <li>
+                <span class="emoji-icon">📚</span>
+                <div><strong>"Unit Plans" Curriculum:</strong> Themed lesson packs (like <em>Competition Ready</em> & <em>Invention Squad</em>) with step-by-step engineering challenges.</div>
+              </li>
+              <li>
+                <span class="emoji-icon">🏗️</span>
+                <div><strong>"Building Instructions" 3D:</strong> Digital 3D assembly guides for robot driving bases, lifting arms, gearboxes, and competition attachments.</div>
+              </li>
+              <li>
+                <span class="emoji-icon">💡</span>
+                <div><strong>Instant Code Help & Samples:</strong> Built-in block dictionary explaining every function with working examples so kids never get stuck.</div>
+              </li>
+              <li>
+                <span class="emoji-icon">🎯</span>
+                <div><strong>FLL Mission Drills:</strong> Pre-built exercises teaching line following, precision gyro turns, and autonomous navigation for tournament day!</div>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="parent-note">
+        <span>🛡️</span>
+        <span><strong>Parent Peace of Mind:</strong> The LEGO Education SPIKE App is 100% free, ad-free, COPPA-compliant, and works offline. No subscription or personal student data needed!</span>
+      </div>
+    </div>
+
+    <!-- Download Section Title -->
+    <div class="section-title" style="margin-bottom: 0.85rem;">📲 Step 1: Download & Install on Your Device</div>
+
+    <!-- QR Code Cards -->
+    <div class="qr-grid">
+      
+      <!-- Web App -->
+      <div class="qr-card">
+        <div class="qr-title">LEGO Web App</div>
+        <div class="qr-platform">Chromebook / Chrome</div>
+        <div class="qr-box">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https%3A%2F%2Fspike.legoeducation.org%2F" alt="Web App QR Code">
+        </div>
+        <br>
+        <a class="btn-link" href="https://spike.legoeducation.org/" target="_blank">Open Web App ➔</a>
+      </div>
+
+      <!-- iPad OS / iOS -->
+      <div class="qr-card">
+        <div class="qr-title">Apple App Store</div>
+        <div class="qr-platform">iPad & iPhone</div>
+        <div class="qr-box">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https%3A%2F%2Fapps.apple.com%2Fapp%2Fspike-lego-education%2Fid1470438670" alt="iOS App Store QR Code">
+        </div>
+        <br>
+        <a class="btn-link" href="https://apps.apple.com/app/spike-lego-education/id1470438670" target="_blank">App Store ➔</a>
+      </div>
+
+      <!-- Android / Play Store -->
+      <div class="qr-card">
+        <div class="qr-title">Google Play</div>
+        <div class="qr-platform">Android Tablets</div>
+        <div class="qr-box">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.lego.education.spike" alt="Google Play QR Code">
+        </div>
+        <br>
+        <a class="btn-link" href="https://play.google.com/store/apps/details?id=com.lego.education.spike" target="_blank">Google Play ➔</a>
+      </div>
+
+      <!-- Desktop Installers / Software Download -->
+      <div class="qr-card">
+        <div class="qr-title">Desktop / Windows</div>
+        <div class="qr-platform">macOS & Windows</div>
+        <div class="qr-box">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https%3A%2F%2Feducation.lego.com%2Fen-us%2Fdownloads%2Fspike-app%2Fsoftware" alt="Desktop Software QR Code">
+        </div>
+        <br>
+        <a class="btn-link" href="https://education.lego.com/en-us/downloads/spike-app/software" target="_blank">Downloads Page ➔</a>
+      </div>
+
+    </div>
+
+    <!-- Quick Steps -->
+    <div class="steps-section">
+      <div class="steps-title">⚡ Quick 3-Step Setup Instructions</div>
+      <ul class="steps-list">
+        <li>
+          <span class="step-num">1</span>
+          <div><strong>Install or Open App:</strong> Scan the QR code for your device above, or open <a href="https://spike.legoeducation.org/" style="color: var(--primary); text-decoration: none;" target="_blank"><strong>spike.legoeducation.org</strong></a> in Chrome.</div>
+        </li>
+        <li>
+          <span class="step-num">2</span>
+          <div><strong>Turn On & Pair Hub:</strong> Power on the Hub (center button) and click the blue Bluetooth button until it blinks. Tap <em>Connect</em> in the app.</div>
+        </li>
+        <li>
+          <span class="step-num">3</span>
+          <div><strong>Start Learning & Coding:</strong> Try the 6-step "Start" tutorial or create a new Scratch Word Block project for our team missions!</div>
+        </li>
+      </ul>
+    </div>
+
+    <footer>
+      <p>FLL Team #76265 • BIOGLOW 2026 Season | Built with <em>Gracious Professionalism</em>®</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>
