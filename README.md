@@ -59,14 +59,13 @@ FLL_76265_2026_BIOGLOW/
 
 ---
 
-## 🌐 GitHub Pages Setup (`doc/webtools/`)
+## 🌐 GitHub Pages Setup (`doc/webtools/` / `doc/webutils/`)
 
-To view and use web tools created in `doc/webtools/`:
+To publish and host the web applications in `doc/webtools/`:
 1. Go to repository **Settings** on GitHub.
 2. Select **Pages** from the sidebar.
-3. Under **Build and deployment**, set Source to `Deploy from a branch`.
-4. Choose the `main` branch and specify `/doc/webtools` (or root) as the folder.
-5. Save changes to publish your interactive tools to `https://<username>.github.io/FLL_76265_2026_BIOGLOW/`.
+3. Under **Build and deployment**, set **Source** to **GitHub Actions**.
+4. Pushes to the `main` branch will automatically trigger `.github/workflows/deploy-pages.yml` to publish the web tools to `https://<username>.github.io/FLL_76265_2026_BIOGLOW/`.
 
 ---
 
