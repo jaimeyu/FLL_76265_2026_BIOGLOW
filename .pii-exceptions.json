@@ -1,0 +1,30 @@
+{
+  "version": "1.0",
+  "allowed_emails": [
+    "git@github-fll",
+    "noreply@github.com",
+    "fll76265@example.com"
+  ],
+  "allowed_keywords": [
+    "FLL",
+    "76265",
+    "BIOGLOW",
+    "FIRST",
+    "LEGO",
+    "SPIKE",
+    "Jaime"
+  ],
+  "excluded_file_patterns": [
+    "\\.git/.*",
+    "\\.pii-exceptions\\.json$",
+    "package-lock\\.json$",
+    "yarn\\.lock$",
+    "brain/.*"
+  ],
+  "rules": {
+    "scan_emails": true,
+    "scan_phone_numbers": true,
+    "scan_ssn": true,
+    "scan_credit_cards": true
+  }
+}

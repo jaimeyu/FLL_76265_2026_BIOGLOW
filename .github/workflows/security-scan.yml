@@ -1,0 +1,61 @@
+name: Security & Privacy Scans (CVE, Secrets, PII)
+
+on:
+  push:
+    branches:
+      - main
+      - '*'
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  # 1. Credential & Secret Leak Scan (Gitleaks)
+  secret-scan:
+    name: 🔒 Credential & Secret Leak Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Gitleaks Secret Scan
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # 2. PII Leak Scan (Custom Python Scanner)
+  pii-scan:
+    name: 🛡️ PII & Minor Privacy Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Run PII Leak Scanner
+        run: python scripts/pii_leak_scanner.py
+
+  # 3. CVE & Dependency Vulnerability Scan (Trivy)
+  cve-vulnerability-scan:
+    name: ☣️ CVE & Dependency Vulnerability Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Run Trivy Vulnerability Scanner
+        uses: aquasecurity/trivy-action@0.29.0
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          format: 'table'
+          exit-code: '1'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'

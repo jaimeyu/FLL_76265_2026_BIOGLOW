@@ -1,0 +1,30 @@
+# Pre-commit configuration for FLL Team 76265 BIOGLOW repository
+repos:
+  # Secret & Credential Leak Detection (Gitleaks)
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.21.2
+    hooks:
+      - id: gitleaks
+
+  # Local Security & PII Leak Scanner
+  - repo: local
+    hooks:
+      - id: pii-leak-scan
+        name: PII & Minor Safety Scanner
+        entry: python3 scripts/pii_leak_scanner.py
+        language: system
+        pass_filenames: false
+        always_run: true
+        description: "Scans repository files for un-whitelisted PII (emails, phone numbers, SSNs, credit cards)"
+
+  # General Code Hygiene & Formatting
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-added-large-files
+        args: ['--maxkb=5000']
