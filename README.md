@@ -1,5 +1,12 @@
 # FLL Team 76265 — 2026 BIOGLOW
 
+[![Deploy Web Tools to GitHub Pages](https://github.com/jaimeyu/FLL_76265_2026_BIOGLOW/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/jaimeyu/FLL_76265_2026_BIOGLOW/actions/workflows/deploy-pages.yml)
+[![Security & Privacy Scans](https://github.com/jaimeyu/FLL_76265_2026_BIOGLOW/actions/workflows/security-scan.yml/badge.svg)](https://github.com/jaimeyu/FLL_76265_2026_BIOGLOW/actions/workflows/security-scan.yml)
+[![GitHub Pages Hub](https://img.shields.io/badge/GitHub%20Pages-BIOGLOW%20Hub-2ea043?style=flat&logo=github)](https://jaimeyu.github.io/FLL_76265_2026_BIOGLOW/)
+[![FLL Season](https://img.shields.io/badge/FLL%20Season-2026%20BIOGLOW-388bfd?style=flat)](https://www.firstlegoleague.org/)
+[![Team 76265](https://img.shields.io/badge/FLL%20Team-%2376265-8957e5?style=flat)](#)
+[![AI Safety Policy](https://img.shields.io/badge/AI%20Policy-Enforced-success?style=flat&logo=shield)](AI_CONSTITUTION.md)
+
 Welcome to the official repository for **FIRST LEGO League (FLL) Team 76265** for the **2026 BIOGLOW** season!
 
 This repository serves as our centralized hub for robot programming, mission strategy, innovation project documentation, meeting journals, job role tracking, and interactive web tools.
@@ -69,8 +76,31 @@ To publish and host the web applications in `doc/webtools/`:
 
 ---
 
+## 🔒 Security & Privacy Safeguards
+
+This repository strictly enforces the team [AI Constitution & Safety Policy](file:///Users/jyu/Projects/FLL/FLL_76265_2026_BIOGLOW/AI_CONSTITUTION.md) to prevent credential leaks, CVE vulnerabilities, and minor PII exposure.
+
+### Local Pre-commit Hook Setup
+To activate local pre-commit checks before making commits:
+```bash
+./scripts/install-hooks.sh
+```
+Or if using `pre-commit`:
+```bash
+pre-commit install
+```
+
+### Security Scans Performed
+1. **PII Leak Scan** (`scripts/pii_leak_scanner.py`): Scans for emails, phone numbers, SSNs, credit cards, and addresses against an exception list (`.pii-exceptions.json`).
+2. **Credential & Secret Scan** (`Gitleaks`): Detects accidental API key or private token commits.
+3. **CVE Vulnerability Scan** (`Trivy`): Scans dependencies and files for high/critical vulnerabilities.
+4. **CI Enforcement**: All scans automatically run on GitHub Actions via `.github/workflows/security-scan.yml`.
+
+---
+
 ## 🤝 FIRST Core Values
 
 > **Discovery** • **Innovation** • **Impact** • **Inclusion** • **Teamwork** • **Fun**
 
 *Gracious Professionalism*® is a way of doing things that encourages high-quality work, emphasizes the value of others, and respects individuals and the community.
+
