@@ -69,12 +69,17 @@ nav:
       - Overview: responsibilities/README.md
       - Roles Matrix: responsibilities/roles_matrix.md
   - 🧭 Mentors & Coaches:
-      - Meeting Plans: mentors/plan/2026-sept-13.md
+      - Coach's Notes & Philosophy: mentors/plan/mentors_notes.md
+      - Goals & Strategy: mentors/plan/objective.md
+      - Season Schedule: mentors/plan/schedule.md
+      - Session 1 (Sep 13): mentors/plan/2026-sept-13.md
+      - Session 2 (Sep 19 - Ambassador Handoff): mentors/plan/2026-sept-19.md
   - 📰 Team Blog:
       - Overview: blog/README.md
   - 📣 Marketing & Outreach:
       - Overview: marketing/README.md
       - 📱 SPIKE App Flyer: marketing/spike_app/spike_app_flyer.html
+      - 🎯 Printable Goals Worksheet: marketing/goals_worksheet.html
   - 🛠️ Web Tools Hub:
       - Overview & Guide: webtools/overview.md
       - ⏱️ Launch Match Timer: webtools/index.html

@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My FLL Season Goal Worksheet — Team #76265 BIOGLOW</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --accent-teal: #0d9488;
+      --accent-amber: #d97706;
+      --accent-rose: #e11d48;
+      --accent-purple: #7c3aed;
+      --bg-gradient: radial-gradient(circle at top center, #1e293b 0%, #0f172a 100%);
+      --card-bg: #1e293b;
+      --border-color: rgba(56, 189, 248, 0.25);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-main);
+      padding: 2rem 1rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Screen-only Controls */
+    .screen-toolbar {
+      width: 100%;
+      max-width: 850px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      background: rgba(30, 41, 59, 0.8);
+      backdrop-filter: blur(8px);
+      padding: 0.85rem 1.25rem;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+    }
+
+    .back-link {
+      color: #38bdf8;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    .back-link:hover {
+      color: #7dd3fc;
+      text-decoration: underline;
+    }
+
+    .print-btn {
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      color: #ffffff;
+      border: none;
+      padding: 0.65rem 1.25rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .print-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(2, 132, 199, 0.5);
+    }
+
+    /* Worksheet Container */
+    .worksheet {
+      width: 100%;
+      max-width: 850px;
+      background: #ffffff;
+      color: #0f172a;
+      border-radius: 16px;
+      padding: 2.2rem 2.4rem;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      position: relative;
+    }
+
+    /* Header */
+    .header {
+      border-bottom: 3px solid #0284c7;
+      padding-bottom: 0.85rem;
+      margin-bottom: 1.15rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .header-titles h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.65rem;
+      color: #0369a1;
+      line-height: 1.2;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .header-titles p {
+      font-size: 0.95rem;
+      color: #475569;
+      font-weight: 500;
+      margin-top: 0.25rem;
+    }
+
+    .badge-team {
+      background: #e0f2fe;
+      color: #0369a1;
+      border: 2px solid #0284c7;
+      padding: 0.4rem 0.85rem;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+
+    /* Student Info Row */
+    .student-info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 1.25rem;
+      background: #f8fafc;
+      border: 1.5px dashed #cbd5e1;
+      border-radius: 10px;
+      padding: 0.85rem 1.25rem;
+      margin-bottom: 1.15rem;
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .field-label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #475569;
+    }
+
+    .fill-line {
+      border-bottom: 1.5px solid #0369a1;
+      min-height: 26px;
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: 2px;
+      font-weight: 600;
+      color: #0f172a;
+    }
+
+    /* Coach Callout Box */
+    .coach-box {
+      background: #eff6ff;
+      border-left: 5px solid #0284c7;
+      border-radius: 8px;
+      padding: 0.85rem 1.15rem;
+      margin-bottom: 1.15rem;
+    }
+
+    .coach-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 800;
+      color: #0369a1;
+      font-size: 0.95rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .coach-quote {
+      font-size: 0.9rem;
+      color: #1e293b;
+      line-height: 1.45;
+    }
+
+    .coach-quote strong {
+      color: #0369a1;
+    }
+
+    /* Ideas & Inspiration Section */
+    .ideas-section {
+      margin-bottom: 1.25rem;
+    }
+
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.05rem;
+      color: #0f172a;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .ideas-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.65rem;
+    }
+
+    .idea-card {
+      background: #f1f5f9;
+      border-radius: 8px;
+      padding: 0.75rem 0.8rem;
+      border: 1px solid #e2e8f0;
+    }
+
+    .idea-card h4 {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .idea-card ul {
+      list-style: none;
+      font-size: 0.76rem;
+      color: #334155;
+      line-height: 1.4;
+    }
+
+    .idea-card li {
+      margin-bottom: 0.3rem;
+      position: relative;
+      padding-left: 0.75rem;
+    }
+
+    .idea-card li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #0284c7;
+      font-weight: bold;
+    }
+
+    /* Goals Fill-in Area */
+    .my-goals-section {
+      margin-bottom: 1.25rem;
+    }
+
+    .goal-box {
+      background: #faf5ff;
+      border: 2px solid #c084fc;
+      border-radius: 12px;
+      padding: 1.1rem 1.3rem;
+    }
+
+    .goal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.65rem;
+    }
+
+    .goal-header h3 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #581c87;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .goal-tag {
+      font-size: 0.76rem;
+      font-weight: 700;
+      background: #ffffff;
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid #a855f7;
+      color: #6b21a8;
+    }
+
+    .goal-input-lines {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .goal-write-line {
+      border-bottom: 1.5px dotted #a855f7;
+      min-height: 30px;
+      font-size: 0.92rem;
+    }
+
+    .sub-prompt {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      color: #64748b;
+      margin-top: 0.25rem;
+    }
+
+    .sub-line {
+      flex: 1;
+      border-bottom: 1.5px dotted #cbd5e1;
+      min-height: 22px;
+    }
+
+    /* Pledge Checklist */
+    .pledge-section {
+      background: #fffbeb;
+      border: 1.5px solid #fde68a;
+      border-radius: 10px;
+      padding: 0.85rem 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .pledge-items {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .pledge-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      color: #78350f;
+      font-weight: 600;
+    }
+
+    .checkbox-square {
+      width: 15px;
+      height: 15px;
+      border: 1.5px solid #b45309;
+      border-radius: 3px;
+      background: #ffffff;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    .signature-box {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      min-width: 190px;
+    }
+
+    .signature-line {
+      border-bottom: 1.5px solid #b45309;
+      min-height: 24px;
+    }
+
+    .signature-label {
+      font-size: 0.72rem;
+      color: #92400e;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background: #ffffff !important;
+        padding: 0 !important;
+        color: #000000 !important;
+      }
+
+      .screen-toolbar {
+        display: none !important;
+      }
+
+      .worksheet {
+        max-width: 100% !important;
+        width: 100% !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        padding: 0.25in 0.35in !important;
+      }
+
+      @page {
+        size: letter portrait;
+        margin: 0.3in 0.35in;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Screen Toolbar -->
+  <div class="screen-toolbar">
+    <a href="../mentors/plan/2026-sept-13.html" class="back-link">← Back to Session 1 Plan</a>
+    <button onclick="window.print()" class="print-btn">
+      🖨️ Print Worksheet (Letter Size)
+    </button>
+  </div>
+
+  <!-- Worksheet Container -->
+  <div class="worksheet">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header-titles">
+        <h1>🌟 FIRST LEGO League Season Goal</h1>
+        <p>Cool Team Name Here! (start thinking of names) </p>
+      </div>
+      <div class="badge-team">
+        🤖 FLL Team #76265
+      </div>
+    </header>
+
+    <!-- Student Info -->
+    <div class="student-info-grid">
+      <div class="field-group">
+        <span class="field-label">My Name</span>
+        <div class="fill-line"></div>
+      </div>
+      <div class="field-group">
+        <span class="field-label">My Favorite Pokémon (or Favorite LEGO Theme)</span>
+        <div class="fill-line"></div>
+      </div>
+    </div>
+
+    <!-- Coach Jaime's Goal Box -->
+    <div class="coach-box">
+      <div class="coach-header">
+        <span>⭐ Coach Jaime's #1 Goal for This Season:</span>
+      </div>
+      <p class="coach-quote">
+        <strong>"My goal is to make sure everyone has FUN, I know everyone's name, and I know everyone's favorite Pokémon!"</strong>
+        <br>
+        In robotics, you don't need to score high points or be a flawless success to be an awesome engineer. Parts come loose and programs do funny turns—and that is 100% normal! Trying things out, laughing together, and fixing things as a team is what matters.
+      </p>
+    </div>
+
+    <!-- Inspiration Ideas -->
+    <div class="ideas-section">
+      <h2 class="section-title">💡 Need an idea? Pick something fun you'd like to try this season:</h2>
+      <div class="ideas-grid">
+        <div class="idea-card">
+          <h4>🤖 Building & Trying</h4>
+          <ul>
+            <li>I designed an attachment to try out on the robot</li>
+            <li>I helped present to judges</li>
+            <li>I helped build and test a mission model</li>
+          </ul>
+        </div>
+        <div class="idea-card">
+          <h4>💻 Coding & Motion</h4>
+          <ul>
+            <li>I made the robot complete a task!</li>
+            <li>I shared my code with a teammate</li>
+            <li>I ran a test run and tried again with a buddy</li>
+          </ul>
+        </div>
+        <div class="idea-card">
+          <h4>🤝 Team & Fun</h4>
+          <ul>
+            <li>I learned everyone's name and had fun with the team</li>
+            <li>I shared an idea and practiced "Plus'ing" with my partner</li>
+            <li>I cheered on a teammate when they tried something new</li>
+          </ul>
+        </div>
+        <div class="idea-card">
+          <h4>🎤 Curiosity & Project</h4>
+          <ul>
+            <li>I learned a cool fact about glowing ocean creatures</li>
+            <li>I shared an idea or sketch for our invention</li>
+            <li>I spoke up during team discussions</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- My Personal Goal -->
+    <div class="my-goals-section">
+      <div class="goal-box">
+        <div class="goal-header">
+          <h3>🎯 My Season Goal:</h3>
+          <span class="goal-tag">My Personal Goal</span>
+        </div>
+        <div class="goal-input-lines">
+          <div class="goal-write-line"></div>
+          <div class="sub-prompt">
+            <span>Why this sounds fun to try:</span>
+            <div class="sub-line"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Team Spirit & High-Five Pledge -->
+    <div class="pledge-section">
+      <div class="pledge-items">
+        <div class="pledge-item">
+          <span class="checkbox-square"></span>
+          <span>I will cheer my teammates and celebrate when someone tries their best!</span>
+        </div>
+        <div class="pledge-item">
+          <span class="checkbox-square"></span>
+          <span>When something breaks, I won't feel bad—I will smile, learn, and try again!</span>
+        </div>
+        <div class="pledge-item">
+          <span class="checkbox-square"></span>
+          <span>I will help clean up so zero LEGO pins are left on the floor!</span>
+        </div>
+      </div>
+
+      <!-- <div class="signature-box">
+        <div class="signature-line"></div>
+        <span class="signature-label">My Official Teammate Signature ✍️</span>
+      </div>
+    </div> -->
+
+  </div>
+
+</body>
+</html>
