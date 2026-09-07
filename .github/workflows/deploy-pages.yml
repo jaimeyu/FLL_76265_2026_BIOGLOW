@@ -23,6 +23,8 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    env:
+      ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: "true"
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -32,11 +34,12 @@ jobs:
         with:
           python-version: '3.11'
           cache: 'pip'
+          cache-dependency-path: 'requirements.txt'
 
       - name: Install Material for MkDocs
         run: |
           python -m pip install --upgrade pip
-          pip install mkdocs-material
+          pip install -r requirements.txt
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
