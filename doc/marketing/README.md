@@ -8,3 +8,4 @@ Branding materials, logo concepts, team shirts design, community outreach logs, 
 - **Sponsorship Letters**: Templates for reaching out to local supporters and businesses.
 - **SPIKE App Parent Flyer (`spike_app/`)**: Printable one-page guide and QR flyer for parents, showcasing app features, built-in STEAM tutorials, and installation steps.
 - **Season Goals Worksheet (`goals_worksheet.html`)**: Printable student activity sheet for setting realistic fun goals, capturing favorite Pokémon, and taking the team spirit pledge.
+- **Core Values & Plus'ing Flyer (`core_values_flyer.html`)**: Printable flyer featuring the 6 FIRST Core Values, Dr. Woodie Flowers' Gracious Professionalism, and a deep-dive into "Plus'ing" for team collaboration.

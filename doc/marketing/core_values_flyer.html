@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FIRST Core Values & The Power of Plus'ing — Team #76265 BIOGLOW</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --accent-teal: #0d9488;
+      --accent-purple: #7c3aed;
+      --accent-amber: #d97706;
+      --accent-rose: #e11d48;
+      --bg-gradient: radial-gradient(circle at top center, #1e293b 0%, #0f172a 100%);
+      --card-bg: #1e293b;
+      --border-color: rgba(56, 189, 248, 0.25);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-main);
+      padding: 2rem 1rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Screen-only Controls */
+    .screen-toolbar {
+      width: 100%;
+      max-width: 880px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      background: rgba(30, 41, 59, 0.8);
+      backdrop-filter: blur(8px);
+      padding: 0.85rem 1.25rem;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+    }
+
+    .back-link {
+      color: #38bdf8;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    .back-link:hover {
+      color: #7dd3fc;
+      text-decoration: underline;
+    }
+
+    .print-btn {
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      color: #ffffff;
+      border: none;
+      padding: 0.65rem 1.25rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .print-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(2, 132, 199, 0.5);
+    }
+
+    /* Flyer Sheet Container */
+    .flyer-sheet {
+      width: 100%;
+      max-width: 880px;
+      background: #ffffff;
+      color: #0f172a;
+      border-radius: 16px;
+      padding: 2.2rem 2.4rem;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      position: relative;
+    }
+
+    /* Header */
+    .header {
+      border-bottom: 3px solid #0284c7;
+      padding-bottom: 0.85rem;
+      margin-bottom: 1.15rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .header-titles h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.65rem;
+      color: #0369a1;
+      line-height: 1.2;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .header-titles p {
+      font-size: 0.92rem;
+      color: #475569;
+      font-weight: 600;
+      margin-top: 0.25rem;
+    }
+
+    .badge-motto {
+      background: #e0f2fe;
+      color: #0369a1;
+      border: 2px solid #0284c7;
+      padding: 0.45rem 0.9rem;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      text-align: right;
+      line-height: 1.3;
+    }
+
+    /* Core Values 6-Grid */
+    .core-values-section {
+      margin-bottom: 1.25rem;
+    }
+
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.15rem;
+      color: #0f172a;
+      margin-bottom: 0.45rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.45rem;
+    }
+
+
+    .m-pill {
+      background: #0284c7;
+      color: #ffffff;
+      font-weight: 800;
+      padding: 0.05rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      letter-spacing: 0.5px;
+      display: inline-block;
+      margin-right: 0.2rem;
+    }
+
+    .m-pill.pill-d { background: #0284c7; }
+    .m-pill.pill-i1 { background: #7c3aed; }
+    .m-pill.pill-f { background: #d97706; }
+    .m-pill.pill-i2 { background: #0d9488; }
+    .m-pill.pill-i3 { background: #e11d48; }
+    .m-pill.pill-t { background: #2563eb; }
+
+    .difi-it-container {
+      display: grid;
+      grid-template-columns: 1.9fr auto 1fr;
+      gap: 0.75rem;
+      align-items: stretch;
+    }
+
+    .pillar-block {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .block-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .block-badge {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 0.82rem;
+      padding: 0.2rem 0.65rem;
+      border-radius: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .block-badge.difi {
+      background: #e0f2fe;
+      color: #0369a1;
+      border: 1.5px solid #7dd3fc;
+    }
+
+    .block-badge.it {
+      background: #fdf2f8;
+      color: #be185d;
+      border: 1.5px solid #fbcfe8;
+    }
+
+    .block-subtitle {
+      font-size: 0.74rem;
+      color: #64748b;
+      font-weight: 600;
+    }
+
+    /* Left: 2x2 Grid for DIFI */
+    .difi-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 0.65rem;
+      flex: 1;
+    }
+
+    /* Right: 1x2 Grid for IT */
+    .it-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 0.65rem;
+      flex: 1;
+    }
+
+    /* Vertical Divider Separator */
+    .grid-divider {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0 0.15rem;
+    }
+
+    .divider-line {
+      flex: 1;
+      width: 2px;
+      background: linear-gradient(to bottom, transparent, #bae6fd 20%, #bae6fd 80%, transparent);
+    }
+
+    .divider-badge {
+      background: #f0f9ff;
+      border: 1.5px solid #38bdf8;
+      color: #0284c7;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.76rem;
+      font-weight: 800;
+      padding: 0.25rem 0.45rem;
+      border-radius: 6px;
+      margin: 0.35rem 0;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+
+    .value-card {
+      background: #f8fafc;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 0.7rem 0.8rem;
+      border-top: 4px solid var(--primary);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .value-card.discovery { border-top-color: #0284c7; }
+    .value-card.innovation { border-top-color: #7c3aed; }
+    .value-card.fun { border-top-color: #d97706; }
+    .value-card.impact { border-top-color: #0d9488; }
+    .value-card.inclusion { border-top-color: #e11d48; }
+    .value-card.teamwork { border-top-color: #2563eb; }
+
+    .value-header {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .value-header h3 {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #0f172a;
+    }
+
+    .value-text {
+      font-size: 0.78rem;
+      color: #475569;
+      line-height: 1.38;
+    }
+
+    /* Gracious Professionalism Callout */
+    .gp-banner {
+      background: #eff6ff;
+      border-left: 5px solid #0284c7;
+      border-radius: 8px;
+      padding: 0.75rem 1.1rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .gp-text {
+      font-size: 0.82rem;
+      color: #1e293b;
+      line-height: 1.4;
+    }
+
+    .gp-text strong {
+      color: #0369a1;
+    }
+
+    .gp-badge {
+      background: #ffffff;
+      border: 1.5px solid #0284c7;
+      color: #0369a1;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 0.74rem;
+      white-space: nowrap;
+    }
+
+    /* Plus'ing Feature Box */
+    .plusing-feature {
+      background: #faf5ff;
+      border: 2px solid #c084fc;
+      border-radius: 12px;
+      padding: 1.1rem 1.3rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .plusing-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .plusing-header h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.15rem;
+      color: #6b21a8;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .plusing-tag {
+      background: #f3e8ff;
+      color: #7e22ce;
+      border: 1px solid #d8b4fe;
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.74rem;
+    }
+
+    .plusing-explainer {
+      font-size: 0.84rem;
+      color: #334155;
+      line-height: 1.45;
+      margin-bottom: 0.85rem;
+    }
+
+    .plusing-reasons-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 0.95rem;
+    }
+
+    .reason-box {
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 0.65rem 0.75rem;
+      border: 1px solid #e9d5ff;
+    }
+
+    .reason-box h4 {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: #6b21a8;
+      margin-bottom: 0.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .reason-box p {
+      font-size: 0.74rem;
+      color: #475569;
+      line-height: 1.35;
+    }
+
+    /* Comparison Table / Examples */
+    .compare-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    .compare-card {
+      border-radius: 8px;
+      padding: 0.75rem 0.85rem;
+    }
+
+    .compare-card.no-way {
+      background: #fff1f2;
+      border: 1.5px solid #fecdd3;
+    }
+
+    .compare-card.yes-and {
+      background: #f0fdf4;
+      border: 1.5px solid #bbf7d0;
+    }
+
+    .compare-card h4 {
+      font-size: 0.82rem;
+      font-weight: 800;
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .compare-card.no-way h4 { color: #be123c; }
+    .compare-card.yes-and h4 { color: #15803d; }
+
+    .compare-dialogue {
+      font-size: 0.76rem;
+      line-height: 1.4;
+      color: #1e293b;
+    }
+
+    .dialogue-bubble {
+      background: #ffffff;
+      padding: 0.45rem 0.65rem;
+      border-radius: 6px;
+      margin-bottom: 0.35rem;
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+
+    /* Footer Pledge */
+    .footer-bar {
+      background: #f8fafc;
+      border: 1.5px dashed #cbd5e1;
+      border-radius: 8px;
+      padding: 0.65rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.76rem;
+      color: #475569;
+      font-weight: 600;
+    }
+
+    .footer-bar span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* Responsive Breakpoint */
+    @media (max-width: 768px) {
+      .difi-it-container {
+        grid-template-columns: 1fr;
+      }
+      .grid-divider {
+        flex-direction: row;
+        width: 100%;
+        margin: 0.5rem 0;
+      }
+      .divider-line {
+        height: 2px;
+        width: 100%;
+      }
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background: #ffffff !important;
+        padding: 0 !important;
+        color: #000000 !important;
+      }
+
+      .screen-toolbar {
+        display: none !important;
+      }
+
+      .flyer-sheet {
+        max-width: 100% !important;
+        width: 100% !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        padding: 0.25in 0.35in !important;
+      }
+
+      @page {
+        size: letter portrait;
+        margin: 0.3in 0.35in;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Screen Toolbar -->
+  <div class="screen-toolbar">
+    <a href="../mentors/plan/mentors_notes.html" class="back-link">← Back to Mentors Guide</a>
+    <button onclick="window.print()" class="print-btn">
+      🖨️ Print Core Values Flyer (Letter Size)
+    </button>
+  </div>
+
+  <!-- Flyer Sheet Container -->
+  <div class="flyer-sheet">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header-titles">
+        <h1>🌟 FIRST® Core Values in Action</h1>
+        <p>Team #76265 • BIOGLOW • <em>"We don't just build robots, we use robots to build students."</em></p>
+      </div>
+      <div class="badge-motto">
+        🤖 FLL Team #76265<br>
+        2026 Season
+      </div>
+    </header>
+
+    <!-- FIRST Core Values (DIFI-IT) -->
+    <div class="core-values-section">
+      <h2 class="section-title">
+        <span>🏆 FIRST CORE VALUES</span>
+      </h2>
+
+      <!-- DIFI (2x2) on Left, IT (1x2) on Right with Separator -->
+      <div class="difi-it-container">
+        
+        <!-- Left: DIFI Block (2x2 Grid) -->
+        <div class="pillar-block">
+          <div class="block-header">
+            <span class="block-badge difi">⚡ DEFI / DIFI</span>
+            <span class="block-subtitle">Discovery &bull; Innovation &bull; Fun &bull; Impact</span>
+          </div>
+
+          <div class="difi-grid">
+            <!-- D: Discovery -->
+            <div class="value-card discovery">
+              <div class="value-header">
+                <h3><span class="m-pill pill-d">D</span>Discovery</h3>
+              </div>
+              <p class="value-text">We explore new skills and ideas. We try mechanisms and code we've never attempted before!</p>
+            </div>
+
+            <!-- I: Innovation -->
+            <div class="value-card innovation">
+              <div class="value-header">
+                <h3><span class="m-pill pill-i1">I</span>Innovation</h3>
+              </div>
+              <p class="value-text">We use creativity and persistence to solve problems. When an attachment fails, we invent a new way!</p>
+            </div>
+
+            <!-- F: Fun -->
+            <div class="value-card fun">
+              <div class="value-header">
+                <h3><span class="m-pill pill-f">F</span>Fun</h3>
+              </div>
+              <p class="value-text">We enjoy and celebrate what we do! We laugh through glitches, high-five effort, and love the journey.</p>
+            </div>
+
+            <!-- I: Impact -->
+            <div class="value-card impact">
+              <div class="value-header">
+                <h3><span class="m-pill pill-i2">I</span>Impact</h3>
+              </div>
+              <p class="value-text">We apply what we learn to improve our world. We research real ocean challenges and help our community.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vertical Separator Divider -->
+        <div class="grid-divider">
+          <div class="divider-line"></div>
+          <div class="divider-badge">&plus;</div>
+          <div class="divider-line"></div>
+        </div>
+
+        <!-- Right: IT Block (1x2 Grid) -->
+        <div class="pillar-block">
+          <div class="block-header">
+            <span class="block-badge it">🤝 IT</span>
+            <span class="block-subtitle">Inclusion &bull; Teamwork</span>
+          </div>
+
+          <div class="it-grid">
+            <!-- I: Inclusion -->
+            <div class="value-card inclusion">
+              <div class="value-header">
+                <h3><span class="m-pill pill-i3">I</span>Inclusion</h3>
+              </div>
+              <p class="value-text">We respect each other and embrace our differences. Every teammate has a voice and a superpower!</p>
+            </div>
+
+            <!-- T: Teamwork -->
+            <div class="value-card teamwork">
+              <div class="value-header">
+                <h3><span class="m-pill pill-t">T</span>Teamwork</h3>
+              </div>
+              <p class="value-text">We are stronger when we work together. Builders, coders, and researchers collaborate as one team.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Gracious Professionalism Banner -->
+    <div class="gp-banner">
+      <div class="gp-text">
+        <strong>Gracious Professionalism®:</strong> A way of doing things that encourages high-quality work, emphasizes the value of others, and respects individuals and the community. We compete fiercely while helping other teams succeed!
+      </div>
+      <div class="gp-badge">Dr. Woodie Flowers</div>
+    </div>
+
+    <!-- Spotlight: Plus'ing for Better Collaboration -->
+    <div class="plusing-feature">
+      <div class="plusing-header">
+        <h2>➕ Plus'ing: Our Secret Collaboration Superpower</h2>
+        <span class="plusing-tag">Say "YES, AND..."</span>
+      </div>
+
+      <p class="plusing-explainer">
+        <strong>What is Plus'ing?</strong> Instead of shooting down a teammate's idea with <em>"No, that won't work,"</em> you accept the creative spark and build on top of it: <strong>"YES! AND what if we also..."</strong>
+      </p>
+
+      <!-- Why it makes collaboration better -->
+      <div class="plusing-reasons-grid">
+        <div class="reason-box">
+          <h4>🛡️ Safe to Speak Up</h4>
+          <p>Nobody fears being called "dumb." When every idea is welcomed, even the quietest teammates share game-changing ideas!</p>
+        </div>
+        <div class="reason-box">
+          <h4>🚀 Wild Ideas = Breakthroughs</h4>
+          <p>The craziest ideas often hide brilliant engineering solutions. Plus'ing turns wild concepts into real robot mechanisms.</p>
+        </div>
+        <div class="reason-box">
+          <h4>🏆 No Ego Battles ("Our Idea")</h4>
+          <p>No fighting over whose idea won. Plus'ing weaves teammates' thoughts together so the solution belongs to the <strong>whole team</strong>!</p>
+        </div>
+      </div>
+
+      <!-- Quick Comparison in Action -->
+      <div class="compare-container">
+        <div class="compare-card no-way">
+          <h4>❌ The Idea Killer ("No, But...")</h4>
+          <div class="dialogue-bubble">
+            <strong>Teammate A:</strong> "What if our robot had giant airplane wings?"<br>
+            <strong>Teammate B:</strong> "That's dumb. Robots don't fly and it won't fit in launch."<br>
+            <em>👉 Result: Teammate A feels hurt and stops sharing ideas.</em>
+          </div>
+        </div>
+
+        <div class="compare-card yes-and">
+          <h4>✅ The Plus'er ("YES, AND...")</h4>
+          <div class="dialogue-bubble">
+            <strong>Teammate A:</strong> "What if our robot had giant airplane wings?"<br>
+            <strong>Teammate B:</strong> "YES! AND what if we fold them on springs so they snap open to sweep all the coral pieces into base?"<br>
+            <em>👉 Result: Together, they just invented a winning attachment!</em>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Pledge Bar -->
+    <div class="footer-bar">
+      <span>🤝 <strong>Team Pledge:</strong> We build each other up, we celebrate effort, and we always Plus each other's ideas!</span>
+      <span>⭐ <em>FIRST LEGO League Team #76265</em></span>
+    </div>
+
+  </div>
+
+</body>
+</html>
