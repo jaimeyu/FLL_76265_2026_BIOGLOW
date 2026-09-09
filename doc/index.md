@@ -62,11 +62,19 @@ This entire site is written by student coders and builders using simple **Markdo
 
     [:octicons-arrow-right-24: Read Blog](blog/README.md)
 
--   :material-bullhorn:{ .lg .middle } __Marketing & SPIKE Flyer__
+-   :material-heart-pulse:{ .lg .middle } __FIRST Core Values__
 
     ---
 
-    Team branding, sponsor letters, and the printable LEGO SPIKE App Parent & Setup Guide.
+    Our team culture, the 6 core values (DIFI-IT), Gracious Professionalism, and Plus'ing guide.
+
+    [:octicons-arrow-right-24: Open Handout](marketing/parents/core_values_flyer.html)
+
+-   :material-bullhorn:{ .lg .middle } __Marketing & Handouts__
+
+    ---
+
+    Parent guides, student season goals worksheet, branding assets, and sponsorship resources.
 
     [:octicons-arrow-right-24: View Marketing](marketing/README.md)
 
@@ -82,18 +90,14 @@ This entire site is written by student coders and builders using simple **Markdo
 
 ---
 
-## 🌟 FIRST Core Values in Action
+## 🌟 FIRST Core Values
 
 > *"Gracious Professionalism is a way of doing things that encourages high-quality work, emphasizes the value of others, and respects individuals and the community."*  
 > — **Dr. Woodie Flowers**
 
-We practice:
-- 🤝 **Discovery**: We explore new skills and ideas.
-- 💡 **Innovation**: We use creativity and persistence to solve problems.
-- 🌍 **Impact**: We apply what we learn to improve our world.
-- 🤸 **Inclusion**: We respect each other and embrace our differences.
-- 👥 **Teamwork**: We are stronger when we work together.
-- 🎉 **Fun**: We enjoy and celebrate what we do!
+Our team practices the 6 FIRST® Core Values (Discovery, Innovation, Fun, Impact, Inclusion, and Teamwork) using the **DIFI-IT** framework, Dr. Woodie Flowers' Gracious Professionalism®, and our **Plus'ing** collaboration superpower (*"Yes, and..."*).
+
+[:octicons-arrow-right-24: Open Printable Core Values & Plus'ing Handout](marketing/parents/core_values_flyer.html){ .md-button .md-button--primary }
 
 ---
 
