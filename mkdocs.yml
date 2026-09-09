@@ -77,9 +77,12 @@ nav:
       - Overview: blog/README.md
   - 📣 Marketing & Outreach:
       - Overview: marketing/README.md
-      - 📱 SPIKE App Flyer: marketing/spike_app/spike_app_flyer.html
-      - 🎯 Printable Goals Worksheet: marketing/goals_worksheet.html
-      - 🌟 Core Values & Plus'ing Flyer: marketing/core_values_flyer.html
+      - 👨‍👩‍👧 Parents:
+          - 🌟 Core Values & Plus'ing Flyer: marketing/parents/core_values_flyer.html
+      - 📝 Handouts:
+          - 🎯 Printable Goals Worksheet: marketing/handouts/goals_worksheet.html
+      - 📱 SPIKE App:
+          - App Flyer & Setup Guide: marketing/spike_app/spike_app_flyer.html
   - 🛠️ Web Tools Hub:
       - Overview & Guide: webtools/overview.md
       - ⏱️ Launch Match Timer: webtools/index.html

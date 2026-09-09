@@ -99,7 +99,7 @@ sequenceDiagram
 ---
 
 ### 3. Continuous Growth & Daily Learning Reflection
-* **Start with Personal Season Goals:** On Day 1, each student fills out their [Season Goal Worksheet](../../marketing/goals_worksheet.html) with one fun goal (e.g., trying a new attachment, making the robot complete a task, making new friends). Mentors keep these to guide individual mentoring.
+* **Start with Personal Season Goals:** On Day 1, each student fills out their [Season Goal Worksheet](../../marketing/handouts/goals_worksheet.html) with one fun goal (e.g., trying a new attachment, making the robot complete a task, making new friends). Mentors keep these to guide individual mentoring.
 * **Daily Learning Circle (Last 15 minutes):**
   * Before packing up, gather in a circle.
   * Every single kid answers:
@@ -173,7 +173,7 @@ When you hear a student say *"That won't work"* or *"No,"* gently step in with t
 * *"How can we take your idea and their idea and mash them together into an epic super-idea?"*
 * *"Remember our rule: We say **'Yes, and...'** not **'No, but...'**"*
 
-*(See our printable [FIRST Core Values & Plus'ing Flyer](../../marketing/core_values_flyer.html) to hang up in the workshop!)*
+*(See our printable [FIRST Core Values & Plus'ing Flyer](../../marketing/parents/core_values_flyer.html) to hang up in the workshop!)*
 
 ---
 
