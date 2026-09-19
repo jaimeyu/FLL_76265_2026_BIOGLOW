@@ -1,0 +1,1680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Robot Design & Mission Sketchpad — FLL Team #76265 BIOGLOW</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <!-- html2canvas for 1-click full-worksheet JPG export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --primary-light: #e0f2fe;
+      --accent-teal: #0d9488;
+      --accent-purple: #7c3aed;
+      --accent-amber: #d97706;
+      --accent-emerald: #059669;
+      --dark-bg: #0f172a;
+      --card-bg: #1e293b;
+      --border-subtle: #cbd5e1;
+      --border-strong: #0284c7;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --grid-color: #bae6fd;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: radial-gradient(circle at top center, #1e293b 0%, #0f172a 100%);
+      color: #f8fafc;
+      padding: 1.5rem 1rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Screen Toolbar Controls */
+    .screen-toolbar {
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+      background: rgba(30, 41, 59, 0.92);
+      backdrop-filter: blur(12px);
+      padding: 0.85rem 1.25rem;
+      border-radius: 12px;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .toolbar-nav {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .back-link {
+      color: #38bdf8;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.88rem;
+      transition: color 0.15s ease;
+    }
+
+    .back-link:hover {
+      color: #7dd3fc;
+      text-decoration: underline;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tool-btn {
+      background: #334155;
+      color: #f1f5f9;
+      border: 1px solid #475569;
+      padding: 0.45rem 0.8rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.82rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all 0.15s ease;
+    }
+
+    .tool-btn:hover {
+      background: #475569;
+      border-color: #64748b;
+    }
+
+    .tool-btn.active {
+      background: #0369a1;
+      border-color: #38bdf8;
+      color: #ffffff;
+    }
+
+    .export-btn-jpg {
+      background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%);
+      color: #ffffff;
+      border: none;
+      padding: 0.5rem 0.95rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.86rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      box-shadow: 0 4px 12px rgba(13, 148, 136, 0.4);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .export-btn-jpg:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(13, 148, 136, 0.55);
+    }
+
+    .print-btn {
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      color: #ffffff;
+      border: none;
+      padding: 0.5rem 1.05rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.86rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .print-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(2, 132, 199, 0.55);
+    }
+
+    /* Print Preview Sheet Container */
+    .sheet-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .worksheet {
+      width: 100%;
+      max-width: 860px;
+      background: #ffffff;
+      color: var(--text-main);
+      border-radius: 12px;
+      padding: 1.4rem 1.65rem;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      transition: max-width 0.2s ease;
+    }
+
+    /* Landscape Mode for Screen View */
+    .worksheet.landscape {
+      max-width: 1080px;
+    }
+
+    /* Header Section */
+    .sheet-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2.5px solid #0284c7;
+      padding-bottom: 0.5rem;
+      gap: 1rem;
+    }
+
+    .header-main {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .team-badge {
+      background: #0284c7;
+      color: #ffffff;
+      padding: 0.35rem 0.65rem;
+      border-radius: 8px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1.1;
+    }
+
+    .team-badge small {
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      opacity: 0.9;
+    }
+
+    .header-title-block h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #0369a1;
+      line-height: 1.15;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .header-title-block p {
+      font-size: 0.8rem;
+      color: #64748b;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+    }
+
+    .header-pills {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.25rem;
+    }
+
+    .season-pill {
+      background: #e0f2fe;
+      color: #0369a1;
+      border: 1px solid #7dd3fc;
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .motto-text {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #0d9488;
+      font-style: italic;
+    }
+
+    /* Metadata Bar (Interactive Inputs for Screen, Underlines for Print) */
+    .metadata-card {
+      background: #f8fafc;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 0.55rem 0.85rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .meta-row {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+    }
+
+    .meta-field {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .meta-field.grow-2 { flex: 2; min-width: 170px; }
+    .meta-field.grow-1 { flex: 1; min-width: 130px; }
+    .meta-field.compact { flex: 0 0 auto; }
+
+    .meta-label {
+      font-size: 0.74rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #0369a1;
+      white-space: nowrap;
+    }
+
+    /* Seamless Underline Inputs */
+    .clean-input {
+      border: none;
+      border-bottom: 1.5px solid #0f172a;
+      background: transparent;
+      font-family: inherit;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: #0f172a;
+      outline: none;
+      padding: 1px 4px;
+      width: 100%;
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+
+    .clean-input:focus {
+      border-bottom-color: #0284c7;
+      background: rgba(224, 242, 254, 0.4);
+    }
+
+    .clean-input::placeholder {
+      color: #94a3b8;
+      font-weight: 400;
+      font-style: italic;
+      font-size: 0.78rem;
+    }
+
+    .meta-box-group {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      border: 1.5px solid #0369a1;
+      background: #ffffff;
+      border-radius: 6px;
+      padding: 0.15rem 0.45rem;
+      font-weight: 700;
+      font-size: 0.84rem;
+      color: #0f172a;
+    }
+
+    .meta-box-group input {
+      border: none;
+      outline: none;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: #0369a1;
+      background: transparent;
+      text-align: center;
+    }
+
+    /* Brief Summary & Strategy Card */
+    .summary-card {
+      background: #ffffff;
+      border: 1.5px solid #0284c7;
+      border-radius: 8px;
+      padding: 0.55rem 0.85rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .summary-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .summary-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #0369a1;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .summary-hints {
+      font-size: 0.7rem;
+      color: #64748b;
+      font-weight: 600;
+    }
+
+    .summary-lines {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .write-line-row {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .write-line-prefix {
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: #334155;
+      white-space: nowrap;
+    }
+
+    .clean-input.dotted {
+      border-bottom: 1.5px dotted #94a3b8;
+    }
+
+    /* Quick Tags / Mechanism Action Bar (Power selector removed) */
+    .mechanism-tags-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.35rem 0.75rem;
+      background: #f1f5f9;
+      border-radius: 6px;
+      padding: 0.35rem 0.6rem;
+      font-size: 0.72rem;
+    }
+
+    .tag-group-label {
+      font-weight: 800;
+      color: #0f172a;
+      text-transform: uppercase;
+      font-size: 0.68rem;
+      letter-spacing: 0.4px;
+    }
+
+    .tag-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      color: #334155;
+      font-weight: 600;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .tag-item input[type="checkbox"] {
+      accent-color: #0284c7;
+      width: 12px;
+      height: 12px;
+      cursor: pointer;
+    }
+
+    /* Interactive Drawing Card (The Central Feature!) */
+    .drawing-card {
+      background: #ffffff;
+      border: 2px solid #0369a1;
+      border-radius: 10px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.04);
+    }
+
+    .drawing-card-header {
+      background: #f0f9ff;
+      border-bottom: 1.5px solid #0284c7;
+      padding: 0.4rem 0.85rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.76rem;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .drawing-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      color: #0369a1;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .drawing-guides-hint {
+      font-size: 0.7rem;
+      color: #0d9488;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .motion-cues {
+      color: #475569;
+      font-weight: 600;
+    }
+
+    /* In-Browser Drawing Controls Palette (Screen only) */
+    .canvas-toolbar {
+      background: #f8fafc;
+      border-bottom: 1px solid #cbd5e1;
+      padding: 0.35rem 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.4rem 0.8rem;
+    }
+
+    .canvas-tool-group {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .canvas-tool-group-label {
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: #475569;
+      text-transform: uppercase;
+      margin-right: 0.15rem;
+    }
+
+    .c-btn {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      color: #334155;
+      padding: 0.25rem 0.55rem;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      transition: all 0.1s ease;
+    }
+
+    .c-btn:hover {
+      background: #f1f5f9;
+      border-color: #94a3b8;
+    }
+
+    .c-btn.active {
+      background: #0284c7;
+      border-color: #0369a1;
+      color: #ffffff;
+    }
+
+    /* Color Swatches */
+    .swatches {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .swatch {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 0 1px #cbd5e1;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .swatch:hover {
+      transform: scale(1.15);
+    }
+
+    .swatch.active {
+      transform: scale(1.2);
+      box-shadow: 0 0 0 2px #0284c7;
+    }
+
+    /* Stroke Width Selector */
+    .width-selector {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .width-btn {
+      width: 24px;
+      height: 24px;
+      border-radius: 4px;
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .width-btn.active {
+      border-color: #0284c7;
+      background: #e0f2fe;
+    }
+
+    .dot-preview {
+      background: #0f172a;
+      border-radius: 50%;
+    }
+
+    /* Canvas Grid Container */
+    .canvas-container {
+      position: relative;
+      width: 100%;
+      height: 440px;
+      overflow: hidden;
+      touch-action: none; /* Prevents browser scrolling while drawing with finger/touch */
+    }
+
+    .canvas-container.blueprint-grid {
+      background-color: #f8fafc;
+      background-size: 20px 20px;
+      background-image:
+        linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+    }
+
+    .canvas-container.dot-grid {
+      background-color: #ffffff;
+      background-size: 20px 20px;
+      background-image: radial-gradient(circle, #94a3b8 1.5px, transparent 1.5px);
+    }
+
+    .canvas-container.standard-grid {
+      background-color: #ffffff;
+      background-size: 20px 20px;
+      background-image: 
+        linear-gradient(to right, #e2e8f0 1px, transparent 1px),
+        linear-gradient(to bottom, #e2e8f0 1px, transparent 1px);
+    }
+
+    /* Technic Beam Hole Scale Ruler Along Top */
+    .beam-ruler {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 18px;
+      background: rgba(248, 250, 252, 0.95);
+      border-bottom: 1px dashed #0284c7;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      font-size: 0.62rem;
+      font-weight: 800;
+      color: #0369a1;
+      justify-content: space-between;
+      pointer-events: none;
+      user-select: none;
+      z-index: 1;
+    }
+
+    .ruler-title {
+      font-family: 'Space Grotesk', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #0369a1;
+    }
+
+    .ruler-studs {
+      display: flex;
+      gap: 1.1rem;
+      letter-spacing: 0.5px;
+      font-family: monospace;
+    }
+
+    /* Prompt label in top-left */
+    .canvas-prompts {
+      position: absolute;
+      top: 26px;
+      left: 12px;
+      pointer-events: none;
+      user-select: none;
+      z-index: 1;
+    }
+
+    .canvas-tag {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px dashed #0284c7;
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      font-size: 0.66rem;
+      font-weight: 700;
+      color: #0369a1;
+    }
+
+    /* Inset Detail Box in Bottom-Right (HIDDEN BY DEFAULT until activated) */
+    .canvas-detail-box {
+      display: none; /* Hidden until activated */
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      width: 210px;
+      height: 125px;
+      background: rgba(255, 255, 255, 0.96);
+      border: 1.5px dashed #0284c7;
+      border-radius: 6px;
+      padding: 0.35rem 0.5rem;
+      flex-direction: column;
+      gap: 0.2rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      z-index: 7;
+    }
+
+    .canvas-detail-box.active {
+      display: flex;
+    }
+
+    .detail-box-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.66rem;
+      font-weight: 800;
+      color: #0369a1;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .close-zoom-btn {
+      cursor: pointer;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #64748b;
+      padding: 0 4px;
+      border-radius: 3px;
+      transition: background 0.1s ease, color 0.1s ease;
+    }
+
+    .close-zoom-btn:hover {
+      background: #fee2e2;
+      color: #dc2626;
+    }
+
+    .detail-box-grid {
+      flex: 1;
+      border: 1px dotted #cbd5e1;
+      border-radius: 4px;
+      background: #fafafa;
+    }
+
+    .detail-box-label {
+      font-size: 0.56rem;
+      color: #64748b;
+      font-style: italic;
+      text-align: center;
+    }
+
+    /* The Interactive HTML5 Canvas Layer */
+    #sketchCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      cursor: crosshair;
+      z-index: 5;
+    }
+
+    /* Hidden image used to guarantee 100% canvas print fidelity */
+    #printCanvasImg {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 6;
+      pointer-events: none;
+    }
+
+    /* Bottom Engineering Section: Parts & Plus'ing */
+    .bottom-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 0.65rem;
+    }
+
+    .bottom-card {
+      border: 1.5px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 0.5rem 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      background: #ffffff;
+    }
+
+    .bottom-card.highlight {
+      border-color: #0d9488;
+      background: #f0fdfa;
+    }
+
+    .bottom-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .bottom-card-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.74rem;
+      font-weight: 800;
+      color: #0369a1;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .bottom-card.highlight .bottom-card-title {
+      color: #0f766e;
+    }
+
+    /* Freeform Parts Input */
+    .parts-input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .test-runs-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-top: 0.15rem;
+      padding-top: 0.3rem;
+      border-top: 1px dashed #cbd5e1;
+      font-size: 0.7rem;
+    }
+
+    .test-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-weight: 700;
+      color: #1e293b;
+      cursor: pointer;
+    }
+
+    .test-pill input[type="checkbox"] {
+      accent-color: #0284c7;
+      width: 12px;
+      height: 12px;
+    }
+
+    /* Plus'ing Box */
+    .plus-prompt {
+      font-size: 0.7rem;
+      color: #134e4a;
+      line-height: 1.35;
+      font-weight: 600;
+    }
+
+    .plus-line-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      margin-top: 0.1rem;
+    }
+
+    .teammate-sig-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: #0f766e;
+      margin-top: 0.1rem;
+      gap: 0.4rem;
+    }
+
+    .teammate-sig-row span {
+      white-space: nowrap;
+    }
+
+    /* Page Footer / Core Values Note */
+    .sheet-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.66rem;
+      color: #64748b;
+      padding-top: 0.3rem;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .footer-core-values {
+      font-weight: 700;
+      color: #0369a1;
+      letter-spacing: 0.3px;
+    }
+
+    /* Print Layout Styling (STRICT SINGLE-PAGE FIT) */
+    @media print {
+      @page {
+        size: letter portrait;
+        margin: 0.28in 0.32in;
+      }
+
+      body {
+        background: #ffffff !important;
+        padding: 0 !important;
+        color: #000000 !important;
+        min-height: auto !important;
+      }
+
+      .screen-toolbar,
+      .canvas-toolbar {
+        display: none !important;
+      }
+
+      .sheet-wrapper {
+        width: 100% !important;
+        display: block !important;
+      }
+
+      .worksheet {
+        max-width: 100% !important;
+        width: 100% !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
+        gap: 0.45rem !important;
+        page-break-inside: avoid !important;
+        page-break-after: avoid !important;
+      }
+
+      .canvas-container {
+        height: 490px !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      /* Hide input placeholders during printing so empty lines print blank for handwriting */
+      .clean-input::placeholder {
+        color: transparent !important;
+      }
+
+      .clean-input {
+        border-bottom-color: #000000 !important;
+      }
+
+      .team-badge, .season-pill, .drawing-card, .summary-card {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      #printCanvasImg {
+        display: block !important;
+      }
+
+      /* Inset Detail Box: only print if active */
+      .canvas-detail-box {
+        display: none !important;
+      }
+
+      .canvas-detail-box.active {
+        display: flex !important;
+      }
+
+      .close-zoom-btn {
+        display: none !important;
+      }
+    }
+
+    /* Landscape Mode Print Settings (when active) */
+    @media print and (orientation: landscape) {
+      @page {
+        size: letter landscape;
+        margin: 0.28in 0.32in;
+      }
+
+      .canvas-container {
+        height: 360px !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Screen Toolbar -->
+  <aside class="screen-toolbar" aria-label="Worksheet Toolbar">
+    <div class="toolbar-nav">
+      <a href="goals_worksheet.html" class="back-link">← Goals Worksheet</a>
+      <a href="../README.md" class="back-link">📁 Marketing Hub</a>
+    </div>
+    <div class="toolbar-actions">
+      <button type="button" class="tool-btn active" id="btnPortrait" onclick="setLayout('portrait')">
+        📄 Portrait
+      </button>
+      <button type="button" class="tool-btn" id="btnLandscape" onclick="setLayout('landscape')">
+        🖼️ Landscape
+      </button>
+      <button type="button" class="tool-btn" id="btnGridToggle" onclick="cycleGrid()">
+        📐 Grid: Blueprint
+      </button>
+      <button type="button" onclick="exportAsJPG()" class="export-btn-jpg" id="btnExportJPG" title="Export entire worksheet as high-res JPG image">
+        🖼️ Export JPG
+      </button>
+      <button type="button" onclick="handlePrint()" class="print-btn" title="Print to Paper or Save to PDF">
+        🖨️ Print / Save PDF
+      </button>
+    </div>
+  </aside>
+
+  <!-- Worksheet Container -->
+  <div class="sheet-wrapper">
+    <main class="worksheet" id="worksheetMain">
+
+      <!-- Header -->
+      <header class="sheet-header">
+        <div class="header-main">
+          <div class="team-badge">
+            <span>#76265</span>
+            <small>Team New Team</small>
+          </div>
+          <div class="header-title-block">
+            <h1>Robot Design & Mission Sketchpad</h1>
+            <p>FIRST LEGO League &bull; Engineering Notebook Idea Sheet</p>
+          </div>
+        </div>
+        <div class="header-pills">
+          <span class="season-pill">2026 BIOGLOW Season</span>
+          <span class="motto-text">Explore &bull; Innovate &bull; Iterate &bull; Plus' It!</span>
+        </div>
+      </header>
+
+      <!-- Metadata Bar (Designer Name, Date, Mission #, Mission Name & Design Name) -->
+      <section class="metadata-card" aria-label="Mission & Student Metadata">
+        <!-- Row 1: Student Name & Date -->
+        <div class="meta-row">
+          <div class="meta-field grow-2">
+            <span class="meta-label">Designer Name(s):</span>
+            <input type="text" class="clean-input" id="inputDesigner" placeholder="Type name(s) or leave blank to write on paper...">
+          </div>
+          <div class="meta-field compact">
+            <span class="meta-label">Date:</span>
+            <input type="text" class="clean-input" id="inputDate" style="width: 105px;" placeholder="YYYY-MM-DD">
+          </div>
+        </div>
+
+        <!-- Row 2: Mission #, Mission Name & Design Name Textbox -->
+        <div class="meta-row">
+          <div class="meta-field compact">
+            <span class="meta-label">Mission #:</span>
+            <div class="meta-box-group">
+              <span>M</span>
+              <input type="text" id="inputMissionNum" style="width: 32px;" placeholder="01" maxlength="4">
+            </div>
+          </div>
+          <div class="meta-field grow-1">
+            <span class="meta-label">Mission Name:</span>
+            <input type="text" class="clean-input" id="inputMissionName" placeholder="e.g., Coral Nursery...">
+          </div>
+          <div class="meta-field grow-1">
+            <span class="meta-label">Design Name:</span>
+            <input type="text" class="clean-input" id="inputDesignName" placeholder="e.g., Passive Arm v1, Shark Bumper...">
+          </div>
+        </div>
+      </section>
+
+      <!-- Brief Summary & Mechanism Overview -->
+      <section class="summary-card" aria-label="Summary and Strategy">
+        <div class="summary-header">
+          <div class="summary-title">
+            <span>📝 Brief Summary & Strategy</span>
+          </div>
+          <span class="summary-hints">What does this attachment or robot move do to score?</span>
+        </div>
+        <div class="summary-lines">
+          <div class="write-line-row">
+            <span class="write-line-prefix">Goal:</span>
+            <input type="text" class="clean-input dotted" id="inputGoal" placeholder="Describe what the robot or attachment aims to accomplish...">
+          </div>
+          <div class="write-line-row">
+            <span class="write-line-prefix">How it works:</span>
+            <input type="text" class="clean-input dotted" id="inputHow" placeholder="Describe the physical movement, lever arm, gear, or trigger...">
+          </div>
+        </div>
+
+        <!-- Quick Checkboxes for Mechanism Action (Power selector removed) -->
+        <div class="mechanism-tags-bar">
+          <span class="tag-group-label">Mechanism Action:</span>
+          <label class="tag-item"><input type="checkbox"> Push / Plow</label>
+          <label class="tag-item"><input type="checkbox"> Lift / Arm</label>
+          <label class="tag-item"><input type="checkbox"> Grab / Claw</label>
+          <label class="tag-item"><input type="checkbox"> Hook / Latch</label>
+          <label class="tag-item"><input type="checkbox"> Gravity Drop</label>
+          <label class="tag-item"><input type="checkbox"> Passive Trigger</label>
+        </div>
+      </section>
+
+      <!-- Primary Interactive Blueprint & Drawing Canvas -->
+      <section class="drawing-card" aria-label="Drawing Canvas">
+        <div class="drawing-card-header">
+          <div class="drawing-title">
+            <span>📐 Draw Your Design & Attachment Below</span>
+          </div>
+          <div class="drawing-guides-hint">
+            <span class="motion-cues">Show Motion: ⬆️ Lift &bull; ⬇️ Press &bull; ➡️ Push &bull; 🔄 Spin</span>
+            <span>Tip: Top View or Side View</span>
+          </div>
+        </div>
+
+        <!-- Interactive In-Browser Drawing Controls Palette -->
+        <div class="canvas-toolbar" id="canvasToolbar" aria-label="Drawing Palette">
+          <!-- Tools (Pen, Line, Arrow, Eraser) -->
+          <div class="canvas-tool-group">
+            <span class="canvas-tool-group-label">Tool:</span>
+            <button type="button" class="c-btn active" id="toolPen" onclick="setTool('pen')" title="Freehand drawing pencil">
+              ✏️ Pen
+            </button>
+            <button type="button" class="c-btn" id="toolLine" onclick="setTool('line')" title="Straight Technic beam / axle line">
+              📏 Line
+            </button>
+            <button type="button" class="c-btn" id="toolArrow" onclick="setTool('arrow')" title="Direction of motion arrow">
+              ➡️ Arrow
+            </button>
+            <button type="button" class="c-btn" id="toolEraser" onclick="setTool('eraser')" title="Eraser">
+              🧽 Eraser
+            </button>
+          </div>
+
+          <!-- Color Swatches -->
+          <div class="canvas-tool-group">
+            <span class="canvas-tool-group-label">Color:</span>
+            <div class="swatches">
+              <div class="swatch active" style="background:#0369a1;" onclick="setColor('#0369a1', this)" title="Navy Blue"></div>
+              <div class="swatch" style="background:#0284c7;" onclick="setColor('#0284c7', this)" title="Cyan"></div>
+              <div class="swatch" style="background:#0f172a;" onclick="setColor('#0f172a', this)" title="Charcoal"></div>
+              <div class="swatch" style="background:#dc2626;" onclick="setColor('#dc2626', this)" title="LEGO Red"></div>
+              <div class="swatch" style="background:#16a34a;" onclick="setColor('#16a34a', this)" title="LEGO Green"></div>
+              <div class="swatch" style="background:#d97706;" onclick="setColor('#d97706', this)" title="LEGO Yellow"></div>
+              <div class="swatch" style="background:#7c3aed;" onclick="setColor('#7c3aed', this)" title="Purple"></div>
+            </div>
+          </div>
+
+          <!-- Brush Size -->
+          <div class="canvas-tool-group">
+            <span class="canvas-tool-group-label">Size:</span>
+            <div class="width-selector">
+              <button type="button" class="width-btn" onclick="setStrokeWidth(2, this)" title="Fine (2px)">
+                <span class="dot-preview" style="width:3px; height:3px;"></span>
+              </button>
+              <button type="button" class="width-btn active" onclick="setStrokeWidth(4, this)" title="Medium (4px)">
+                <span class="dot-preview" style="width:6px; height:6px;"></span>
+              </button>
+              <button type="button" class="width-btn" onclick="setStrokeWidth(8, this)" title="Bold (8px)">
+                <span class="dot-preview" style="width:10px; height:10px;"></span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Zoom Box Toggle + Undo / Redo / Clear -->
+          <div class="canvas-tool-group">
+            <button type="button" class="c-btn" id="btnToggleZoom" onclick="toggleDetailZoom()" title="Activate or hide the detail zoom box">
+              🔍 + Zoom Box
+            </button>
+            <button type="button" class="c-btn" onclick="undo()" title="Undo last stroke (Ctrl+Z)">
+              ↩️ Undo
+            </button>
+            <button type="button" class="c-btn" onclick="redo()" title="Redo stroke (Ctrl+Y)">
+              ↪️ Redo
+            </button>
+            <button type="button" class="c-btn" onclick="confirmClearCanvas()" title="Clear drawing">
+              🗑️ Clear
+            </button>
+          </div>
+        </div>
+
+        <!-- Canvas Grid Container -->
+        <div class="canvas-container blueprint-grid" id="canvasContainer">
+          <!-- Technic Beam Scale Ruler -->
+          <div class="beam-ruler">
+            <span class="ruler-title">📏 LEGO Technic Stud / Hole Scale Guide:</span>
+            <div class="ruler-studs">
+              <span>1M</span>
+              <span>3M</span>
+              <span>5M</span>
+              <span>7M</span>
+              <span>9M</span>
+              <span>11M</span>
+              <span>13M</span>
+              <span>15M</span>
+            </div>
+          </div>
+
+          <!-- Prompt labels inside canvas -->
+          <div class="canvas-prompts">
+            <span class="canvas-tag">💡 Draw with mouse/touch or print blank to sketch with pencil</span>
+          </div>
+
+          <!-- Inset Detail Box: Pin Connection or Mat Alignment (HIDDEN UNTIL ACTIVATED) -->
+          <div class="canvas-detail-box" id="detailZoomBox">
+            <div class="detail-box-title">
+              <span>🔍 Detail Zoom / Pin Mount:</span>
+              <span class="close-zoom-btn" onclick="toggleDetailZoom()" title="Close zoom box">✕</span>
+            </div>
+            <div class="detail-box-grid"></div>
+            <span class="detail-box-label">Attachment mount or mat launch alignment note</span>
+          </div>
+
+          <!-- Interactive HTML5 Drawing Canvas -->
+          <canvas id="sketchCanvas"></canvas>
+          <!-- Image clone for 100% reliable print & PDF output -->
+          <img id="printCanvasImg" alt="Drawn Sketch">
+        </div>
+      </section>
+
+      <!-- Bottom Engineering Section: Key Parts (Freeform) & Plus'ing -->
+      <section class="bottom-grid" aria-label="Parts, Testing and Team Plus'ing">
+        <!-- Left: Key Parts Needed (Freeform text box) & Field Tests -->
+        <div class="bottom-card">
+          <div class="bottom-card-header">
+            <span class="bottom-card-title">⚙️ Key Parts Needed</span>
+          </div>
+          <div class="parts-input-group">
+            <input type="text" class="clean-input dotted" id="inputKeyParts" placeholder="List beams, axles, gears, connectors, wheels, or rubber bands...">
+          </div>
+        </div>
+
+        <!-- Right: Team Plus'ing Collaboration Box -->
+        <div class="bottom-card highlight">
+          <div class="bottom-card-header">
+            <span class="bottom-card-title">💡 Team "Plus'ing" (+) Idea</span>
+          </div>
+          <p class="plus-prompt">
+            Share this sketch with a teammate! What is their idea to make it even better? (<em>"Yes, and what if we..."</em>)
+          </p>
+          <div class="plus-line-group">
+            <input type="text" class="clean-input dotted" id="inputPlusIdea" placeholder="Teammate says: Yes, and what if we add a guide wheel...">
+          </div>
+          <div class="teammate-sig-row">
+            <span>Teammate's Name:</span>
+            <input type="text" class="clean-input" id="inputTeammateName" placeholder="Teammate name" style="flex: 1;">
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer: Core Values Reminder -->
+      <footer class="sheet-footer">
+        <span class="footer-core-values">🤝 FIRST Core Values: Discovery &bull; Innovation &bull; Impact &bull; Inclusion &bull; Teamwork &bull; Fun</span>
+        <span>Team #76265 BIOGLOW &bull; Keep this sheet in your Engineering Notebook!</span>
+      </footer>
+
+    </main>
+  </div>
+
+  <script>
+    /* ==========================================================================
+       1. Page & Layout Management (Portrait / Landscape / Grid Styles)
+       ========================================================================== */
+    function setLayout(mode) {
+      const sheet = document.getElementById('worksheetMain');
+      const btnP = document.getElementById('btnPortrait');
+      const btnL = document.getElementById('btnLandscape');
+
+      if (mode === 'landscape') {
+        sheet.classList.add('landscape');
+        btnL.classList.add('active');
+        btnP.classList.remove('active');
+      } else {
+        sheet.classList.remove('landscape');
+        btnP.classList.add('active');
+        btnL.classList.remove('active');
+      }
+      setTimeout(resizeCanvas, 50);
+    }
+
+    const gridStyles = [
+      { class: 'blueprint-grid', label: '📐 Grid: Blueprint' },
+      { class: 'dot-grid', label: '🔘 Grid: Dot Grid' },
+      { class: 'standard-grid', label: '📏 Grid: Standard' }
+    ];
+    let currentGridIdx = 0;
+
+    function cycleGrid() {
+      const container = document.getElementById('canvasContainer');
+      const btn = document.getElementById('btnGridToggle');
+      
+      container.classList.remove(gridStyles[currentGridIdx].class);
+      currentGridIdx = (currentGridIdx + 1) % gridStyles.length;
+      container.classList.add(gridStyles[currentGridIdx].class);
+      btn.innerText = gridStyles[currentGridIdx].label;
+    }
+
+    // Toggle Inset Detail Zoom Box (Hidden by default)
+    function toggleDetailZoom() {
+      const box = document.getElementById('detailZoomBox');
+      const btn = document.getElementById('btnToggleZoom');
+      const isActive = box.classList.toggle('active');
+      if (btn) {
+        if (isActive) {
+          btn.classList.add('active');
+          btn.innerHTML = '🔍 Hide Zoom Box';
+        } else {
+          btn.classList.remove('active');
+          btn.innerHTML = '🔍 + Zoom Box';
+        }
+      }
+    }
+
+    // Set today's date if empty
+    (function initDate() {
+      const dateField = document.getElementById('inputDate');
+      if (!dateField.value) {
+        const today = new Date().toISOString().split('T')[0];
+        dateField.value = today;
+      }
+    })();
+
+    /* ==========================================================================
+       2. Interactive HTML5 Drawing Canvas (Mouse, Touch & Stylus Engine)
+       ========================================================================== */
+    const canvas = document.getElementById('sketchCanvas');
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
+    const container = document.getElementById('canvasContainer');
+    const printImg = document.getElementById('printCanvasImg');
+
+    let isDrawing = false;
+    let currentTool = 'pen'; // 'pen', 'line', 'arrow', 'eraser'
+    let currentColor = '#0369a1';
+    let currentStrokeWidth = 4;
+    let startPoint = { x: 0, y: 0 };
+
+    // History for Undo / Redo
+    let strokeHistory = [];
+    let redoHistory = [];
+    let currentStroke = null;
+
+    function resizeCanvas() {
+      const rect = container.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      
+      canvas.width = Math.round(rect.width * dpr);
+      canvas.height = Math.round(rect.height * dpr);
+      
+      ctx.setTransform(1, 0, 0, 1, 0, 0); // reset transform
+      ctx.scale(dpr, dpr);
+      redrawHistory();
+    }
+
+    window.addEventListener('resize', () => {
+      resizeCanvas();
+    });
+
+    // Pointer coordinates normalized to CSS pixels
+    function getPointerPos(e) {
+      const rect = canvas.getBoundingClientRect();
+      return {
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top
+      };
+    }
+
+    // Pointer Events (unifies Mouse, Touch and Pen Stylus)
+    canvas.addEventListener('pointerdown', (e) => {
+      canvas.setPointerCapture(e.pointerId);
+      isDrawing = true;
+      const pt = getPointerPos(e);
+      startPoint = pt;
+
+      currentStroke = {
+        tool: currentTool,
+        color: currentColor,
+        width: currentStrokeWidth,
+        points: [pt]
+      };
+
+      if (currentTool === 'pen' || currentTool === 'eraser') {
+        drawDot(pt.x, pt.y, currentStrokeWidth, currentTool === 'eraser' ? '#ffffff' : currentColor, currentTool === 'eraser');
+      }
+    });
+
+    canvas.addEventListener('pointermove', (e) => {
+      if (!isDrawing || !currentStroke) return;
+      const pt = getPointerPos(e);
+
+      if (currentTool === 'pen' || currentTool === 'eraser') {
+        const lastPt = currentStroke.points[currentStroke.points.length - 1];
+        drawLineSegment(lastPt, pt, currentStrokeWidth, currentStroke.color, currentTool === 'eraser');
+        currentStroke.points.push(pt);
+      } else if (currentTool === 'line' || currentTool === 'arrow') {
+        // Redraw preview
+        redrawHistory();
+        if (currentTool === 'line') {
+          drawLineSegment(startPoint, pt, currentStrokeWidth, currentColor, false);
+        } else if (currentTool === 'arrow') {
+          drawArrow(startPoint.x, startPoint.y, pt.x, pt.y, currentStrokeWidth, currentColor);
+        }
+      }
+    });
+
+    canvas.addEventListener('pointerup', (e) => {
+      if (!isDrawing) return;
+      isDrawing = false;
+      const pt = getPointerPos(e);
+
+      if (currentStroke) {
+        if (currentTool === 'line' || currentTool === 'arrow') {
+          currentStroke.points = [startPoint, pt];
+          redrawHistory();
+          if (currentTool === 'line') {
+            drawLineSegment(startPoint, pt, currentStrokeWidth, currentColor, false);
+          } else if (currentTool === 'arrow') {
+            drawArrow(startPoint.x, startPoint.y, pt.x, pt.y, currentStrokeWidth, currentColor);
+          }
+        }
+        strokeHistory.push(currentStroke);
+        redoHistory = []; // clear redo on new action
+        currentStroke = null;
+      }
+      syncPrintImage();
+    });
+
+    canvas.addEventListener('pointercancel', () => {
+      isDrawing = false;
+      currentStroke = null;
+      redrawHistory();
+    });
+
+    // Primitive Drawing Helpers
+    function drawDot(x, y, radius, color, isEraser) {
+      ctx.save();
+      if (isEraser) {
+        ctx.globalCompositeOperation = 'destination-out';
+      } else {
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.fillStyle = color;
+      }
+      ctx.beginPath();
+      ctx.arc(x, y, radius / 2, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    }
+
+    function drawLineSegment(p1, p2, width, color, isEraser) {
+      ctx.save();
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      ctx.lineWidth = width;
+      if (isEraser) {
+        ctx.globalCompositeOperation = 'destination-out';
+      } else {
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.strokeStyle = color;
+      }
+      ctx.beginPath();
+      ctx.moveTo(p1.x, p1.y);
+      ctx.lineTo(p2.x, p2.y);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function drawArrow(fromX, fromY, toX, toY, width, color) {
+      const headlen = Math.max(12, width * 3);
+      const angle = Math.atan2(toY - fromY, toX - fromX);
+
+      ctx.save();
+      ctx.strokeStyle = color;
+      ctx.fillStyle = color;
+      ctx.lineWidth = width;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+
+      // Line
+      ctx.beginPath();
+      ctx.moveTo(fromX, fromY);
+      ctx.lineTo(toX, toY);
+      ctx.stroke();
+
+      // Arrow head
+      ctx.beginPath();
+      ctx.moveTo(toX, toY);
+      ctx.lineTo(toX - headlen * Math.cos(angle - Math.PI / 6), toY - headlen * Math.sin(angle - Math.PI / 6));
+      ctx.lineTo(toX - headlen * Math.cos(angle + Math.PI / 6), toY - headlen * Math.sin(angle + Math.PI / 6));
+      ctx.closePath();
+      ctx.fill();
+      ctx.restore();
+    }
+
+    function redrawHistory() {
+      const rect = container.getBoundingClientRect();
+      ctx.clearRect(0, 0, rect.width, rect.height);
+
+      for (const stroke of strokeHistory) {
+        if (stroke.tool === 'pen' || stroke.tool === 'eraser') {
+          const isEraser = stroke.tool === 'eraser';
+          if (stroke.points.length === 1) {
+            drawDot(stroke.points[0].x, stroke.points[0].y, stroke.width, stroke.color, isEraser);
+          } else {
+            for (let i = 1; i < stroke.points.length; i++) {
+              drawLineSegment(stroke.points[i - 1], stroke.points[i], stroke.width, stroke.color, isEraser);
+            }
+          }
+        } else if (stroke.tool === 'line') {
+          drawLineSegment(stroke.points[0], stroke.points[1], stroke.width, stroke.color, false);
+        } else if (stroke.tool === 'arrow') {
+          drawArrow(stroke.points[0].x, stroke.points[0].y, stroke.points[1].x, stroke.points[1].y, stroke.width, stroke.color);
+        }
+      }
+    }
+
+    function setTool(tool) {
+      currentTool = tool;
+      ['toolPen', 'toolLine', 'toolArrow', 'toolEraser'].forEach(id => {
+        document.getElementById(id).classList.remove('active');
+      });
+      if (tool === 'pen') document.getElementById('toolPen').classList.add('active');
+      if (tool === 'line') document.getElementById('toolLine').classList.add('active');
+      if (tool === 'arrow') document.getElementById('toolArrow').classList.add('active');
+      if (tool === 'eraser') document.getElementById('toolEraser').classList.add('active');
+    }
+
+    function setColor(color, el) {
+      currentColor = color;
+      document.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
+      el.classList.add('active');
+      if (currentTool === 'eraser') setTool('pen');
+    }
+
+    function setStrokeWidth(width, el) {
+      currentStrokeWidth = width;
+      document.querySelectorAll('.width-btn').forEach(b => b.classList.remove('active'));
+      el.classList.add('active');
+    }
+
+    function undo() {
+      if (strokeHistory.length > 0) {
+        redoHistory.push(strokeHistory.pop());
+        redrawHistory();
+        syncPrintImage();
+      }
+    }
+
+    function redo() {
+      if (redoHistory.length > 0) {
+        strokeHistory.push(redoHistory.pop());
+        redrawHistory();
+        syncPrintImage();
+      }
+    }
+
+    function confirmClearCanvas() {
+      if (strokeHistory.length === 0) return;
+      if (confirm("Clear your drawing? (You can use Undo if this was a mistake!)")) {
+        strokeHistory = [];
+        redoHistory = [];
+        redrawHistory();
+        syncPrintImage();
+      }
+    }
+
+    // Keyboard shortcuts: Ctrl+Z / Cmd+Z for Undo, Ctrl+Y / Cmd+Shift+Z for Redo
+    window.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z') {
+        if (e.shiftKey) {
+          e.preventDefault();
+          redo();
+        } else {
+          e.preventDefault();
+          undo();
+        }
+      } else if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'y') {
+        e.preventDefault();
+        redo();
+      }
+    });
+
+    // Synchronize canvas graphics to image for 100% reliable printing across all browsers
+    function syncPrintImage() {
+      try {
+        const dataUrl = canvas.toDataURL('image/png');
+        printImg.src = dataUrl;
+      } catch (err) {
+        console.error("Canvas sync error:", err);
+      }
+    }
+
+    /* ==========================================================================
+       3. Export & Print Handlers (JPG, PDF & Paper Print)
+       ========================================================================== */
+    function handlePrint() {
+      syncPrintImage();
+      window.print();
+    }
+
+    window.addEventListener('beforeprint', () => {
+      syncPrintImage();
+    });
+
+    // High-Resolution JPG Export
+    async function exportAsJPG() {
+      const btn = document.getElementById('btnExportJPG');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '⏳ Generating JPG...';
+      btn.disabled = true;
+
+      const missionNum = document.getElementById('inputMissionNum').value.trim() || 'Mission';
+      const designer = document.getElementById('inputDesigner').value.trim().replace(/\s+/g, '_') || 'Builder';
+      const designName = document.getElementById('inputDesignName').value.trim().replace(/\s+/g, '_') || 'Design';
+      const filename = `FLL_76265_M${missionNum}_${designer}_${designName}.jpg`;
+
+      syncPrintImage();
+
+      try {
+        // Use html2canvas if available
+        if (window.html2canvas) {
+          const sheet = document.getElementById('worksheetMain');
+          const exportCanvas = await html2canvas(sheet, {
+            scale: 2, // 2x crisp retina resolution
+            useCORS: true,
+            backgroundColor: '#ffffff',
+            logging: false
+          });
+
+          exportCanvas.toBlob((blob) => {
+            if (blob) {
+              downloadBlob(blob, filename);
+            }
+          }, 'image/jpeg', 0.95);
+        } else {
+          // Fallback: Export drawing canvas directly with white background
+          const rect = container.getBoundingClientRect();
+          const dpr = 2;
+          const fallbackCanvas = document.createElement('canvas');
+          fallbackCanvas.width = rect.width * dpr;
+          fallbackCanvas.height = rect.height * dpr;
+          const fCtx = fallbackCanvas.getContext('2d');
+          
+          fCtx.fillStyle = '#ffffff';
+          fCtx.fillRect(0, 0, fallbackCanvas.width, fallbackCanvas.height);
+          fCtx.drawImage(canvas, 0, 0, fallbackCanvas.width, fallbackCanvas.height);
+
+          fallbackCanvas.toBlob((blob) => {
+            if (blob) {
+              downloadBlob(blob, filename);
+            }
+          }, 'image/jpeg', 0.95);
+        }
+      } catch (err) {
+        console.error("Export error:", err);
+        alert("Could not export JPG. You can also use 'Print / Save PDF' and choose Save as PDF or image!");
+      } finally {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+      }
+    }
+
+    function downloadBlob(blob, filename) {
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    }
+
+    // Initialize layout on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      resizeCanvas();
+    });
+  </script>
+</body>
+</html>
