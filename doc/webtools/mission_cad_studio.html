@@ -259,9 +259,19 @@
       transform: translateY(-2px);
     }
 
-    .part-icon {
-      font-size: 1.5rem;
-      margin-bottom: 0.3rem;
+    .part-svg-container {
+      width: 100%;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.35rem;
+    }
+
+    .part-svg {
+      max-width: 100%;
+      max-height: 100%;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
     }
 
     .part-name {
@@ -951,7 +961,7 @@
     let currentColor = '#0284c7';
 
     /* ==========================================================================
-       3. Procedural LEGO 3D Geometry Factory
+       3. Procedural LEGO 3D Geometry Factory (Authentic Technic & SPIKE Prime)
        ========================================================================== */
     function createLegoMesh(partDef, colorHex) {
       const group = new THREE.Group();
@@ -960,106 +970,350 @@
 
       const mat = new THREE.MeshStandardMaterial({
         color: new THREE.Color(colorHex),
-        roughness: 0.25,
-        metalness: 0.1
+        roughness: 0.28,
+        metalness: 0.08
       });
 
       if (partDef.type === 'beam') {
+        // Authentic Technic Beam with rounded capsule ends and real hollow pin holes
         const len = partDef.length;
-        const beamGeo = new THREE.BoxGeometry(len * STUD_UNIT, 1.9, 1.5);
-        const beamMesh = new THREE.Mesh(beamGeo, mat);
-        beamMesh.castShadow = true;
-        group.add(beamMesh);
+        const shape = new THREE.Shape();
+        const r = 0.92;
+        const d = (len - 1) * STUD_UNIT;
+        const halfD = d / 2;
 
-        // Pin holes across length
-        const holeGeo = new THREE.CylinderGeometry(0.55, 0.55, 1.55, 16);
-        const holeMat = new THREE.MeshStandardMaterial({ color: 0x1e293b, roughness: 0.8 });
+        shape.absarc(-halfD, 0, r, Math.PI / 2, (3 * Math.PI) / 2, false);
+        shape.absarc(halfD, 0, r, (3 * Math.PI) / 2, Math.PI / 2, false);
+        shape.closePath();
+
         for (let i = 0; i < len; i++) {
-          const x = (i - (len - 1) / 2) * STUD_UNIT;
-          const hole = new THREE.Mesh(holeGeo, holeMat);
-          hole.rotation.x = Math.PI / 2;
-          hole.position.set(x, 0, 0);
-          group.add(hole);
+          const x = -halfD + i * STUD_UNIT;
+          const hole = new THREE.Path();
+          hole.absarc(x, 0, 0.52, 0, Math.PI * 2, true);
+          shape.holes.push(hole);
         }
-      } else if (partDef.type === 'lbeam') {
-        // L-Beam 3x5
-        const leg1 = new THREE.Mesh(new THREE.BoxGeometry(5 * STUD_UNIT, 1.9, 1.5), mat);
-        leg1.position.set(0, 0, 0);
-        group.add(leg1);
-        const leg2 = new THREE.Mesh(new THREE.BoxGeometry(1.5, 3 * STUD_UNIT, 1.5), mat);
-        leg2.position.set(2 * STUD_UNIT, 1.5 * STUD_UNIT, 0);
-        group.add(leg2);
-      } else if (partDef.type === 'gear') {
-        const radius = (partDef.teeth / 12) * 1.8;
-        const gearGeo = new THREE.CylinderGeometry(radius, radius, 1.2, partDef.teeth);
-        const gearMesh = new THREE.Mesh(gearGeo, mat);
-        gearMesh.castShadow = true;
-        group.add(gearMesh);
 
-        // Center cross axle hole
-        const centerHole = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 1.25, 8), new THREE.MeshStandardMaterial({ color: 0x111827 }));
-        group.add(centerHole);
+        const geo = new THREE.ExtrudeGeometry(shape, {
+          depth: 1.6,
+          bevelEnabled: true,
+          bevelSegments: 2,
+          steps: 1,
+          bevelSize: 0.08,
+          bevelThickness: 0.08
+        });
+        geo.center();
+        const mesh = new THREE.Mesh(geo, mat);
+        mesh.castShadow = true;
+        mesh.receiveShadow = true;
+        group.add(mesh);
+
+      } else if (partDef.type === 'lbeam') {
+        // L-Beam 3x5 with real holes along both arms
+        const shape = new THREE.Shape();
+        const r = 0.92;
+        const lenX = 4 * STUD_UNIT;
+        const lenY = 2 * STUD_UNIT;
+
+        shape.moveTo(0, r);
+        shape.lineTo(lenX, r);
+        shape.absarc(lenX, 0, r, Math.PI / 2, -Math.PI / 2, false);
+        shape.lineTo(r, -r);
+        shape.lineTo(r, -lenY);
+        shape.absarc(0, -lenY, r, 0, Math.PI, false);
+        shape.lineTo(-r, 0);
+        shape.absarc(0, 0, r, Math.PI, Math.PI / 2, false);
+        shape.closePath();
+
+        for (let i = 0; i <= 4; i++) {
+          const hole = new THREE.Path();
+          hole.absarc(i * STUD_UNIT, 0, 0.52, 0, Math.PI * 2, true);
+          shape.holes.push(hole);
+        }
+        for (let j = 1; j <= 2; j++) {
+          const hole = new THREE.Path();
+          hole.absarc(0, -j * STUD_UNIT, 0.52, 0, Math.PI * 2, true);
+          shape.holes.push(hole);
+        }
+
+        const geo = new THREE.ExtrudeGeometry(shape, {
+          depth: 1.6,
+          bevelEnabled: true,
+          bevelSegments: 2,
+          steps: 1,
+          bevelSize: 0.08,
+          bevelThickness: 0.08
+        });
+        geo.center();
+        const mesh = new THREE.Mesh(geo, mat);
+        mesh.castShadow = true;
+        group.add(mesh);
+
+      } else if (partDef.type === 'tbeam') {
+        // T-Beam 3x3 with real pin holes
+        const shape = new THREE.Shape();
+        const r = 0.92;
+        shape.moveTo(-STUD_UNIT, r);
+        shape.absarc(-STUD_UNIT, 0, r, Math.PI / 2, -Math.PI / 2, false);
+        shape.lineTo(-r, -r);
+        shape.lineTo(-r, -2 * STUD_UNIT);
+        shape.absarc(0, -2 * STUD_UNIT, r, Math.PI, 0, false);
+        shape.lineTo(r, -r);
+        shape.lineTo(STUD_UNIT, -r);
+        shape.absarc(STUD_UNIT, 0, r, -Math.PI / 2, Math.PI / 2, false);
+        shape.closePath();
+
+        const holes = [
+          [-STUD_UNIT, 0], [0, 0], [STUD_UNIT, 0],
+          [0, -STUD_UNIT], [0, -2 * STUD_UNIT]
+        ];
+        holes.forEach(([hx, hy]) => {
+          const hole = new THREE.Path();
+          hole.absarc(hx, hy, 0.52, 0, Math.PI * 2, true);
+          shape.holes.push(hole);
+        });
+
+        const geo = new THREE.ExtrudeGeometry(shape, {
+          depth: 1.6,
+          bevelEnabled: true,
+          bevelSegments: 2,
+          steps: 1,
+          bevelSize: 0.08,
+          bevelThickness: 0.08
+        });
+        geo.center();
+        const mesh = new THREE.Mesh(geo, mat);
+        mesh.castShadow = true;
+        group.add(mesh);
+
+      } else if (partDef.type === 'gear') {
+        // Gear with authentic gear teeth and central cross axle hole
+        const teeth = partDef.teeth;
+        const shape = new THREE.Shape();
+        const pitchR = (teeth / 12) * 1.8;
+        const rootR = Math.max(0.7, pitchR - 0.35);
+        const tipR = pitchR + 0.35;
+        const n = teeth;
+
+        for (let i = 0; i < n; i++) {
+          const a0 = (i / n) * Math.PI * 2;
+          const a1 = ((i + 0.25) / n) * Math.PI * 2;
+          const a2 = ((i + 0.65) / n) * Math.PI * 2;
+          const a3 = ((i + 0.9) / n) * Math.PI * 2;
+
+          if (i === 0) shape.moveTo(rootR * Math.cos(a0), rootR * Math.sin(a0));
+          else shape.lineTo(rootR * Math.cos(a0), rootR * Math.sin(a0));
+
+          shape.lineTo(tipR * Math.cos(a1), tipR * Math.sin(a1));
+          shape.lineTo(tipR * Math.cos(a2), tipR * Math.sin(a2));
+          shape.lineTo(rootR * Math.cos(a3), rootR * Math.sin(a3));
+        }
+        shape.closePath();
+
+        // Cross axle hole
+        const crossHole = new THREE.Path();
+        const w = 0.24, l = 0.48;
+        crossHole.moveTo(-w, -l); crossHole.lineTo(w, -l); crossHole.lineTo(w, -w);
+        crossHole.lineTo(l, -w);  crossHole.lineTo(l, w);   crossHole.lineTo(w, w);
+        crossHole.lineTo(w, l);   crossHole.lineTo(-w, l);  crossHole.lineTo(-w, w);
+        crossHole.lineTo(-l, w);  crossHole.lineTo(-l, -w); crossHole.lineTo(-w, -w);
+        crossHole.closePath();
+        shape.holes.push(crossHole);
+
+        const geo = new THREE.ExtrudeGeometry(shape, {
+          depth: 1.2,
+          bevelEnabled: true,
+          bevelSegments: 1,
+          steps: 1,
+          bevelSize: 0.05,
+          bevelThickness: 0.05
+        });
+        geo.center();
+        const mesh = new THREE.Mesh(geo, mat);
+        mesh.castShadow = true;
+        group.add(mesh);
+
       } else if (partDef.type === 'worm') {
-        const wormGeo = new THREE.CylinderGeometry(1.1, 1.1, 3.8, 16);
+        // Worm gear cylinder with ribbed helical bands
+        const wormGeo = new THREE.CylinderGeometry(1.1, 1.1, 3.8, 20);
+        wormGeo.rotateZ(Math.PI / 2);
         const wormMesh = new THREE.Mesh(wormGeo, mat);
-        wormMesh.rotation.z = Math.PI / 2;
         group.add(wormMesh);
+
+        // Cross hole in center
+        const crossHole = new THREE.Mesh(new THREE.BoxGeometry(3.9, 0.48, 0.48), new THREE.MeshStandardMaterial({ color: 0x0f172a }));
+        crossHole.userData.fixedColor = true;
+        group.add(crossHole);
+
+      } else if (partDef.type === 'rack') {
+        // Technic Gear Rack 1x4
+        const barGeo = new THREE.BoxGeometry(4 * STUD_UNIT, 1.2, 1.2);
+        const bar = new THREE.Mesh(barGeo, mat);
+        group.add(bar);
+
+        // Gear teeth along top
+        const toothGeo = new THREE.ConeGeometry(0.35, 0.55, 4);
+        for (let i = 0; i < 8; i++) {
+          const tooth = new THREE.Mesh(toothGeo, mat);
+          tooth.position.set((i - 3.5) * (STUD_UNIT / 2), 0.85, 0);
+          tooth.rotation.y = Math.PI / 4;
+          group.add(tooth);
+        }
+
       } else if (partDef.type === 'axle') {
-        const len = partDef.length * STUD_UNIT;
-        const axleGeo = new THREE.CylinderGeometry(0.45, 0.45, len, 8);
-        const axleMesh = new THREE.Mesh(axleGeo, mat);
-        axleMesh.rotation.z = Math.PI / 2;
-        group.add(axleMesh);
+        // True LEGO Cross Axle Profile (+)
+        const shape = new THREE.Shape();
+        const w = 0.24, l = 0.48;
+        shape.moveTo(-w, -l); shape.lineTo(w, -l); shape.lineTo(w, -w);
+        shape.lineTo(l, -w);  shape.lineTo(l, w);   shape.lineTo(w, w);
+        shape.lineTo(w, l);   shape.lineTo(-w, l);  shape.lineTo(-w, w);
+        shape.lineTo(-l, w);  shape.lineTo(-l, -w); shape.lineTo(-w, -w);
+        shape.closePath();
+
+        const totalLen = partDef.length * STUD_UNIT;
+        const geo = new THREE.ExtrudeGeometry(shape, {
+          depth: totalLen,
+          bevelEnabled: true,
+          bevelSegments: 1,
+          steps: 1,
+          bevelSize: 0.04,
+          bevelThickness: 0.04
+        });
+        geo.center();
+        geo.rotateY(Math.PI / 2);
+        const mesh = new THREE.Mesh(geo, mat);
+        mesh.castShadow = true;
+        group.add(mesh);
+
       } else if (partDef.type === 'pin' || partDef.type === 'pin3l') {
-        const len = partDef.type === 'pin3l' ? 3 * STUD_UNIT : 2 * STUD_UNIT;
-        const pinGeo = new THREE.CylinderGeometry(0.5, 0.5, len, 16);
-        const pinMesh = new THREE.Mesh(pinGeo, mat);
-        pinMesh.rotation.x = Math.PI / 2;
-        group.add(pinMesh);
+        // Technic Pin with Center Flange Collar
+        const is3L = partDef.type === 'pin3l';
+        const totalLen = is3L ? 3 * STUD_UNIT : 2 * STUD_UNIT;
+
+        const shaftGeo = new THREE.CylinderGeometry(0.48, 0.48, totalLen, 16);
+        shaftGeo.rotateX(Math.PI / 2);
+        const shaft = new THREE.Mesh(shaftGeo, mat);
+        group.add(shaft);
+
+        const collarGeo = new THREE.CylinderGeometry(0.62, 0.62, 0.35, 16);
+        collarGeo.rotateX(Math.PI / 2);
+        const collar = new THREE.Mesh(collarGeo, mat);
+        group.add(collar);
+
+        const holeGeo = new THREE.CylinderGeometry(0.24, 0.24, totalLen + 0.1, 12);
+        holeGeo.rotateX(Math.PI / 2);
+        const holeMat = new THREE.MeshStandardMaterial({ color: 0x0f172a });
+        const holeMesh = new THREE.Mesh(holeGeo, holeMat);
+        holeMesh.userData.fixedColor = true;
+        group.add(holeMesh);
+
+      } else if (partDef.type === 'bushing') {
+        // Technic Bushing spacer
+        const bushOuter = new THREE.CylinderGeometry(0.75, 0.75, 1.2, 16);
+        bushOuter.rotateX(Math.PI / 2);
+        const bush = new THREE.Mesh(bushOuter, mat);
+        group.add(bush);
+
+        const holeMat = new THREE.MeshStandardMaterial({ color: 0x0f172a });
+        const innerHole = new THREE.Mesh(new THREE.CylinderGeometry(0.35, 0.35, 1.3, 12), holeMat);
+        innerHole.rotateX(Math.PI / 2);
+        innerHole.userData.fixedColor = true;
+        group.add(innerHole);
+
       } else if (partDef.type === 'wheel') {
-        // Black tire + colored rim
-        const tireGeo = new THREE.CylinderGeometry(3.2, 3.2, 1.8, 24);
-        const tireMat = new THREE.MeshStandardMaterial({ color: 0x18181b, roughness: 0.9 });
+        // Black Rubber Tire + Colored Inner Rim
+        const tireGeo = new THREE.CylinderGeometry(3.3, 3.3, 1.8, 24);
+        tireGeo.rotateZ(Math.PI / 2);
+        const tireMat = new THREE.MeshStandardMaterial({ color: 0x18181b, roughness: 0.95 });
         const tire = new THREE.Mesh(tireGeo, tireMat);
-        tire.rotation.z = Math.PI / 2;
+        tire.userData.fixedColor = true;
+        tire.castShadow = true;
         group.add(tire);
 
-        const rimGeo = new THREE.CylinderGeometry(2.0, 2.0, 1.9, 16);
+        const rimGeo = new THREE.CylinderGeometry(2.1, 2.1, 1.9, 16);
+        rimGeo.rotateZ(Math.PI / 2);
         const rim = new THREE.Mesh(rimGeo, mat);
-        rim.rotation.z = Math.PI / 2;
         group.add(rim);
+
+        const axleHole = new THREE.Mesh(new THREE.CylinderGeometry(0.45, 0.45, 2.0, 12), new THREE.MeshStandardMaterial({ color: 0x09090b }));
+        axleHole.rotateZ(Math.PI / 2);
+        axleHole.userData.fixedColor = true;
+        group.add(axleHole);
+
       } else if (partDef.type === 'motor_m' || partDef.type === 'motor_l') {
-        // Motor housing
+        // SPIKE Motor with yellow rotating hub
         const size = partDef.type === 'motor_l' ? [6, 4, 3] : [5, 3.2, 2.6];
         const body = new THREE.Mesh(new THREE.BoxGeometry(...size), mat);
+        body.castShadow = true;
         group.add(body);
 
-        // Rotating hub ring
-        const ring = new THREE.Mesh(new THREE.CylinderGeometry(1.4, 1.4, 0.8, 16), new THREE.MeshStandardMaterial({ color: 0xf59e0b }));
-        ring.rotation.z = Math.PI / 2;
-        ring.position.x = size[0] / 2 + 0.3;
+        const ringMat = new THREE.MeshStandardMaterial({ color: 0xf59e0b, roughness: 0.3 });
+        const ringGeo = new THREE.CylinderGeometry(1.35, 1.35, 0.6, 20);
+        ringGeo.rotateZ(Math.PI / 2);
+        const ring = new THREE.Mesh(ringGeo, ringMat);
+        ring.position.x = size[0] / 2 + 0.25;
+        ring.userData.fixedColor = true;
         group.add(ring);
-      } else if (partDef.type === 'brick' || partDef.type === 'plate') {
+
+        const diskHole = new THREE.Mesh(new THREE.CylinderGeometry(0.45, 0.45, 0.8, 8), new THREE.MeshStandardMaterial({ color: 0x1e293b }));
+        diskHole.rotateZ(Math.PI / 2);
+        diskHole.position.x = size[0] / 2 + 0.3;
+        diskHole.userData.fixedColor = true;
+        group.add(diskHole);
+
+      } else if (partDef.type === 'sensor') {
+        // Color Sensor with dual optical lenses
+        const body = new THREE.Mesh(new THREE.BoxGeometry(3.6, 2.4, 2.4), mat);
+        body.castShadow = true;
+        group.add(body);
+
+        const lensMat = new THREE.MeshStandardMaterial({ color: 0x0f172a, roughness: 0.1 });
+        const lens1 = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 0.3, 16), lensMat);
+        lens1.rotateX(Math.PI / 2);
+        lens1.position.set(-0.8, 0, 1.25);
+        lens1.userData.fixedColor = true;
+        group.add(lens1);
+
+        const lens2 = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 0.3, 16), lensMat);
+        lens2.rotateX(Math.PI / 2);
+        lens2.position.set(0.8, 0, 1.25);
+        lens2.userData.fixedColor = true;
+        group.add(lens2);
+
+      } else if (partDef.type === 'brick' || partDef.type === 'plate' || partDef.type === 'brick_technic') {
+        // Brick / Plate with Authentic Studs on Top
         const height = partDef.type === 'plate' ? 0.8 : 2.4;
-        const brickGeo = new THREE.BoxGeometry(partDef.length * STUD_UNIT, height, partDef.width * STUD_UNIT);
+        const brickGeo = new THREE.BoxGeometry(partDef.length * STUD_UNIT, height, (partDef.width || 1) * STUD_UNIT);
         const brick = new THREE.Mesh(brickGeo, mat);
+        brick.castShadow = true;
         group.add(brick);
 
-        // Studs on top
-        const studGeo = new THREE.CylinderGeometry(0.55, 0.55, 0.4, 12);
+        const studGeo = new THREE.CylinderGeometry(0.52, 0.52, 0.38, 16);
         for (let x = 0; x < partDef.length; x++) {
-          for (let z = 0; z < partDef.width; z++) {
+          for (let z = 0; z < (partDef.width || 1); z++) {
             const stud = new THREE.Mesh(studGeo, mat);
             stud.position.set(
               (x - (partDef.length - 1) / 2) * STUD_UNIT,
-              height / 2 + 0.2,
-              (z - (partDef.width - 1) / 2) * STUD_UNIT
+              height / 2 + 0.19,
+              (z - ((partDef.width || 1) - 1) / 2) * STUD_UNIT
             );
             group.add(stud);
           }
         }
+
+        // Add side holes for Technic brick
+        if (partDef.type === 'brick_technic') {
+          const sideHoleMat = new THREE.MeshStandardMaterial({ color: 0x111827 });
+          for (let i = 1; i < partDef.length; i++) {
+            const sideHole = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, STUD_UNIT + 0.1, 12), sideHoleMat);
+            sideHole.rotateX(Math.PI / 2);
+            sideHole.position.set((i - partDef.length / 2) * STUD_UNIT, 0, 0);
+            sideHole.userData.fixedColor = true;
+            group.add(sideHole);
+          }
+        }
+
       } else {
-        // Generic fallback box
+        // Generic fallback
         const box = new THREE.Mesh(new THREE.BoxGeometry(4, 2, 2), mat);
         group.add(box);
       }
@@ -1165,7 +1419,7 @@
       if (selectedObject) {
         selectedObject.userData.color = colorHex;
         selectedObject.traverse((child) => {
-          if (child.isMesh && child.material) {
+          if (child.isMesh && child.material && !child.userData.fixedColor) {
             child.material.color.set(colorHex);
           }
         });
@@ -1235,8 +1489,146 @@
     }
 
     /* ==========================================================================
-       6. Parts Catalog UI & Filtering
+       6. Parts Catalog UI & Authentic Vector SVG Icons
        ========================================================================== */
+    function getPartSvg(p) {
+      const dark = '#0f172a';
+      const blue = '#0284c7';
+      const border = '#7dd3fc';
+
+      if (p.type === 'beam') {
+        const len = p.length;
+        const w = Math.min(74, 26 + len * 3.2);
+        const h = 18;
+        const r = 7;
+        let holesSvg = '';
+        const step = (w - 2 * r) / (len - 1 || 1);
+        for (let i = 0; i < len; i++) {
+          const cx = r + i * step;
+          holesSvg += `<circle cx="${cx.toFixed(1)}" cy="9" r="2.6" fill="${dark}" stroke="${border}" stroke-width="0.8"/>`;
+        }
+        return `
+          <svg viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" class="part-svg">
+            <rect x="1" y="1" width="${w - 2}" height="${h - 2}" rx="${r}" fill="${blue}" stroke="${border}" stroke-width="1.2"/>
+            ${holesSvg}
+          </svg>
+        `;
+      } else if (p.type === 'lbeam') {
+        return `
+          <svg viewBox="0 0 38 30" width="38" height="30" class="part-svg">
+            <path d="M 4 4 L 34 4 A 4 4 0 0 1 34 14 L 14 14 L 14 26 A 4 4 0 0 1 4 26 Z" fill="${blue}" stroke="${border}" stroke-width="1.2"/>
+            <circle cx="9" cy="9" r="2.5" fill="${dark}"/>
+            <circle cx="19" cy="9" r="2.5" fill="${dark}"/>
+            <circle cx="29" cy="9" r="2.5" fill="${dark}"/>
+            <circle cx="9" cy="18" r="2.5" fill="${dark}"/>
+            <circle cx="9" cy="24" r="2.5" fill="${dark}"/>
+          </svg>
+        `;
+      } else if (p.type === 'tbeam') {
+        return `
+          <svg viewBox="0 0 38 30" width="38" height="30" class="part-svg">
+            <path d="M 4 4 L 34 4 A 4 4 0 0 1 34 14 L 23 14 L 23 26 A 4 4 0 0 1 15 26 L 15 14 L 4 14 A 4 4 0 0 1 4 4 Z" fill="${blue}" stroke="${border}" stroke-width="1.2"/>
+            <circle cx="9" cy="9" r="2.5" fill="${dark}"/>
+            <circle cx="19" cy="9" r="2.5" fill="${dark}"/>
+            <circle cx="29" cy="9" r="2.5" fill="${dark}"/>
+            <circle cx="19" cy="18" r="2.5" fill="${dark}"/>
+            <circle cx="19" cy="24" r="2.5" fill="${dark}"/>
+          </svg>
+        `;
+      } else if (p.type === 'gear') {
+        const teeth = p.teeth;
+        return `
+          <svg viewBox="0 0 36 36" width="34" height="34" class="part-svg">
+            <circle cx="18" cy="18" r="14" fill="${blue}" stroke="${border}" stroke-width="1.6" stroke-dasharray="${(86 / teeth).toFixed(1)} 2.4"/>
+            <circle cx="18" cy="18" r="9.5" fill="#0369a1"/>
+            <rect x="16.5" y="13" width="3" height="10" rx="0.5" fill="${dark}"/>
+            <rect x="13" y="16.5" width="10" height="3" rx="0.5" fill="${dark}"/>
+          </svg>
+        `;
+      } else if (p.type === 'worm') {
+        return `
+          <svg viewBox="0 0 40 22" width="40" height="22" class="part-svg">
+            <rect x="4" y="4" width="32" height="14" rx="3" fill="${blue}" stroke="${border}" stroke-width="1.2"/>
+            <line x1="10" y1="4" x2="16" y2="18" stroke="#ffffff" stroke-width="1.5"/>
+            <line x1="17" y1="4" x2="23" y2="18" stroke="#ffffff" stroke-width="1.5"/>
+            <line x1="24" y1="4" x2="30" y2="18" stroke="#ffffff" stroke-width="1.5"/>
+          </svg>
+        `;
+      } else if (p.type === 'rack') {
+        return `
+          <svg viewBox="0 0 44 20" width="44" height="20" class="part-svg">
+            <path d="M 2 16 L 42 16 L 42 10 L 38 10 L 36 5 L 34 10 L 30 10 L 28 5 L 26 10 L 22 10 L 20 5 L 18 10 L 14 10 L 12 5 L 10 10 L 6 10 L 2 10 Z" fill="${blue}" stroke="${border}" stroke-width="1.2"/>
+          </svg>
+        `;
+      } else if (p.type === 'pin' || p.type === 'pin3l') {
+        const is3L = p.type === 'pin3l';
+        return `
+          <svg viewBox="0 0 36 22" width="36" height="22" class="part-svg">
+            <rect x="${is3L ? 2 : 6}" y="7" width="${is3L ? 32 : 24}" height="8" rx="2" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+            <rect x="16" y="5" width="4" height="12" rx="1" fill="#38bdf8"/>
+          </svg>
+        `;
+      } else if (p.type === 'axle') {
+        const len = p.length;
+        return `
+          <svg viewBox="0 0 44 22" width="44" height="22" class="part-svg">
+            <rect x="4" y="8" width="36" height="6" rx="1" fill="#475569" stroke="#94a3b8" stroke-width="1"/>
+            <rect x="2" y="7" width="4" height="8" rx="1" fill="#38bdf8"/>
+            <text x="22" y="14" font-size="7" font-weight="bold" fill="#ffffff" text-anchor="middle" font-family="monospace">${len}L</text>
+          </svg>
+        `;
+      } else if (p.type === 'bushing') {
+        return `
+          <svg viewBox="0 0 26 26" width="26" height="26" class="part-svg">
+            <circle cx="13" cy="13" r="10" fill="#f59e0b" stroke="#fde68a" stroke-width="1.2"/>
+            <rect x="11.5" y="8" width="3" height="10" fill="${dark}"/>
+            <rect x="8" y="11.5" width="10" height="3" fill="${dark}"/>
+          </svg>
+        `;
+      } else if (p.type === 'motor_m' || p.type === 'motor_l') {
+        return `
+          <svg viewBox="0 0 42 28" width="42" height="28" class="part-svg">
+            <rect x="4" y="5" width="26" height="18" rx="3" fill="#0d9488" stroke="#5eead4" stroke-width="1.2"/>
+            <circle cx="30" cy="14" r="7" fill="#f59e0b" stroke="#fde68a" stroke-width="1"/>
+            <rect x="29" y="11" width="2" height="6" fill="${dark}"/>
+            <rect x="27" y="13" width="6" height="2" fill="${dark}"/>
+          </svg>
+        `;
+      } else if (p.type === 'wheel') {
+        return `
+          <svg viewBox="0 0 34 34" width="34" height="34" class="part-svg">
+            <circle cx="17" cy="17" r="14" fill="#18181b" stroke="#52525b" stroke-width="2"/>
+            <circle cx="17" cy="17" r="9" fill="${blue}" stroke="${border}" stroke-width="1.2"/>
+            <circle cx="17" cy="17" r="3.5" fill="#18181b"/>
+          </svg>
+        `;
+      } else if (p.type === 'sensor') {
+        return `
+          <svg viewBox="0 0 36 26" width="36" height="26" class="part-svg">
+            <rect x="4" y="4" width="28" height="18" rx="3" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+            <circle cx="12" cy="13" r="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1"/>
+            <circle cx="24" cy="13" r="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1"/>
+          </svg>
+        `;
+      } else if (p.type === 'brick' || p.type === 'plate' || p.type === 'brick_technic') {
+        return `
+          <svg viewBox="0 0 44 24" width="44" height="24" class="part-svg">
+            <rect x="4" y="8" width="36" height="${p.type === 'plate' ? 8 : 13}" rx="1" fill="#ef4444" stroke="#fca5a5" stroke-width="1"/>
+            <rect x="7" y="4" width="6" height="4" rx="1" fill="#ef4444"/>
+            <rect x="16" y="4" width="6" height="4" rx="1" fill="#ef4444"/>
+            <rect x="25" y="4" width="6" height="4" rx="1" fill="#ef4444"/>
+            <rect x="34" y="4" width="6" height="4" rx="1" fill="#ef4444"/>
+          </svg>
+        `;
+      }
+
+      return `
+        <svg viewBox="0 0 32 32" width="32" height="32" class="part-svg">
+          <rect x="4" y="4" width="24" height="24" rx="4" fill="${blue}"/>
+        </svg>
+      `;
+    }
+
     let currentCategory = 'all';
 
     function renderCatalog() {
@@ -1253,7 +1645,7 @@
 
       grid.innerHTML = filtered.map(p => `
         <div class="part-card" onclick='spawnPart(${JSON.stringify(p)})' title="Click to add to 3D scene">
-          <div class="part-icon">${p.icon}</div>
+          <div class="part-svg-container">${getPartSvg(p)}</div>
           <div class="part-name">${p.name}</div>
           <div class="part-ldraw-id">#${p.id}</div>
         </div>
