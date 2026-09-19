@@ -89,6 +89,7 @@ nav:
       - Overview & Guide: webtools/overview.md
       - ⏱️ Launch Match Timer: webtools/index.html
       - 🧮 Launch Calculator: webtools/bioglow_calculator.html
+      - 🧊 3D Robot & Attachment CAD: webtools/mission_cad_studio.html
   - 🚀 Presentations & Guides:
       - Overview: presentations/README.md
       - SPIKE App Setup Slides: presentations/spike_app_installation_guide.md

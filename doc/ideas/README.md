@@ -9,4 +9,5 @@ Notes, sketches, research topics, and creative concepts for both the Innovation 
 
 ## 🛠️ Design & Brainstorming Tools
 - **[Printable Robot Design & Mission Sketchpad](../marketing/handouts/mission_design_sketchpad.html)**: Ready-to-print engineering idea sheet for kids with Mission #, Design #, summary area, student name, drafting grid with LEGO Technic beam scale, and peer "Plus'ing" feedback.
+- **[3D Robot & Attachment CAD Studio](../webtools/mission_cad_studio.html)**: Interactive browser 3D CAD studio with mouse & keyboard controls, LEGO parts catalog drawer, extensible LDraw (`.ldr`) and JSON import/export, and 1-click snapshot-to-flyer printing.
 

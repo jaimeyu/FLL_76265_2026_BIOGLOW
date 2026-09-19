@@ -1,0 +1,1688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Robot & Attachment CAD Studio — FLL Team #76265 BIOGLOW</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <!-- Three.js + OrbitControls + TransformControls -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/TransformControls.js"></script>
+  <!-- html2canvas for worksheet snapshots -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --accent-teal: #0d9488;
+      --accent-purple: #7c3aed;
+      --accent-amber: #d97706;
+      --dark-bg: #0b0f19;
+      --panel-bg: #111827;
+      --card-bg: #1f2937;
+      --border-color: rgba(56, 189, 248, 0.25);
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--dark-bg);
+      color: var(--text-main);
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top App Header */
+    .app-header {
+      height: 54px;
+      background: #0f172a;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1rem;
+      z-index: 20;
+      flex-shrink: 0;
+    }
+
+    .brand-section {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .team-badge {
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      color: #ffffff;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .app-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #f8fafc;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .app-title span.accent {
+      color: #38bdf8;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn {
+      background: #1e293b;
+      color: #f1f5f9;
+      border: 1px solid #334155;
+      padding: 0.4rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all 0.15s ease;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background: #334155;
+      border-color: #64748b;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      border: none;
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(2, 132, 199, 0.35);
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #0369a1 0%, #0284c7 100%);
+    }
+
+    .btn-teal {
+      background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%);
+      border: none;
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(13, 148, 136, 0.35);
+    }
+
+    .btn-teal:hover {
+      background: linear-gradient(135deg, #0f766e 0%, #0d9488 100%);
+    }
+
+    /* Main App Layout */
+    .app-workspace {
+      flex: 1;
+      display: flex;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Left Asset Drawer (LEGO Parts Catalog) */
+    .drawer-left {
+      width: 280px;
+      background: var(--panel-bg);
+      border-right: 1px solid rgba(56, 189, 248, 0.2);
+      display: flex;
+      flex-direction: column;
+      z-index: 10;
+      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      flex-shrink: 0;
+    }
+
+    .drawer-left.collapsed {
+      transform: translateX(-280px);
+      margin-right: -280px;
+    }
+
+    .drawer-header {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid #1f2937;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .drawer-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #38bdf8;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .search-box {
+      padding: 0.5rem 0.85rem;
+      border-bottom: 1px solid #1f2937;
+    }
+
+    .search-box input {
+      width: 100%;
+      background: #1f2937;
+      border: 1px solid #374151;
+      border-radius: 6px;
+      color: #f3f4f6;
+      padding: 0.35rem 0.6rem;
+      font-size: 0.8rem;
+      outline: none;
+    }
+
+    .category-tabs {
+      display: flex;
+      overflow-x: auto;
+      border-bottom: 1px solid #1f2937;
+      padding: 0.25rem 0.5rem;
+      gap: 0.25rem;
+      scrollbar-width: none;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .tab-btn:hover {
+      color: #f9fafb;
+      background: #1f2937;
+    }
+
+    .tab-btn.active {
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.15);
+      font-weight: 700;
+    }
+
+    .parts-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 0.75rem;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+    }
+
+    .part-card {
+      background: #1f2937;
+      border: 1px solid #374151;
+      border-radius: 8px;
+      padding: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      position: relative;
+    }
+
+    .part-card:hover {
+      border-color: #38bdf8;
+      background: #283548;
+      transform: translateY(-2px);
+    }
+
+    .part-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .part-name {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #f3f4f6;
+      line-height: 1.2;
+    }
+
+    .part-ldraw-id {
+      font-size: 0.65rem;
+      color: #9ca3af;
+      font-family: monospace;
+      margin-top: 0.2rem;
+    }
+
+    /* 3D Viewport in Center */
+    .viewport-container {
+      flex: 1;
+      position: relative;
+      background: radial-gradient(circle at center, #1e293b 0%, #0b0f19 100%);
+      overflow: hidden;
+    }
+
+    #threeCanvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* Floating Viewport HUD Controls */
+    .viewport-hud-top {
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 8px;
+      padding: 0.35rem 0.65rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      z-index: 5;
+    }
+
+    .hud-btn {
+      background: #1e293b;
+      border: 1px solid #334155;
+      color: #f1f5f9;
+      padding: 0.3rem 0.55rem;
+      border-radius: 5px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .hud-btn:hover {
+      background: #334155;
+    }
+
+    .hud-btn.active {
+      background: #0284c7;
+      border-color: #38bdf8;
+      color: #ffffff;
+    }
+
+    /* Color Swatch Bar */
+    .viewport-color-bar {
+      position: absolute;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 30px;
+      padding: 0.35rem 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      z-index: 5;
+    }
+
+    .c-swatch {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 0 1px #334155;
+      cursor: pointer;
+      transition: transform 0.15s ease;
+    }
+
+    .c-swatch:hover {
+      transform: scale(1.2);
+    }
+
+    .c-swatch.active {
+      transform: scale(1.25);
+      box-shadow: 0 0 0 2px #38bdf8;
+    }
+
+    /* Navigation & Stats Overlay */
+    .viewport-overlay-info {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 8px;
+      padding: 0.45rem 0.75rem;
+      font-size: 0.74rem;
+      color: #94a3b8;
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    .viewport-overlay-info strong {
+      color: #38bdf8;
+    }
+
+    /* Right Side Panel (Mission Worksheet & Parts BOM) */
+    .drawer-right {
+      width: 320px;
+      background: var(--panel-bg);
+      border-left: 1px solid rgba(56, 189, 248, 0.2);
+      display: flex;
+      flex-direction: column;
+      z-index: 10;
+      flex-shrink: 0;
+      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .drawer-right.collapsed {
+      transform: translateX(320px);
+      margin-left: -320px;
+    }
+
+    .worksheet-panel-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 0.85rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .form-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: #38bdf8;
+    }
+
+    .form-input {
+      background: #1f2937;
+      border: 1px solid #374151;
+      border-radius: 6px;
+      padding: 0.4rem 0.6rem;
+      color: #f3f4f6;
+      font-family: inherit;
+      font-size: 0.82rem;
+      outline: none;
+      transition: border-color 0.15s ease;
+    }
+
+    .form-input:focus {
+      border-color: #38bdf8;
+    }
+
+    .bom-table-box {
+      background: #1f2937;
+      border: 1px solid #374151;
+      border-radius: 6px;
+      padding: 0.5rem;
+      max-height: 160px;
+      overflow-y: auto;
+    }
+
+    .bom-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.74rem;
+      padding: 0.2rem 0;
+      border-bottom: 1px solid #374151;
+    }
+
+    .bom-item:last-child {
+      border-bottom: none;
+    }
+
+    .bom-count {
+      background: #0284c7;
+      color: #ffffff;
+      padding: 0.1rem 0.35rem;
+      border-radius: 999px;
+      font-size: 0.65rem;
+      font-weight: 700;
+    }
+
+    /* Export Modal */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(4px);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-window {
+      width: 100%;
+      max-width: 500px;
+      background: #1e293b;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #38bdf8;
+    }
+
+    .close-btn {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      font-size: 1.25rem;
+      cursor: pointer;
+    }
+
+    .export-option-card {
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .export-option-card:hover {
+      border-color: #38bdf8;
+      background: #1e293b;
+    }
+
+    .export-info h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #f8fafc;
+      margin-bottom: 0.2rem;
+    }
+
+    .export-info p {
+      font-size: 0.75rem;
+      color: #94a3b8;
+    }
+
+    /* Hidden file inputs */
+    #importFileInput {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top App Navigation Header -->
+  <header class="app-header">
+    <div class="brand-section">
+      <a href="../handouts/mission_design_sketchpad.html" class="btn" title="Back to 2D Printable Flyer">
+        ← 2D Printable Flyer
+      </a>
+      <div class="team-badge">
+        <span>#76265</span>
+        <small>BIOGLOW</small>
+      </div>
+      <h1 class="app-title">
+        3D Robot & Attachment <span class="accent">CAD Studio</span>
+      </h1>
+    </div>
+
+    <div class="header-actions">
+      <!-- Toggle Drawers -->
+      <button type="button" class="btn" onclick="toggleDrawer('left')" title="Toggle LEGO Parts Library">
+        🧩 Parts Library
+      </button>
+      <button type="button" class="btn" onclick="toggleDrawer('right')" title="Toggle Mission Worksheet Panel">
+        📝 Mission Info
+      </button>
+
+      <!-- Import / Export Actions -->
+      <button type="button" class="btn" onclick="triggerImport()" title="Import LDraw (.ldr) or Session JSON">
+        📂 Open / Import
+      </button>
+      <input type="file" id="importFileInput" accept=".ldr,.dat,.json,.txt" onchange="handleFileSelected(event)">
+
+      <button type="button" class="btn btn-teal" onclick="openExportModal()" title="Save as LDraw, JSON, or OBJ">
+        💾 Save & Export
+      </button>
+
+      <button type="button" class="btn btn-primary" onclick="snapshotToFlyer()" title="Take 3D snapshot and print worksheet">
+        📸 Snapshot to Flyer
+      </button>
+
+      <button type="button" class="btn" onclick="openLicenseModal()" title="View Open Source Licenses & Trademark Attributions">
+        ⚖️ Licenses & Credits
+      </button>
+    </div>
+  </header>
+
+  <!-- Main 3D Workspace -->
+  <div class="app-workspace">
+
+    <!-- Left Collapsible Asset Drawer (LEGO Parts Catalog) -->
+    <aside class="drawer-left" id="drawerLeft">
+      <div class="drawer-header">
+        <span class="drawer-title">🧩 LEGO Parts Library</span>
+        <span style="font-size: 0.72rem; color: #9ca3af;" id="partsCountBadge">24 parts</span>
+      </div>
+
+      <div class="search-box">
+        <input type="text" id="partSearchInput" placeholder="Search parts (beam, gear, axle)..." oninput="filterParts()">
+      </div>
+
+      <div class="category-tabs">
+        <button class="tab-btn active" onclick="setCategory('all', this)">All</button>
+        <button class="tab-btn" onclick="setCategory('beams', this)">Beams</button>
+        <button class="tab-btn" onclick="setCategory('gears', this)">Gears</button>
+        <button class="tab-btn" onclick="setCategory('axles', this)">Axles/Pins</button>
+        <button class="tab-btn" onclick="setCategory('motors', this)">Motors/Wheels</button>
+        <button class="tab-btn" onclick="setCategory('bricks', this)">Bricks</button>
+      </div>
+
+      <div class="parts-list" id="partsCatalogGrid">
+        <!-- Injected via JavaScript -->
+      </div>
+    </aside>
+
+    <!-- Center 3D Interactive Viewport -->
+    <main class="viewport-container" id="viewportContainer">
+      <canvas id="threeCanvas"></canvas>
+
+      <!-- Floating HUD: CAD Tools & Gizmo Controls -->
+      <div class="viewport-hud-top">
+        <button type="button" class="hud-btn active" id="btnTranslate" onclick="setTransformMode('translate')" title="Move part (W)">
+          ✥ Move (W)
+        </button>
+        <button type="button" class="hud-btn" id="btnRotate" onclick="setTransformMode('rotate')" title="Rotate part (E)">
+          🔄 Rotate (E)
+        </button>
+        <button type="button" class="hud-btn active" id="btnSnap" onclick="toggleSnap()" title="Snap to LEGO Stud Pitch">
+          📏 Snap: ON
+        </button>
+        <button type="button" class="hud-btn" onclick="duplicateSelected()" title="Duplicate part (D)">
+          📋 Clone (D)
+        </button>
+        <button type="button" class="hud-btn" onclick="deleteSelected()" title="Delete part (Del)">
+          🗑️ Delete
+        </button>
+        <button type="button" class="hud-btn" onclick="resetCameraView()" title="Reset 3D camera (F)">
+          🎯 Focus
+        </button>
+      </div>
+
+      <!-- Color Swatches Bar -->
+      <div class="viewport-color-bar">
+        <span style="font-size:0.72rem; font-weight:700; color:#94a3b8; margin-right:4px;">COLOR:</span>
+        <div class="c-swatch active" style="background:#0284c7;" onclick="applyColor('#0284c7', this)" title="Blue"></div>
+        <div class="c-swatch" style="background:#f59e0b;" onclick="applyColor('#f59e0b', this)" title="Yellow"></div>
+        <div class="c-swatch" style="background:#ef4444;" onclick="applyColor('#ef4444', this)" title="Red"></div>
+        <div class="c-swatch" style="background:#10b981;" onclick="applyColor('#10b981', this)" title="Green"></div>
+        <div class="c-swatch" style="background:#0f172a;" onclick="applyColor('#0f172a', this)" title="Black"></div>
+        <div class="c-swatch" style="background:#f8fafc;" onclick="applyColor('#f8fafc', this)" title="White"></div>
+        <div class="c-swatch" style="background:#64748b;" onclick="applyColor('#64748b', this)" title="Gray"></div>
+        <div class="c-swatch" style="background:#0d9488;" onclick="applyColor('#0d9488', this)" title="Teal"></div>
+      </div>
+
+      <!-- Instructions Overlay -->
+      <div class="viewport-overlay-info">
+        <div><strong>Left Click + Drag:</strong> Orbit Camera</div>
+        <div><strong>Right Click + Drag:</strong> Pan Camera</div>
+        <div><strong>Click Part:</strong> Select & Transform</div>
+        <div id="selectedPartLabel">Selected: <em>None</em></div>
+      </div>
+    </main>
+
+    <!-- Right Collapsible Panel (Mission Worksheet & Parts BOM) -->
+    <aside class="drawer-right" id="drawerRight">
+      <div class="drawer-header">
+        <span class="drawer-title">📝 Mission & Design Spec</span>
+        <span style="font-size: 0.72rem; color: #38bdf8;" id="bomTotalPartsBadge">0 Parts</span>
+      </div>
+
+      <div class="worksheet-panel-body">
+        <div class="form-group">
+          <label class="form-label">Designer Name(s):</label>
+          <input type="text" class="form-input" id="specDesigner" placeholder="e.g., Alex, Jordan...">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Date:</label>
+          <input type="text" class="form-input" id="specDate">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Mission # & Name:</label>
+          <div style="display: flex; gap: 0.4rem;">
+            <input type="text" class="form-input" id="specMissionNum" style="width: 60px;" placeholder="M01">
+            <input type="text" class="form-input" id="specMissionName" style="flex: 1;" placeholder="Mission name...">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Design Name:</label>
+          <input type="text" class="form-input" id="specDesignName" placeholder="e.g., Passive Claw v2...">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Brief Strategy / Goal:</label>
+          <textarea class="form-input" id="specGoal" rows="2" placeholder="What does this mechanism do to solve the mission?"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Bill of Materials (3D Scene BOM):</label>
+          <div class="bom-table-box" id="bomTableBox">
+            <div style="font-size: 0.75rem; color: #64748b; text-align: center; padding: 1rem;">
+              No LEGO parts added yet. Click parts from the library on the left!
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Key Parts Notes (Freeform):</label>
+          <input type="text" class="form-input" id="specKeyParts" placeholder="Extra rubber bands, cables, etc...">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Team "Plus'ing" (+) Idea:</label>
+          <input type="text" class="form-input" id="specPlusIdea" placeholder="Teammate: 'Yes, and what if we...'">
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- Save & Export Modal Dialog -->
+  <div class="modal-backdrop" id="exportModal">
+    <div class="modal-window">
+      <div class="modal-header">
+        <h3 class="modal-title">💾 Save & Export Design</h3>
+        <button class="close-btn" onclick="closeExportModal()">✕</button>
+      </div>
+
+      <p style="font-size: 0.82rem; color: #94a3b8;">
+        Choose a flexible open format to save your work or open it in other LEGO CAD tools:
+      </p>
+
+      <!-- Option 1: LDraw (.ldr) -->
+      <div class="export-option-card" onclick="exportLDraw()">
+        <div class="export-info">
+          <h4>🧱 LDraw CAD File (.ldr)</h4>
+          <p>Global open-source LEGO standard. Opens in BrickLink Studio, LeoCAD, and LDCad!</p>
+        </div>
+        <span class="btn btn-primary" style="font-size:0.75rem;">Download .ldr</span>
+      </div>
+
+      <!-- Option 2: Session JSON (.json) -->
+      <div class="export-option-card" onclick="exportJSON()">
+        <div class="export-info">
+          <h4>📋 Complete Session (.json)</h4>
+          <p>Saves all 3D parts, positions, colors, and full mission worksheet metadata.</p>
+        </div>
+        <span class="btn btn-teal" style="font-size:0.75rem;">Download .json</span>
+      </div>
+
+      <!-- Option 3: Wavefront OBJ (.obj) -->
+      <div class="export-option-card" onclick="exportOBJ()">
+        <div class="export-info">
+          <h4>🧊 3D Model (.obj)</h4>
+          <p>Universal 3D format for 3D printing, Blender, or game engine visualization.</p>
+        </div>
+        <span class="btn" style="font-size:0.75rem;">Download .obj</span>
+      </div>
+
+      <!-- Option 4: Rendered Screenshot (.jpg) -->
+      <div class="export-option-card" onclick="exportRenderJPG()">
+        <div class="export-info">
+          <h4>🖼️ High-Res 3D Image (.jpg)</h4>
+          <p>Snapshot of the current 3D viewport for team presentations and notebooks.</p>
+        </div>
+        <span class="btn" style="font-size:0.75rem;">Download .jpg</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Licenses & Attributions Modal -->
+  <div class="modal-backdrop" id="licenseModal">
+    <div class="modal-window" style="max-width: 620px; max-height: 85vh; overflow-y: auto;">
+      <div class="modal-header">
+        <h3 class="modal-title">⚖️ Open Source Licenses & Attributions</h3>
+        <button class="close-btn" onclick="closeLicenseModal()">✕</button>
+      </div>
+
+      <div class="license-content" style="font-size: 0.82rem; color: #cbd5e1; line-height: 1.5; display: flex; flex-direction: column; gap: 0.85rem;">
+        <div style="background: #0f172a; border-left: 3px solid #38bdf8; padding: 0.65rem 0.85rem; border-radius: 4px;">
+          <strong style="color: #38bdf8;">LEGO® & FIRST® Trademark Notice:</strong><br>
+          LEGO®, SPIKE™, and TECHNIC™ are trademarks of the LEGO Group of companies. FIRST® and FIRST® LEGO® League are trademarks of FIRST and the LEGO Group. This application is an independent, non-commercial educational tool developed by and for FIRST LEGO League Team #76265 BIOGLOW. It is not sponsored, authorized, or endorsed by the LEGO Group or FIRST.
+        </div>
+
+        <div>
+          <h4 style="color: #f8fafc; font-size: 0.88rem; margin-bottom: 0.2rem;">1. Three.js & Controls (OrbitControls, TransformControls)</h4>
+          <p style="color: #94a3b8; font-size: 0.76rem;"><strong>License:</strong> MIT License &bull; Copyright &copy; 2010-2026 Three.js Authors (Ricardo Cabello / mrdoob and contributors)</p>
+          <p style="font-size: 0.74rem; color: #94a3b8; margin-top: 0.2rem;">
+            Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files, to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software.
+          </p>
+        </div>
+
+        <div>
+          <h4 style="color: #f8fafc; font-size: 0.88rem; margin-bottom: 0.2rem;">2. html2canvas</h4>
+          <p style="color: #94a3b8; font-size: 0.76rem;"><strong>License:</strong> MIT License &bull; Copyright &copy; 2012 Niklas von Hertzen</p>
+        </div>
+
+        <div>
+          <h4 style="color: #f8fafc; font-size: 0.88rem; margin-bottom: 0.2rem;">3. Google Fonts (Outfit & Space Grotesk)</h4>
+          <p style="color: #94a3b8; font-size: 0.76rem;"><strong>License:</strong> SIL Open Font License, Version 1.1</p>
+        </div>
+
+        <div>
+          <h4 style="color: #f8fafc; font-size: 0.88rem; margin-bottom: 0.2rem;">4. LDraw™ Open Standard & Specification</h4>
+          <p style="color: #94a3b8; font-size: 0.76rem;">
+            This tool implements the open-source LDraw File Format specification (1.0.2) created by James Jessiman and maintained by LDraw.org. Official LDraw part definitions are licensed under the Creative Commons Attribution License (CCAL 2.0).
+          </p>
+        </div>
+
+        <div style="border-top: 1px solid #334155; padding-top: 0.6rem; font-size: 0.74rem; color: #94a3b8;">
+          <strong>Project License:</strong> This repository's original code is licensed under the <a href="../../LICENSE" target="_blank" style="color: #38bdf8;">GNU General Public License v3.0 (GPLv3)</a>. Permissive MIT and OFL components are fully compatible with GPLv3.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script Logic -->
+  <script>
+    /* ==========================================================================
+       1. LEGO Parts Catalog Definition (Standard LDraw IDs & Dimensions)
+       ========================================================================== */
+    const LEGO_LIBRARY = [
+      // Technic Beams
+      { id: '32523', name: 'Beam 3M', cat: 'beams', icon: '➖', length: 3, type: 'beam' },
+      { id: '32316', name: 'Beam 5M', cat: 'beams', icon: '➖', length: 5, type: 'beam' },
+      { id: '32524', name: 'Beam 7M', cat: 'beams', icon: '➖', length: 7, type: 'beam' },
+      { id: '40490', name: 'Beam 9M', cat: 'beams', icon: '➖', length: 9, type: 'beam' },
+      { id: '32525', name: 'Beam 11M', cat: 'beams', icon: '➖', length: 11, type: 'beam' },
+      { id: '32278', name: 'Beam 15M', cat: 'beams', icon: '➖', length: 15, type: 'beam' },
+      { id: '32526', name: 'L-Beam 3x5', cat: 'beams', icon: '📐', type: 'lbeam' },
+      { id: '32271', name: 'T-Beam 3x3', cat: 'beams', icon: '┳', type: 'tbeam' },
+
+      // Gears & Racks
+      { id: '32270', name: '12T Bevel Gear', cat: 'gears', icon: '⚙️', teeth: 12, type: 'gear' },
+      { id: '32269', name: '20T Bevel Gear', cat: 'gears', icon: '⚙️', teeth: 20, type: 'gear' },
+      { id: '3648',  name: '24T Gear', cat: 'gears', icon: '⚙️', teeth: 24, type: 'gear' },
+      { id: '32498', name: '36T Bevel Gear', cat: 'gears', icon: '⚙️', teeth: 36, type: 'gear' },
+      { id: '4716',  name: 'Worm Gear', cat: 'gears', icon: '🌀', type: 'worm' },
+      { id: '3743',  name: 'Gear Rack 1x4', cat: 'gears', icon: '📏', type: 'rack' },
+
+      // Axles & Pins
+      { id: '2780',  name: 'Technic Pin 2L', cat: 'axles', icon: '🔘', type: 'pin' },
+      { id: '6558',  name: 'Technic Pin 3L', cat: 'axles', icon: '🔘', type: 'pin3l' },
+      { id: '3705',  name: 'Axle 4L', cat: 'axles', icon: '🥢', length: 4, type: 'axle' },
+      { id: '3707',  name: 'Axle 8L', cat: 'axles', icon: '🥢', length: 8, type: 'axle' },
+      { id: '3713',  name: 'Technic Bushing', cat: 'axles', icon: '🍩', type: 'bushing' },
+
+      // Motors & Wheels
+      { id: '49284', name: 'SPIKE Med Motor', cat: 'motors', icon: '⚡', type: 'motor_m' },
+      { id: '49283', name: 'SPIKE Large Motor', cat: 'motors', icon: '⚡', type: 'motor_l' },
+      { id: '56908', name: 'Medium Wheel & Tire', cat: 'motors', icon: '🛞', type: 'wheel' },
+      { id: '39369', name: 'Color Sensor', cat: 'motors', icon: '👁️', type: 'sensor' },
+
+      // Bricks & Plates
+      { id: '3001',  name: 'Brick 2x4', cat: 'bricks', icon: '🧱', width: 2, length: 4, type: 'brick' },
+      { id: '3020',  name: 'Plate 2x4', cat: 'bricks', icon: '🪨', width: 2, length: 4, type: 'plate' },
+      { id: '3895',  name: 'Technic Brick 1x6', cat: 'bricks', icon: '🧱', length: 6, type: 'brick_technic' }
+    ];
+
+    // Standard LDraw Stud dimensions in Three.js units (1 stud = 2 units = 20 LDU = 8mm)
+    const STUD_UNIT = 2.0;
+
+    /* ==========================================================================
+       2. Three.js Scene Setup & CAD Engine
+       ========================================================================== */
+    const container = document.getElementById('viewportContainer');
+    const canvas = document.getElementById('threeCanvas');
+
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x0f172a);
+
+    const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
+    camera.position.set(24, 20, 30);
+
+    const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, preserveDrawingBuffer: true });
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.shadowMap.enabled = true;
+
+    // Lighting
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.75);
+    scene.add(ambientLight);
+
+    const dirLight1 = new THREE.DirectionalLight(0xffffff, 0.8);
+    dirLight1.position.set(30, 40, 20);
+    dirLight1.castShadow = true;
+    scene.add(dirLight1);
+
+    const dirLight2 = new THREE.DirectionalLight(0x38bdf8, 0.35);
+    dirLight2.position.set(-20, 20, -30);
+    scene.add(dirLight2);
+
+    // OrbitControls for Camera
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+    controls.target.set(0, 4, 0);
+
+    // Grid Floor Plane (Authentic LEGO stud pitch grid)
+    const gridHelper = new THREE.GridHelper(60, 30, 0x38bdf8, 0x1e293b);
+    gridHelper.position.y = 0;
+    scene.add(gridHelper);
+
+    // TransformControls for moving/rotating parts
+    const transformControls = new THREE.TransformControls(camera, renderer.domElement);
+    transformControls.size = 0.75;
+    scene.add(transformControls);
+
+    let isSnapEnabled = true;
+    transformControls.setTranslationSnap(STUD_UNIT); // Snap to 1 stud
+    transformControls.setRotationSnap(THREE.MathUtils.degToRad(15)); // Snap to 15 deg
+
+    transformControls.addEventListener('dragging-changed', (event) => {
+      controls.enabled = !event.value;
+      if (!event.value) {
+        updateBOM();
+      }
+    });
+
+    // Raycaster for part selection
+    const raycaster = new THREE.Raycaster();
+    const mouse = new THREE.Vector2();
+
+    const sceneParts = []; // Array of { mesh, partDef, color }
+    let selectedObject = null;
+    let currentColor = '#0284c7';
+
+    /* ==========================================================================
+       3. Procedural LEGO 3D Geometry Factory
+       ========================================================================== */
+    function createLegoMesh(partDef, colorHex) {
+      const group = new THREE.Group();
+      group.name = partDef.name;
+      group.userData = { partDef: partDef, color: colorHex };
+
+      const mat = new THREE.MeshStandardMaterial({
+        color: new THREE.Color(colorHex),
+        roughness: 0.25,
+        metalness: 0.1
+      });
+
+      if (partDef.type === 'beam') {
+        const len = partDef.length;
+        const beamGeo = new THREE.BoxGeometry(len * STUD_UNIT, 1.9, 1.5);
+        const beamMesh = new THREE.Mesh(beamGeo, mat);
+        beamMesh.castShadow = true;
+        group.add(beamMesh);
+
+        // Pin holes across length
+        const holeGeo = new THREE.CylinderGeometry(0.55, 0.55, 1.55, 16);
+        const holeMat = new THREE.MeshStandardMaterial({ color: 0x1e293b, roughness: 0.8 });
+        for (let i = 0; i < len; i++) {
+          const x = (i - (len - 1) / 2) * STUD_UNIT;
+          const hole = new THREE.Mesh(holeGeo, holeMat);
+          hole.rotation.x = Math.PI / 2;
+          hole.position.set(x, 0, 0);
+          group.add(hole);
+        }
+      } else if (partDef.type === 'lbeam') {
+        // L-Beam 3x5
+        const leg1 = new THREE.Mesh(new THREE.BoxGeometry(5 * STUD_UNIT, 1.9, 1.5), mat);
+        leg1.position.set(0, 0, 0);
+        group.add(leg1);
+        const leg2 = new THREE.Mesh(new THREE.BoxGeometry(1.5, 3 * STUD_UNIT, 1.5), mat);
+        leg2.position.set(2 * STUD_UNIT, 1.5 * STUD_UNIT, 0);
+        group.add(leg2);
+      } else if (partDef.type === 'gear') {
+        const radius = (partDef.teeth / 12) * 1.8;
+        const gearGeo = new THREE.CylinderGeometry(radius, radius, 1.2, partDef.teeth);
+        const gearMesh = new THREE.Mesh(gearGeo, mat);
+        gearMesh.castShadow = true;
+        group.add(gearMesh);
+
+        // Center cross axle hole
+        const centerHole = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 1.25, 8), new THREE.MeshStandardMaterial({ color: 0x111827 }));
+        group.add(centerHole);
+      } else if (partDef.type === 'worm') {
+        const wormGeo = new THREE.CylinderGeometry(1.1, 1.1, 3.8, 16);
+        const wormMesh = new THREE.Mesh(wormGeo, mat);
+        wormMesh.rotation.z = Math.PI / 2;
+        group.add(wormMesh);
+      } else if (partDef.type === 'axle') {
+        const len = partDef.length * STUD_UNIT;
+        const axleGeo = new THREE.CylinderGeometry(0.45, 0.45, len, 8);
+        const axleMesh = new THREE.Mesh(axleGeo, mat);
+        axleMesh.rotation.z = Math.PI / 2;
+        group.add(axleMesh);
+      } else if (partDef.type === 'pin' || partDef.type === 'pin3l') {
+        const len = partDef.type === 'pin3l' ? 3 * STUD_UNIT : 2 * STUD_UNIT;
+        const pinGeo = new THREE.CylinderGeometry(0.5, 0.5, len, 16);
+        const pinMesh = new THREE.Mesh(pinGeo, mat);
+        pinMesh.rotation.x = Math.PI / 2;
+        group.add(pinMesh);
+      } else if (partDef.type === 'wheel') {
+        // Black tire + colored rim
+        const tireGeo = new THREE.CylinderGeometry(3.2, 3.2, 1.8, 24);
+        const tireMat = new THREE.MeshStandardMaterial({ color: 0x18181b, roughness: 0.9 });
+        const tire = new THREE.Mesh(tireGeo, tireMat);
+        tire.rotation.z = Math.PI / 2;
+        group.add(tire);
+
+        const rimGeo = new THREE.CylinderGeometry(2.0, 2.0, 1.9, 16);
+        const rim = new THREE.Mesh(rimGeo, mat);
+        rim.rotation.z = Math.PI / 2;
+        group.add(rim);
+      } else if (partDef.type === 'motor_m' || partDef.type === 'motor_l') {
+        // Motor housing
+        const size = partDef.type === 'motor_l' ? [6, 4, 3] : [5, 3.2, 2.6];
+        const body = new THREE.Mesh(new THREE.BoxGeometry(...size), mat);
+        group.add(body);
+
+        // Rotating hub ring
+        const ring = new THREE.Mesh(new THREE.CylinderGeometry(1.4, 1.4, 0.8, 16), new THREE.MeshStandardMaterial({ color: 0xf59e0b }));
+        ring.rotation.z = Math.PI / 2;
+        ring.position.x = size[0] / 2 + 0.3;
+        group.add(ring);
+      } else if (partDef.type === 'brick' || partDef.type === 'plate') {
+        const height = partDef.type === 'plate' ? 0.8 : 2.4;
+        const brickGeo = new THREE.BoxGeometry(partDef.length * STUD_UNIT, height, partDef.width * STUD_UNIT);
+        const brick = new THREE.Mesh(brickGeo, mat);
+        group.add(brick);
+
+        // Studs on top
+        const studGeo = new THREE.CylinderGeometry(0.55, 0.55, 0.4, 12);
+        for (let x = 0; x < partDef.length; x++) {
+          for (let z = 0; z < partDef.width; z++) {
+            const stud = new THREE.Mesh(studGeo, mat);
+            stud.position.set(
+              (x - (partDef.length - 1) / 2) * STUD_UNIT,
+              height / 2 + 0.2,
+              (z - (partDef.width - 1) / 2) * STUD_UNIT
+            );
+            group.add(stud);
+          }
+        }
+      } else {
+        // Generic fallback box
+        const box = new THREE.Mesh(new THREE.BoxGeometry(4, 2, 2), mat);
+        group.add(box);
+      }
+
+      return group;
+    }
+
+    function spawnPart(partDef) {
+      const mesh = createLegoMesh(partDef, currentColor);
+      mesh.position.set(0, 4, 0);
+      scene.add(mesh);
+      sceneParts.push(mesh);
+      selectObject(mesh);
+      updateBOM();
+    }
+
+    /* ==========================================================================
+       4. Selection & Transform Controls
+       ========================================================================== */
+    function selectObject(obj) {
+      if (selectedObject === obj) return;
+      selectedObject = obj;
+
+      if (obj) {
+        transformControls.attach(obj);
+        document.getElementById('selectedPartLabel').innerHTML = `Selected: <strong>${obj.userData.partDef.name}</strong>`;
+      } else {
+        transformControls.detach();
+        document.getElementById('selectedPartLabel').innerHTML = `Selected: <em>None</em>`;
+      }
+    }
+
+    window.addEventListener('pointerdown', (e) => {
+      // Check if clicking inside canvas and not dragging gizmo
+      const rect = container.getBoundingClientRect();
+      if (e.clientX < rect.left || e.clientX > rect.right || e.clientY < rect.top || e.clientY > rect.bottom) return;
+
+      mouse.x = ((e.clientX - rect.left) / container.clientWidth) * 2 - 1;
+      mouse.y = -((e.clientY - rect.top) / container.clientHeight) * 2 + 1;
+
+      raycaster.setFromCamera(mouse, camera);
+      const intersects = raycaster.intersectObjects(sceneParts, true);
+
+      if (intersects.length > 0) {
+        // Find top group
+        let topObj = intersects[0].object;
+        while (topObj.parent && topObj.parent !== scene) {
+          topObj = topObj.parent;
+        }
+        selectObject(topObj);
+      } else {
+        // Only deselect if not hovering over transform controls gizmo
+        if (!transformControls.dragging) {
+          selectObject(null);
+        }
+      }
+    });
+
+    function setTransformMode(mode) {
+      transformControls.setMode(mode);
+      document.getElementById('btnTranslate').classList.toggle('active', mode === 'translate');
+      document.getElementById('btnRotate').classList.toggle('active', mode === 'rotate');
+    }
+
+    function toggleSnap() {
+      isSnapEnabled = !isSnapEnabled;
+      transformControls.setTranslationSnap(isSnapEnabled ? STUD_UNIT : null);
+      transformControls.setRotationSnap(isSnapEnabled ? THREE.MathUtils.degToRad(15) : null);
+      const btn = document.getElementById('btnSnap');
+      btn.classList.toggle('active', isSnapEnabled);
+      btn.innerText = `📏 Snap: ${isSnapEnabled ? 'ON' : 'OFF'}`;
+    }
+
+    function duplicateSelected() {
+      if (!selectedObject) return;
+      const def = selectedObject.userData.partDef;
+      const color = selectedObject.userData.color;
+      const clone = createLegoMesh(def, color);
+      clone.position.copy(selectedObject.position).add(new THREE.Vector3(STUD_UNIT, 0, STUD_UNIT));
+      clone.rotation.copy(selectedObject.rotation);
+      scene.add(clone);
+      sceneParts.push(clone);
+      selectObject(clone);
+      updateBOM();
+    }
+
+    function deleteSelected() {
+      if (!selectedObject) return;
+      transformControls.detach();
+      scene.remove(selectedObject);
+      const idx = sceneParts.indexOf(selectedObject);
+      if (idx > -1) sceneParts.splice(idx, 1);
+      selectedObject = null;
+      document.getElementById('selectedPartLabel').innerHTML = `Selected: <em>None</em>`;
+      updateBOM();
+    }
+
+    function applyColor(colorHex, el) {
+      currentColor = colorHex;
+      document.querySelectorAll('.c-swatch').forEach(s => s.classList.remove('active'));
+      if (el) el.classList.add('active');
+
+      if (selectedObject) {
+        selectedObject.userData.color = colorHex;
+        selectedObject.traverse((child) => {
+          if (child.isMesh && child.material) {
+            child.material.color.set(colorHex);
+          }
+        });
+      }
+    }
+
+    function resetCameraView() {
+      if (selectedObject) {
+        controls.target.copy(selectedObject.position);
+      } else {
+        controls.target.set(0, 4, 0);
+      }
+    }
+
+    // Keyboard Shortcuts
+    window.addEventListener('keydown', (e) => {
+      // Ignore if typing in form inputs
+      if (['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
+
+      if (e.key.toLowerCase() === 'w' || e.key.toLowerCase() === 'g') {
+        setTransformMode('translate');
+      } else if (e.key.toLowerCase() === 'e' || e.key.toLowerCase() === 'r') {
+        setTransformMode('rotate');
+      } else if (e.key.toLowerCase() === 'd') {
+        duplicateSelected();
+      } else if (e.key === 'Delete' || e.key === 'Backspace') {
+        deleteSelected();
+      } else if (e.key.toLowerCase() === 'f') {
+        resetCameraView();
+      } else if (e.key === 'Escape') {
+        selectObject(null);
+      }
+    });
+
+    /* ==========================================================================
+       5. Bill of Materials (BOM) & Inventory Tracking
+       ========================================================================== */
+    function updateBOM() {
+      const counts = {};
+      sceneParts.forEach(p => {
+        const id = p.userData.partDef.id;
+        if (!counts[id]) {
+          counts[id] = { name: p.userData.partDef.name, count: 0 };
+        }
+        counts[id].count++;
+      });
+
+      const totalParts = sceneParts.length;
+      document.getElementById('bomTotalPartsBadge').innerText = `${totalParts} Parts`;
+      const box = document.getElementById('bomTableBox');
+
+      if (totalParts === 0) {
+        box.innerHTML = `<div style="font-size:0.75rem; color:#64748b; text-align:center; padding:1rem;">No LEGO parts added yet. Click parts from the library on the left!</div>`;
+        return;
+      }
+
+      let html = '';
+      for (const [id, item] of Object.entries(counts)) {
+        html += `
+          <div class="bom-item">
+            <span>${item.name} <small style="color:#64748b;">(#${id})</small></span>
+            <span class="bom-count">${item.count}</span>
+          </div>
+        `;
+      }
+      box.innerHTML = html;
+    }
+
+    /* ==========================================================================
+       6. Parts Catalog UI & Filtering
+       ========================================================================== */
+    let currentCategory = 'all';
+
+    function renderCatalog() {
+      const grid = document.getElementById('partsCatalogGrid');
+      const term = document.getElementById('partSearchInput').value.toLowerCase();
+
+      const filtered = LEGO_LIBRARY.filter(p => {
+        const matchCat = (currentCategory === 'all' || p.cat === currentCategory);
+        const matchSearch = p.name.toLowerCase().includes(term) || p.id.includes(term);
+        return matchCat && matchSearch;
+      });
+
+      document.getElementById('partsCountBadge').innerText = `${filtered.length} parts`;
+
+      grid.innerHTML = filtered.map(p => `
+        <div class="part-card" onclick='spawnPart(${JSON.stringify(p)})' title="Click to add to 3D scene">
+          <div class="part-icon">${p.icon}</div>
+          <div class="part-name">${p.name}</div>
+          <div class="part-ldraw-id">#${p.id}</div>
+        </div>
+      `).join('');
+    }
+
+    function setCategory(cat, el) {
+      currentCategory = cat;
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      el.classList.add('active');
+      renderCatalog();
+    }
+
+    function filterParts() {
+      renderCatalog();
+    }
+
+    function toggleDrawer(side) {
+      if (side === 'left') {
+        document.getElementById('drawerLeft').classList.toggle('collapsed');
+      } else if (side === 'right') {
+        document.getElementById('drawerRight').classList.toggle('collapsed');
+      }
+      setTimeout(onWindowResize, 260);
+    }
+
+    /* ==========================================================================
+       7. Extensible Standard Saving & Exporting (LDraw .ldr, JSON, OBJ, JPG)
+       ========================================================================== */
+    function openExportModal() {
+      document.getElementById('exportModal').classList.add('open');
+    }
+
+    function closeExportModal() {
+      document.getElementById('exportModal').classList.remove('open');
+    }
+
+    function openLicenseModal() {
+      document.getElementById('licenseModal').classList.add('open');
+    }
+
+    function closeLicenseModal() {
+      document.getElementById('licenseModal').classList.remove('open');
+    }
+
+    function getCleanFileName(ext) {
+      const mission = document.getElementById('specMissionNum').value.trim() || 'M01';
+      const name = document.getElementById('specDesignName').value.trim().replace(/\s+/g, '_') || 'Attachment';
+      return `FLL76265_${mission}_${name}.${ext}`;
+    }
+
+    // 1. LDraw (.ldr) Standard LEGO CAD Exporter
+    function exportLDraw() {
+      const mission = document.getElementById('specMissionNum').value.trim() || 'M01';
+      const designer = document.getElementById('specDesigner').value.trim() || 'Team 76265';
+      const designName = document.getElementById('specDesignName').value.trim() || 'FLL Attachment';
+
+      let ldr = `0 FILE ${getCleanFileName('ldr')}\n`;
+      ldr += `0 Name: ${designName}\n`;
+      ldr += `0 Author: ${designer}\n`;
+      ldr += `0 FLL Team: 76265 BIOGLOW\n`;
+      ldr += `0 Mission: ${mission}\n`;
+      ldr += `0 !LICENSE Redistributable under CCAL version 2.0\n`;
+
+      // Convert Three.js parts to LDraw lines:
+      // 1 <color_id> <x> <y> <z> <a> <b> <c> <d> <e> <f> <g> <h> <i> <part_name>.dat
+      sceneParts.forEach(part => {
+        const id = part.userData.partDef.id;
+        const color = part.userData.color || '#0284c7';
+        const colorId = getColorIdFromHex(color);
+
+        // Position in LDraw units (1 Three.js unit = 10 LDU)
+        const x = (part.position.x * 10).toFixed(2);
+        const y = (-part.position.y * 10).toFixed(2); // LDraw Y is inverted
+        const z = (part.position.z * 10).toFixed(2);
+
+        // Rotation Matrix
+        part.updateMatrixWorld();
+        const m = part.matrixWorld.elements;
+        // 3x3 orientation
+        const a = m[0].toFixed(3), b = m[1].toFixed(3), c = m[2].toFixed(3);
+        const d = m[4].toFixed(3), e = m[5].toFixed(3), f = m[6].toFixed(3);
+        const g = m[8].toFixed(3), h = m[9].toFixed(3), i = m[10].toFixed(3);
+
+        ldr += `1 ${colorId} ${x} ${y} ${z} ${a} ${b} ${c} ${d} ${e} ${f} ${g} ${h} ${i} ${id}.dat\n`;
+      });
+
+      downloadFile(ldr, getCleanFileName('ldr'), 'text/plain');
+      closeExportModal();
+    }
+
+    // LDraw Color Helper
+    function getColorIdFromHex(hex) {
+      const map = {
+        '#0284c7': 1,  // Blue
+        '#f59e0b': 14, // Yellow
+        '#ef4444': 4,  // Red
+        '#10b981': 2,  // Green
+        '#0f172a': 0,  // Black
+        '#f8fafc': 15, // White
+        '#64748b': 71, // Light Bluish Gray
+        '#0d9488': 3   // Dark Turquoise / Teal
+      };
+      return map[hex] || 16; // 16 = Main Color
+    }
+
+    // 2. Complete Session JSON (.json)
+    function exportJSON() {
+      const data = {
+        app: "FLL_76265_3D_CAD_Studio",
+        version: "2.0",
+        season: "2026 BIOGLOW",
+        metadata: {
+          designer: document.getElementById('specDesigner').value,
+          date: document.getElementById('specDate').value,
+          missionNum: document.getElementById('specMissionNum').value,
+          missionName: document.getElementById('specMissionName').value,
+          designName: document.getElementById('specDesignName').value,
+          goal: document.getElementById('specGoal').value,
+          keyParts: document.getElementById('specKeyParts').value,
+          plusIdea: document.getElementById('specPlusIdea').value
+        },
+        parts: sceneParts.map(p => ({
+          id: p.userData.partDef.id,
+          color: p.userData.color,
+          position: [p.position.x, p.position.y, p.position.z],
+          rotation: [p.rotation.x, p.rotation.y, p.rotation.z]
+        }))
+      };
+
+      downloadFile(JSON.stringify(data, null, 2), getCleanFileName('json'), 'application/json');
+      closeExportModal();
+    }
+
+    // 3. Wavefront OBJ (.obj) 3D Model Exporter
+    function exportOBJ() {
+      let objText = `# FLL Team 76265 BIOGLOW 3D Export\n# Design: ${document.getElementById('specDesignName').value}\n`;
+      let vertexOffset = 1;
+
+      sceneParts.forEach((part, partIdx) => {
+        objText += `o ${part.name}_${partIdx}\n`;
+        part.updateMatrixWorld(true);
+
+        part.traverse(child => {
+          if (child.isMesh && child.geometry) {
+            const geo = child.geometry.isBufferGeometry ? child.geometry : new THREE.BufferGeometry().fromGeometry(child.geometry);
+            const posAttr = geo.attributes.position;
+            if (!posAttr) return;
+
+            const tempV = new THREE.Vector3();
+            for (let i = 0; i < posAttr.count; i++) {
+              tempV.fromBufferAttribute(posAttr, i);
+              tempV.applyMatrix4(child.matrixWorld);
+              objText += `v ${tempV.x.toFixed(4)} ${tempV.y.toFixed(4)} ${tempV.z.toFixed(4)}\n`;
+            }
+
+            // Faces
+            if (geo.index) {
+              const idxAttr = geo.index;
+              for (let i = 0; i < idxAttr.count; i += 3) {
+                const a = idxAttr.getX(i) + vertexOffset;
+                const b = idxAttr.getX(i + 1) + vertexOffset;
+                const c = idxAttr.getX(i + 2) + vertexOffset;
+                objText += `f ${a} ${b} ${c}\n`;
+              }
+            } else {
+              for (let i = 0; i < posAttr.count; i += 3) {
+                const a = i + vertexOffset;
+                const b = i + 1 + vertexOffset;
+                const c = i + 2 + vertexOffset;
+                objText += `f ${a} ${b} ${c}\n`;
+              }
+            }
+            vertexOffset += posAttr.count;
+          }
+        });
+      });
+
+      downloadFile(objText, getCleanFileName('obj'), 'text/plain');
+      closeExportModal();
+    }
+
+    // 4. Rendered JPG Snapshot
+    function exportRenderJPG() {
+      renderer.render(scene, camera);
+      canvas.toBlob(blob => {
+        if (blob) {
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = getCleanFileName('jpg');
+          a.click();
+          URL.revokeObjectURL(url);
+        }
+      }, 'image/jpeg', 0.95);
+      closeExportModal();
+    }
+
+    function downloadFile(content, filename, mime) {
+      const blob = new Blob([content], { type: mime });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    /* ==========================================================================
+       8. Import Engine (Supports LDraw .ldr and Session .json)
+       ========================================================================== */
+    function triggerImport() {
+      document.getElementById('importFileInput').click();
+    }
+
+    function handleFileSelected(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      const ext = file.name.split('.').pop().toLowerCase();
+
+      reader.onload = (e) => {
+        const text = e.target.result;
+        if (ext === 'json') {
+          importJSON(text);
+        } else {
+          // Default to LDraw parser
+          importLDraw(text);
+        }
+      };
+
+      reader.readAsText(file);
+      event.target.value = ''; // Reset input
+    }
+
+    function importJSON(jsonText) {
+      try {
+        const data = JSON.parse(jsonText);
+
+        // Load metadata
+        if (data.metadata) {
+          if (data.metadata.designer) document.getElementById('specDesigner').value = data.metadata.designer;
+          if (data.metadata.date) document.getElementById('specDate').value = data.metadata.date;
+          if (data.metadata.missionNum) document.getElementById('specMissionNum').value = data.metadata.missionNum;
+          if (data.metadata.missionName) document.getElementById('specMissionName').value = data.metadata.missionName;
+          if (data.metadata.designName) document.getElementById('specDesignName').value = data.metadata.designName;
+          if (data.metadata.goal) document.getElementById('specGoal').value = data.metadata.goal;
+          if (data.metadata.keyParts) document.getElementById('specKeyParts').value = data.metadata.keyParts;
+          if (data.metadata.plusIdea) document.getElementById('specPlusIdea').value = data.metadata.plusIdea;
+        }
+
+        // Clear existing scene parts
+        clearAllParts();
+
+        // Spawn parts
+        if (Array.isArray(data.parts)) {
+          data.parts.forEach(p => {
+            const partDef = LEGO_LIBRARY.find(item => item.id === p.id) || {
+              id: p.id,
+              name: `Part ${p.id}`,
+              type: 'box'
+            };
+            const mesh = createLegoMesh(partDef, p.color || '#0284c7');
+            mesh.position.fromArray(p.position);
+            mesh.rotation.fromArray(p.rotation);
+            scene.add(mesh);
+            sceneParts.push(mesh);
+          });
+        }
+
+        updateBOM();
+        alert("✅ Session JSON imported successfully!");
+      } catch (err) {
+        alert("Error parsing JSON file: " + err.message);
+      }
+    }
+
+    function importLDraw(ldrText) {
+      try {
+        clearAllParts();
+        const lines = ldrText.split(/\r?\n/);
+
+        lines.forEach(line => {
+          const parts = line.trim().split(/\s+/);
+          if (parts[0] === '1' && parts.length >= 15) {
+            // Line type 1: 1 <color> <x> <y> <z> <a> <b> <c> <d> <e> <f> <g> <h> <i> <part_id>.dat
+            const colorId = parts[1];
+            const x = parseFloat(parts[2]) / 10;
+            const y = -parseFloat(parts[3]) / 10;
+            const z = parseFloat(parts[4]) / 10;
+
+            const partFile = parts[14].replace(/\.dat$/i, '');
+            const partDef = LEGO_LIBRARY.find(item => item.id === partFile) || {
+              id: partFile,
+              name: `LEGO #${partFile}`,
+              type: 'box'
+            };
+
+            const hexColor = getHexFromColorId(colorId);
+            const mesh = createLegoMesh(partDef, hexColor);
+            mesh.position.set(x, y, z);
+            scene.add(mesh);
+            sceneParts.push(mesh);
+          }
+        });
+
+        updateBOM();
+        alert(`✅ Imported ${sceneParts.length} LEGO parts from LDraw file!`);
+      } catch (err) {
+        alert("Error importing LDraw file: " + err.message);
+      }
+    }
+
+    function getHexFromColorId(id) {
+      const map = {
+        '1': '#0284c7',
+        '14': '#f59e0b',
+        '4': '#ef4444',
+        '2': '#10b981',
+        '0': '#0f172a',
+        '15': '#f8fafc',
+        '71': '#64748b',
+        '3': '#0d9488'
+      };
+      return map[id] || '#0284c7';
+    }
+
+    function clearAllParts() {
+      selectObject(null);
+      sceneParts.forEach(p => scene.remove(p));
+      sceneParts.length = 0;
+      updateBOM();
+    }
+
+    /* ==========================================================================
+       9. Snapshot to Printable Flyer
+       ========================================================================== */
+    function snapshotToFlyer() {
+      // Render clean 3D frame
+      selectObject(null);
+      renderer.render(scene, camera);
+      const dataUrl = canvas.toDataURL('image/jpeg', 0.95);
+
+      const mission = document.getElementById('specMissionNum').value.trim() || '01';
+      const missionName = document.getElementById('specMissionName').value.trim() || 'Mission Attachment';
+      const designer = document.getElementById('specDesigner').value.trim() || 'Team 76265';
+      const designName = document.getElementById('specDesignName').value.trim() || '3D Robot Attachment';
+      const goal = document.getElementById('specGoal').value.trim() || '';
+
+      // Build printable window with 3D screenshot embedded
+      const printWindow = window.open('', '_blank');
+      printWindow.document.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title>FLL Team 76265 - 3D Design Flyer</title>
+          <style>
+            @page { size: letter portrait; margin: 0.35in; }
+            body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: #0f172a; margin: 0; padding: 0.5rem; }
+            .header { border-bottom: 3px solid #0284c7; padding-bottom: 0.5rem; display: flex; justify-content: space-between; align-items: center; }
+            .title h1 { margin: 0; font-size: 1.4rem; color: #0369a1; }
+            .title p { margin: 2px 0 0 0; font-size: 0.85rem; color: #64748b; }
+            .badge { background: #0284c7; color: white; padding: 0.3rem 0.6rem; border-radius: 6px; font-weight: bold; }
+            .meta-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 0.75rem; margin: 0.75rem 0; background: #f8fafc; padding: 0.6rem 0.8rem; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 0.85rem; }
+            .render-box { width: 100%; height: 500px; border: 2px solid #0369a1; border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center; background: #0f172a; }
+            .render-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
+            .goal-box { margin-top: 0.75rem; padding: 0.6rem 0.8rem; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.85rem; }
+            .footer { margin-top: 0.75rem; border-top: 1px solid #cbd5e1; padding-top: 0.4rem; font-size: 0.75rem; color: #64748b; display: flex; justify-content: space-between; }
+          </style>
+        </head>
+        <body>
+          <div class="header">
+            <div class="title">
+              <h1>Robot Design & Mission 3D CAD</h1>
+              <p>FIRST LEGO League &bull; Engineering Notebook 3D CAD Sheet</p>
+            </div>
+            <div class="badge">FLL #76265 BIOGLOW</div>
+          </div>
+          <div class="meta-grid">
+            <div><strong>Designer:</strong> ${designer}</div>
+            <div><strong>Mission #:</strong> M${mission}</div>
+            <div><strong>Design:</strong> ${designName}</div>
+          </div>
+          <div class="render-box">
+            <img src="${dataUrl}">
+          </div>
+          <div class="goal-box">
+            <strong>Mission Strategy & Mechanism Goal:</strong>
+            <p style="margin: 4px 0 0 0;">${goal || 'Designed in FLL 3D CAD Studio.'}</p>
+          </div>
+          <div class="footer">
+            <span>🤝 FIRST Core Values &bull; Gracious Professionalism®</span>
+            <span>Team #76265 BIOGLOW &bull; 2026 Season</span>
+          </div>
+          <script>
+            window.onload = () => { window.print(); }
+          <\/script>
+        </body>
+        </html>
+      `);
+      printWindow.document.close();
+    }
+
+    /* ==========================================================================
+       10. Animation Loop & Initialization
+       ========================================================================== */
+    function onWindowResize() {
+      camera.aspect = container.clientWidth / container.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(container.clientWidth, container.clientHeight);
+    }
+    window.addEventListener('resize', onWindowResize);
+
+    function animate() {
+      requestAnimationFrame(animate);
+      controls.update();
+      renderer.render(scene, camera);
+    }
+
+    // Set today's date
+    document.getElementById('specDate').value = new Date().toISOString().split('T')[0];
+
+    // Initial render
+    renderCatalog();
+    animate();
+
+    // Spawn an initial friendly demo beam so the 3D space isn't empty!
+    spawnPart(LEGO_LIBRARY[2]); // 7M Beam
+  </script>
+</body>
+</html>
