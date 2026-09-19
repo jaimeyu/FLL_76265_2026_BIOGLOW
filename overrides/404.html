@@ -1,0 +1,56 @@
+{% extends "main.html" %}
+
+{% block content %}
+<div class="bioglow-404" style="text-align: center; padding: 2.5rem 1rem; max-width: 800px; margin: 0 auto;">
+  <div style="font-size: 4.5rem; line-height: 1; margin-bottom: 1rem;">
+    🌊🤖🔍
+  </div>
+  <h1 style="font-size: 2.25rem; font-weight: 800; color: #38bdf8; margin-bottom: 0.75rem;">
+    404 • Lost in Submerged Waters!
+  </h1>
+  <p style="font-size: 1.15rem; color: var(--md-default-fg-color--light); line-height: 1.6; margin-bottom: 2rem;">
+    Our autonomous submersible couldn't locate the page you requested. It might have been moved, renamed, or is still undergoing deep-sea calibration.
+  </p>
+
+  <div style="display: flex; gap: 0.85rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem;">
+    <a href="{{ config.site_url }}" class="md-button md-button--primary" style="font-weight: 600;">
+      🏠 Return to Documentation Home
+    </a>
+    <a href="{{ config.site_url }}webtools/" class="md-button" style="font-weight: 600;">
+      🛠️ Web Tools Hub
+    </a>
+    <a href="{{ config.site_url }}marketing/" class="md-button" style="font-weight: 600;">
+      📣 Marketing & Handouts
+    </a>
+    <a href="{{ config.repo_url }}" class="md-button" target="_blank" rel="noopener" style="font-weight: 600;">
+      🐙 GitHub Repository ↗
+    </a>
+  </div>
+
+  <div style="text-align: left; background: var(--md-code-bg-color); border: 1px solid var(--md-default-fg-color--lightest); border-radius: 12px; padding: 1.5rem; margin-top: 1.5rem;">
+    <h2 style="font-size: 1.15rem; margin-top: 0; margin-bottom: 0.85rem; color: #38bdf8; display: flex; align-items: center; gap: 0.5rem;">
+      <span>🧭</span> Quick Links & Popular Resources
+    </h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
+      <div>
+        <strong style="color: var(--md-default-fg-color);">🛠️ Interactive Tools:</strong>
+        <ul style="margin: 0.4rem 0 0 1.2rem; padding: 0;">
+          <li><a href="{{ config.site_url }}webtools/mission_cad_studio.html">🧊 3D CAD Studio</a></li>
+          <li><a href="{{ config.site_url }}marketing/handouts/mission_design_sketchpad.html">✏️ 2D Mission Sketchpad</a></li>
+          <li><a href="{{ config.site_url }}webtools/bioglow_calculator.html">🧮 Score Calculator</a></li>
+          <li><a href="{{ config.site_url }}webtools/">⏱️ Match Timer</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong style="color: var(--md-default-fg-color);">📚 Team Resources:</strong>
+        <ul style="margin: 0.4rem 0 0 1.2rem; padding: 0;">
+          <li><a href="{{ config.site_url }}journal/">📓 Engineering Journal</a></li>
+          <li><a href="{{ config.site_url }}notes/missions/">🎯 Mission Strategy Notes</a></li>
+          <li><a href="{{ config.site_url }}responsibilities/roles_matrix/">👥 Team Roles Matrix</a></li>
+          <li><a href="{{ config.site_url }}AI_CONSTITUTION/">🛡️ AI Safety Constitution</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
