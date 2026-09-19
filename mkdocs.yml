@@ -1,11 +1,15 @@
 site_name: FLL Team #76265 • BIOGLOW
 site_description: Official Documentation, Engineering Notebook & Web Tools for FIRST LEGO League Team 76265 BIOGLOW (2026 Season)
 site_author: FLL Team #76265
+site_url: https://jaimeyu.github.io/FLL_76265_2026_BIOGLOW/
+repo_url: https://github.com/jaimeyu/FLL_76265_2026_BIOGLOW
+repo_name: jaimeyu/FLL_76265_2026_BIOGLOW
 docs_dir: doc
 site_dir: site
 
 theme:
   name: material
+  custom_dir: overrides
   language: en
   palette:
     # Dark mode default (matching BIOGLOW aesthetic)

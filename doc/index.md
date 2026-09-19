@@ -6,6 +6,16 @@
 
 Welcome to the official digital engineering notebook, strategy hub, and documentation center for **FIRST LEGO League (FLL) Team #76265 — BIOGLOW**!
 
+<div style="background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 10px; padding: 0.85rem 1.25rem; margin: 1.25rem 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+  <div>
+    <strong>🌐 Official Website URL (GitHub Pages):</strong><br>
+    <a href="https://jaimeyu.github.io/FLL_76265_2026_BIOGLOW/" style="font-family: monospace; font-size: 0.95rem; font-weight: 700; color: #38bdf8;">https://jaimeyu.github.io/FLL_76265_2026_BIOGLOW/</a>
+  </div>
+  <a href="https://github.com/jaimeyu/FLL_76265_2026_BIOGLOW" target="_blank" class="md-button" style="font-size: 0.82rem;">
+    :octicons-mark-github-16: GitHub Repository
+  </a>
+</div>
+
 This entire site is written by student coders and builders using simple **Markdown** and automatically compiled into this website whenever changes are pushed to GitHub.
 
 ---
@@ -13,6 +23,14 @@ This entire site is written by student coders and builders using simple **Markdo
 ## 🚀 Quick Navigation
 
 <div class="grid cards" markdown>
+
+-   :material-cube-outline:{ .lg .middle } __3D CAD Studio & 2D Sketchpad__
+
+    ---
+
+    Interactive 3D Robot & Attachment CAD modeling with LEGO parts, plus 2D printable design sketchpad.
+
+    [:octicons-arrow-right-24: Open 3D CAD Studio](webtools/mission_cad_studio.html)
 
 -   :material-book-open-page-variant:{ .lg .middle } __Engineering Journal__
 

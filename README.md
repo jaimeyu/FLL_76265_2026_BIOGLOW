@@ -8,6 +8,10 @@
 [![Team 76265](https://img.shields.io/badge/FLL%20Team-%2376265-8957e5?style=flat)](#)
 [![AI Safety Policy](https://img.shields.io/badge/AI%20Policy-Enforced-success?style=flat&logo=shield)](AI_CONSTITUTION.md)
 
+> 🌐 **Official Website & Interactive Web Tools (GitHub Pages):**  
+> ### 👉 **[https://jaimeyu.github.io/FLL_76265_2026_BIOGLOW/](https://jaimeyu.github.io/FLL_76265_2026_BIOGLOW/)** 👈
+> *Browse our full Engineering Notebook, Mission Strategy guides, 3D CAD Studio, Match Timer, and printable flyers live in your browser!*
+
 Welcome to the official repository for **FIRST LEGO League (FLL) Team 76265** for the **2026 BIOGLOW** season!
 
 This repository serves as our centralized hub for robot programming, mission strategy, innovation project documentation, meeting journals, job role tracking, and interactive web tools.

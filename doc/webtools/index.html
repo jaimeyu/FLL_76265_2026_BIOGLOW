@@ -235,13 +235,59 @@
 </head>
 <body>
 
+  <!-- Top Hub Navigation Header -->
+  <nav style="background: rgba(13, 17, 23, 0.95); border-bottom: 1px solid rgba(240, 246, 252, 0.1); padding: 0.6rem 1rem;">
+    <div style="max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+      <div style="display: flex; gap: 1rem; align-items: center; font-size: 0.9rem;">
+        <a href="../" style="color: var(--accent-cyan); text-decoration: none; font-weight: 600;">🏠 Documentation Home</a>
+        <a href="../marketing/" style="color: var(--text-muted); text-decoration: none;">📣 Marketing & Handouts</a>
+        <a href="overview/" style="color: var(--text-muted); text-decoration: none;">📖 Tools Guide</a>
+      </div>
+      <div style="display: flex; gap: 0.75rem; align-items: center; font-size: 0.85rem;">
+        <a href="https://jaimeyu.github.io/FLL_76265_2026_BIOGLOW/" target="_blank" rel="noopener" style="background: rgba(56, 189, 248, 0.15); border: 1px solid #38bdf8; color: #38bdf8; padding: 0.25rem 0.65rem; border-radius: 6px; text-decoration: none; font-weight: 600;">
+          🌐 Live Site ↗
+        </a>
+        <a href="https://github.com/jaimeyu/FLL_76265_2026_BIOGLOW" target="_blank" rel="noopener" style="color: var(--text-muted); text-decoration: none;">
+          🐙 GitHub Repo
+        </a>
+      </div>
+    </div>
+  </nav>
+
   <header>
     <div class="badge">FIRST LEGO League • Team #76265</div>
     <h1>BIOGLOW Web Tools Hub</h1>
-    <p class="subtitle">Match Practice Timer • Strategy Planner • Team Resources</p>
+    <p class="subtitle">Match Practice Timer • 3D CAD Studio • Strategy Planner • Team Resources</p>
   </header>
 
   <main class="container">
+
+    <!-- 3D Robot & Attachment CAD Studio -->
+    <div class="card full-width" style="border-color: rgba(56, 189, 248, 0.4); background: linear-gradient(135deg, rgba(13, 17, 23, 0.9), rgba(2, 132, 199, 0.12));">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem;">
+        <div>
+          <h2>🧊 3D Robot & Attachment CAD Studio</h2>
+          <p style="color: var(--text-muted); margin-bottom: 1rem;">Full in-browser 3D CAD modeling with mouse & keyboard controls, hollow Technic parts library (beams, gears, axles, pins, motors, sensors), LDraw (.ldr) / JSON import & export, and 1-click snapshot to engineering flyer.</p>
+        </div>
+        <span style="background: #0284c7; color: #ffffff; padding: 0.25rem 0.65rem; border-radius: 12px; font-size: 0.75rem; font-weight: 700;">NEW 3D STUDIO</span>
+      </div>
+      <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+        <a class="link-item" href="mission_cad_studio.html" style="display: inline-flex; width: auto; font-weight: 600; background: rgba(56,189,248,0.2); border-color: #38bdf8; color: #ffffff;">
+          <div>
+            <div class="link-title">🚀 Launch 3D CAD Studio</div>
+            <div class="link-desc">3D viewport with OrbitControls, TransformControls & Parts Drawer</div>
+          </div>
+          <span style="margin-left: 1.5rem;">➔</span>
+        </a>
+        <a class="link-item" href="../marketing/handouts/mission_design_sketchpad.html" style="display: inline-flex; width: auto; font-weight: 600; background: rgba(255,255,255,0.05); color: var(--text-main);">
+          <div>
+            <div class="link-title">✏️ 2D Design Sketchpad</div>
+            <div class="link-desc">Digital whiteboard & printable worksheet</div>
+          </div>
+          <span style="margin-left: 1rem;">➔</span>
+        </a>
+      </div>
+    </div>
     
     <!-- Match Practice Timer -->
     <div class="card full-width">
@@ -267,17 +313,40 @@
       </a>
     </div>
 
-    <!-- SPIKE App Setup Flyer -->
+    <!-- Printable Handouts & Worksheets -->
     <div class="card full-width">
-      <h2>🤖 LEGO SPIKE App Setup & Parent Guide</h2>
-      <p style="color: var(--text-muted); margin-bottom: 1rem;">Single-page printable guide for families: app capabilities, built-in STEAM tutorials, Bluetooth pairing, and official download QR codes.</p>
-      <a class="link-item" href="../marketing/spike_app/spike_app_flyer.html" style="display: inline-flex; width: auto; font-weight: 600; background: rgba(46,160,67,0.15); border-color: var(--accent-glow); color: var(--text-main);">
-        <div>
-          <div class="link-title">📲 View & Print SPIKE App Parent & Setup Flyer</div>
-          <div class="link-desc">App preview, student tutorial guide & QR codes for Chrome, iOS, Android & Desktop</div>
-        </div>
-        <span style="margin-left: 1.5rem;">➔</span>
-      </a>
+      <h2>📝 Printable Student Handouts & Worksheets</h2>
+      <p style="color: var(--text-muted); margin-bottom: 1rem;">Print-ready single-page US Letter worksheets and flyers for team meetings and parent communication.</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.75rem;">
+        <a class="link-item" href="../marketing/handouts/mission_design_sketchpad.html">
+          <div>
+            <div class="link-title">✏️ Robot Design & Mission Sketchpad</div>
+            <div class="link-desc">Freeform mechanism sketching with 1-click JPG / print</div>
+          </div>
+          <span>➔</span>
+        </a>
+        <a class="link-item" href="../marketing/handouts/goals_worksheet.html">
+          <div>
+            <div class="link-title">🎯 Season Goals Worksheet</div>
+            <div class="link-desc">Student goal setting, role pledges & team spirit</div>
+          </div>
+          <span>➔</span>
+        </a>
+        <a class="link-item" href="../marketing/parents/core_values_flyer.html">
+          <div>
+            <div class="link-title">🌟 Core Values & Plus'ing Flyer</div>
+            <div class="link-desc">Family guide to DIFI-IT & "Yes, and..." collaboration</div>
+          </div>
+          <span>➔</span>
+        </a>
+        <a class="link-item" href="../marketing/spike_app/spike_app_flyer.html">
+          <div>
+            <div class="link-title">🤖 SPIKE App Setup & Parent Guide</div>
+            <div class="link-desc">Official app download links & device tutorials</div>
+          </div>
+          <span>➔</span>
+        </a>
+      </div>
     </div>
 
     <!-- Quick Navigation -->
@@ -285,7 +354,7 @@
       <h2>📁 Documentation</h2>
       <ul class="link-list">
         <li>
-          <a class="link-item" href="../../AI_CONSTITUTION.md" target="_blank">
+          <a class="link-item" href="../AI_CONSTITUTION/">
             <div>
               <div class="link-title">🛡️ AI Constitution</div>
               <div class="link-desc">PII Protection & Child Safety Policy</div>
@@ -294,7 +363,7 @@
           </a>
         </li>
         <li>
-          <a class="link-item" href="../notes/missions/" target="_blank">
+          <a class="link-item" href="../notes/missions/">
             <div>
               <div class="link-title">🎯 Mission Notes</div>
               <div class="link-desc">Field strategies & scoring runs</div>
@@ -303,7 +372,7 @@
           </a>
         </li>
         <li>
-          <a class="link-item" href="../journal/" target="_blank">
+          <a class="link-item" href="../journal/">
             <div>
               <div class="link-title">📓 Engineering Journal</div>
               <div class="link-desc">Meetup notes & testing records</div>
@@ -319,7 +388,7 @@
       <h2>👥 Team Resources</h2>
       <ul class="link-list">
         <li>
-          <a class="link-item" href="../responsibilities/roles_matrix.md" target="_blank">
+          <a class="link-item" href="../responsibilities/roles_matrix/">
             <div>
               <div class="link-title">📋 Responsibilities Matrix</div>
               <div class="link-desc">Job role assignments & task tracking</div>
@@ -328,7 +397,7 @@
           </a>
         </li>
         <li>
-          <a class="link-item" href="../blog/" target="_blank">
+          <a class="link-item" href="../blog/">
             <div>
               <div class="link-title">📰 Team Blog</div>
               <div class="link-desc">Season milestones & team updates</div>
@@ -337,10 +406,10 @@
           </a>
         </li>
         <li>
-          <a class="link-item" href="../../code/common/" target="_blank">
+          <a class="link-item" href="https://github.com/jaimeyu/FLL_76265_2026_BIOGLOW/tree/main/code/common" target="_blank" rel="noopener">
             <div>
               <div class="link-title">🧩 Common Code</div>
-              <div class="link-desc">Shared LEGO SPIKE Scratch routines</div>
+              <div class="link-desc">Shared LEGO SPIKE Scratch routines (GitHub)</div>
             </div>
             ➔
           </a>
@@ -351,7 +420,7 @@
   </main>
 
   <footer>
-    <p>FLL Team 76265 • BIOGLOW 2026 Season | Built with <em>Gracious Professionalism</em>®</p>
+    <p>FLL Team #76265 • BIOGLOW 2026 Season | <a href="https://jaimeyu.github.io/FLL_76265_2026_BIOGLOW/" style="color: var(--accent-cyan);">Official Documentation Portal</a> | Built with <em>Gracious Professionalism</em>®</p>
   </footer>
 
   <script>
