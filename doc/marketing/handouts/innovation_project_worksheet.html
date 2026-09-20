@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Innovation Project Worksheet — Nature-Inspired Habitat Solutions | FLL Team #76265 BIOGLOW</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <!-- html2canvas for 1-click full-worksheet JPG export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --primary-light: #e0f2fe;
+      --accent-teal: #0d9488;
+      --accent-purple: #7c3aed;
+      --accent-amber: #d97706;
+      --accent-emerald: #059669;
+      --dark-bg: #0f172a;
+      --card-bg: #1e293b;
+      --border-subtle: #cbd5e1;
+      --border-strong: #0284c7;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --grid-dot: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: radial-gradient(circle at top center, #1e293b 0%, #0f172a 100%);
+      color: #f8fafc;
+      padding: 1.25rem 0.75rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Screen Toolbar Controls */
+    .screen-toolbar {
+      width: 100%;
+      max-width: 960px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      background: rgba(30, 41, 59, 0.95);
+      backdrop-filter: blur(12px);
+      padding: 0.75rem 1.2rem;
+      border-radius: 12px;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .toolbar-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      color: #38bdf8;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.84rem;
+      transition: color 0.15s ease;
+    }
+
+    .nav-link:hover {
+      color: #7dd3fc;
+      text-decoration: underline;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tool-btn {
+      background: #334155;
+      color: #f1f5f9;
+      border: 1px solid #475569;
+      padding: 0.4rem 0.75rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.82rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all 0.15s ease;
+      font-family: inherit;
+    }
+
+    .tool-btn:hover {
+      background: #475569;
+      border-color: #64748b;
+    }
+
+    .tool-btn.active {
+      background: #0369a1;
+      border-color: #38bdf8;
+      color: #ffffff;
+    }
+
+    .btn-spark {
+      background: linear-gradient(135deg, #7c3aed, #4f46e5);
+      border-color: #a78bfa;
+      color: #ffffff;
+    }
+    .btn-spark:hover {
+      background: linear-gradient(135deg, #6d28d9, #4338ca);
+    }
+
+    .btn-export {
+      background: #059669;
+      border-color: #34d399;
+      color: #ffffff;
+    }
+    .btn-export:hover {
+      background: #047857;
+    }
+
+    .btn-print {
+      background: #0284c7;
+      border-color: #38bdf8;
+      color: #ffffff;
+    }
+    .btn-print:hover {
+      background: #0369a1;
+    }
+
+    /* Worksheet Printable Page Container */
+    .worksheet-paper {
+      width: 100%;
+      max-width: 960px;
+      background: #ffffff;
+      color: var(--text-main);
+      border-radius: 8px;
+      padding: 0.28in 0.32in;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 0.42rem;
+    }
+
+    /* Header Bar */
+    .sheet-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 2.5px solid var(--primary);
+      padding-bottom: 0.4rem;
+      gap: 0.5rem;
+    }
+
+    .header-left h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #0369a1;
+      letter-spacing: -0.3px;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      line-height: 1.15;
+    }
+
+    .header-left p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-top: 0.15rem;
+    }
+
+    .header-badges {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-align: right;
+    }
+
+    .badge-fll {
+      background: #0284c7;
+      color: #ffffff;
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+
+    .badge-challenge {
+      background: #ecfdf5;
+      color: #047857;
+      border: 1px solid #a7f3d0;
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    /* Metadata Fill-in Row */
+    .meta-bar {
+      display: grid;
+      grid-template-columns: 1.5fr 1.2fr 1fr 1fr;
+      gap: 0.5rem;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 0.35rem 0.55rem;
+      font-size: 0.76rem;
+    }
+
+    .meta-field {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .meta-label {
+      font-weight: 700;
+      color: #0369a1;
+      white-space: nowrap;
+    }
+
+    .meta-input {
+      width: 100%;
+      border: none;
+      border-bottom: 1.5px dashed #94a3b8;
+      background: transparent;
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-main);
+      padding: 0.1rem 0.25rem;
+      outline: none;
+    }
+    .meta-input:focus {
+      border-bottom-color: var(--primary);
+      background: #e0f2fe;
+    }
+
+    /* 2-Column Scaffold: Step 1 Problem & Step 2 Biomimicry */
+    .steps-row-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.55rem;
+    }
+
+    .card-panel {
+      background: #ffffff;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 7px;
+      padding: 0.45rem 0.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      position: relative;
+    }
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1.5px solid #e2e8f0;
+      padding-bottom: 0.25rem;
+    }
+
+    .step-tag {
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .tag-blue { background: #e0f2fe; color: #0284c7; }
+    .tag-green { background: #dcfce7; color: #15803d; }
+    .tag-purple { background: #f3e8ff; color: #7e22ce; }
+    .tag-amber { background: #fef3c7; color: #b45309; }
+
+    .panel-title {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    /* Ecosystem Selector Pills */
+    .ecosystem-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin: 0.15rem 0;
+    }
+
+    .eco-pill {
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 0.15rem 0.45rem;
+      border-radius: 12px;
+      border: 1px solid #cbd5e1;
+      background: #f8fafc;
+      color: #334155;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.15s ease;
+    }
+
+    .eco-pill:hover, .eco-pill.selected {
+      background: #0284c7;
+      border-color: #0284c7;
+      color: #ffffff;
+    }
+
+    .input-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .input-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #475569;
+    }
+
+    .text-box {
+      width: 100%;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      padding: 0.3rem 0.45rem;
+      font-family: inherit;
+      font-size: 0.74rem;
+      color: var(--text-main);
+      resize: none;
+      outline: none;
+      background: #f8fafc;
+      line-height: 1.25;
+    }
+    .text-box:focus {
+      border-color: var(--primary);
+      background: #ffffff;
+      box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.15);
+    }
+
+    /* Biomimicry Superpower Highlight Box */
+    .superpower-box {
+      background: #f0fdf4;
+      border: 1px dashed #86efac;
+      border-radius: 6px;
+      padding: 0.35rem 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    /* Step 3: Main Invention Blueprint Canvas & Specs */
+    .step-3-container {
+      border: 1.5px solid var(--primary);
+      border-radius: 7px;
+      padding: 0.45rem 0.6rem;
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .step-3-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .invention-name-input {
+      flex: 1;
+      min-width: 240px;
+      border: 1.5px solid #0284c7;
+      border-radius: 6px;
+      padding: 0.25rem 0.55rem;
+      font-size: 0.85rem;
+      font-weight: 800;
+      font-family: inherit;
+      color: #0369a1;
+      background: #f0f9ff;
+      outline: none;
+    }
+
+    .blueprint-layout {
+      display: grid;
+      grid-template-columns: 2.1fr 1fr;
+      gap: 0.55rem;
+      align-items: stretch;
+    }
+
+    /* Canvas Drawing Area */
+    .canvas-wrapper {
+      position: relative;
+      border: 1.5px solid #94a3b8;
+      border-radius: 6px;
+      background: #ffffff;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .canvas-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.25rem 0.45rem;
+      background: #f1f5f9;
+      border-bottom: 1px solid #cbd5e1;
+      gap: 0.35rem;
+      flex-wrap: wrap;
+    }
+
+    .draw-tool-group {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .draw-btn {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      padding: 0.2rem 0.4rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #334155;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+    }
+    .draw-btn:hover { background: #e2e8f0; }
+    .draw-btn.active {
+      background: #0284c7;
+      color: #ffffff;
+      border-color: #0284c7;
+    }
+
+    .color-swatch {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 1.5px solid #cbd5e1;
+      transition: transform 0.15s;
+    }
+    .color-swatch.active {
+      transform: scale(1.25);
+      border-color: #0f172a;
+      box-shadow: 0 0 0 1px #ffffff;
+    }
+
+    .drawing-canvas-area {
+      position: relative;
+      width: 100%;
+      height: 235px;
+      cursor: crosshair;
+      touch-action: none;
+    }
+
+    #drawingCanvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* Grid Overlay on Canvas */
+    .canvas-dot-grid {
+      background-image: radial-gradient(#94a3b8 1px, transparent 1px);
+      background-size: 16px 16px;
+    }
+    .canvas-line-grid {
+      background-image: linear-gradient(to right, #e2e8f0 1px, transparent 1px),
+                        linear-gradient(to bottom, #e2e8f0 1px, transparent 1px);
+      background-size: 16px 16px;
+    }
+    .canvas-blank {
+      background-image: none;
+    }
+
+    .canvas-watermark {
+      position: absolute;
+      bottom: 6px;
+      right: 8px;
+      font-size: 0.64rem;
+      font-weight: 700;
+      color: #94a3b8;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* Tech Specs & Stem Checklist Side Panel */
+    .specs-panel {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 0.45rem 0.55rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      font-size: 0.72rem;
+    }
+
+    .checklist-title {
+      font-weight: 800;
+      color: #0369a1;
+      font-size: 0.74rem;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 0.15rem;
+    }
+
+    .checklist-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.2rem;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-weight: 600;
+      color: #334155;
+      font-size: 0.71rem;
+      cursor: pointer;
+    }
+    .check-item input {
+      accent-color: #0284c7;
+      cursor: pointer;
+    }
+
+    .mini-box {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    /* Step 4: Real-World Impact & Plus'ing Feedback */
+    .steps-row-bottom {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 0.55rem;
+    }
+
+    .plus-box {
+      background: #fffbeb;
+      border: 1.5px dashed #f59e0b;
+      border-radius: 7px;
+      padding: 0.4rem 0.55rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .plus-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #b45309;
+      font-weight: 800;
+      font-size: 0.76rem;
+    }
+
+    /* Printed & Onscreen Footer */
+    .sheet-footer {
+      border-top: 1.5px solid #e2e8f0;
+      padding-top: 0.35rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.7rem;
+      color: #64748b;
+      font-weight: 600;
+      margin-top: 0.15rem;
+    }
+
+    .sheet-footer a {
+      color: #0284c7;
+      text-decoration: none;
+    }
+
+    /* Spark Modal (Inspiration Catalog) */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(6px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .modal-box {
+      background: #1e293b;
+      color: #f8fafc;
+      width: 100%;
+      max-width: 780px;
+      max-height: 88vh;
+      border-radius: 14px;
+      border: 1px solid #38bdf8;
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .modal-header {
+      padding: 1rem 1.25rem;
+      background: #0f172a;
+      border-bottom: 1px solid #334155;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-header h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.15rem;
+      color: #38bdf8;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .modal-close-btn {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      font-size: 1.4rem;
+      cursor: pointer;
+      padding: 0 0.4rem;
+    }
+    .modal-close-btn:hover { color: #ffffff; }
+
+    .modal-body {
+      padding: 1.2rem;
+      overflow-y: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0.85rem;
+    }
+
+    .spark-card {
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 9px;
+      padding: 0.85rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .spark-card:hover {
+      border-color: #38bdf8;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(56, 189, 248, 0.2);
+    }
+
+    .spark-icon { font-size: 1.6rem; }
+    .spark-title { font-weight: 800; font-size: 0.9rem; color: #f1f5f9; }
+    .spark-organism { font-size: 0.76rem; color: #34d399; font-weight: 700; }
+    .spark-desc { font-size: 0.74rem; color: #94a3b8; line-height: 1.35; flex: 1; }
+    .spark-use-btn {
+      margin-top: 0.4rem;
+      background: #0284c7;
+      color: #ffffff;
+      border: none;
+      padding: 0.3rem 0.5rem;
+      border-radius: 5px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      cursor: pointer;
+      align-self: flex-start;
+    }
+
+    /* Print Styles (Strict 1-Page US Letter) */
+    @media print {
+      body {
+        background: #ffffff !important;
+        padding: 0 !important;
+        color: #000000 !important;
+      }
+
+      .screen-toolbar, .modal-overlay, .canvas-toolbar, .spark-btn {
+        display: none !important;
+      }
+
+      .worksheet-paper {
+        max-width: 100% !important;
+        width: 100% !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
+        gap: 0.32rem !important;
+      }
+
+      .drawing-canvas-area {
+        height: 250px !important;
+      }
+
+      .meta-input {
+        border-bottom: 1px solid #64748b !important;
+      }
+
+      .text-box {
+        border: 1px solid #94a3b8 !important;
+        background: transparent !important;
+      }
+
+      @page {
+        size: letter portrait;
+        margin: 0.22in 0.28in;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Screen Toolbar -->
+  <aside class="screen-toolbar" aria-label="Worksheet Toolbar">
+    <div class="toolbar-nav">
+      <a href="goals_worksheet.html" class="nav-link">🎯 Goals</a>
+      <a href="mission_design_sketchpad.html" class="nav-link">✏️ Robot Sketchpad</a>
+      <a href="../../webtools/mission_cad_studio.html" class="nav-link">🧊 3D CAD</a>
+      <a href="../../webtools/index.html" class="nav-link">🛠️ Tools Hub</a>
+      <a href="https://jaimeyu.github.io/FLL_76265_2026_BIOGLOW/" class="nav-link" target="_blank" rel="noopener">🌐 Live Site ↗</a>
+    </div>
+
+    <div class="toolbar-actions">
+      <button type="button" class="tool-btn btn-spark" onclick="openSparkModal()" title="Get unstuck! Browse 6 real-world nature superpowers">
+        💡 Nature Sparks
+      </button>
+      <button type="button" class="tool-btn" id="btnGridToggle" onclick="cycleGrid()" title="Change drawing canvas grid style">
+        📐 Grid: Dots
+      </button>
+      <button type="button" class="tool-btn btn-export" onclick="exportAsJPG()" title="Export entire completed sheet as high-res JPG">
+        🖼️ Export JPG
+      </button>
+      <button type="button" class="tool-btn btn-print" onclick="window.print()" title="Print directly to US Letter (1 Page)">
+        🖨️ Print (Letter)
+      </button>
+    </div>
+  </aside>
+
+  <!-- Printable Worksheet Paper Sheet -->
+  <main class="worksheet-paper" id="worksheetSheet">
+
+    <!-- Header Section -->
+    <header class="sheet-header">
+      <div class="header-left">
+        <h1>🌿 Innovation Project: Habitat & Biomimicry Blueprint</h1>
+        <p>Explore Natural Habitats &bull; Learn from Nature's Superpowers &bull; Engineer a STEM Solution</p>
+      </div>
+      <div class="header-badges">
+        <div class="badge-challenge">🌊 SUBMERGED &bull; HABITATS</div>
+        <div class="badge-fll">FLL #76265 BIOGLOW</div>
+      </div>
+    </header>
+
+    <!-- Student & Project Meta Bar -->
+    <section class="meta-bar" aria-label="Student and Project Information">
+      <div class="meta-field">
+        <span class="meta-label">Student Innovator:</span>
+        <input type="text" class="meta-input" id="innovatorName" placeholder="Your name">
+      </div>
+      <div class="meta-field">
+        <span class="meta-label">Project Codename:</span>
+        <input type="text" class="meta-input" id="projectCodename" placeholder="e.g. BioShield-01">
+      </div>
+      <div class="meta-field">
+        <span class="meta-label">Iteration:</span>
+        <input type="text" class="meta-input" id="projectIteration" placeholder="v1.0" value="v1.0" style="text-align: center;">
+      </div>
+      <div class="meta-field">
+        <span class="meta-label">Date:</span>
+        <input type="text" class="meta-input" id="projectDate" placeholder="YYYY-MM-DD">
+      </div>
+    </section>
+
+    <!-- Row Top: Step 1 (Problem) and Step 2 (Biomimicry) -->
+    <section class="steps-row-top">
+
+      <!-- Step 1: Habitat & The Trouble -->
+      <div class="card-panel">
+        <div class="panel-header">
+          <span class="step-tag tag-blue">Step 1: Identify</span>
+          <span class="panel-title">🌊 The Habitat & The Trouble</span>
+        </div>
+
+        <div>
+          <span class="input-label">Select Target Natural Habitat / Ecosystem:</span>
+          <div class="ecosystem-pills">
+            <span class="eco-pill selected" onclick="toggleEcoPill(this)">🪸 Coral Reef</span>
+            <span class="eco-pill" onclick="toggleEcoPill(this)">🌊 Deep Abyss</span>
+            <span class="eco-pill" onclick="toggleEcoPill(this)">🌿 Kelp Forest</span>
+            <span class="eco-pill" onclick="toggleEcoPill(this)">🦀 Mangrove Wetland</span>
+            <span class="eco-pill" onclick="toggleEcoPill(this)">🧊 Polar Ice</span>
+            <span class="eco-pill" onclick="toggleEcoPill(this)">🏞️ Estuary</span>
+          </div>
+        </div>
+
+        <div class="input-row">
+          <span class="input-label">Who or what living organism is in trouble?</span>
+          <input type="text" class="meta-input" id="targetOrganism" placeholder="e.g. Deep-sea corals, manta rays, benthic microorganisms...">
+        </div>
+
+        <div class="input-row" style="flex: 1;">
+          <span class="input-label">What is the specific problem & why does it happen?</span>
+          <textarea class="text-box" rows="2" id="problemStatement" placeholder="e.g. Harsh floodlights from research submarines disturb deep bioluminescent animals, or microplastics clog filter-feeders..."></textarea>
+        </div>
+      </div>
+
+      <!-- Step 2: Nature's Superpower (Biomimicry) -->
+      <div class="card-panel">
+        <div class="panel-header">
+          <span class="step-tag tag-green">Step 2: Nature's Spark</span>
+          <span class="panel-title">🌿 Inspired by Nature (Biomimicry)</span>
+        </div>
+
+        <div class="superpower-box">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span class="input-label" style="color: #15803d; font-weight: 800;">Creature / Plant Superpower Mentor:</span>
+            <span style="font-size: 0.65rem; color: #047857; font-weight: 700;">3.8 Billion Years of R&D!</span>
+          </div>
+          <input type="text" class="meta-input" id="natureMentor" placeholder="e.g. Shark skin denticles, Anglerfish red light, Manta ray gill arches...">
+        </div>
+
+        <div class="input-row">
+          <span class="input-label">How does nature solve a similar challenge?</span>
+          <textarea class="text-box" rows="2" id="natureSuperpowerDesc" placeholder="e.g. Manta rays use angled filter lobes to bounce food into their throat while letting water pass through without ever clogging..."></textarea>
+        </div>
+
+        <div class="input-row">
+          <span class="input-label">What engineering principle do we borrow?</span>
+          <input type="text" class="meta-input" id="borrowedPrinciple" placeholder="e.g. Non-clogging fluid vortex / Non-disruptive red bioluminescent lighting">
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Row Middle: Step 3 (The Invention Blueprint & Tech Specs) -->
+    <section class="step-3-container">
+      <div class="step-3-top">
+        <div style="display: flex; align-items: center; gap: 0.4rem;">
+          <span class="step-tag tag-purple">Step 3: Create</span>
+          <span style="font-size: 0.88rem; font-weight: 800; color: #1e293b;">🛠️ The Invention Blueprint</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.35rem; flex: 1; max-width: 480px;">
+          <span style="font-size: 0.72rem; font-weight: 700; color: #0369a1; white-space: nowrap;">Invention Name:</span>
+          <input type="text" class="invention-name-input" id="inventionName" placeholder="e.g. MantaFilter Submersible or BioGlow Quiet-Sonar">
+        </div>
+      </div>
+
+      <div class="blueprint-layout">
+
+        <!-- Drawing Canvas Area -->
+        <div class="canvas-wrapper">
+          <div class="canvas-toolbar">
+            <div class="draw-tool-group">
+              <button type="button" class="draw-btn active" id="toolPen" onclick="setTool('pen')" title="Draw line / sketch">✏️ Pen</button>
+              <button type="button" class="draw-btn" id="toolHighlighter" onclick="setTool('highlighter')" title="Highlighter marker">🖍️ Marker</button>
+              <button type="button" class="draw-btn" id="toolLine" onclick="setTool('line')" title="Straight line">📏 Line</button>
+              <button type="button" class="draw-btn" id="toolArrow" onclick="setTool('arrow')" title="Arrow pointer">➡️ Arrow</button>
+              <button type="button" class="draw-btn" id="toolEraser" onclick="setTool('eraser')" title="Eraser">🧹 Erase</button>
+            </div>
+
+            <div class="draw-tool-group">
+              <span class="color-swatch active" style="background: #0284c7;" onclick="setColor('#0284c7', this)" title="Cyan Blue"></span>
+              <span class="color-swatch" style="background: #0f172a;" onclick="setColor('#0f172a', this)" title="Black / Dark"></span>
+              <span class="color-swatch" style="background: #059669;" onclick="setColor('#059669', this)" title="Emerald Green"></span>
+              <span class="color-swatch" style="background: #dc2626;" onclick="setColor('#dc2626', this)" title="Coral Red"></span>
+              <span class="color-swatch" style="background: #d97706;" onclick="setColor('#d97706', this)" title="Amber Yellow"></span>
+              <span class="color-swatch" style="background: #7c3aed;" onclick="setColor('#7c3aed', this)" title="Deep Purple"></span>
+            </div>
+
+            <div class="draw-tool-group">
+              <button type="button" class="draw-btn" onclick="undoCanvas()" title="Undo last stroke">↩️ Undo</button>
+              <button type="button" class="draw-btn" onclick="clearCanvas()" title="Clear sketch">🗑️ Clear</button>
+            </div>
+          </div>
+
+          <div class="drawing-canvas-area canvas-dot-grid" id="canvasArea">
+            <canvas id="drawingCanvas"></canvas>
+            <span class="canvas-watermark">✏️ Sketch invention & label key parts: 1. Nature-Inspired Feature &bull; 2. Sensors &bull; 3. Clean Power</span>
+          </div>
+        </div>
+
+        <!-- Tech Specs & Checklist Panel -->
+        <div class="specs-panel">
+          <div class="checklist-title">⚙️ STEM Technology Elements</div>
+          <div class="checklist-grid">
+            <label class="check-item"><input type="checkbox" checked> 📷 Bio-Optical / Camera Vision</label>
+            <label class="check-item"><input type="checkbox" checked> 📡 Acoustic / Passive Sonar</label>
+            <label class="check-item"><input type="checkbox"> 🧪 Micro-Sensors (pH, Temp, Salinity)</label>
+            <label class="check-item"><input type="checkbox"> 🌊 Wave / Solar / Kinetic Power</label>
+            <label class="check-item"><input type="checkbox"> 🤖 Soft Robotics / Safe Grippers</label>
+            <label class="check-item"><input type="checkbox"> 🧠 Machine Learning / AI Classification</label>
+          </div>
+
+          <div class="mini-box" style="margin-top: 0.15rem;">
+            <span class="input-label" style="color: #0369a1;">How it Works (Elevator Pitch):</span>
+            <textarea class="text-box" rows="4" id="howItWorks" placeholder="Our invention protects the habitat by using [nature superpower] to [action], allowing scientists to [benefit] without disturbing wildlife."></textarea>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Row Bottom: Step 4 (Impact, Sharing & Plus'ing) -->
+    <section class="steps-row-bottom">
+
+      <!-- Real-World Sharing Plan -->
+      <div class="card-panel">
+        <div class="panel-header">
+          <span class="step-tag tag-blue">Step 4: Share</span>
+          <span class="panel-title">👥 Expert & Community Sharing</span>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem;">
+          <div class="input-row">
+            <span class="input-label">Expert or Group to Interview:</span>
+            <input type="text" class="meta-input" id="targetExpert" placeholder="e.g. Marine biologist, park ranger...">
+          </div>
+          <div class="input-row">
+            <span class="input-label">Key Question for Them:</span>
+            <input type="text" class="meta-input" id="expertQuestion" placeholder="e.g. What wavelength of light disturbs deep fauna least?">
+          </div>
+        </div>
+      </div>
+
+      <!-- Peer Plus'ing Collaboration Box -->
+      <div class="plus-box">
+        <div class="plus-header">
+          <span>🤝 Peer "Plus'ing" Review</span>
+          <span>"YES, AND..." Superpower</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.35rem; font-size: 0.72rem;">
+          <span style="font-weight: 700; color: #92400e;">Teammate's Name:</span>
+          <input type="text" class="meta-input" id="plusTeammate" placeholder="Teammate name" style="border-bottom-color: #f59e0b;">
+        </div>
+        <div class="input-row">
+          <span class="input-label" style="color: #b45309;">"YES! I love your idea, AND what if we also added... ?"</span>
+          <textarea class="text-box" rows="2" id="plusFeedback" placeholder="Write constructive Plus'ing feedback to level up the invention..." style="border-color: #fde68a; background: #ffffff;"></textarea>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Sheet Footer -->
+    <footer class="sheet-footer">
+      <span>🤝 FIRST Core Values: Discovery &bull; Innovation &bull; Impact &bull; Inclusion &bull; Teamwork &bull; Fun</span>
+      <span>FLL Team #76265 BIOGLOW &bull; <a href="https://jaimeyu.github.io/FLL_76265_2026_BIOGLOW/" target="_blank">jaimeyu.github.io/FLL_76265_2026_BIOGLOW</a></span>
+    </footer>
+
+  </main>
+
+  <!-- Spark Inspiration Modal -->
+  <div class="modal-overlay" id="sparkModal" onclick="handleModalOverlayClick(event)">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>💡 Nature Sparks: Biomimicry Examples for Habitats</h3>
+        <button type="button" class="modal-close-btn" onclick="closeSparkModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+
+        <!-- Spark 1 -->
+        <div class="spark-card" onclick="loadSpark(0)">
+          <div class="spark-icon">🪼</div>
+          <div class="spark-title">Soft Bio-Red Deep Illumination</div>
+          <div class="spark-organism">Inspired by: Deep Sea Jellies & Anglerfish</div>
+          <div class="spark-desc">
+            Most deep-sea organisms lack red photoreceptors. Using far-red LEDs lets submersibles observe deep habitats completely invisibly without blinding animals.
+          </div>
+          <button type="button" class="spark-use-btn">Use this Spark →</button>
+        </div>
+
+        <!-- Spark 2 -->
+        <div class="spark-card" onclick="loadSpark(1)">
+          <div class="spark-icon">🦈</div>
+          <div class="spark-title">Shark-Denticle Anti-Fouling Hulls</div>
+          <div class="spark-organism">Inspired by: Shark Skin Riblets</div>
+          <div class="spark-desc">
+            Microscopic V-grooves on shark skin prevent algae and barnacles from attaching without toxic chemical paint, keeping coral reefs free from toxins.
+          </div>
+          <button type="button" class="spark-use-btn">Use this Spark →</button>
+        </div>
+
+        <!-- Spark 3 -->
+        <div class="spark-card" onclick="loadSpark(2)">
+          <div class="spark-icon">🐟</div>
+          <div class="spark-title">Manta-Ray Non-Clogging Filter</div>
+          <div class="spark-organism">Inspired by: Manta Ray Filter Lobes</div>
+          <div class="spark-desc">
+            Manta gill plates direct fluid so water passes through while particles bounce off, collecting microplastics without ever clogging the sieve mesh.
+          </div>
+          <button type="button" class="spark-use-btn">Use this Spark →</button>
+        </div>
+
+        <!-- Spark 4 -->
+        <div class="spark-card" onclick="loadSpark(3)">
+          <div class="spark-icon">🦐</div>
+          <div class="spark-title">Acoustic Coral Re-Wilding Buoy</div>
+          <div class="spark-organism">Inspired by: Snapping Shrimp & Reef Audio</div>
+          <div class="spark-desc">
+            Baby coral larvae and fish swim toward the healthy crackling sound of snapping shrimp. Bio-acoustic buoys broadcast healthy sounds to restore damaged reefs.
+          </div>
+          <button type="button" class="spark-use-btn">Use this Spark →</button>
+        </div>
+
+        <!-- Spark 5 -->
+        <div class="spark-card" onclick="loadSpark(4)">
+          <div class="spark-icon">🌿</div>
+          <div class="spark-title">Mangrove Root Kinetic Wave Buffer</div>
+          <div class="spark-organism">Inspired by: Mangrove Prop Roots</div>
+          <div class="spark-desc">
+            Flexible, interlocking root geometries absorb wave kinetic energy and trap coastal sediment, protecting shorelines and coastal fish nurseries from erosion.
+          </div>
+          <button type="button" class="spark-use-btn">Use this Spark →</button>
+        </div>
+
+        <!-- Spark 6 -->
+        <div class="spark-card" onclick="loadSpark(5)">
+          <div class="spark-icon">🐋</div>
+          <div class="spark-title">Baleen Fiber Micro-Trap</div>
+          <div class="spark-organism">Inspired by: Humpback Whale Baleen Bristles</div>
+          <div class="spark-desc">
+            Overlapping keratin fringes catch micro-fibers from washing machine runoff and stormwater before they reach coastal river mouths.
+          </div>
+          <button type="button" class="spark-use-btn">Use this Spark →</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Logic: Drawing Canvas, Sparks, Grid, Export -->
+  <script>
+    /* 1. Date Pre-fill */
+    document.addEventListener('DOMContentLoaded', () => {
+      const today = new Date().toISOString().split('T')[0];
+      const dateInput = document.getElementById('projectDate');
+      if (dateInput && !dateInput.value) dateInput.value = today;
+      initCanvas();
+    });
+
+    /* 2. Ecosystem Pill Toggle */
+    function toggleEcoPill(pill) {
+      document.querySelectorAll('.eco-pill').forEach(p => p.classList.remove('selected'));
+      pill.classList.add('selected');
+    }
+
+    /* 3. Drawing Canvas Engine */
+    const canvas = document.getElementById('drawingCanvas');
+    const ctx = canvas.getContext('2d');
+    const canvasArea = document.getElementById('canvasArea');
+
+    let isDrawing = false;
+    let currentTool = 'pen';
+    let currentColor = '#0284c7';
+    let strokeHistory = [];
+    let startX = 0;
+    let startY = 0;
+    let snapshot = null;
+
+    function initCanvas() {
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+
+      // Pointer events (supports mouse, touch, stylus/Apple Pencil)
+      canvas.addEventListener('pointerdown', startDraw);
+      canvas.addEventListener('pointermove', draw);
+      canvas.addEventListener('pointerup', endDraw);
+      canvas.addEventListener('pointercancel', endDraw);
+    }
+
+    function resizeCanvas() {
+      const rect = canvasArea.getBoundingClientRect();
+      if (rect.width === 0 || rect.height === 0) return;
+
+      // Save content before resize
+      const tempImg = new Image();
+      tempImg.src = canvas.toDataURL();
+
+      canvas.width = rect.width;
+      canvas.height = rect.height;
+
+      tempImg.onload = () => {
+        ctx.drawImage(tempImg, 0, 0);
+      };
+    }
+
+    function setTool(tool) {
+      currentTool = tool;
+      document.querySelectorAll('.draw-btn').forEach(b => b.classList.remove('active'));
+      const activeBtn = document.getElementById('tool' + tool.charAt(0).toUpperCase() + tool.slice(1));
+      if (activeBtn) activeBtn.classList.add('active');
+    }
+
+    function setColor(color, swatch) {
+      currentColor = color;
+      document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+      swatch.classList.add('active');
+      if (currentTool === 'eraser') setTool('pen');
+    }
+
+    function getCoords(e) {
+      const rect = canvas.getBoundingClientRect();
+      return {
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top
+      };
+    }
+
+    function saveState() {
+      strokeHistory.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
+      if (strokeHistory.length > 25) strokeHistory.shift();
+    }
+
+    function undoCanvas() {
+      if (strokeHistory.length > 0) {
+        const prev = strokeHistory.pop();
+        ctx.putImageData(prev, 0, 0);
+      } else {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+    }
+
+    function clearCanvas() {
+      if (confirm('Clear the entire blueprint sketch?')) {
+        saveState();
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+    }
+
+    function startDraw(e) {
+      canvas.setPointerCapture(e.pointerId);
+      isDrawing = true;
+      saveState();
+      const pt = getCoords(e);
+      startX = pt.x;
+      startY = pt.y;
+
+      snapshot = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+      if (currentTool === 'pen' || currentTool === 'highlighter' || currentTool === 'eraser') {
+        ctx.beginPath();
+        ctx.moveTo(startX, startY);
+      }
+    }
+
+    function draw(e) {
+      if (!isDrawing) return;
+      const pt = getCoords(e);
+
+      if (currentTool === 'pen') {
+        ctx.strokeStyle = currentColor;
+        ctx.lineWidth = 2.2;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        ctx.globalAlpha = 1.0;
+        ctx.lineTo(pt.x, pt.y);
+        ctx.stroke();
+      } else if (currentTool === 'highlighter') {
+        ctx.strokeStyle = currentColor;
+        ctx.lineWidth = 14;
+        ctx.lineCap = 'square';
+        ctx.lineJoin = 'round';
+        ctx.globalAlpha = 0.35;
+        ctx.lineTo(pt.x, pt.y);
+        ctx.stroke();
+      } else if (currentTool === 'eraser') {
+        ctx.clearRect(pt.x - 12, pt.y - 12, 24, 24);
+      } else if (currentTool === 'line' || currentTool === 'arrow') {
+        ctx.putImageData(snapshot, 0, 0);
+        ctx.strokeStyle = currentColor;
+        ctx.fillStyle = currentColor;
+        ctx.lineWidth = 2.5;
+        ctx.lineCap = 'round';
+        ctx.globalAlpha = 1.0;
+
+        ctx.beginPath();
+        ctx.moveTo(startX, startY);
+        ctx.lineTo(pt.x, pt.y);
+        ctx.stroke();
+
+        if (currentTool === 'arrow') {
+          const angle = Math.atan2(pt.y - startY, pt.x - startX);
+          const headlen = 10;
+          ctx.beginPath();
+          ctx.moveTo(pt.x, pt.y);
+          ctx.lineTo(pt.x - headlen * Math.cos(angle - Math.PI / 6), pt.y - headlen * Math.sin(angle - Math.PI / 6));
+          ctx.lineTo(pt.x - headlen * Math.cos(angle + Math.PI / 6), pt.y - headlen * Math.sin(angle + Math.PI / 6));
+          ctx.closePath();
+          ctx.fill();
+        }
+      }
+    }
+
+    function endDraw(e) {
+      if (isDrawing) {
+        ctx.globalAlpha = 1.0;
+        isDrawing = false;
+        try { canvas.releasePointerCapture(e.pointerId); } catch(err){}
+      }
+    }
+
+    /* 4. Canvas Grid Cycling */
+    let gridStyles = ['canvas-dot-grid', 'canvas-line-grid', 'canvas-blank'];
+    let gridLabels = ['Grid: Dots', 'Grid: Lines', 'Grid: Blank'];
+    let currentGridIndex = 0;
+
+    function cycleGrid() {
+      canvasArea.classList.remove(gridStyles[currentGridIndex]);
+      currentGridIndex = (currentGridIndex + 1) % gridStyles.length;
+      canvasArea.classList.add(gridStyles[currentGridIndex]);
+      document.getElementById('btnGridToggle').innerText = '📐 ' + gridLabels[currentGridIndex];
+    }
+
+    /* 5. Spark Modal (Inspiration Catalog) */
+    const sparks = [
+      {
+        eco: '🌊 Deep Abyss',
+        organism: 'Deep Sea Jellies & Anglerfish',
+        problem: 'Deep research submersibles flood the abyss with blinding white light, scattering fauna and bleaching sensitive photoreceptors.',
+        mentor: 'Red-bioluminescent deep organisms',
+        superpower: 'Deep organisms cannot see red light wavelengths; creatures use far-red photophores to hunt without alerting prey.',
+        principle: 'Non-disruptive far-red optical sensors & bioluminescent beacons',
+        invention: 'BioRed Submersible Stealth Observer',
+        pitch: 'Our invention protects deep-sea fauna by switching from white floodlights to far-red spectrum illumination and bioluminescent lures, allowing scientists to record natural behaviors without alarming wildlife.'
+      },
+      {
+        eco: '🪸 Coral Reef',
+        organism: 'Reef-dwelling Sharks & Coral Larvae',
+        problem: 'Toxic chemical anti-fouling paints used on research buoys and boats leach heavy metals that poison delicate coral polyps.',
+        mentor: 'Shark Skin Denticles (Placoid Scales)',
+        superpower: 'Microscopic riblets prevent algae and barnacles from gaining a mechanical foothold purely through geometry.',
+        principle: 'Biomimetic micro-texture surface patterns',
+        invention: 'DenticleShield Eco-Buoy Skin',
+        pitch: 'Our invention protects coral reefs by covering research instruments and docks in shark-inspired micro-riblet membranes, preventing biofouling 100% non-toxically.'
+      },
+      {
+        eco: '🌊 Open Ocean',
+        organism: 'Manta Rays & Baleen Whales',
+        problem: 'Microplastics and nylon ghost-net fragments suspend in ocean currents, clogging standard net filters within minutes.',
+        mentor: 'Manta Ray Filter Lobes',
+        superpower: 'Manta gill plates funnel water through while repelling food particles via fluid vortex dynamics, never clogging.',
+        principle: 'Cross-step fluid separation & vortex repulsion',
+        invention: 'MantaVortex Autonomous Microplastic Harvester',
+        pitch: 'Our invention cleans open-ocean gyres using a manta-inspired cross-flow filter that continuously concentrates suspended microplastics into a collection pod without ever clogging.'
+      },
+      {
+        eco: '🪸 Coral Reef',
+        organism: 'Coral Polyps & Snapping Shrimp',
+        problem: 'Degraded, bleached coral reefs fall silent, so drifting coral larvae and juvenile fish cannot navigate to re-colonize.',
+        mentor: 'Snapping Shrimp & Healthy Reef Bio-Acoustics',
+        superpower: 'Healthy reefs emit vibrant crackling and rhythmic clicks that guide larvae over miles of open water.',
+        principle: 'Bio-acoustic soundscape broadcasting',
+        invention: 'ReefCall Autonomous Acoustic Re-Wilding Buoy',
+        pitch: 'Our invention restores dying reefs by broadcasting underwater recordings of vibrant, healthy coral ecosystems, attracting swimming coral larvae and herbivorous fish to settle and regenerate the reef.'
+      },
+      {
+        eco: '🦀 Mangrove Wetland',
+        organism: 'Red Mangrove Prop Roots & Mudskippers',
+        problem: 'Extreme storm surges and coastal erosion tear away shoreline nurseries and wash coastal soil into seagrass beds.',
+        mentor: 'Interlocking Red Mangrove Prop Root System',
+        superpower: 'Flexible, tangled aerial roots dissipate wave energy while trapping sediment and creating calm nurseries.',
+        principle: 'Energy-dissipating porous network structures',
+        invention: 'BioMangrove Coastal Wave-Absorbing Lattice',
+        pitch: 'Our invention safeguards coastal nurseries by deploying 3D-printed biodegradable root lattices that absorb 85% of wave impact and catch sediment, giving live mangrove seedlings time to take root.'
+      },
+      {
+        eco: '🏞️ Estuary',
+        organism: 'Humpback Whale Baleen Bristles',
+        problem: 'Synthetic textile microfibers from urban stormwater drains pour into estuaries, contaminating benthic food chains.',
+        mentor: 'Whale Baleen Keratin Bristles',
+        superpower: 'Baleen plates act as multi-stage tiered brushes that trap ultra-fine microscopic threads while letting water escape.',
+        principle: 'Tiered keratin-inspired bristle mesh',
+        invention: 'BaleenStorm Outfall Microfiber Trap',
+        pitch: 'Our invention guards estuary river mouths by installing whale-inspired tiered bristle gates inside stormwater channels to catch microfibers before they reach open wetlands.'
+      }
+    ];
+
+    function openSparkModal() {
+      document.getElementById('sparkModal').style.display = 'flex';
+    }
+
+    function closeSparkModal() {
+      document.getElementById('sparkModal').style.display = 'none';
+    }
+
+    function handleModalOverlayClick(e) {
+      if (e.target.id === 'sparkModal') closeSparkModal();
+    }
+
+    function loadSpark(idx) {
+      const s = sparks[idx];
+      if (!s) return;
+
+      // Select matching eco-pill
+      document.querySelectorAll('.eco-pill').forEach(pill => {
+        if (pill.innerText.trim() === s.eco) {
+          pill.classList.add('selected');
+        } else {
+          pill.classList.remove('selected');
+        }
+      });
+
+      document.getElementById('targetOrganism').value = s.organism;
+      document.getElementById('problemStatement').value = s.problem;
+      document.getElementById('natureMentor').value = s.mentor;
+      document.getElementById('natureSuperpowerDesc').value = s.superpower;
+      document.getElementById('borrowedPrinciple').value = s.principle;
+      document.getElementById('inventionName').value = s.invention;
+      document.getElementById('howItWorks').value = s.pitch;
+
+      closeSparkModal();
+    }
+
+    /* 6. Export as High-Res JPG */
+    async function exportAsJPG() {
+      const paper = document.getElementById('worksheetSheet');
+      const innovator = document.getElementById('innovatorName').value.trim() || 'Innovator';
+      const codename = document.getElementById('projectCodename').value.trim() || 'BioInnovation';
+      const filename = `FLL76265_Innovation_${codename}_${innovator}.jpg`.replace(/[^a-zA-Z0-9_\-\.]/g, '_');
+
+      try {
+        const canvasShot = await html2canvas(paper, {
+          scale: 2.0,
+          useCORS: true,
+          backgroundColor: '#ffffff'
+        });
+
+        const link = document.createElement('a');
+        link.download = filename;
+        link.href = canvasShot.toDataURL('image/jpeg', 0.95);
+        link.click();
+      } catch (err) {
+        alert('Could not generate JPG export: ' + err.message);
+      }
+    }
+  </script>
+</body>
+</html>
