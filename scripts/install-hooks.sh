@@ -33,7 +33,12 @@ else
     echo "💡 Note: Gitleaks is not installed locally. Secret scan will run in GitHub Actions CI."
 fi
 
-echo "✅ All local pre-commit security checks passed!"
+# 3. MkDocs Navigation & Git-Tracking Integrity Check
+if command -v python3 >/dev/null 2>&1; then
+    python3 scripts/check_mkdocs_nav.py
+fi
+
+echo "✅ All local pre-commit checks passed!"
 EOF
 
 chmod +x "$HOOK_FILE"

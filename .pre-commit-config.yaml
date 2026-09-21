@@ -6,7 +6,7 @@ repos:
     hooks:
       - id: gitleaks
 
-  # Local Security & PII Leak Scanner
+  # Local Security, PII & Docs Integrity Scanners
   - repo: local
     hooks:
       - id: pii-leak-scan
@@ -16,6 +16,14 @@ repos:
         pass_filenames: false
         always_run: true
         description: "Scans repository files for un-whitelisted PII (emails, phone numbers, SSNs, credit cards)"
+
+      - id: check-mkdocs-nav
+        name: MkDocs Navigation & Git-Tracking Integrity Scanner
+        entry: python3 scripts/check_mkdocs_nav.py
+        language: system
+        pass_filenames: false
+        always_run: true
+        description: "Ensures all files in mkdocs.yml exist on disk and are tracked/staged in git so GHA CI doesn't fail."
 
   # General Code Hygiene & Formatting
   - repo: https://github.com/pre-commit/pre-commit-hooks
