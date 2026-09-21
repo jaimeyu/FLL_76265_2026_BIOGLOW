@@ -96,6 +96,14 @@ This entire site is written by student coders and builders using simple **Markdo
 
     [:octicons-arrow-right-24: View Marketing](marketing/README.md)
 
+-   :material-compass-outline:{ .lg .middle } __Mentors & Coaches Hub__
+
+    ---
+
+    Coaching philosophy, Crew Resource Management (CRM), practice schedule, and session plans.
+
+    [:octicons-arrow-right-24: Open Mentor Hub](mentors/plan/mentors_notes.md)
+
 -   :material-pencil-ruler:{ .lg .middle } __How to Update Docs (Kids Guide)__
 
     ---
