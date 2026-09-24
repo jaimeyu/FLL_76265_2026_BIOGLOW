@@ -100,6 +100,7 @@ nav:
   - 🚀 Presentations & Guides:
       - Overview: presentations/README.md
       - SPIKE App Setup Slides: presentations/spike_app_installation_guide.md
-  - 📚 Student Guide:
+  - 📚 Student Guides & Tutorials:
+      - 🎮 Advanced Tutorials & Simulators: guides/advanced_tutorials_and_simulators.md
       - How to Update Docs: guides/how_to_update_docs.md
   - 🛡️ AI Constitution: AI_CONSTITUTION.md

@@ -104,6 +104,14 @@ This entire site is written by student coders and builders using simple **Markdo
 
     [:octicons-arrow-right-24: Open Mentor Hub](mentors/plan/mentors_notes.md)
 
+-   :material-gamepad-variant-outline:{ .lg .middle } __Simulators & Advanced Code__
+
+    ---
+
+    Robot simulators (GearsBot, Virtual Robotics Toolkit), FLLCasts mission guides, and PrimeLessons masterclasses.
+
+    [:octicons-arrow-right-24: Open Learning Hub](guides/advanced_tutorials_and_simulators.md)
+
 -   :material-pencil-ruler:{ .lg .middle } __How to Update Docs (Kids Guide)__
 
     ---
