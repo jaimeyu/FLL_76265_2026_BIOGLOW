@@ -367,6 +367,7 @@ graph TD
 
 ## 🎒 Tournament Day Checklist for Mentors
 
+- [ ] **Mentor CRM Pocket Cue Card:** Printed 4"x6" cue card or lanyard badge ([Printable HTML](mentor_crm_cue_card.html) | [Guide](mentor_crm_cue_card.md)).
 - [ ] **Laminated Run Cards:** 2 complete sets on keyrings (one at the table, one in the pit).
 - [ ] **Spare Attachment Pins:** Color-coded and pre-sorted in the pit box.
 - [ ] **Technician Role Badges:** Clean visual indicator of who is Technician 1 and Technician 2 for each scheduled match.

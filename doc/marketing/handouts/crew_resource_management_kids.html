@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Build Champion Checklists — Pokémon CRM Guide for Kids | Team #76265 BIOGLOW</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700;800&family=Bangers&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --poke-red: #ef4444;
+      --poke-yellow: #f59e0b;
+      --poke-yellow-light: #fef3c7;
+      --poke-blue: #0284c7;
+      --poke-blue-light: #e0f2fe;
+      --poke-green: #10b981;
+      --poke-green-light: #d1fae5;
+      --poke-purple: #8b5cf6;
+      --poke-purple-light: #ede9fe;
+      --bg-dark: #0f172a;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border-color: #cbd5e1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top center, #1e293b 0%, #0f172a 100%);
+      color: #f8fafc;
+      padding: 2rem 1rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Screen Toolbar */
+    .screen-toolbar {
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      background: rgba(30, 41, 59, 0.85);
+      backdrop-filter: blur(10px);
+      padding: 0.85rem 1.25rem;
+      border-radius: 14px;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .toolbar-links {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .back-link {
+      color: #38bdf8;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.9rem;
+      transition: color 0.2s ease;
+    }
+
+    .back-link:hover {
+      color: #7dd3fc;
+      text-decoration: underline;
+    }
+
+    .print-btn {
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      color: #ffffff;
+      border: none;
+      padding: 0.65rem 1.25rem;
+      border-radius: 8px;
+      font-weight: 800;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.45);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .print-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(2, 132, 199, 0.6);
+    }
+
+    /* Flyer Sheet Container */
+    .flyer {
+      width: 100%;
+      max-width: 900px;
+      background: #ffffff;
+      color: var(--text-main);
+      border-radius: 18px;
+      padding: 2.2rem 2.4rem;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+      position: relative;
+    }
+
+    /* Top Pokeball Accent Line */
+    .flyer::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 8px;
+      background: linear-gradient(90deg, #ef4444 0%, #ef4444 50%, #ffffff 50%, #ffffff 52%, #0284c7 52%, #0284c7 100%);
+      border-top-left-radius: 18px;
+      border-top-right-radius: 18px;
+    }
+
+    /* Header */
+    .flyer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 3px solid #0284c7;
+      padding-bottom: 1rem;
+      margin-bottom: 1.25rem;
+      gap: 1rem;
+    }
+
+    .title-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .team-tagline {
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #0284c7;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .main-title {
+      font-family: 'Space Grotesk', 'Outfit', sans-serif;
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.15;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .main-title span.highlight {
+      color: #0284c7;
+      position: relative;
+    }
+
+    .subtitle {
+      font-size: 0.98rem;
+      color: #475569;
+      font-weight: 600;
+      margin-top: 0.2rem;
+    }
+
+    .header-badge-img {
+      width: 82px;
+      height: 82px;
+      object-fit: contain;
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      border: 3px solid #fbbf24;
+      flex-shrink: 0;
+    }
+
+    /* Hero Banner Area */
+    .hero-banner {
+      background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
+      border: 2px solid #bae6fd;
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 1.35rem;
+      box-shadow: 0 4px 15px rgba(2, 132, 199, 0.08);
+    }
+
+    .hero-img {
+      width: 100%;
+      max-height: 360px;
+      object-fit: cover;
+      display: block;
+      border-bottom: 2px solid #bae6fd;
+    }
+
+    .hero-caption {
+      padding: 0.75rem 1.15rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      background: #ffffff;
+      flex-wrap: wrap;
+    }
+
+    .hero-caption p {
+      font-size: 0.88rem;
+      color: #1e293b;
+      font-weight: 600;
+    }
+
+    .hero-roles {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .role-pill {
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: #f1f5f9;
+      color: #0f172a;
+      border: 1px solid #cbd5e1;
+    }
+
+    .role-pill.chansey { background: #fce7f3; border-color: #f472b6; color: #9d174d; }
+    .role-pill.pika { background: #fef08a; border-color: #facc15; color: #854d0e; }
+    .role-pill.lucario { background: #e0f2fe; border-color: #38bdf8; color: #0369a1; }
+    .role-pill.machamp { background: #ffedd5; border-color: #fb923c; color: #9a3412; }
+
+    /* Concept Intro */
+    .concept-box {
+      background: #f0fdf4;
+      border-left: 5px solid #10b981;
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .concept-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #065f46;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .concept-text {
+      font-size: 0.92rem;
+      color: #334155;
+      line-height: 1.5;
+    }
+
+    /* Section Banner */
+    .section-banner {
+      background: #0f172a;
+      color: #ffffff;
+      padding: 0.65rem 1.15rem;
+      border-radius: 8px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.15rem;
+    }
+
+    .section-banner .tag {
+      background: #0284c7;
+      color: #ffffff;
+      font-size: 0.7rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      font-family: 'Outfit', sans-serif;
+      letter-spacing: 0.5px;
+    }
+
+    /* 4 Building Blocks of a Checklist Grid */
+    .blocks-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .block-card {
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 1rem 1.15rem;
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .block-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1.5px solid #f1f5f9;
+      padding-bottom: 0.4rem;
+    }
+
+    .block-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.98rem;
+      font-weight: 800;
+      color: #0f172a;
+    }
+
+    .block-tag {
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 0.15rem 0.5rem;
+      border-radius: 6px;
+    }
+
+    .card-1 { border-color: #facc15; background: linear-gradient(180deg, #fffbeb 0%, #ffffff 100%); }
+    .card-1 .block-tag { background: #fef08a; color: #854d0e; }
+
+    .card-2 { border-color: #fb923c; background: linear-gradient(180deg, #fff7ed 0%, #ffffff 100%); }
+    .card-2 .block-tag { background: #ffedd5; color: #9a3412; }
+
+    .card-3 { border-color: #38bdf8; background: linear-gradient(180deg, #f0f9ff 0%, #ffffff 100%); }
+    .card-3 .block-tag { background: #e0f2fe; color: #0369a1; }
+
+    .card-4 { border-color: #c084fc; background: linear-gradient(180deg, #faf5ff 0%, #ffffff 100%); }
+    .card-4 .block-tag { background: #f3e8ff; color: #6b21a8; }
+
+    .block-desc {
+      font-size: 0.82rem;
+      color: #334155;
+      line-height: 1.45;
+    }
+
+    .block-example {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px dashed #cbd5e1;
+      border-radius: 8px;
+      padding: 0.45rem 0.65rem;
+      font-size: 0.77rem;
+      color: #475569;
+      line-height: 1.4;
+    }
+
+    .block-example strong {
+      color: #0f172a;
+    }
+
+    /* Communication Technique: Point & Call */
+    .technique-box {
+      background: linear-gradient(135deg, #eff6ff 0%, #e0e7ff 100%);
+      border: 2px solid #818cf8;
+      border-radius: 14px;
+      padding: 1.15rem 1.35rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .technique-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.65rem;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .technique-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #3730a3;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .technique-badge {
+      background: #4338ca;
+      color: #ffffff;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      text-transform: uppercase;
+    }
+
+    .steps-flow {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin-top: 0.65rem;
+    }
+
+    .flow-step {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 0.8rem 0.9rem;
+      border: 1px solid #c7d2fe;
+      text-align: center;
+    }
+
+    .flow-step-num {
+      font-size: 0.7rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: #4f46e5;
+      margin-bottom: 0.2rem;
+    }
+
+    .flow-step-action {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #1e293b;
+      margin-bottom: 0.25rem;
+    }
+
+    .flow-step-dialogue {
+      font-size: 0.76rem;
+      color: #475569;
+      line-height: 1.35;
+      font-style: italic;
+    }
+
+    /* Hands-On Interactive Checklist Workshop */
+    .workshop-section {
+      background: #fffbeb;
+      border: 2.5px solid #f59e0b;
+      border-radius: 14px;
+      padding: 1.25rem 1.4rem;
+      margin-bottom: 1.35rem;
+    }
+
+    .workshop-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.85rem;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .workshop-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #92400e;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .workshop-tag {
+      background: #d97706;
+      color: #ffffff;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      text-transform: uppercase;
+    }
+
+    /* Checklist Template Card inside Workshop */
+    .checklist-card-template {
+      background: #ffffff;
+      border: 2px solid #fbbf24;
+      border-radius: 12px;
+      padding: 1.1rem 1.25rem;
+      box-shadow: 0 4px 10px rgba(245, 158, 11, 0.1);
+    }
+
+    .card-top-row {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 1rem;
+      margin-bottom: 0.85rem;
+      padding-bottom: 0.65rem;
+      border-bottom: 1.5px solid #fde68a;
+    }
+
+    .field-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .field-title {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #92400e;
+    }
+
+    .field-line {
+      border-bottom: 1.5px solid #d97706;
+      height: 24px;
+      display: flex;
+      align-items: flex-end;
+      font-weight: 700;
+      color: #1e293b;
+      font-size: 0.85rem;
+    }
+
+    .checklist-items-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .item-row {
+      display: grid;
+      grid-template-columns: 24px 1.2fr 2fr;
+      gap: 0.75rem;
+      align-items: center;
+      background: #f8fafc;
+      padding: 0.45rem 0.65rem;
+      border-radius: 6px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .item-checkbox {
+      width: 18px;
+      height: 18px;
+      border: 2px solid #b45309;
+      border-radius: 4px;
+      background: #ffffff;
+    }
+
+    .item-label {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: #1e293b;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .item-detail-line {
+      border-bottom: 1.5px dashed #cbd5e1;
+      height: 20px;
+      font-size: 0.76rem;
+      color: #64748b;
+      font-style: italic;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    /* Contingency & Navigation Box */
+    .contingency-row {
+      background: #fee2e2;
+      border-radius: 8px;
+      border: 1.5px solid #f87171;
+      padding: 0.65rem 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .contingency-title {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: #991b1b;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .contingency-line {
+      border-bottom: 1.5px solid #dc2626;
+      flex-grow: 1;
+      min-width: 200px;
+      height: 20px;
+    }
+
+    /* Evolution & Iteration Tips */
+    .evolution-box {
+      background: #f8fafc;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.15rem;
+    }
+
+    .evolution-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.98rem;
+      font-weight: 800;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .evolution-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.85rem;
+    }
+
+    .evolution-card {
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 0.65rem 0.75rem;
+      border: 1px solid #e2e8f0;
+      font-size: 0.77rem;
+      color: #334155;
+      line-height: 1.4;
+    }
+
+    .evolution-card h5 {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: #0284c7;
+      margin-bottom: 0.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    /* Footer */
+    .flyer-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1.5px solid #e2e8f0;
+      padding-top: 0.85rem;
+      font-size: 0.75rem;
+      color: #64748b;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-weight: 700;
+      color: #334155;
+    }
+
+    .footer-right {
+      font-style: italic;
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background: #ffffff !important;
+        padding: 0 !important;
+        color: #000000 !important;
+      }
+
+      .screen-toolbar {
+        display: none !important;
+      }
+
+      .flyer {
+        max-width: 100% !important;
+        width: 100% !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        padding: 0.25in 0.35in !important;
+      }
+
+      .flyer::before {
+        display: none;
+      }
+
+      .hero-img {
+        max-height: 220px !important;
+      }
+
+      .block-card, .technique-box, .workshop-section, .checklist-card-template {
+        break-inside: avoid;
+        box-shadow: none !important;
+      }
+
+      @page {
+        size: letter portrait;
+        margin: 0.26in 0.3in;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .blocks-grid, .steps-flow, .evolution-grid, .card-top-row, .item-row {
+        grid-template-columns: 1fr !important;
+      }
+      .main-title {
+        font-size: 1.45rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Screen Toolbar -->
+  <div class="screen-toolbar">
+    <div class="toolbar-links">
+      <a href="../../mentors/plan/crew_resource_management.md" class="back-link">✈️ Coach CRM Guide</a>
+      <a href="../../mentors/plan/2026-sept-26.md" class="back-link">🥊 Session 3 Plan</a>
+      <a href="goals_worksheet.html" class="back-link">🎯 Goals Worksheet</a>
+      <a href="mission_design_sketchpad.html" class="back-link">✏️ Mission Sketchpad</a>
+      <a href="../README.md" class="back-link">📁 Marketing Hub</a>
+    </div>
+    <div class="toolbar-actions">
+      <button onclick="window.print()" class="print-btn">
+        🖨️ Print Checklist Builder (Letter Size)
+      </button>
+    </div>
+  </div>
+
+  <!-- Flyer Container -->
+  <div class="flyer">
+
+    <!-- Header -->
+    <header class="flyer-header">
+      <div class="title-group">
+        <div class="team-tagline">
+          ⚡ FIRST LEGO League Team #76265 &bull; BIOGLOW 2026
+        </div>
+        <h1 class="main-title">
+          HOW TO BUILD CHAMPION <span class="highlight">CHECKLISTS</span>
+        </h1>
+        <p class="subtitle">
+          The Pokémon Trainer's Guide to Communicating & Navigating Under Pressure!
+        </p>
+      </div>
+      <img src="images/crm_trainer_badge.jpg" alt="CRM Trainer Gym Badge" class="header-badge-img">
+    </header>
+
+    <!-- Hero Illustration Banner -->
+    <div class="hero-banner">
+      <img src="images/pokemon_crm_crew.jpg" alt="Pokémon Crew Resource Management Mission Control" class="hero-img">
+      <div class="hero-caption">
+        <p><strong>Mission Control Squad:</strong> Checklists free your brain so your crew can navigate with laser focus!</p>
+        <div class="hero-roles">
+          <span class="role-pill chansey">📋 Chansey: Points & Calls Checklists</span>
+          <span class="role-pill pika">⚡ Pikachu: Pilot Alignment & Comms</span>
+          <span class="role-pill lucario">👁️ Lucario: Clock & Path Navigation</span>
+          <span class="role-pill machamp">💪 Machamp: Fast Attachment Pit</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- The "Why" Concept Box -->
+    <div class="concept-box">
+      <div class="concept-title">
+        🧠 Why Do Pokémon Champions & Astronauts Use Checklists?
+      </div>
+      <p class="concept-text">
+        In the 2.5-minute robot match, your heart races at 150 BPM and arena music is loud. <strong>When adrenaline rushes, short-term memory fades.</strong> Trying to remember 6 program numbers, pin alignments, and motor directions from memory leads to silly mistakes. A checklist takes the memory weight out of your head so you and your partner can talk clearly and navigate calmly!
+      </p>
+    </div>
+
+    <!-- Section Banner -->
+    <div class="section-banner">
+      <span>🛠️ THE 4 BUILDING BLOCKS OF EVERY MISSION CHECKLIST</span>
+      <span class="tag">ANATOMY OF A RUN CARD</span>
+    </div>
+
+    <!-- 4 Building Blocks Grid -->
+    <div class="blocks-grid">
+
+      <!-- Block 1: Power & Program -->
+      <div class="block-card card-1">
+        <div class="block-header">
+          <div class="block-title-wrap">
+            <span>⚡</span>
+            <span>1. Power & Program</span>
+          </div>
+          <span class="block-tag">Pikachu Check</span>
+        </div>
+        <p class="block-desc">
+          Ensure the SPIKE Hub is powered on and the screen displays the exact mission program number or graphic icon.
+        </p>
+        <div class="block-example">
+          <strong>Checklist Item:</strong> [ ] SPIKE Hub: Program #2 (Whale Icon)<br>
+          <strong>Callout:</strong> <em>"Program 2 selected!" &rarr; "Echo: Program 2 confirmed!"</em>
+        </div>
+      </div>
+
+      <!-- Block 2: Attachment & Mechanical Tug -->
+      <div class="block-card card-2">
+        <div class="block-header">
+          <div class="block-title-wrap">
+            <span>🔧</span>
+            <span>2. Hardware & Tug Test</span>
+          </div>
+          <span class="block-tag">Machamp Check</span>
+        </div>
+        <p class="block-desc">
+          Identify the specific attachment, check color-coded pins, and perform a 1-second physical tug test to confirm it's locked.
+        </p>
+        <div class="block-example">
+          <strong>Checklist Item:</strong> [ ] Dual-Lift Fork locked + 2-finger tug test<br>
+          <strong>Callout:</strong> <em>"Dual Fork mounted, tugged and rigid!"</em>
+        </div>
+      </div>
+
+      <!-- Block 3: Position & Navigation Jig -->
+      <div class="block-card card-3">
+        <div class="block-header">
+          <div class="block-title-wrap">
+            <span>🧭</span>
+            <span>3. Launch Alignment & Path</span>
+          </div>
+          <span class="block-tag">Lucario Navigation</span>
+        </div>
+        <p class="block-desc">
+          State which mechanical wall jig to place against the border, and visually verify the drive wheels are straight inside Home.
+        </p>
+        <div class="block-example">
+          <strong>Checklist Item:</strong> [ ] Jig B flush East Wall, wheels straight, path clear<br>
+          <strong>Callout:</strong> <em>"Jig B flush, robot 100% inside Home base!"</em>
+        </div>
+      </div>
+
+      <!-- Block 4: Contingency & Abort Plan -->
+      <div class="block-card card-4">
+        <div class="block-header">
+          <div class="block-title-wrap">
+            <span>🚨</span>
+            <span>4. Contingency (Plan B)</span>
+          </div>
+          <span class="block-tag">Tactical Metagross</span>
+        </div>
+        <p class="block-desc">
+          Decide in advance what to do if the robot misses or models jam. Never invent solutions while the clock is ticking down!
+        </p>
+        <div class="block-example">
+          <strong>Checklist Item:</strong> ⚠️ If arm jams &gt; 10s: Abort & Retrieve to Home!<br>
+          <strong>Action:</strong> <em>Skip to Run 3. Clock is more valuable than 1 penalty!</em>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Communication Technique: Point & Call -->
+    <div class="technique-box">
+      <div class="technique-header">
+        <div class="technique-title">
+          👉 The Superpower Technique: "Point & Call" (Shisa Kanko)
+        </div>
+        <span class="technique-badge">Closed-Loop Navigation</span>
+      </div>
+      <p style="font-size: 0.85rem; color: #1e293b; line-height: 1.45;">
+        Japanese bullet train conductors and cockpit crews use <strong>Pointing and Calling</strong> to cut human errors by 85%! Don't read checklists silently with your eyes. Use your finger and your voice:
+      </p>
+      <div class="steps-flow">
+        <div class="flow-step">
+          <div class="flow-step-num">Step 1: Point</div>
+          <div class="flow-step-action">👉 Co-Pilot Points</div>
+          <div class="flow-step-dialogue">Co-pilot touches item on card with finger: "Program 2?"</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-num">Step 2: Touch & Echo</div>
+          <div class="flow-step-action">🤖 Pilot Verifies</div>
+          <div class="flow-step-dialogue">Pilot checks Hub screen and speaks out loud: "Program 2 confirmed!"</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-num">Step 3: Check & Go</div>
+          <div class="flow-step-action">✅ Check & Clear</div>
+          <div class="flow-step-dialogue">Co-pilot marks check: "Check! Clear to launch in 3, 2, 1!"</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hands-On Interactive Checklist Workshop -->
+    <div class="workshop-section">
+      <div class="workshop-header">
+        <div class="workshop-title">
+          📝 Hands-On Workshop: Draft Your Team's Run Card!
+        </div>
+        <span class="workshop-tag">Design Your Own Checklist</span>
+      </div>
+      <p style="font-size: 0.82rem; color: #78350f; line-height: 1.4; margin-bottom: 0.85rem;">
+        Work in pairs! Pick one mission your team is building this week and design its custom Run Card below. Mentors guide, but <strong>you decide what goes on the card</strong>!
+      </p>
+
+      <div class="checklist-card-template">
+        <div class="card-top-row">
+          <div class="field-wrap">
+            <span class="field-title">🎯 Mission Run Name & Number</span>
+            <div class="field-line">Run #____ : _________________________________________</div>
+          </div>
+          <div class="field-wrap">
+            <span class="field-title">⏱️ Target Run Time</span>
+            <div class="field-line">____ Seconds (Clock Target)</div>
+          </div>
+        </div>
+
+        <div class="checklist-items-grid">
+          <div class="item-row">
+            <div class="item-checkbox"></div>
+            <div class="item-label">⚡ 1. HUB CODE:</div>
+            <div class="item-detail-line">Program # ______ (Display Icon: _____________________)</div>
+          </div>
+          <div class="item-row">
+            <div class="item-checkbox"></div>
+            <div class="item-label">🔧 2. ATTACHMENT:</div>
+            <div class="item-detail-line">Tool: ___________________ (Tug test verified? [ ])</div>
+          </div>
+          <div class="item-row">
+            <div class="item-checkbox"></div>
+            <div class="item-label">🧭 3. JIG & ALIGN:</div>
+            <div class="item-detail-line">Jig: _______ flush against [North / South / East] border</div>
+          </div>
+          <div class="item-row">
+            <div class="item-checkbox"></div>
+            <div class="item-label">📦 4. CARGO LOAD:</div>
+            <div class="item-detail-line">Loaded element: _________________ seated in tray</div>
+          </div>
+        </div>
+
+        <div class="contingency-row">
+          <div class="contingency-title">
+            <span>🚨 PLAN B (NAVIGATION RETRIEVE):</span>
+          </div>
+          <div class="contingency-line">
+            If mission misses or jams &gt; 8s: Call <em>"Abort to Home"</em> and pivot to Run #____!
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- How Checklists Evolve -->
+    <div class="evolution-box">
+      <div class="evolution-title">
+        📈 How to "Plus" & Evolve Your Checklist After Every Run
+      </div>
+      <div class="evolution-grid">
+        <div class="evolution-card">
+          <h5>🌟 Level 1: Rookie Card</h5>
+          <p>Only has program number and mission name. Good for slow practice, but leaves pins and jigs to guesswork.</p>
+        </div>
+        <div class="evolution-card">
+          <h5>🚀 Level 2: Pro Card</h5>
+          <p>Adds attachment name, color-coded pin slots, and the 2-finger tug test so arms never drop off mid-table.</p>
+        </div>
+        <div class="evolution-card">
+          <h5>🏆 Level 3: Champion Arm-Band</h5>
+          <p>Laminated card taped to your arm or worn on a lanyard. Includes emergency abort triggers and match countdown marks!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="flyer-footer">
+      <div class="footer-left">
+        <span>🤖 FIRST LEGO League Team #76265 BIOGLOW</span>
+        <span>&bull;</span>
+        <span>"We don't just build robots, we build Champion Crews!"</span>
+      </div>
+      <div class="footer-right">
+        Inspired by NASA CRM, Shisa Kanko & Gracious Professionalism®
+      </div>
+    </footer>
+
+  </div>
+
+</body>
+</html>

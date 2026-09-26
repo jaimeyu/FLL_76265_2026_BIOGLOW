@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mentor CRM Workshop Cue Card — Everyday Session Facilitation | Team #76265 BIOGLOW</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --accent-amber: #d97706;
+      --accent-rose: #e11d48;
+      --accent-emerald: #059669;
+      --card-bg: #ffffff;
+      --border-color: #cbd5e1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0f172a;
+      color: #0f172a;
+      padding: 1.5rem 1rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Screen Toolbar */
+    .screen-toolbar {
+      width: 100%;
+      max-width: 860px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+      background: rgba(30, 41, 59, 0.9);
+      backdrop-filter: blur(8px);
+      padding: 0.75rem 1.2rem;
+      border-radius: 12px;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .toolbar-links {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .back-link {
+      color: #38bdf8;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.88rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .back-link:hover {
+      color: #7dd3fc;
+      text-decoration: underline;
+    }
+
+    .print-btn {
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      color: #ffffff;
+      border: none;
+      padding: 0.55rem 1.15rem;
+      border-radius: 8px;
+      font-weight: 800;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.4);
+    }
+
+    .print-btn:hover {
+      background: #0284c7;
+    }
+
+    /* Print Sheet Container */
+    .print-sheet {
+      width: 100%;
+      max-width: 860px;
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .sheet-instructions {
+      font-size: 0.8rem;
+      color: #64748b;
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px dashed #cbd5e1;
+      padding-bottom: 0.5rem;
+    }
+
+    /* 2 Cue Cards Layout */
+    .cue-cards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    /* Single Cue Card (Approx 4" x 6" ratio) */
+    .cue-card {
+      border: 2px dashed #94a3b8;
+      border-radius: 14px;
+      padding: 1.1rem 1.15rem;
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .card-punch-hole {
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 1.5px dashed #94a3b8;
+      background: #f8fafc;
+    }
+
+    /* Header */
+    .card-header {
+      border-bottom: 2px solid #0284c7;
+      padding-bottom: 0.45rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .card-tag {
+      font-size: 0.65rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #0284c7;
+    }
+
+    .card-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    /* Mentor Core Principle Banner */
+    .golden-rule-banner {
+      background: #eff6ff;
+      border-left: 3.5px solid #0284c7;
+      border-radius: 6px;
+      padding: 0.45rem 0.65rem;
+      margin-bottom: 0.65rem;
+      font-size: 0.74rem;
+      line-height: 1.35;
+      color: #1e3a8a;
+    }
+
+    .golden-rule-banner strong {
+      color: #0369a1;
+    }
+
+    /* Cue Section */
+    .cue-section {
+      margin-bottom: 0.65rem;
+    }
+
+    .cue-section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.76rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #475569;
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    /* Triage Queuing Card Box */
+    .queue-box {
+      background: #fffbeb;
+      border: 1.5px solid #fde68a;
+      border-radius: 8px;
+      padding: 0.5rem 0.65rem;
+      font-size: 0.72rem;
+      line-height: 1.4;
+      margin-bottom: 0.6rem;
+      color: #92400e;
+    }
+
+    .queue-box strong {
+      color: #b45309;
+    }
+
+    /* Compact Prompt Table */
+    .prompt-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.71rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .prompt-table th {
+      text-align: left;
+      background: #f1f5f9;
+      padding: 0.3rem 0.45rem;
+      font-weight: 800;
+      color: #334155;
+      border: 1px solid #e2e8f0;
+    }
+
+    .prompt-table td {
+      padding: 0.35rem 0.45rem;
+      border: 1px solid #e2e8f0;
+      vertical-align: top;
+      line-height: 1.35;
+    }
+
+    .prompt-table td.tag-col {
+      font-weight: 800;
+      color: #0284c7;
+      white-space: nowrap;
+    }
+
+    /* Strategy Steps Grid */
+    .strategy-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.4rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .strategy-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 0.4rem 0.55rem;
+      font-size: 0.7rem;
+      line-height: 1.35;
+    }
+
+    .strategy-card strong {
+      display: block;
+      color: #0f172a;
+      font-size: 0.72rem;
+      margin-bottom: 0.15rem;
+    }
+
+    /* Callout Alert */
+    .alert-mini {
+      background: #f0fdf4;
+      border: 1px solid #86efac;
+      border-radius: 6px;
+      padding: 0.4rem 0.6rem;
+      font-size: 0.7rem;
+      color: #166534;
+      line-height: 1.35;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Card Footer */
+    .card-footer {
+      margin-top: auto;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 0.4rem;
+      font-size: 0.65rem;
+      color: #94a3b8;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Print Formatting */
+    @media print {
+      body {
+        background: #ffffff !important;
+        padding: 0 !important;
+      }
+
+      .screen-toolbar, .sheet-instructions {
+        display: none !important;
+      }
+
+      .print-sheet {
+        box-shadow: none !important;
+        padding: 0.2in !important;
+        max-width: 100% !important;
+        width: 100% !important;
+      }
+
+      .cue-card {
+        border: 1.5px dashed #475569 !important;
+        box-shadow: none !important;
+        break-inside: avoid;
+      }
+
+      @page {
+        size: letter landscape;
+        margin: 0.25in;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .cue-cards-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Screen Toolbar -->
+  <div class="screen-toolbar">
+    <div class="toolbar-links">
+      <a href="mentors_notes.md" class="back-link">🧭 Coach Philosophy</a>
+      <a href="crew_resource_management.md" class="back-link">✈️ CRM Guide</a>
+      <a href="2026-sept-26.md" class="back-link">🥊 Session 3 Plan</a>
+      <a href="../../marketing/handouts/crew_resource_management_kids.html" class="back-link">⚡ Kids Checklist Flyer</a>
+    </div>
+    <button onclick="window.print()" class="print-btn">
+      🖨️ Print Workshop Cue Cards (Landscape)
+    </button>
+  </div>
+
+  <!-- Print Sheet Container -->
+  <div class="print-sheet">
+    <div class="sheet-instructions">
+      <span>✂️ <strong>Everyday Session Mentor Cue Card:</strong> Print on cardstock, cut along dashed line, or fold in half for a double-sided 4"x6" lanyard badge.</span>
+      <span>FLL Team #76265 BIOGLOW</span>
+    </div>
+
+    <div class="cue-cards-grid">
+
+      <!-- ================= SIDE A: QUEUING & TRIAGE ================= -->
+      <div class="cue-card">
+        <div class="card-punch-hole"></div>
+
+        <div class="card-header">
+          <div class="card-tag">Side A &bull; Workshop Triage & Comms</div>
+          <h2 class="card-title">🙋 When 5 Kids Ask for Help at Once</h2>
+        </div>
+
+        <!-- Mentor Rule 1 -->
+        <div class="golden-rule-banner">
+          🎯 <strong>The Golden Rule:</strong> <em>Never leave a hand hanging in silence.</em> Acknowledge immediately, assign a queue number, and give a self-help micro-task!
+        </div>
+
+        <!-- 3-Step Closed Loop Queuing -->
+        <div class="cue-section">
+          <div class="cue-section-title">📢 The "Acknowledge & Queue" Formula</div>
+          <div class="queue-box">
+            <strong>1. Acknowledge:</strong> <em>"Maya, I see you! Joey, I hear you!"</em><br>
+            <strong>2. Sequence:</strong> <em>"Maya is #1, Joey is #2, Sam is #3."</em><br>
+            <strong>3. Active Wait Task:</strong> <em>"Joey, while I help Maya for 90s, do a 2-finger tug test on your beam."</em>
+            <div style="font-size: 0.66rem; color: #78350f; margin-top: 0.25rem;">
+              &rarr; Kids stop shouting because they know they are on the radar with a definite spot!
+            </div>
+          </div>
+        </div>
+
+        <!-- Divide & Conquer Matrix -->
+        <div class="cue-section">
+          <div class="cue-section-title">🤝 Coach-to-Coach "Divide & Conquer"</div>
+          <div class="strategy-grid">
+            <div class="strategy-card">
+              <strong>Zone Coverage:</strong>
+              Mentor A anchors Station A (Chassis), Mentor B anchors Station B (Code/Motors). Don't drift into the same zone.
+            </div>
+            <div class="strategy-card">
+              <strong>Quick Mentor Comms:</strong>
+              Call out loudly: <em>"Coach Mike, Table 2 has two in queue!"</em> &rarr; <em>"Roger, heading to Table 2 now!"</em>
+            </div>
+            <div class="strategy-card">
+              <strong>No Dual-Coaching:</strong>
+              Never have two coaches helping one child while others wait. One coach steps back immediately.
+            </div>
+            <div class="strategy-card">
+              <strong>Peer Ambassador Handoff:</strong>
+              Redirect: <em>"Have you asked Alex, our Station Ambassador? Check with Alex first!"</em>
+            </div>
+          </div>
+        </div>
+
+        <!-- Alert Mini -->
+        <div class="alert-mini">
+          👀 <strong>Room Radar:</strong> Scan for the <em>silent struggler</em>—the kid sitting back with arms crossed who hasn't raised a hand. Check in on them first!
+        </div>
+
+        <div class="card-footer">
+          <span>Card 1 of 2 &bull; Session Triage & Queuing</span>
+          <span>FLL #76265 BIOGLOW</span>
+        </div>
+      </div>
+
+      <!-- ================= SIDE B: FACILITATION & Socratic Coaching ================= -->
+      <div class="cue-card">
+        <div class="card-punch-hole"></div>
+
+        <div class="card-header">
+          <div class="card-tag">Side B &bull; Socratic Coaching & Handoffs</div>
+          <h2 class="card-title">💡 Guiding Without Taking Over</h2>
+        </div>
+
+        <!-- Mentor Rule 2 -->
+        <div class="golden-rule-banner">
+          👐 <strong>Hands in Pockets!</strong> <em>If a mentor's hands are on the LEGO bricks or the tablet, the student stopped learning.</em> Point with words, not hands.
+        </div>
+
+        <!-- The 2-Minute Rule -->
+        <div class="cue-section">
+          <div class="cue-section-title">⏱️ The 2-Minute Intervention Protocol</div>
+          <table class="prompt-table">
+            <thead>
+              <tr>
+                <th>Step</th>
+                <th>Action</th>
+                <th>Coach Script Example</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="tag-col">1. Diagnose</td>
+                <td>Ask what they expect</td>
+                <td><em>"What did you want the robot/arm to do just now?"</em></td>
+              </tr>
+              <tr>
+                <td class="tag-col">2. Locate</td>
+                <td>Point to the checklist</td>
+                <td><em>"What does Step 2 on your Run Card say about pins?"</em></td>
+              </tr>
+              <tr>
+                <td class="tag-col">3. Launch</td>
+                <td>Give 1 micro-goal & EXIT!</td>
+                <td><em>"Test this gear ratio 2x. I'll be back in 2 minutes to see!"</em></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Socratic Questions Table -->
+        <div class="cue-section">
+          <div class="cue-section-title">🗣️ Powerful Socratic Prompts (Ask, Don't Tell)</div>
+          <table class="prompt-table">
+            <tbody>
+              <tr>
+                <td class="tag-col">When Stuck:</td>
+                <td><em>"What have you already tried that didn't work?"</em></td>
+              </tr>
+              <tr>
+                <td class="tag-col">When In Dispute:</td>
+                <td><em>"You have two great ideas. How can we test BOTH for 1 minute each?"</em></td>
+              </tr>
+              <tr>
+                <td class="tag-col">When Rushing:</td>
+                <td><em>"Pause. Take 1 deep breath. Who is pointing and calling?"</em></td>
+              </tr>
+              <tr>
+                <td class="tag-col">When Done:</td>
+                <td><em>"Awesome! Now teach your partner how you solved it."</em></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Closing Cheer -->
+        <div class="alert-mini" style="background: #fdf4ff; border-color: #f0abfc; color: #86198f;">
+          🌟 <strong>30-Second Coach Huddle at Break:</strong> Mentors tap base: <em>"Who felt unheard today? Who needs a confidence boost in Block 2?"</em>
+        </div>
+
+        <div class="card-footer">
+          <span>Card 2 of 2 &bull; Socratic Coaching & Kid Agency</span>
+          <span>FLL #76265 BIOGLOW</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
