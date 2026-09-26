@@ -210,3 +210,11 @@ Teach them our team mnemonic: **"DIFI-IT"** *(pronounced like **"DEFY IT!"**)*:
 5. **Remember the Team Motto:**
    * *"We don't just build robots, we use robots to build students."*
 
+---
+
+## 💡 Guiding the Innovation Project
+
+For our complete strategic playbook on coaching the team through the 5 required FLL Universal Rubric phases (**Identify**, **Design**, **Create**, **Iterate**, **Communicate**) with Socratic inquiry, student decision matrices, and expert sharing protocols, see:
+
+👉 **[Mentor Coaching Guide: Driving the Innovation Project via Rubrics](innovation_project_rubric_guide.md)**
+
