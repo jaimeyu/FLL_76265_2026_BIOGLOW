@@ -1156,7 +1156,21 @@
         padding: 0 !important;
       }
 
-      /* Force Page 1 & Page 2 to print on separate sides of sheet (strict 2 pages) */
+      button,
+      .page-turn-link {
+        display: none !important;
+      }
+
+      body.fill-window-mode .sheet-wrapper,
+      .sheet-wrapper {
+        width: 100% !important;
+        max-width: 100% !important;
+        display: block !important;
+        gap: 0 !important;
+        padding: 0 !important;
+      }
+
+      /* Force Page 1 & Page 2 to print on separate sides of sheet (strict 2 pages) and fill vertical height */
       body.fill-window-mode .sheet-page,
       .sheet-page {
         max-width: 100% !important;
@@ -1164,12 +1178,17 @@
         box-shadow: none !important;
         border: 2px solid #000000 !important;
         border-radius: 0 !important;
-        padding: 0.16in 0.2in !important;
-        gap: 0.1in !important;
+        padding: 0.18in 0.22in !important;
+        gap: 0.12in !important;
+        min-height: 10.1in !important;
+        max-height: 10.3in !important;
         background: #ffffff !important;
         page-break-inside: avoid !important;
         break-inside: avoid !important;
         box-sizing: border-box !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
       }
 
       .page-break-divider {
@@ -1185,12 +1204,12 @@
       .field-split-layout {
         display: grid !important;
         grid-template-columns: 1.85fr 1fr !important;
-        gap: 0.4rem !important;
+        gap: 0.45rem !important;
       }
 
       body.fill-window-mode .field-canvas-container,
       .field-canvas-container {
-        height: 235px !important;
+        height: 290px !important;
         border: 1.5px solid #000000 !important;
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
@@ -1202,27 +1221,37 @@
         print-color-adjust: exact !important;
       }
 
-      .field-print-img {
+      .field-print-img,
+      .frame-print-img {
         display: block !important;
+      }
+
+      .field-print-img:not([src]),
+      .field-print-img[src=""],
+      .frame-print-img:not([src]),
+      .frame-print-img[src=""] {
+        display: none !important;
       }
 
       body.fill-window-mode .field-sidebar-panel,
       .field-sidebar-panel {
         background: #ffffff !important;
         border: 1.5px solid #000000 !important;
-        padding: 0.35rem 0.5rem !important;
-        gap: 0.25rem !important;
+        padding: 0.45rem 0.6rem !important;
+        gap: 0.3rem !important;
+      }
+
+      body.fill-window-mode .frame-desc-input,
+      .frame-desc-input {
+        font-size: 0.78rem !important;
+        padding: 3px 2px !important;
       }
 
       body.fill-window-mode .frame-canvas-wrap-large,
       .frame-canvas-wrap-large {
-        height: 235px !important;
+        height: 280px !important;
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
-      }
-
-      .frame-print-img {
-        display: block !important;
       }
 
       /* CRUCIAL: SUPPRESS ALL PLACEHOLDER TEXT ON PRINTOUT SO HANDWRITING LINES ARE COMPLETELY BLANK! */
@@ -1246,41 +1275,43 @@
 
       body.fill-window-mode .code-logic-section-full,
       .code-logic-section-full {
-        padding: 0.35rem 0.55rem !important;
-        gap: 0.25rem !important;
+        padding: 0.45rem 0.65rem !important;
+        gap: 0.35rem !important;
+        flex: 1 !important;
       }
 
       /* Autonomous Code table rows print as clear, spacious dotted handwriting lines */
       body.fill-window-mode .logic-table td,
       .logic-table td {
-        height: 28px !important;
-        padding: 2px 4px !important;
+        height: 38px !important;
+        padding: 3px 5px !important;
       }
 
       body.fill-window-mode .logic-table th,
       .logic-table th {
-        padding: 3px 5px !important;
-        font-size: 0.7rem !important;
+        padding: 4px 6px !important;
+        font-size: 0.72rem !important;
       }
 
       .logic-input {
         border-bottom: 1.5px dotted #94a3b8 !important;
-        height: 24px !important;
+        height: 30px !important;
+        font-size: 0.8rem !important;
         background: transparent !important;
         color: #000000 !important;
       }
 
       body.fill-window-mode .debug-log-card,
       .debug-log-card {
-        padding: 0.35rem 0.55rem !important;
+        padding: 0.45rem 0.65rem !important;
       }
 
       body.fill-window-mode .debug-table th,
       .debug-table th,
       body.fill-window-mode .debug-table td,
       .debug-table td {
-        padding: 3px 5px !important;
-        font-size: 0.68rem !important;
+        padding: 5px 6px !important;
+        font-size: 0.72rem !important;
       }
 
       .compass-pill {
@@ -2079,8 +2110,14 @@
 
     function syncPrintImage(frameIdx) {
       try {
-        const dataUrl = canvases[frameIdx].toDataURL('image/png');
-        printImgs[frameIdx].src = dataUrl;
+        if (!frameHistories[frameIdx] || frameHistories[frameIdx].length === 0) {
+          printImgs[frameIdx].removeAttribute('src');
+          printImgs[frameIdx].style.display = 'none';
+        } else {
+          const dataUrl = canvases[frameIdx].toDataURL('image/png');
+          printImgs[frameIdx].src = dataUrl;
+          printImgs[frameIdx].style.display = 'block';
+        }
       } catch (err) {
         console.error("Canvas sync error:", err);
       }
