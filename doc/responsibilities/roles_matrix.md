@@ -20,19 +20,23 @@
 
 ## ⚡ Innovation Project DRI Roles (Pokémon Champion Codenames)
 
-Each team member acts as the **Directly Responsible Individual (DRI)** for their domain—organizing and collating ideas rather than doing all the work alone:
+> 💡 **The DRI Philosophy:** The **DRI (Directly Responsible Individual)** does **not** do all the work alone! Every teammate is expected to contribute research, ideas, cardboard cutting, and lines.  
+> The DRI is the **custodian & coordinator** who:  
+> 1. **Collates & Organizes:** Gathers all teammates' input so nothing is scattered.  
+> 2. **Tracks Progress:** Keeps a running checklist of open vs. completed tasks.  
+> 3. **Safely Stores Artifacts:** Ensures physical models, posters, binders, receipts, and scripts are packed safely into team bins between meetings.
 
-| Role # | DRI Title | Pokémon Codename | Superpower / Focus | Assigned Member |
+| Role # | DRI Title | Pokémon Codename | Superpower & Custodian Responsibilities | Assigned Member |
 | :---: | :--- | :--- | :--- | :--- |
-| **1** | **📦 Physical Presentation Lead** | **Machamp** 💪 | *Dynamic Punch:* Four arms on stage for posters, cardboard mockups, and stage layout. | |
-| **2** | **🔬 Research Lead** | **Alakazam** 🧠 | *Calm Mind:* 5,000 IQ Brain organizing research citations and water/habitat science data. | |
-| **3** | **🛠️ Prototype Lead** | **Tinkaton** 🔨 | *Gigaton Hammer:* Master craftsman for Technic linkages, 3D CAD, and moving mechanisms. | |
-| **4** | **🤝 Outreach Coordinator** | **Dragonite** 📬 | *Extreme Speed:* Global messenger gathering questions and drafting expert outreach emails (V2.0!). | |
-| **5** | **🎭 Creative Director** | **Jigglypuff** 🎤 | *Hyper Voice:* Headline performer directing the 5-minute script and equal speaking time. | |
-| **6** | **💰 Budget & Materials Accountant** | **Meowth** 🪙 | *Pay Day:* Counting every coin, tracking supplies, and ensuring we stay under budget. | |
-| **7** | **🕵️ Historical Intelligence & Video Scout** | **Greninja** 🥷 | *Shadow Sneak:* Stealth scout watching past FLL World Champion presentations on YouTube. | |
-| **8** | **🦆 Team Rubber Ducky** | **Psyduck** 🦆 | *Psychic Calm:* Empathy anchor listening blamelessly to stuck teammates and bridging to mentors. |
-| **9** | **⚡ Energy & Time Captain** | **Pikachu** ⚡ | *Volt Tackle:* Energizing the team, monitoring countdown clocks, and leading *DIFI-IT!* cheers. |
+| **1** | **📦 Physical Presentation Lead** | **Machamp** 💪 | **Collate & Store Props:** Collects display ideas; tracks needed supplies; safely packs tri-fold boards and cardboard into bins. | |
+| **2** | **🔬 Research Lead** | **Alakazam** 🧠 | **Collate & Store Research:** Gathers team facts and articles; tracks citations; protects the master Research Binder. | |
+| **3** | **🛠️ Prototype Lead** | **Tinkaton** 🔨 | **Collate & Store Prototypes:** Coordinates mechanisms across tables; safely stores physical models in padded bins so nothing breaks. | |
+| **4** | **🤝 Outreach Coordinator** | **Dragonite** 📬 | **Collate & Store Feedback:** Gathers teammate interview questions; logs expert responses (V1.0 $\rightarrow$ V2.0) in the project binder. | |
+| **5** | **🎭 Creative Director** | **Jigglypuff** 🎤 | **Collate & Store Script:** Gathers dialogue and skit ideas; tracks equal speaking time; protects master script and cue cards. | |
+| **6** | **💰 Budget & Materials Accountant** | **Meowth** 🪙 | **Collate & Store Receipts:** Collects supply wishlists; records expenses; safely files all receipts in the team ledger envelope. | |
+| **7** | **🕵️ Historical Intelligence & Video Scout** | **Greninja** 🥷 | **Collate & Store Inspiration:** Gathers YouTube links and ideas from past champions; maintains the team's "Inspiration Playbook." | |
+| **8** | **🦆 Team Rubber Ducky** | **Psyduck** 🦆 | **Collate & Store Wellness:** Actively checks on stuck/frustrated teammates; safely bridges constructive feedback to mentors blamelessly. | |
+| **9** | **⚡ Energy & Time Captain** | **Pikachu** ⚡ | **Collate & Store Match Timing:** Tracks 5-minute presentation rehearsal timers; keeps stopwatch and cheer banner packed safely. |
 
 ---
 
