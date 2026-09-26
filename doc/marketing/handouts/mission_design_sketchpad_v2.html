@@ -1026,6 +1026,104 @@
     }
 
     /* ==========================================================================
+       DYNAMIC BROWSER WINDOW FILL & HTML5 FLUID FLOW MODE
+       ========================================================================== */
+    .fill-window-btn {
+      background: rgba(255, 255, 255, 0.16);
+      border: 1.5px solid var(--retro-caramel);
+      color: #ffffff;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .fill-window-btn:hover {
+      background: rgba(255, 255, 255, 0.28);
+    }
+
+    body.fill-window-mode {
+      padding: 0.75rem 1.25rem 3rem 1.25rem;
+    }
+
+    body.fill-window-mode .screen-toolbar {
+      max-width: 100%;
+    }
+
+    body.fill-window-mode .fill-window-btn {
+      background: var(--retro-caramel);
+      border-color: #ffffff;
+      color: #ffffff;
+      box-shadow: 0 0 14px rgba(217, 119, 6, 0.65);
+    }
+
+    body.fill-window-mode .sheet-wrapper {
+      max-width: 100%;
+    }
+
+    body.fill-window-mode .sheet-page {
+      max-width: 100%;
+      padding: 1.5rem 2rem;
+      border-radius: 16px;
+    }
+
+    /* Dynamic sizing for Field Map Split Layout */
+    body.fill-window-mode .field-split-layout {
+      grid-template-columns: minmax(0, 2.2fr) minmax(320px, 1fr);
+      gap: 1.25rem;
+    }
+
+    body.fill-window-mode .field-canvas-container {
+      height: clamp(340px, 32vw, 560px);
+    }
+
+    body.fill-window-mode .field-sidebar-panel {
+      padding: 0.85rem 1.1rem;
+    }
+
+    body.fill-window-mode .frame-desc-input {
+      font-size: 0.85rem;
+      padding: 4px 2px;
+    }
+
+    /* Dynamic sizing for Keyframe Motion Storyboard Boxes */
+    body.fill-window-mode .mechanism-storyboard-grid {
+      gap: 1.25rem;
+    }
+
+    body.fill-window-mode .frame-canvas-wrap-large {
+      height: clamp(340px, 30vw, 540px);
+    }
+
+    /* Dynamic sizing for Page 2 Autonomous Code Table */
+    body.fill-window-mode .code-logic-section-full {
+      padding: 1.1rem 1.4rem;
+    }
+
+    body.fill-window-mode .logic-table th {
+      font-size: 0.82rem;
+      padding: 0.55rem 0.75rem;
+    }
+
+    body.fill-window-mode .logic-table td {
+      height: 42px;
+      padding: 0.45rem 0.65rem;
+    }
+
+    body.fill-window-mode .logic-input {
+      font-size: 0.84rem;
+    }
+
+    body.fill-window-mode .debug-log-card {
+      padding: 1rem 1.35rem;
+    }
+
+    body.fill-window-mode .debug-table th,
+    body.fill-window-mode .debug-table td {
+      padding: 0.5rem 0.65rem;
+    }
+
+    /* ==========================================================================
        PRINT STYLING (STRICT 2-PAGE DOUBLE-SIDED & 100% BLANK PRINTED PLACEHOLDERS)
        ========================================================================== */
     @media print {
@@ -1034,6 +1132,7 @@
         margin: 0.26in 0.3in;
       }
 
+      body.fill-window-mode,
       body {
         background: #ffffff !important;
         padding: 0 !important;
@@ -1041,29 +1140,36 @@
         min-height: auto !important;
       }
 
+      body.fill-window-mode .screen-toolbar,
+      body.fill-window-mode .draw-palette,
       .screen-toolbar,
       .draw-palette {
         display: none !important;
       }
 
+      body.fill-window-mode .sheet-wrapper,
       .sheet-wrapper {
         width: 100% !important;
+        max-width: 100% !important;
         display: block !important;
         gap: 0 !important;
+        padding: 0 !important;
       }
 
-      /* Force Page 1 & Page 2 to print on separate sides of sheet */
+      /* Force Page 1 & Page 2 to print on separate sides of sheet (strict 2 pages) */
+      body.fill-window-mode .sheet-page,
       .sheet-page {
         max-width: 100% !important;
         width: 100% !important;
-        min-height: 10.1in !important;
         box-shadow: none !important;
         border: 2px solid #000000 !important;
         border-radius: 0 !important;
-        padding: 0.18in !important;
-        gap: 0.35in !important;
+        padding: 0.16in 0.2in !important;
+        gap: 0.1in !important;
         background: #ffffff !important;
         page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        box-sizing: border-box !important;
       }
 
       .page-break-divider {
@@ -1075,14 +1181,16 @@
         border: none !important;
       }
 
+      body.fill-window-mode .field-split-layout,
       .field-split-layout {
         display: grid !important;
         grid-template-columns: 1.85fr 1fr !important;
-        gap: 0.5rem !important;
+        gap: 0.4rem !important;
       }
 
+      body.fill-window-mode .field-canvas-container,
       .field-canvas-container {
-        height: 250px !important;
+        height: 235px !important;
         border: 1.5px solid #000000 !important;
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
@@ -1098,14 +1206,17 @@
         display: block !important;
       }
 
+      body.fill-window-mode .field-sidebar-panel,
       .field-sidebar-panel {
         background: #ffffff !important;
         border: 1.5px solid #000000 !important;
-        padding: 0.4rem 0.55rem !important;
+        padding: 0.35rem 0.5rem !important;
+        gap: 0.25rem !important;
       }
 
+      body.fill-window-mode .frame-canvas-wrap-large,
       .frame-canvas-wrap-large {
-        height: 260px !important;
+        height: 235px !important;
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
       }
@@ -1127,17 +1238,49 @@
         visibility: hidden !important;
       }
 
+      /* Date field prints completely blank for student handwriting */
+      #inputDate {
+        color: transparent !important;
+        -webkit-text-fill-color: transparent !important;
+      }
+
+      body.fill-window-mode .code-logic-section-full,
+      .code-logic-section-full {
+        padding: 0.35rem 0.55rem !important;
+        gap: 0.25rem !important;
+      }
+
       /* Autonomous Code table rows print as clear, spacious dotted handwriting lines */
+      body.fill-window-mode .logic-table td,
       .logic-table td {
-        height: 38px !important;
-        padding: 5px 4px !important;
+        height: 28px !important;
+        padding: 2px 4px !important;
+      }
+
+      body.fill-window-mode .logic-table th,
+      .logic-table th {
+        padding: 3px 5px !important;
+        font-size: 0.7rem !important;
       }
 
       .logic-input {
         border-bottom: 1.5px dotted #94a3b8 !important;
-        height: 30px !important;
+        height: 24px !important;
         background: transparent !important;
         color: #000000 !important;
+      }
+
+      body.fill-window-mode .debug-log-card,
+      .debug-log-card {
+        padding: 0.35rem 0.55rem !important;
+      }
+
+      body.fill-window-mode .debug-table th,
+      .debug-table th,
+      body.fill-window-mode .debug-table td,
+      .debug-table td {
+        padding: 3px 5px !important;
+        font-size: 0.68rem !important;
       }
 
       .compass-pill {
@@ -1184,6 +1327,9 @@
 
     <!-- Actions (Add Steps, Export, Print) -->
     <div class="toolbar-actions">
+      <button type="button" class="view-pill fill-window-btn" id="btnToggleFillWindow" onclick="toggleFillWindow()" title="Toggle between Standard Sheet (A4) and Full Window Dynamic Flow">
+        ⛶ Fill Window
+      </button>
       <button type="button" class="view-pill" onclick="toggleGridStyle()" id="btnToggleGrid">
         📐 Grid: Blueprint
       </button>
@@ -1716,9 +1862,13 @@
 
     function getPointerPos(canvas, e) {
       const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
       return {
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top
+        x: x,
+        y: y,
+        nx: rect.width > 0 ? x / rect.width : 0,
+        ny: rect.height > 0 ? y / rect.height : 0
       };
     }
 
@@ -1855,22 +2005,38 @@
       const ctx = contexts[frameIdx];
       const wrap = frameWraps[frameIdx];
       const rect = wrap.getBoundingClientRect();
-      ctx.clearRect(0, 0, rect.width, rect.height);
+      const curW = rect.width;
+      const curH = rect.height;
+      ctx.clearRect(0, 0, curW, curH);
+
+      const getPt = (p) => {
+        if (p && p.nx !== undefined && p.ny !== undefined) {
+          return { x: p.nx * curW, y: p.ny * curH };
+        }
+        return p || { x: 0, y: 0 };
+      };
 
       for (const stroke of frameHistories[frameIdx]) {
         if (stroke.tool === 'pen' || stroke.tool === 'eraser') {
           const isEraser = stroke.tool === 'eraser';
           if (stroke.points.length === 1) {
-            drawDot(ctx, stroke.points[0].x, stroke.points[0].y, stroke.width, stroke.color, isEraser);
+            const p0 = getPt(stroke.points[0]);
+            drawDot(ctx, p0.x, p0.y, stroke.width, stroke.color, isEraser);
           } else {
             for (let i = 1; i < stroke.points.length; i++) {
-              drawLineSegment(ctx, stroke.points[i - 1], stroke.points[i], stroke.width, stroke.color, isEraser);
+              const pA = getPt(stroke.points[i - 1]);
+              const pB = getPt(stroke.points[i]);
+              drawLineSegment(ctx, pA, pB, stroke.width, stroke.color, isEraser);
             }
           }
         } else if (stroke.tool === 'line') {
-          drawLineSegment(ctx, stroke.points[0], stroke.points[1], stroke.width, stroke.color, false);
+          const p0 = getPt(stroke.points[0]);
+          const p1 = getPt(stroke.points[1]);
+          drawLineSegment(ctx, p0, p1, stroke.width, stroke.color, false);
         } else if (stroke.tool === 'arrow') {
-          drawArrow(ctx, stroke.points[0].x, stroke.points[0].y, stroke.points[1].x, stroke.points[1].y, stroke.width, stroke.color);
+          const p0 = getPt(stroke.points[0]);
+          const p1 = getPt(stroke.points[1]);
+          drawArrow(ctx, p0.x, p0.y, p1.x, p1.y, stroke.width, stroke.color);
         }
       }
     }
@@ -2021,14 +2187,52 @@
     })();
 
     /* ==========================================================================
-       4. Export & Printing Handlers (Double-Sided Print & JPGs)
+       4. Fill Window Dynamic Flow Toggle & Print Handlers
        ========================================================================== */
+    let isFillWindow = false;
+
+    function toggleFillWindow() {
+      isFillWindow = !isFillWindow;
+      const btn = document.getElementById('btnToggleFillWindow');
+      if (isFillWindow) {
+        document.body.classList.add('fill-window-mode');
+        if (btn) {
+          btn.innerHTML = '📄 Standard Sheet';
+          btn.title = 'Switch back to standard A4/Letter fixed sheet view';
+          btn.classList.add('active');
+        }
+        localStorage.setItem('bioglow_sketchpad_layout_mode', 'fill');
+      } else {
+        document.body.classList.remove('fill-window-mode');
+        if (btn) {
+          btn.innerHTML = '⛶ Fill Window';
+          btn.title = 'Maximize browser window real estate with dynamic HTML5 sizing & flow';
+          btn.classList.remove('active');
+        }
+        localStorage.setItem('bioglow_sketchpad_layout_mode', 'standard');
+      }
+      setTimeout(() => {
+        resizeAllCanvases();
+        syncAllPrintImages();
+      }, 60);
+    }
+
     function handlePrint() {
+      const dateField = document.getElementById('inputDate');
+      if (dateField) {
+        dateField.value = '';
+      }
       syncAllPrintImages();
       window.print();
     }
 
-    window.addEventListener('beforeprint', syncAllPrintImages);
+    window.addEventListener('beforeprint', () => {
+      const dateField = document.getElementById('inputDate');
+      if (dateField) {
+        dateField.value = '';
+      }
+      syncAllPrintImages();
+    });
 
     // High-Resolution JPG Export for Page 1 or Page 2
     async function exportAsJPG(pageId) {
@@ -2070,9 +2274,14 @@
       }
     }
 
-    // Initialize layout
+    // Initialize layout and restore saved layout preference
     window.addEventListener('DOMContentLoaded', () => {
-      setTimeout(resizeAllCanvases, 60);
+      const saved = localStorage.getItem('bioglow_sketchpad_layout_mode');
+      if (saved === 'fill') {
+        toggleFillWindow();
+      } else {
+        setTimeout(resizeAllCanvases, 60);
+      }
     });
   </script>
 </body>
