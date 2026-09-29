@@ -143,7 +143,7 @@ timeline
 ## 🔗 Related Resources
 
 * [📄 Printable Checklist Flyer & Worksheet (HTML)](crew_resource_management_kids.html)
-* [✈️ Coach CRM Guide & Operational Philosophy](../../mentors/plan/crew_resource_management.md)
-* [🥊 Session 3 CRM Stress Gauntlet Plan](../../mentors/plan/2026-sept-26.md)
+* [✈️ Coach CRM Guide & Operational Philosophy](../../mentors/plan/guides/crew_resource_management.md)
+* [🥊 Session 3 CRM Stress Gauntlet Plan](../../mentors/plan/sessions/2026-sept-26.md)
 * [🎯 Season Goals Worksheet](goals_worksheet.html)
 * [✏️ Robot Design & Mission Sketchpad](mission_design_sketchpad.html)

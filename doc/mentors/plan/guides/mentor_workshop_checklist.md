@@ -96,4 +96,4 @@ flowchart LR
 * [📇 Mentor CRM Pocket Cue Card (4"x6" / Lanyard)](mentor_crm_cue_card.html)
 * [🧭 Coach Philosophy & Ambassador Handoffs](mentors_notes.md)
 * [✈️ Full CRM Principles Guide](crew_resource_management.md)
-* [⚡ Kids Pokémon Checklist Handout](../../marketing/handouts/crew_resource_management_kids.html)
+* [⚡ Kids Pokémon Checklist Handout](../../../marketing/handouts/crew_resource_management_kids.html)

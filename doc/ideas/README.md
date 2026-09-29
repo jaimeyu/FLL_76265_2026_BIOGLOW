@@ -30,7 +30,7 @@ Notes, sketches, research topics, and creative concepts for the **2026 SUBMERGED
 
 ## 🛠️ Interactive Design & Brainstorming Tools
 
-- 🧭 **[Mentor Coaching Guide & Universal Rubric Playbook](../mentors/plan/innovation_project_rubric_guide.md)**: Mentor guide on Socratic facilitation, the 3-Tier prompting ladder, expert outreach protocols, and mock judging simulations.
+- 🧭 **[Mentor Coaching Guide & Universal Rubric Playbook](../mentors/plan/guides/innovation_project_rubric_guide.md)**: Mentor guide on Socratic facilitation, the 3-Tier prompting ladder, expert outreach protocols, and mock judging simulations.
 - 🌿 **[Printable & Digital Innovation Project Worksheet](../marketing/handouts/innovation_project_worksheet.html)**: Scaffolds the entire challenge into visual panels. Features ecosystem selector pills, nature mentor prompts, interactive touch/mouse drawing pad with JPG export, STEM technology checklist, and 6 built-in **💡 Nature Sparks** biomimicry starter examples.
 - ✏️ **[Printable Robot Design & Mission Sketchpad](../marketing/handouts/mission_design_sketchpad.html)**: Ready-to-print mechanism idea sheet for kids with Mission #, Design #, summary area, student name, drafting grid with LEGO Technic beam scale, and peer "Plus'ing" feedback.
 - 🚀 **[Robot Motion & Autonomous Code Storyboard (v2)](../marketing/handouts/mission_design_sketchpad_v2.html)**: Double-sided printable / digital storyboard sheet with expanded Frame 2 & 3 sketching canvases and 10-step autonomous code logic table.

@@ -102,7 +102,7 @@ This entire site is written by student coders and builders using simple **Markdo
 
     Coaching philosophy, Crew Resource Management (CRM), practice schedule, and session plans.
 
-    [:octicons-arrow-right-24: Open Mentor Hub](mentors/plan/mentors_notes.md)
+    [:octicons-arrow-right-24: Open Mentor Hub](mentors/plan/guides/mentors_notes.md)
 
 -   :material-gamepad-variant-outline:{ .lg .middle } __Simulators & Advanced Code__
 

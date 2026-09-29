@@ -290,8 +290,8 @@ Before your competition or mock judging simulation, evaluate the team's project 
 
 ## 🔗 Related Team Assets & Handouts
 
-- 🌿 **[Printable Innovation Project Worksheet (Handout)](../../marketing/handouts/innovation_project_worksheet.html):** 4-panel student worksheet featuring ecosystem selector pills, nature spark inspirations, blueprint canvas, and expert share logs.
-- 💡 **[Innovation Project & Brainstorming Hub (Overview)](../../ideas/README.md):** High-level season theme overview and biomimicry inspiration catalog.
+- 🌿 **[Printable Innovation Project Worksheet (Handout)](../../../marketing/handouts/innovation_project_worksheet.html):** 4-panel student worksheet featuring ecosystem selector pills, nature spark inspirations, blueprint canvas, and expert share logs.
+- 💡 **[Innovation Project & Brainstorming Hub (Overview)](../../../ideas/README.md):** High-level season theme overview and biomimicry inspiration catalog.
 - ✈️ **[Crew Resource Management (CRM) Guide](crew_resource_management.md):** Aviation communication protocols, closed-loop callouts, and stress resilience.
 - 📋 **[Workshop Facilitation Checklist](mentor_workshop_checklist.md):** Live room management, active waiting tasks, and divide-and-conquer strategies.
-- 📓 **[Engineering Journal Overview](../../journal/README.md):** Documenting meeting-by-meeting student iterations and research notes.
+- 📓 **[Engineering Journal Overview](../../../journal/README.md):** Documenting meeting-by-meeting student iterations and research notes.

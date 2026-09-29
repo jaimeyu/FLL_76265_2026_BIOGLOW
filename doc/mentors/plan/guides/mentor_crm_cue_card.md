@@ -94,4 +94,4 @@ Mentors tap base for 30 seconds while kids grab water:
 * [📄 Printable Workshop Cue Card HTML (4x6 / Lanyard)](mentor_crm_cue_card.html)
 * [🧭 Coach Philosophy & Ambassador Handoffs](mentors_notes.md)
 * [✈️ Full CRM Principles Guide](crew_resource_management.md)
-* [⚡ Kids Pokémon Checklist Handout](../../marketing/handouts/crew_resource_management_kids.html)
+* [⚡ Kids Pokémon Checklist Handout](../../../marketing/handouts/crew_resource_management_kids.html)
