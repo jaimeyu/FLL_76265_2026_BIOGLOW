@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mentor CRM Day-to-Day Checklist — Everyday Facilitation | Team #76265 "Lego Legends" • BIOGLOW</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@400;500;600;700;800;900&family=Righteous&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Retro NASA / 70s Heritage Space-Age Palette */
+      --paper-bg: #FAF6EE;
+      --retro-navy: #0E3B5C;
+      --retro-navy-dark: #08243A;
+      --retro-caramel: #B5732A;
+      --retro-caramel-dark: #8F5217;
+      --retro-caramel-light: #E5A85C;
+      --retro-steel: #7998AB;
+      --retro-steel-light: #C2D3DE;
+      --retro-sand: #F2E2C8;
+      --retro-sand-light: #FBF5EB;
+      --retro-charcoal: #1E293B;
+      --retro-muted: #576574;
+
+      /* Phase Accent Tokens */
+      --phase-1-bg: #E3EFF7;
+      --phase-1-text: #0E3B5C;
+      --phase-2-bg: #FDF3E7;
+      --phase-2-text: #8F5217;
+      --phase-3-bg: #FDF0ED;
+      --phase-3-text: #991B1B;
+      --phase-4-bg: #E8F5EC;
+      --phase-4-text: #166534;
+      --phase-5-bg: #F4EBF7;
+      --phase-5-text: #6B21A8;
+      --phase-6-bg: #E6F7F2;
+      --phase-6-text: #065F46;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: radial-gradient(circle at top center, #1e293b 0%, #081524 100%);
+      color: var(--retro-charcoal);
+      padding: 1.5rem 1rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Screen Toolbar */
+    .screen-toolbar {
+      width: 100%;
+      max-width: 880px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+      background: rgba(14, 59, 92, 0.94);
+      backdrop-filter: blur(12px);
+      padding: 0.75rem 1.15rem;
+      border-radius: 12px;
+      border: 1px solid rgba(181, 115, 42, 0.4);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .toolbar-links {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+    }
+
+    .back-link {
+      color: var(--retro-sand);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: color 0.15s ease;
+    }
+
+    .back-link:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    .print-btn {
+      background: linear-gradient(135deg, var(--retro-caramel) 0%, var(--retro-caramel-dark) 100%);
+      color: #ffffff;
+      border: none;
+      padding: 0.55rem 1.15rem;
+      border-radius: 8px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      box-shadow: 0 4px 14px rgba(181, 115, 42, 0.4);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .print-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(181, 115, 42, 0.55);
+    }
+
+    /* Document Sheet */
+    .checklist-sheet {
+      width: 100%;
+      max-width: 880px;
+      background: var(--paper-bg);
+      color: var(--retro-charcoal);
+      border: 2px solid var(--retro-navy);
+      border-radius: 14px;
+      padding: 1.8rem 2.2rem;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+      position: relative;
+    }
+
+    /* Heritage 4-Stripe Ribbon Accents */
+    .racing-ribbon-tl {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      height: 5px;
+      width: 140px;
+      border-radius: 12px 0 0 0;
+      overflow: hidden;
+      z-index: 10;
+    }
+
+    .racing-ribbon-br {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      display: flex;
+      height: 5px;
+      width: 140px;
+      border-radius: 0 0 12px 0;
+      overflow: hidden;
+      z-index: 10;
+    }
+
+    .ribbon-bar { height: 100%; flex: 1; }
+    .bar-caramel { background: var(--retro-caramel); }
+    .bar-steel { background: var(--retro-steel); }
+    .bar-sand { background: var(--retro-sand); }
+    .bar-navy { background: var(--retro-navy); }
+
+    /* Header */
+    .sheet-header {
+      border-bottom: 2px solid var(--retro-sand);
+      padding-bottom: 0.85rem;
+      margin-bottom: 1.15rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .header-titles {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .header-titles h1 {
+      font-family: 'Righteous', cursive, sans-serif;
+      font-size: 1.6rem;
+      font-weight: normal;
+      color: var(--retro-navy);
+      line-height: 1.2;
+    }
+
+    .header-titles p {
+      font-family: 'Caveat', cursive, sans-serif;
+      font-size: 1.15rem;
+      color: var(--retro-caramel-dark);
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    .retro-badge-emblem {
+      background: var(--retro-navy);
+      border: 2px solid var(--retro-caramel);
+      color: #ffffff;
+      padding: 0.35rem 0.65rem;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 2px 2px 0 var(--retro-caramel);
+      white-space: nowrap;
+    }
+
+    .badge-fll {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: var(--retro-sand);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .badge-team-name {
+      font-family: 'Righteous', cursive, sans-serif;
+      font-size: 0.88rem;
+      line-height: 1;
+      color: #ffffff;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    /* Core Mantra Banner */
+    .mantra-banner {
+      background: var(--retro-sand-light);
+      border: 1.5px solid var(--retro-sand);
+      border-left: 4.5px solid var(--retro-caramel);
+      border-radius: 8px;
+      padding: 0.65rem 0.95rem;
+      margin-bottom: 1.15rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      color: var(--retro-charcoal);
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .mantra-banner strong {
+      color: var(--retro-navy);
+    }
+
+    .stem-reflection-box {
+      background: var(--retro-sand-light);
+      border: 1px solid var(--retro-sand);
+      border-radius: 8px;
+      padding: 0.65rem 0.85rem;
+      margin-bottom: 1.15rem;
+      font-size: 0.8rem;
+      color: var(--retro-charcoal);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0.6rem;
+    }
+
+    .reflection-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .reflection-item strong {
+      color: var(--retro-navy);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Checklist Sections */
+    .checklist-section {
+      margin-bottom: 1.15rem;
+    }
+
+    .section-title-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.45rem 0.8rem;
+      border-radius: 6px;
+      margin-bottom: 0.65rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      border: 1px solid var(--retro-sand);
+    }
+
+    .phase-1 { background: var(--phase-1-bg); color: var(--phase-1-text); border-left: 4px solid var(--retro-navy); }
+    .phase-2 { background: var(--phase-2-bg); color: var(--phase-2-text); border-left: 4px solid var(--retro-caramel); }
+    .phase-3 { background: var(--phase-3-bg); color: var(--phase-3-text); border-left: 4px solid #b91c1c; }
+    .phase-4 { background: var(--phase-4-bg); color: var(--phase-4-text); border-left: 4px solid #166534; }
+    .phase-5 { background: var(--phase-5-bg); color: var(--phase-5-text); border-left: 4px solid #7c3aed; }
+    .phase-6 { background: var(--phase-6-bg); color: var(--phase-6-text); border-left: 4px solid #065f46; }
+
+    .section-tag {
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--retro-sand);
+    }
+
+    /* Checklist Items */
+    .items-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .check-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      background: #ffffff;
+      border: 1px solid var(--retro-sand);
+      border-radius: 8px;
+      padding: 0.6rem 0.8rem;
+      cursor: pointer;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .check-row:hover {
+      background: var(--retro-sand-light);
+      border-color: var(--retro-steel);
+    }
+
+    .check-box {
+      width: 18px;
+      height: 18px;
+      border: 2px solid var(--retro-steel);
+      border-radius: 4px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      user-select: none;
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+
+    .check-box:hover {
+      border-color: var(--retro-caramel);
+    }
+
+    .check-box.checked {
+      background: var(--retro-navy);
+      border-color: var(--retro-navy);
+    }
+
+    .check-box.checked::after {
+      content: "✓";
+      color: #ffffff;
+      font-weight: 900;
+      font-size: 13px;
+    }
+
+    .check-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      flex: 1;
+      font-size: 0.82rem;
+      line-height: 1.4;
+      color: var(--retro-charcoal);
+    }
+
+    .check-title {
+      font-weight: 800;
+      color: var(--retro-navy);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .check-desc {
+      color: var(--retro-muted);
+      font-size: 0.78rem;
+    }
+
+    .quote-box {
+      background: var(--retro-sand-light);
+      border: 1px solid var(--retro-sand);
+      border-left: 3px solid var(--retro-caramel);
+      border-radius: 4px;
+      padding: 0.3rem 0.55rem;
+      font-style: italic;
+      color: var(--retro-navy);
+      font-weight: 600;
+      font-size: 0.78rem;
+      margin-top: 0.15rem;
+    }
+
+    /* Micro-affirmations table */
+    .micro-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.76rem;
+      margin-top: 0.5rem;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .micro-table th {
+      background: var(--retro-sand);
+      color: var(--retro-navy);
+      text-align: left;
+      padding: 0.45rem 0.65rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800;
+      border-bottom: 1.5px solid var(--retro-sand);
+    }
+
+    .micro-table td {
+      padding: 0.4rem 0.65rem;
+      border-bottom: 1px solid var(--retro-sand);
+      vertical-align: top;
+      line-height: 1.35;
+      color: var(--retro-charcoal);
+    }
+
+    .micro-table tr:nth-child(even) {
+      background: var(--retro-sand-light);
+    }
+
+    /* Footer */
+    .sheet-footer {
+      border-top: 1.5px solid var(--retro-sand);
+      padding-top: 0.75rem;
+      margin-top: 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: var(--retro-muted);
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    /* Print Optimization */
+    @media print {
+      body {
+        background: #ffffff !important;
+        padding: 0 !important;
+        color: #000000 !important;
+      }
+      .screen-toolbar {
+        display: none !important;
+      }
+      .checklist-sheet {
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        border: none !important;
+        background: #ffffff !important;
+        padding: 0.35in !important;
+        max-width: 100% !important;
+        width: 100% !important;
+      }
+      .racing-ribbon-tl, .racing-ribbon-br {
+        display: none !important;
+      }
+      .check-row {
+        page-break-inside: avoid;
+        border: 1px solid #cbd5e1 !important;
+      }
+      .checklist-section {
+        page-break-inside: avoid;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .sheet-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Screen Toolbar -->
+  <div class="screen-toolbar">
+    <div class="toolbar-links">
+      <a href="mentor_day_to_day_crm_checklist.md" class="back-link">&larr; Markdown Guide</a>
+      <a href="mentor_competition_crm_checklist.html" class="back-link">Competition Checklist &rarr;</a>
+      <a href="mentor_crm_cue_card.html" class="back-link">Pocket Cue Card &rarr;</a>
+    </div>
+    <button class="print-btn" onclick="window.print()">
+      🖨️ Print Daily Sheet
+    </button>
+  </div>
+
+  <!-- Document Sheet -->
+  <div class="checklist-sheet">
+
+    <!-- Heritage 4-Stripe Ribbons -->
+    <div class="racing-ribbon-tl">
+      <div class="ribbon-bar bar-caramel"></div>
+      <div class="ribbon-bar bar-steel"></div>
+      <div class="ribbon-bar bar-sand"></div>
+      <div class="ribbon-bar bar-navy"></div>
+    </div>
+    <div class="racing-ribbon-br">
+      <div class="ribbon-bar bar-navy"></div>
+      <div class="ribbon-bar bar-sand"></div>
+      <div class="ribbon-bar bar-steel"></div>
+      <div class="ribbon-bar bar-caramel"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="sheet-header">
+      <div class="header-titles">
+        <h1>📋 Mentor CRM Day-to-Day Checklist</h1>
+        <p>Operational Workshop & Inclusivity Protocol • Team #76265 "Lego Legends" • BIOGLOW</p>
+      </div>
+      <div class="retro-badge-emblem">
+        <span class="badge-fll">FIRST FLL #76265</span>
+        <span class="badge-team-name">LEGO LEGENDS</span>
+      </div>
+    </header>
+
+    <!-- Core Mantra Banner -->
+    <div class="mantra-banner">
+      <div>
+        <strong>Philosophy:</strong> 👐 Hands in Pockets & Zero Unheard Hands!
+      </div>
+      <div>
+        <strong>Compass:</strong> "Not all obstacles are in your control, but your responses to obstacles are in your control."
+      </div>
+    </div>
+
+    <!-- STEM for Everyone Reflection Box -->
+    <div class="stem-reflection-box">
+      <div class="reflection-item">
+        <strong>1. Inspire:</strong>
+        <span>Who am I elevating today who hesitated or held back last week?</span>
+      </div>
+      <div class="reflection-item">
+        <strong>2. Recognize:</strong>
+        <span>Praise peer assistance, resilience, and debugging persistence.</span>
+      </div>
+      <div class="reflection-item">
+        <strong>3. Action:</strong>
+        <span>Queue publicly, ask Socratic questions, and let students hold the tools.</span>
+      </div>
+    </div>
+
+    <!-- Phase 1: Pre-Session Sync -->
+    <section class="checklist-section">
+      <div class="section-title-bar phase-1">
+        <span>1. 🛫 Pre-Session Sync (15 Minutes Before Kids Arrive)</span>
+        <span class="section-tag">Pre-Flight</span>
+      </div>
+      <div class="items-list">
+        <div class="check-row" onclick="toggleCheck(this)">
+          <div class="check-box"></div>
+          <div class="check-content">
+            <div class="check-title">Assign Mentor Zones (Divide & Conquer)</div>
+            <div>Mentor A anchors Station A (Chassis / Mechanical Assembly); Mentor B anchors Station B (Code / Sensors / Project). Mentors avoid clustering together.</div>
+          </div>
+        </div>
+
+        <div class="check-row" onclick="toggleCheck(this)">
+          <div class="check-box"></div>
+          <div class="check-content">
+            <div class="check-title">
+              Silent Struggler Radar & Watchlist Check
+              <span class="first-pill">FIRST Tip</span>
+            </div>
+            <div>Review students who seemed quiet, disengaged, or overwhelmed last time. Plan an intentional, low-pressure check-in within the first 20 minutes.</div>
+          </div>
+        </div>
+
+        <div class="check-row" onclick="toggleCheck(this)">
+          <div class="check-box"></div>
+          <div class="check-content">
+            <div class="check-title">
+              Unconscious Bias Self-Audit
+              <span class="first-pill">FIRST Tip</span>
+            </div>
+            <div>Examine internal assumptions (e.g. approaching boys for mechanical tasks and girls for presentation). Ensure equitable opportunities across all stations today.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Phase 2: Arrival & Culture -->
+    <section class="checklist-section">
+      <div class="section-title-bar phase-2">
+        <span>2. 🤝 Arrival, Culture & Connection (First 15–20 Minutes)</span>
+        <span class="section-tag">Connection</span>
+      </div>
+      <div class="items-list">
+        <div class="check-row" onclick="toggleCheck(this)">
+          <div class="check-box"></div>
+          <div class="check-content">
+            <div class="check-title">
+              Low-Pressure Greetings & Eye Contact Respect
+              <span class="first-pill">FIRST Tip</span>
+            </div>
+            <div>Do not force physical contact; offer wave, fist bump, or verbal greeting. <strong>Never equate lack of eye contact with disrespect.</strong> Listen attentively regardless of gaze. Introduce yourself with preferred pronouns.</div>
+          </div>
+        </div>
+
+        <div class="check-row" onclick="toggleCheck(this)">
+          <div class="check-box"></div>
+          <div class="check-content">
+            <div class="check-title">15-Minute Playful Warm-Up</div>
+            <div>Kick off with a low-stakes challenge (Blind Build, One-Hand Duck Build) to release school stress, spark laughter, and equalize confidence before tech blocks.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Phase 3: Live Room Operations -->
+    <section class="checklist-section">
+      <div class="section-title-bar phase-3">
+        <span>3. 🚨 Live Room Operations (When 3+ Hands Shoot Up)</span>
+        <span class="section-tag">Live Triage</span>
+      </div>
+      <div class="items-list">
+        <div class="check-row" onclick="toggleCheck(this)">
+          <div class="check-box"></div>
+          <div class="check-content">
+            <div class="check-title">Acknowledge & Sequence Publicly (Zero Unheard Hands)</div>
+            <div>Never leave a hand hanging in silence. Announce queue numbers out loud to drop anxiety to 0%.</div>
+            <div class="script-bubble">"Maya, I see you—you are #1! Joey, I hear you—you are #2! Sam, you are #3!"</div>
+          </div>
+        </div>
+
+        <div class="check-row" onclick="toggleCheck(this)">
+          <div class="check-box"></div>
+          <div class="check-content">
+            <div class="check-title">Assign an Active Waiting Task</div>
+            <div>Keep queued students actively engaged while waiting for mentor support:</div>
+            <div class="script-bubble">"Joey, while I spend 90s with Maya, do a 2-finger tug test on that gear shaft and check your axle length!"</div>
+          </div>
+        </div>
+
+        <div class="check-row" onclick="toggleCheck(this)">
+          <div class="check-box"></div>
+          <div class="check-content">
+            <div class="check-title">Coach-to-Coach Closed-Loop Callout & No Dual Coaching</div>
+            <div>Call out: <em>"Coach Mike, Table 2 has two in queue!"</em> &rarr; <em>"Roger, taking Table 2 now!"</em> Never have two mentors hovering at one table.</div>
+          </div>
+        </div>
+
+        <div class="check-row" onclick="toggleCheck(this)">
+          <div class="check-box"></div>
+          <div class="check-content">
+            <div class="check-title">Scan for the Silent Struggler</div>
+            <div>Scan for the quiet child with crossed arms or looking down who hasn't raised a hand. Check in on them first!</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Phase 4: Socratic Facilitation -->
+    <section class="checklist-section">
+      <div class="section-title-bar phase-4">
+        <span>4. ⏱️ 2-Minute Socratic Intervention Protocol</span>
+        <span class="section-tag">Hands in Pockets</span>
+      </div>
+      <div class="items-list">
+        <div class="check-row" onclick="toggleCheck(this)">
+          <div class="check-box"></div>
+          <div class="check-content">
+            <div class="check-title">Hands in Pockets & Rapid 3-Step Socratic Exit</div>
+            <div>1. Diagnose: <em>"What did you want the robot to do?"</em> &rarr; 2. Locate: <em>"Where in the guide is that shown?"</em> &rarr; 3. Launch & Exit: Set 1 micro-goal and walk away!</div>
+          </div>
+        </div>
+
+        <div class="check-row" onclick="toggleCheck(this)">
+          <div class="check-box"></div>
+          <div class="check-content">
+            <div class="check-title">
+              Answer Repetitive Questions with Fresh Enthusiasm
+              <span class="first-pill">FIRST Tip</span>
+            </div>
+            <div>Even if answered 20 times today, answer as if for the very first time! Maintain a warm, encouraging, unhurried tone.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Phase 5: Peer Ambassador Handoffs -->
+    <section class="checklist-section">
+      <div class="section-title-bar phase-5">
+        <span>5. 🔄 Peer Ambassador System ("Jigsaw" Handoffs)</span>
+        <span class="section-tag">Peer Teaching</span>
+      </div>
+      <div class="items-list">
+        <div class="check-row" onclick="toggleCheck(this)">
+          <div class="check-box"></div>
+          <div class="check-content">
+            <div class="check-title">Station Ambassadors Teach Incoming Teammates</div>
+            <div>Ambassadors stay behind at their station to teach the incoming group. Mentors step back and let kids explain in their own words.</div>
+          </div>
+        </div>
+
+        <div class="check-row" onclick="toggleCheck(this)">
+          <div class="check-box"></div>
+          <div class="check-content">
+            <div class="check-title">Reverse Handoff: Ambassadors Get Caught Up</div>
+            <div>When Ambassadors return to their home station, their teammates must teach them what was accomplished in the interim.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Phase 6: Closing Circle & Plus'ing -->
+    <section class="checklist-section">
+      <div class="section-title-bar phase-6">
+        <span>6. 🔄 Closing Circle & Blameless Plus'ing (Last 10 Minutes)</span>
+        <span class="section-tag">Plus'ing</span>
+      </div>
+      <div class="items-list">
+        <div class="check-row" onclick="toggleCheck(this)">
+          <div class="check-box"></div>
+          <div class="check-content">
+            <div class="check-title">Every Voice Heard in the Closing Circle</div>
+            <div>Every student shares one discovery, test, or win. Celebrate students who unblocked a teammate today!</div>
+          </div>
+        </div>
+
+        <div class="check-row" onclick="toggleCheck(this)">
+          <div class="check-box"></div>
+          <div class="check-content">
+            <div class="check-title">Blameless Plus'ing of Mistakes</div>
+            <div>Convert all errors into system upgrades: <em>"Human error is a symptom of a weak system. How do we plus our jig or checklist for next week?"</em></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Micro-Affirmations Quick Matrix -->
+    <section class="checklist-section">
+      <div class="section-title-bar" style="background: #f1f5f9; color: #1e293b;">
+        <span>💬 The 6 Micro-Affirmations Workshop Matrix</span>
+        <span class="section-tag">FIRST® Guidance</span>
+      </div>
+      <table class="micro-table">
+        <thead>
+          <tr>
+            <th style="width: 22%;">Message Type</th>
+            <th style="width: 44%;">Positive Micro-Affirmation (✅ DO THIS)</th>
+            <th style="width: 34%;">Negative Micro-Message (❌ AVOID)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1. Verbal</strong></td>
+            <td>Gender-neutral terms: "Engineers", "Builders", "Lego Legends".</td>
+            <td>"Hey guys", referring to builders as "he/him".</td>
+          </tr>
+          <tr>
+            <td><strong>2. Para-Verbal</strong></td>
+            <td>Calm, unhurried, respectful, warm tone.</td>
+            <td>Sounding annoyed, sighing when repeating instructions.</td>
+          </tr>
+          <tr>
+            <td><strong>3. Non-Verbal</strong></td>
+            <td>Hands in pockets, kneeling/sitting to eye level.</td>
+            <td>Hovering, slumping, checking phone, crossing arms.</td>
+          </tr>
+          <tr>
+            <td><strong>4. Contextual</strong></td>
+            <td>"Who wrote this code?", "Who built this lever?"</td>
+            <td>Assuming boys code and girls decorate.</td>
+          </tr>
+          <tr>
+            <td><strong>5. Omission</strong></td>
+            <td>Full, patient attention to quiet or hesitant students.</td>
+            <td>Only listening to dominant, vocal kids.</td>
+          </tr>
+          <tr>
+            <td><strong>6. Praise</strong></td>
+            <td>Praising girls on torque/code; praising boys on notes/empathy.</td>
+            <td>Gendered praise (praising girls only for neatness).</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Footer -->
+    <footer class="sheet-footer">
+      <div><strong>FIRST LEGO League Team #76265 "Lego Legends" • BIOGLOW 2026</strong></div>
+      <div>Everyday Session Quick Reference • Gracious Professionalism® & CRM Doctrine</div>
+    </footer>
+
+  </div>
+
+  <script>
+    function toggleCheck(row) {
+      const box = row.querySelector('.check-box');
+      box.classList.toggle('checked');
+    }
+  </script>
+</body>
+</html>

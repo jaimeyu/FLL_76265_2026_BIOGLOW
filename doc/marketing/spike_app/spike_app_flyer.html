@@ -3,22 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LEGO SPIKE App Setup & Parent Guide — FLL Team #76265 "Lego Legends"</title>
+  <title>LEGO SPIKE App Setup & Parent Guide — FLL Team #76265 "Lego Legends" • BIOGLOW</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@400;500;600;700;800;900&family=Righteous&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #388bfd;
-      --accent-green: #2ea043;
-      --accent-purple: #8957e5;
-      --accent-amber: #d29922;
-      --accent-cyan: #39c5bb;
-      --dark-bg: #0d1117;
-      --card-bg: #161b22;
-      --card-border: rgba(56, 139, 253, 0.28);
-      --text-main: #f0f6fc;
-      --text-muted: #8b949e;
+      /* Retro NASA / 70s Heritage Space-Age Palette */
+      --paper-bg: #FAF6EE;
+      --retro-navy: #0E3B5C;
+      --retro-navy-dark: #08243A;
+      --retro-caramel: #B5732A;
+      --retro-caramel-dark: #8F5217;
+      --retro-caramel-light: #E5A85C;
+      --retro-steel: #7998AB;
+      --retro-steel-light: #C2D3DE;
+      --retro-sand: #F2E2C8;
+      --retro-sand-light: #FBF5EB;
+      --retro-charcoal: #1E293B;
+      --retro-muted: #576574;
     }
 
     * {
@@ -28,107 +31,189 @@
     }
 
     body {
-      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: radial-gradient(circle at top center, #161b22 0%, #0d1117 100%);
-      color: var(--text-main);
-      padding: 2rem 1rem;
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: radial-gradient(circle at top center, #1e293b 0%, #081524 100%);
+      color: var(--retro-charcoal);
+      padding: 1.5rem 1rem;
       min-height: 100vh;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      align-items: center;
     }
 
-    /* Container */
-    .flyer-container {
+    /* Screen Toolbar */
+    .screen-toolbar {
       width: 100%;
       max-width: 900px;
-      background: linear-gradient(145deg, #161b22 0%, #0e131a 100%);
-      border: 2px solid var(--card-border);
-      border-radius: 16px;
-      padding: 2.2rem 2.5rem;
-      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.65);
-      position: relative;
-    }
-
-    .nav-back {
-      margin-bottom: 1.25rem;
-    }
-
-    .nav-back a {
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.9rem;
-      display: inline-flex;
+      display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 0.35rem;
-      transition: color 0.2s ease;
+      margin-bottom: 1.25rem;
+      background: rgba(14, 59, 92, 0.94);
+      backdrop-filter: blur(12px);
+      padding: 0.75rem 1.15rem;
+      border-radius: 12px;
+      border: 1px solid rgba(181, 115, 42, 0.4);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+      gap: 1rem;
+      flex-wrap: wrap;
     }
 
-    .nav-back a:hover {
-      color: #79c0ff;
+    .toolbar-links {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      flex-wrap: wrap;
     }
 
-    header {
-      text-align: center;
-      margin-bottom: 1.75rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      padding-bottom: 1.25rem;
-    }
-
-    .badge {
-      display: inline-block;
-      background: linear-gradient(135deg, rgba(56,139,253,0.18), rgba(137,87,229,0.18));
-      border: 1px solid var(--primary);
-      color: #79c0ff;
-      font-size: 0.8rem;
+    .back-link {
+      color: var(--retro-sand);
+      text-decoration: none;
       font-weight: 700;
-      letter-spacing: 1.5px;
-      padding: 0.3rem 0.9rem;
-      border-radius: 20px;
-      text-transform: uppercase;
-      margin-bottom: 0.6rem;
-    }
-
-    h1 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 2.15rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, #58a6ff 0%, #3fb950 50%, #bc8cff 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 0.35rem;
-      line-height: 1.2;
-    }
-
-    p.tagline {
-      color: var(--text-muted);
-      font-size: 1rem;
-    }
-
-    /* Print Button */
-    .print-btn {
-      position: absolute;
-      top: 1.75rem;
-      right: 2rem;
-      background: #238636;
-      color: #fff;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 600;
-      cursor: pointer;
       font-size: 0.85rem;
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      transition: background 0.2s ease, transform 0.1s ease;
+      gap: 0.35rem;
+      transition: color 0.15s ease;
+    }
+
+    .back-link:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    .print-btn {
+      background: linear-gradient(135deg, var(--retro-caramel) 0%, var(--retro-caramel-dark) 100%);
+      color: #ffffff;
+      border: none;
+      padding: 0.55rem 1.15rem;
+      border-radius: 8px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      box-shadow: 0 4px 14px rgba(181, 115, 42, 0.4);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
     .print-btn:hover {
-      background: #2ea043;
-      transform: translateY(-1px);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(181, 115, 42, 0.55);
+    }
+
+    /* Flyer Container */
+    .flyer-container {
+      width: 100%;
+      max-width: 900px;
+      background: var(--paper-bg);
+      color: var(--retro-charcoal);
+      border: 2px solid var(--retro-navy);
+      border-radius: 14px;
+      padding: 1.8rem 2.2rem;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+      position: relative;
+    }
+
+    /* Heritage 4-Stripe Ribbon Accents */
+    .racing-ribbon-tl {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      height: 5px;
+      width: 140px;
+      border-radius: 12px 0 0 0;
+      overflow: hidden;
+      z-index: 10;
+    }
+
+    .racing-ribbon-br {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      display: flex;
+      height: 5px;
+      width: 140px;
+      border-radius: 0 0 12px 0;
+      overflow: hidden;
+      z-index: 10;
+    }
+
+    .ribbon-bar { height: 100%; flex: 1; }
+    .bar-caramel { background: var(--retro-caramel); }
+    .bar-steel { background: var(--retro-steel); }
+    .bar-sand { background: var(--retro-sand); }
+    .bar-navy { background: var(--retro-navy); }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--retro-sand);
+      padding-bottom: 0.85rem;
+      margin-bottom: 1.25rem;
+      gap: 1rem;
+    }
+
+    .header-main {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    h1 {
+      font-family: 'Righteous', cursive, sans-serif;
+      font-size: 1.75rem;
+      font-weight: normal;
+      color: var(--retro-navy);
+      line-height: 1.2;
+      margin: 0;
+    }
+
+    p.tagline {
+      font-family: 'Caveat', cursive, sans-serif;
+      font-size: 1.15rem;
+      color: var(--retro-caramel-dark);
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      margin: 0;
+    }
+
+    .retro-badge-emblem {
+      background: var(--retro-navy);
+      border: 2px solid var(--retro-caramel);
+      color: #ffffff;
+      padding: 0.35rem 0.65rem;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 2px 2px 0 var(--retro-caramel);
+      white-space: nowrap;
+    }
+
+    .badge-fll {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: var(--retro-sand);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .badge-team-name {
+      font-family: 'Righteous', cursive, sans-serif;
+      font-size: 0.88rem;
+      line-height: 1;
+      color: #ffffff;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      margin-top: 2px;
     }
 
     /* Section Headings */
@@ -136,33 +221,33 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 1rem;
+      margin-bottom: 0.85rem;
     }
 
     .section-title {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: #58a6ff;
+      font-family: 'Righteous', cursive, sans-serif;
+      font-size: 1.2rem;
+      font-weight: normal;
+      color: var(--retro-navy);
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.4rem;
     }
 
     /* Parent Guide Box */
     .parent-guide-container {
-      background: rgba(22, 27, 34, 0.85);
-      border: 1px solid rgba(56, 139, 253, 0.25);
-      border-radius: 14px;
-      padding: 1.35rem;
-      margin-bottom: 1.75rem;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+      background: #ffffff;
+      border: 1px solid var(--retro-sand);
+      border-radius: 12px;
+      padding: 1.15rem;
+      margin-bottom: 1.4rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
     }
 
     .parent-hero {
       display: grid;
       grid-template-columns: 240px 1fr;
-      gap: 1.35rem;
+      gap: 1.25rem;
       align-items: start;
     }
 
@@ -174,24 +259,23 @@
 
     /* Small Screenshot Card */
     .screenshot-card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 12px;
+      background: var(--retro-sand-light);
+      border: 1px solid var(--retro-sand);
+      border-radius: 10px;
       padding: 0.6rem;
       text-align: center;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
       transition: border-color 0.2s ease;
     }
 
     .screenshot-card:hover {
-      border-color: var(--primary);
+      border-color: var(--retro-steel);
     }
 
     .screenshot-img-wrap {
       position: relative;
-      border-radius: 8px;
+      border-radius: 6px;
       overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      border: 1px solid var(--retro-sand);
       background: #000;
     }
 
@@ -199,22 +283,17 @@
       display: block;
       width: 100%;
       height: auto;
-      transition: transform 0.25s ease;
-    }
-
-    .screenshot-card:hover img {
-      transform: scale(1.02);
     }
 
     .screenshot-caption {
-      margin-top: 0.5rem;
-      font-size: 0.78rem;
-      color: var(--text-muted);
+      margin-top: 0.45rem;
+      font-size: 0.76rem;
+      color: var(--retro-muted);
       line-height: 1.35;
     }
 
     .screenshot-caption strong {
-      color: #79c0ff;
+      color: var(--retro-navy);
       display: block;
       font-size: 0.82rem;
     }
@@ -224,17 +303,18 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 0.35rem;
-      margin-top: 0.5rem;
+      margin-top: 0.45rem;
     }
 
     .mini-tag {
-      font-size: 0.7rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.68rem;
       padding: 0.15rem 0.45rem;
       border-radius: 4px;
-      background: rgba(56, 139, 253, 0.12);
-      border: 1px solid rgba(56, 139, 253, 0.3);
-      color: #a5d6ff;
-      font-weight: 600;
+      background: var(--paper-bg);
+      border: 1px solid var(--retro-sand);
+      color: var(--retro-navy);
+      font-weight: 700;
     }
 
     /* Dual Columns: What It Does & Tutorials */
@@ -251,81 +331,87 @@
     }
 
     .info-card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 10px;
-      padding: 0.9rem 1rem;
+      background: var(--paper-bg);
+      border: 1px solid var(--retro-sand);
+      border-radius: 8px;
+      padding: 0.85rem 0.95rem;
     }
 
     .info-card h3 {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: #f0f6fc;
-      margin-bottom: 0.65rem;
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: var(--retro-navy);
+      margin-bottom: 0.6rem;
       display: flex;
       align-items: center;
       gap: 0.4rem;
-      padding-bottom: 0.4rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 0.35rem;
+      border-bottom: 1.5px solid var(--retro-sand);
     }
 
     .info-card.what-it-does h3 {
-      color: #58a6ff;
-      border-bottom-color: rgba(56, 139, 253, 0.3);
+      color: var(--retro-navy);
+      border-bottom-color: var(--retro-steel);
     }
 
     .info-card.tutorials h3 {
-      color: #7ee787;
-      border-bottom-color: rgba(46, 160, 67, 0.3);
+      color: var(--retro-caramel-dark);
+      border-bottom-color: var(--retro-caramel);
     }
 
     .bullet-list {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 0.55rem;
+      gap: 0.5rem;
     }
 
     .bullet-list li {
       display: flex;
       align-items: flex-start;
-      gap: 0.5rem;
-      font-size: 0.83rem;
+      gap: 0.45rem;
+      font-size: 0.8rem;
       line-height: 1.35;
-      color: #e6edf3;
+      color: var(--retro-charcoal);
     }
 
     .bullet-list li .emoji-icon {
-      font-size: 1rem;
+      font-size: 0.95rem;
       line-height: 1.1;
       flex-shrink: 0;
       margin-top: 1px;
     }
 
     .bullet-list li strong {
-      color: #ffffff;
+      color: var(--retro-navy);
     }
 
     .parent-note {
       margin-top: 0.85rem;
       padding: 0.55rem 0.85rem;
-      background: rgba(46, 160, 67, 0.1);
-      border-left: 3px solid #3fb950;
-      border-radius: 4px;
-      font-size: 0.8rem;
-      color: #7ee787;
+      background: var(--retro-sand-light);
+      border-left: 3.5px solid var(--retro-caramel);
+      border-radius: 6px;
+      font-size: 0.78rem;
+      color: var(--retro-charcoal);
       display: flex;
       align-items: center;
       gap: 0.5rem;
+      border: 1px solid var(--retro-sand);
+      border-left: 3.5px solid var(--retro-caramel);
+    }
+
+    .parent-note strong {
+      color: var(--retro-navy);
     }
 
     /* Grid of Download Links & QR Codes */
     .qr-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 0.9rem;
-      margin-bottom: 1.75rem;
+      gap: 0.85rem;
+      margin-bottom: 1.4rem;
     }
 
     @media (max-width: 700px) {
@@ -335,89 +421,95 @@
     }
 
     .qr-card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
-      padding: 0.9rem 0.6rem;
+      background: #ffffff;
+      border: 1px solid var(--retro-sand);
+      border-radius: 10px;
+      padding: 0.85rem 0.55rem;
       text-align: center;
       transition: transform 0.2s ease, border-color 0.2s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     }
 
     .qr-card:hover {
-      border-color: var(--primary);
-      transform: translateY(-3px);
+      border-color: var(--retro-caramel);
+      transform: translateY(-2px);
     }
 
     .qr-title {
       font-family: 'Space Grotesk', sans-serif;
       font-weight: 700;
-      font-size: 0.95rem;
-      color: #58a6ff;
+      font-size: 0.92rem;
+      color: var(--retro-navy);
       margin-bottom: 0.15rem;
     }
 
     .qr-platform {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      margin-bottom: 0.55rem;
+      font-size: 0.7rem;
+      color: var(--retro-muted);
+      margin-bottom: 0.5rem;
       text-transform: uppercase;
       letter-spacing: 0.5px;
+      font-weight: 600;
     }
 
     .qr-box {
       background: #ffffff;
-      padding: 0.45rem;
-      border-radius: 8px;
+      padding: 0.35rem;
+      border: 1px solid var(--retro-sand);
+      border-radius: 6px;
       display: inline-block;
-      margin-bottom: 0.55rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      margin-bottom: 0.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
     }
 
     .qr-box img {
       display: block;
-      width: 105px;
-      height: 105px;
+      width: 100px;
+      height: 100px;
     }
 
     .qr-card a.btn-link {
       display: inline-block;
-      font-size: 0.76rem;
-      font-weight: 600;
-      color: var(--text-main);
-      background: rgba(56,139,253,0.15);
-      border: 1px solid var(--primary);
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--retro-caramel) 0%, var(--retro-caramel-dark) 100%);
+      border: none;
       border-radius: 6px;
       padding: 0.35rem 0.65rem;
       text-decoration: none;
-      transition: background 0.2s ease;
+      transition: opacity 0.2s ease;
+      font-family: 'Space Grotesk', sans-serif;
     }
 
     .qr-card a.btn-link:hover {
-      background: rgba(56,139,253,0.3);
+      opacity: 0.9;
     }
 
     /* Steps Section */
     .steps-section {
-      background: rgba(56, 139, 253, 0.05);
-      border-left: 4px solid var(--primary);
-      border-radius: 0 12px 12px 0;
-      padding: 1rem 1.25rem;
-      margin-bottom: 1.5rem;
+      background: var(--retro-sand-light);
+      border-left: 4px solid var(--retro-caramel);
+      border: 1px solid var(--retro-sand);
+      border-left: 4px solid var(--retro-caramel);
+      border-radius: 8px;
+      padding: 0.95rem 1.15rem;
+      margin-bottom: 1.35rem;
     }
 
     .steps-title {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: #58a6ff;
-      margin-bottom: 0.65rem;
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--retro-navy);
+      margin-bottom: 0.6rem;
     }
 
     .steps-list {
       list-style: none;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 0.9rem;
+      gap: 0.85rem;
     }
 
     @media (max-width: 650px) {
@@ -429,16 +521,17 @@
     .steps-list li {
       display: flex;
       align-items: flex-start;
-      gap: 0.55rem;
-      font-size: 0.84rem;
+      gap: 0.5rem;
+      font-size: 0.82rem;
       line-height: 1.35;
+      color: var(--retro-charcoal);
     }
 
     .step-num {
-      background: var(--primary);
+      background: var(--retro-navy);
       color: #ffffff;
       font-weight: 800;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       width: 20px;
       height: 20px;
       border-radius: 50%;
@@ -451,17 +544,17 @@
 
     footer {
       text-align: center;
-      color: var(--text-muted);
-      font-size: 0.8rem;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding-top: 1rem;
+      color: var(--retro-muted);
+      font-size: 0.78rem;
+      border-top: 1.5px solid var(--retro-sand);
+      padding-top: 0.85rem;
     }
 
     /* Print Styles for 8.5x11 Single Page Handout */
     @media print {
       @page {
         size: letter portrait;
-        margin: 0.4in;
+        margin: 0.35in;
       }
 
       body {
@@ -471,7 +564,7 @@
         min-height: auto;
       }
 
-      .nav-back, .print-btn {
+      .screen-toolbar, .racing-ribbon-tl, .racing-ribbon-br {
         display: none !important;
       }
 
@@ -486,52 +579,48 @@
       }
 
       header {
-        margin-bottom: 0.8rem !important;
-        padding-bottom: 0.6rem !important;
-        border-bottom: 1.5px solid #222 !important;
+        margin-bottom: 0.7rem !important;
+        padding-bottom: 0.5rem !important;
+        border-bottom: 1.5px solid var(--retro-navy) !important;
       }
 
       h1 {
-        background: none !important;
-        -webkit-text-fill-color: initial !important;
-        color: #000000 !important;
-        font-size: 1.7rem !important;
+        color: #0E3B5C !important;
+        font-size: 1.6rem !important;
       }
 
       p.tagline {
-        color: #444444 !important;
-        font-size: 0.88rem !important;
+        color: #8F5217 !important;
+        font-size: 1rem !important;
       }
 
-      .badge {
-        border-color: #222 !important;
-        color: #222 !important;
-        background: none !important;
-        font-size: 0.75rem !important;
+      .retro-badge-emblem {
+        box-shadow: none !important;
+        border: 1.5px solid #0E3B5C !important;
       }
 
       .parent-guide-container {
         background: #f8fafc !important;
         border: 1px solid #cbd5e1 !important;
         box-shadow: none !important;
-        padding: 0.75rem !important;
-        margin-bottom: 0.9rem !important;
+        padding: 0.65rem !important;
+        margin-bottom: 0.75rem !important;
       }
 
       .parent-hero {
-        grid-template-columns: 190px 1fr !important;
-        gap: 0.8rem !important;
+        grid-template-columns: 180px 1fr !important;
+        gap: 0.75rem !important;
       }
 
       .screenshot-card {
         background: #ffffff !important;
         border: 1px solid #cbd5e1 !important;
         box-shadow: none !important;
-        padding: 0.4rem !important;
+        padding: 0.35rem !important;
       }
 
       .screenshot-caption strong {
-        color: #111111 !important;
+        color: #0E3B5C !important;
       }
 
       .screenshot-caption {
@@ -547,74 +636,75 @@
       .info-card {
         background: #ffffff !important;
         border: 1px solid #e2e8f0 !important;
-        padding: 0.6rem 0.75rem !important;
+        padding: 0.55rem 0.65rem !important;
       }
 
       .info-card.what-it-does h3 {
-        color: #0f4c81 !important;
-        border-bottom-color: #0f4c81 !important;
+        color: #0E3B5C !important;
+        border-bottom-color: #0E3B5C !important;
       }
 
       .info-card.tutorials h3 {
-        color: #1a7f37 !important;
-        border-bottom-color: #1a7f37 !important;
+        color: #8F5217 !important;
+        border-bottom-color: #8F5217 !important;
       }
 
       .bullet-list li {
         color: #1e293b !important;
-        font-size: 0.75rem !important;
-        gap: 0.4rem !important;
+        font-size: 0.74rem !important;
+        gap: 0.35rem !important;
       }
 
       .bullet-list li strong {
-        color: #0f172a !important;
+        color: #0E3B5C !important;
       }
 
       .parent-note {
-        background: #f0fdf4 !important;
-        border-left-color: #16a34a !important;
-        color: #15803d !important;
-        font-size: 0.75rem !important;
-        margin-top: 0.5rem !important;
-        padding: 0.35rem 0.6rem !important;
+        background: #FBF5EB !important;
+        border-left-color: #B5732A !important;
+        color: #1e293b !important;
+        font-size: 0.74rem !important;
+        margin-top: 0.45rem !important;
+        padding: 0.3rem 0.55rem !important;
       }
 
       .section-title {
-        color: #0f172a !important;
-        font-size: 1.05rem !important;
-        margin-bottom: 0.5rem !important;
+        color: #0E3B5C !important;
+        font-size: 1rem !important;
+        margin-bottom: 0.45rem !important;
       }
 
       .qr-grid {
-        gap: 0.6rem !important;
-        margin-bottom: 0.9rem !important;
+        gap: 0.55rem !important;
+        margin-bottom: 0.75rem !important;
       }
 
       .qr-card {
         background: #ffffff !important;
         border: 1px solid #cbd5e1 !important;
-        padding: 0.55rem 0.4rem !important;
+        padding: 0.45rem 0.35rem !important;
+        box-shadow: none !important;
       }
 
       .qr-title {
-        color: #0f172a !important;
-        font-size: 0.85rem !important;
+        color: #0E3B5C !important;
+        font-size: 0.82rem !important;
       }
 
       .qr-platform {
         color: #64748b !important;
-        font-size: 0.68rem !important;
+        font-size: 0.65rem !important;
       }
 
       .qr-box {
         box-shadow: none !important;
-        padding: 0.25rem !important;
+        padding: 0.2rem !important;
         border: 1px solid #e2e8f0 !important;
       }
 
       .qr-box img {
-        width: 80px !important;
-        height: 80px !important;
+        width: 75px !important;
+        height: 75px !important;
       }
 
       .qr-card a.btn-link {
@@ -622,55 +712,78 @@
       }
 
       .steps-section {
-        background: #f8fafc !important;
-        border-left-color: #0f4c81 !important;
-        padding: 0.65rem 0.85rem !important;
-        margin-bottom: 0.75rem !important;
+        background: #FBF5EB !important;
+        border-left-color: #B5732A !important;
+        padding: 0.55rem 0.75rem !important;
+        margin-bottom: 0.65rem !important;
       }
 
       .steps-title {
-        color: #0f172a !important;
-        font-size: 0.92rem !important;
-        margin-bottom: 0.45rem !important;
+        color: #0E3B5C !important;
+        font-size: 0.88rem !important;
+        margin-bottom: 0.35rem !important;
       }
 
       .steps-list li {
-        font-size: 0.75rem !important;
+        font-size: 0.73rem !important;
       }
 
       .step-num {
-        background: #0f4c81 !important;
-        width: 17px !important;
-        height: 17px !important;
-        font-size: 0.65rem !important;
+        background: #0E3B5C !important;
+        width: 16px !important;
+        height: 16px !important;
+        font-size: 0.62rem !important;
       }
 
       footer {
         color: #64748b !important;
-        font-size: 0.72rem !important;
+        font-size: 0.7rem !important;
         border-top: 1px solid #e2e8f0 !important;
-        padding-top: 0.5rem !important;
+        padding-top: 0.45rem !important;
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="flyer-container">
-    <button class="print-btn" onclick="window.print()">🖨️ Print / Save PDF</button>
+  <!-- Screen Toolbar -->
+  <div class="screen-toolbar">
+    <div class="toolbar-links">
+      <a href="../../webtools/index.html" class="back-link">← Web Tools Hub</a>
+      <a href="../" class="back-link">📁 Marketing Hub</a>
+      <a href="../handouts/goals_worksheet.html" class="back-link">🎯 Goals Worksheet</a>
+      <a href="../handouts/mission_design_sketchpad.html" class="back-link">✏️ 2D Sketchpad</a>
+    </div>
+    <button class="print-btn" onclick="window.print()">
+      🖨️ Print / Save PDF
+    </button>
+  </div>
 
-    <div class="nav-back" style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;">
-      <a href="../../webtools/index.html">← Web Tools Hub</a>
-      <a href="../">📁 Marketing Hub</a>
-      <a href="../handouts/goals_worksheet.html">🎯 Goals Worksheet</a>
-      <a href="../handouts/mission_design_sketchpad.html">✏️ 2D Sketchpad</a>
-      <a href="https://jaimeyu.github.io/FLL_76265_2026_BIOGLOW/" target="_blank" rel="noopener" style="color: var(--primary);">🌐 Live Site ↗</a>
+  <div class="flyer-container">
+
+    <!-- Heritage 4-Stripe Ribbons -->
+    <div class="racing-ribbon-tl">
+      <div class="ribbon-bar bar-caramel"></div>
+      <div class="ribbon-bar bar-steel"></div>
+      <div class="ribbon-bar bar-sand"></div>
+      <div class="ribbon-bar bar-navy"></div>
+    </div>
+    <div class="racing-ribbon-br">
+      <div class="ribbon-bar bar-navy"></div>
+      <div class="ribbon-bar bar-sand"></div>
+      <div class="ribbon-bar bar-steel"></div>
+      <div class="ribbon-bar bar-caramel"></div>
     </div>
 
     <header>
-      <div class="badge">FIRST LEGO League • Team #76265 "Lego Legends"</div>
-      <h1>LEGO® SPIKE™ App Setup & Parent Guide</h1>
-      <p class="tagline">Official Download Links, App Capabilities & STEAM Learning Tutorials for Families</p>
+      <div class="header-main">
+        <h1>LEGO® SPIKE™ App Setup & Parent Guide</h1>
+        <p class="tagline">Official Download Links, App Capabilities & STEAM Learning Tutorials for Families</p>
+      </div>
+      <div class="retro-badge-emblem">
+        <span class="badge-fll">FIRST FLL #76265</span>
+        <span class="badge-team-name">LEGO LEGENDS</span>
+      </div>
     </header>
 
     <!-- Parents Guide Section -->
@@ -834,7 +947,7 @@
     </div>
 
     <footer>
-      <p>FLL Team #76265 • BIOGLOW 2026 Season | <a href="https://jaimeyu.github.io/FLL_76265_2026_BIOGLOW/" style="color: inherit; text-decoration: none;">jaimeyu.github.io/FLL_76265_2026_BIOGLOW</a> | Built with <em>Gracious Professionalism</em>®</p>
+      <p><strong>FIRST LEGO League Team #76265 "Lego Legends" • BIOGLOW 2026 Season</strong> | <a href="https://jaimeyu.github.io/FLL_76265_2026_BIOGLOW/" style="color: var(--retro-navy); text-decoration: none;" target="_blank">jaimeyu.github.io/FLL_76265_2026_BIOGLOW</a> | Built with <em>Gracious Professionalism</em>®</p>
     </footer>
 
   </div>

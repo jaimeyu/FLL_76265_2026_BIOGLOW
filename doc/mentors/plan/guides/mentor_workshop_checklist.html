@@ -3,21 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mentor Workshop CRM Checklist — Everyday Facilitation | Team #76265 BIOGLOW</title>
+  <title>Mentor Workshop CRM Checklist — Everyday Facilitation | Team #76265 "Lego Legends" • BIOGLOW</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@400;500;600;700;800;900&family=Righteous&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #0284c7;
-      --primary-dark: #0369a1;
-      --accent-blue: #0284c7;
-      --accent-amber: #d97706;
-      --accent-emerald: #059669;
-      --accent-purple: #7c3aed;
-      --border-color: #cbd5e1;
-      --text-main: #0f172a;
-      --text-muted: #64748b;
+      /* Retro NASA / 70s Heritage Space-Age Palette */
+      --paper-bg: #FAF6EE;
+      --retro-navy: #0E3B5C;
+      --retro-navy-dark: #08243A;
+      --retro-caramel: #B5732A;
+      --retro-caramel-dark: #8F5217;
+      --retro-caramel-light: #E5A85C;
+      --retro-steel: #7998AB;
+      --retro-steel-light: #C2D3DE;
+      --retro-sand: #F2E2C8;
+      --retro-sand-light: #FBF5EB;
+      --retro-charcoal: #1E293B;
+      --retro-muted: #576574;
+
+      /* Phase Accent Tokens */
+      --phase-1-bg: #E3EFF7;
+      --phase-1-text: #0E3B5C;
+      --phase-2-bg: #FDF3E7;
+      --phase-2-text: #8F5217;
+      --phase-3-bg: #E8F5EC;
+      --phase-3-text: #166534;
+      --phase-4-bg: #F4EBF7;
+      --phase-4-text: #6B21A8;
     }
 
     * {
@@ -27,9 +41,9 @@
     }
 
     body {
-      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #0f172a;
-      color: var(--text-main);
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: radial-gradient(circle at top center, #1e293b 0%, #081524 100%);
+      color: var(--retro-charcoal);
       padding: 1.5rem 1rem;
       min-height: 100vh;
       display: flex;
@@ -40,16 +54,17 @@
     /* Screen Toolbar */
     .screen-toolbar {
       width: 100%;
-      max-width: 840px;
+      max-width: 860px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 1.25rem;
-      background: rgba(30, 41, 59, 0.9);
-      backdrop-filter: blur(8px);
-      padding: 0.75rem 1.2rem;
+      background: rgba(14, 59, 92, 0.94);
+      backdrop-filter: blur(12px);
+      padding: 0.75rem 1.15rem;
       border-radius: 12px;
-      border: 1px solid rgba(56, 189, 248, 0.25);
+      border: 1px solid rgba(181, 115, 42, 0.4);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
       gap: 1rem;
       flex-wrap: wrap;
     }
@@ -57,92 +72,166 @@
     .toolbar-links {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.85rem;
       flex-wrap: wrap;
     }
 
     .back-link {
-      color: #38bdf8;
+      color: var(--retro-sand);
       text-decoration: none;
-      font-weight: 600;
-      font-size: 0.88rem;
+      font-weight: 700;
+      font-size: 0.85rem;
       display: inline-flex;
       align-items: center;
-      gap: 0.3rem;
+      gap: 0.35rem;
+      transition: color 0.15s ease;
     }
 
     .back-link:hover {
-      color: #7dd3fc;
+      color: #ffffff;
       text-decoration: underline;
     }
 
     .print-btn {
-      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      background: linear-gradient(135deg, var(--retro-caramel) 0%, var(--retro-caramel-dark) 100%);
       color: #ffffff;
       border: none;
       padding: 0.55rem 1.15rem;
       border-radius: 8px;
-      font-weight: 800;
-      font-size: 0.9rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.4);
+      gap: 0.45rem;
+      box-shadow: 0 4px 14px rgba(181, 115, 42, 0.4);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .print-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(181, 115, 42, 0.55);
     }
 
     /* Document Sheet (Sized for single-page 8.5" x 11" print) */
     .checklist-sheet {
       width: 100%;
-      max-width: 840px;
-      background: #ffffff;
-      border-radius: 16px;
+      max-width: 860px;
+      background: var(--paper-bg);
+      color: var(--retro-charcoal);
+      border: 2px solid var(--retro-navy);
+      border-radius: 14px;
       padding: 1.8rem 2.2rem;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+      position: relative;
     }
+
+    /* Heritage 4-Stripe Ribbon Accents */
+    .racing-ribbon-tl {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      height: 5px;
+      width: 140px;
+      border-radius: 12px 0 0 0;
+      overflow: hidden;
+      z-index: 10;
+    }
+
+    .racing-ribbon-br {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      display: flex;
+      height: 5px;
+      width: 140px;
+      border-radius: 0 0 12px 0;
+      overflow: hidden;
+      z-index: 10;
+    }
+
+    .ribbon-bar { height: 100%; flex: 1; }
+    .bar-caramel { background: var(--retro-caramel); }
+    .bar-steel { background: var(--retro-steel); }
+    .bar-sand { background: var(--retro-sand); }
+    .bar-navy { background: var(--retro-navy); }
 
     /* Header */
     .sheet-header {
-      border-bottom: 2.5px solid #0284c7;
+      border-bottom: 2px solid var(--retro-sand);
       padding-bottom: 0.85rem;
       margin-bottom: 1.15rem;
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
+      align-items: center;
       gap: 1rem;
     }
 
+    .header-titles {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
     .header-titles h1 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.55rem;
-      font-weight: 800;
-      color: #0f172a;
+      font-family: 'Righteous', cursive, sans-serif;
+      font-size: 1.65rem;
+      font-weight: normal;
+      color: var(--retro-navy);
       line-height: 1.2;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
     }
 
     .header-titles p {
-      font-size: 0.88rem;
-      color: #475569;
-      font-weight: 600;
-      margin-top: 0.25rem;
+      font-family: 'Caveat', cursive, sans-serif;
+      font-size: 1.15rem;
+      color: var(--retro-caramel-dark);
+      font-weight: 700;
+      letter-spacing: 0.3px;
     }
 
-    .team-badge {
-      background: #e0f2fe;
-      color: #0369a1;
-      border: 1.5px solid #0284c7;
-      padding: 0.35rem 0.75rem;
-      border-radius: 999px;
-      font-size: 0.78rem;
-      font-weight: 800;
+    .retro-badge-emblem {
+      background: var(--retro-navy);
+      border: 2px solid var(--retro-caramel);
+      color: #ffffff;
+      padding: 0.35rem 0.65rem;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 2px 2px 0 var(--retro-caramel);
       white-space: nowrap;
+    }
+
+    .badge-fll {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: var(--retro-sand);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .badge-team-name {
+      font-family: 'Righteous', cursive, sans-serif;
+      font-size: 0.88rem;
+      line-height: 1;
+      color: #ffffff;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      margin-top: 2px;
     }
 
     /* Core Mantra Banner */
     .mantra-banner {
-      background: #f8fafc;
-      border: 1.5px solid #e2e8f0;
-      border-left: 4.5px solid #0284c7;
+      background: var(--retro-sand-light);
+      border: 1.5px solid var(--retro-sand);
+      border-left: 4.5px solid var(--retro-caramel);
       border-radius: 8px;
       padding: 0.65rem 0.95rem;
       margin-bottom: 1.15rem;
@@ -150,13 +239,18 @@
       align-items: center;
       justify-content: space-between;
       font-size: 0.82rem;
-      color: #1e293b;
+      color: var(--retro-charcoal);
       gap: 0.75rem;
       flex-wrap: wrap;
     }
 
     .mantra-banner strong {
-      color: #0369a1;
+      color: var(--retro-navy);
+    }
+
+    .mantra-banner em {
+      color: var(--retro-caramel-dark);
+      font-weight: 600;
     }
 
     /* Checklist Sections */
@@ -168,27 +262,29 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0.4rem 0.75rem;
+      padding: 0.45rem 0.85rem;
       border-radius: 6px;
       margin-bottom: 0.65rem;
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.92rem;
-      font-weight: 800;
+      font-size: 0.88rem;
+      font-weight: 700;
+      border: 1px solid var(--retro-sand);
     }
 
-    .phase-1 { background: #e0f2fe; color: #0369a1; }
-    .phase-2 { background: #fef3c7; color: #92400e; }
-    .phase-3 { background: #dcfce7; color: #166534; }
-    .phase-4 { background: #f3e8ff; color: #6b21a8; }
+    .phase-1 { background: var(--phase-1-bg); color: var(--phase-1-text); border-left: 4px solid var(--retro-navy); }
+    .phase-2 { background: var(--phase-2-bg); color: var(--phase-2-text); border-left: 4px solid var(--retro-caramel); }
+    .phase-3 { background: var(--phase-3-bg); color: var(--phase-3-text); border-left: 4px solid #166534; }
+    .phase-4 { background: var(--phase-4-bg); color: var(--phase-4-text); border-left: 4px solid #7c3aed; }
 
     .section-tag {
       font-size: 0.68rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      padding: 0.15rem 0.45rem;
+      padding: 0.15rem 0.5rem;
       border-radius: 4px;
-      background: rgba(255, 255, 255, 0.75);
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--retro-sand);
     }
 
     /* Checklist Items */
@@ -203,20 +299,21 @@
       align-items: flex-start;
       gap: 0.65rem;
       background: #ffffff;
-      border: 1px solid #e2e8f0;
+      border: 1px solid var(--retro-sand);
       border-radius: 8px;
       padding: 0.6rem 0.8rem;
-      transition: background 0.15s ease;
+      transition: background 0.15s ease, border-color 0.15s ease;
     }
 
     .check-row:hover {
-      background: #f8fafc;
+      background: var(--retro-sand-light);
+      border-color: var(--retro-steel);
     }
 
     .check-box {
       width: 18px;
       height: 18px;
-      border: 2px solid #94a3b8;
+      border: 2px solid var(--retro-steel);
       border-radius: 4px;
       flex-shrink: 0;
       margin-top: 2px;
@@ -225,11 +322,21 @@
       align-items: center;
       justify-content: center;
       background: #ffffff;
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+
+    .check-box:hover {
+      border-color: var(--retro-caramel);
+    }
+
+    .check-box.checked {
+      background: var(--retro-navy);
+      border-color: var(--retro-navy);
     }
 
     .check-box.checked::after {
       content: "✓";
-      color: #0284c7;
+      color: #ffffff;
       font-weight: 900;
       font-size: 13px;
     }
@@ -240,28 +347,29 @@
       gap: 0.2rem;
       font-size: 0.82rem;
       line-height: 1.4;
-      color: #1e293b;
+      color: var(--retro-charcoal);
     }
 
     .check-title {
       font-weight: 800;
-      color: #0f172a;
+      color: var(--retro-navy);
       display: flex;
       align-items: center;
       gap: 0.4rem;
     }
 
     .check-desc {
-      color: #475569;
+      color: var(--retro-muted);
       font-size: 0.78rem;
     }
 
     .check-script {
-      background: #f1f5f9;
+      background: var(--retro-sand-light);
+      border: 1px solid var(--retro-sand);
       border-radius: 4px;
       padding: 0.2rem 0.5rem;
       font-size: 0.75rem;
-      color: #0369a1;
+      color: var(--retro-navy);
       font-style: italic;
       display: inline-block;
       margin-top: 0.15rem;
@@ -277,14 +385,14 @@
 
     /* Footer */
     .sheet-footer {
-      border-top: 1.5px solid #e2e8f0;
+      border-top: 1.5px solid var(--retro-sand);
       padding-top: 0.75rem;
       margin-top: 1rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-size: 0.72rem;
-      color: #64748b;
+      color: var(--retro-muted);
       flex-wrap: wrap;
       gap: 0.5rem;
     }
@@ -306,6 +414,12 @@
         max-width: 100% !important;
         width: 100% !important;
         border-radius: 0 !important;
+        border: none !important;
+        background: #ffffff !important;
+      }
+
+      .racing-ribbon-tl, .racing-ribbon-br {
+        display: none !important;
       }
 
       .check-row {
@@ -325,6 +439,7 @@
       }
       .sheet-header {
         flex-direction: column;
+        align-items: flex-start;
       }
     }
   </style>
@@ -347,14 +462,29 @@
   <!-- Document Sheet Container -->
   <div class="checklist-sheet">
 
+    <!-- Heritage 4-Stripe Ribbons -->
+    <div class="racing-ribbon-tl">
+      <div class="ribbon-bar bar-caramel"></div>
+      <div class="ribbon-bar bar-steel"></div>
+      <div class="ribbon-bar bar-sand"></div>
+      <div class="ribbon-bar bar-navy"></div>
+    </div>
+    <div class="racing-ribbon-br">
+      <div class="ribbon-bar bar-navy"></div>
+      <div class="ribbon-bar bar-sand"></div>
+      <div class="ribbon-bar bar-steel"></div>
+      <div class="ribbon-bar bar-caramel"></div>
+    </div>
+
     <!-- Header -->
     <header class="sheet-header">
       <div class="header-titles">
         <h1>📋 Mentor Workshop CRM Checklist</h1>
         <p>Everyday Facilitation: Dividing, Conquering, and Hearing Every Kid</p>
       </div>
-      <div class="team-badge">
-        🤖 FLL Team #76265 BIOGLOW
+      <div class="retro-badge-emblem">
+        <span class="badge-fll">FIRST FLL #76265</span>
+        <span class="badge-team-name">LEGO LEGENDS</span>
       </div>
     </header>
 
@@ -363,10 +493,11 @@
       <div>
         <strong>The Mentor Rule:</strong> <em>Hands in pockets! Never leave a hand hanging in silence.</em>
       </div>
-      <div style="font-size: 0.75rem; color: #475569;">
+      <div style="font-size: 0.75rem; color: var(--retro-muted);">
         Acknowledge &rarr; Sequence &rarr; Active Wait Task &rarr; Divide & Conquer
       </div>
     </div>
+
 
     <!-- Phase 1: Pre-Session Setup -->
     <section class="checklist-section">
@@ -507,7 +638,7 @@
     <!-- Footer -->
     <footer class="sheet-footer">
       <div>
-        <strong>FIRST LEGO League Team #76265 BIOGLOW</strong> &bull; <em>"We don't just build robots, we build students."</em>
+        <strong>FIRST LEGO League Team #76265 "Lego Legends" • BIOGLOW</strong> &bull; <em>"We don't just build robots, we build students."</em>
       </div>
       <div>
         Everyday Workshop Facilitation Protocol &bull; Gracious Professionalism®

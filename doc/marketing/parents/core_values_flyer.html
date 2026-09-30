@@ -6,20 +6,22 @@
   <title>FIRST Core Values & The Power of Plus'ing — Team #76265 "Lego Legends" • BIOGLOW</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@400;500;600;700;800&family=Righteous&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #0284c7;
-      --primary-dark: #0369a1;
-      --accent-teal: #0d9488;
-      --accent-purple: #7c3aed;
-      --accent-amber: #d97706;
-      --accent-rose: #e11d48;
-      --bg-gradient: radial-gradient(circle at top center, #1e293b 0%, #0f172a 100%);
-      --card-bg: #1e293b;
-      --border-color: rgba(56, 189, 248, 0.25);
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
+      /* Retro NASA / 70s Heritage Space-Age Palette */
+      --paper-bg: #FAF6EE;
+      --retro-navy: #0E3B5C;
+      --retro-navy-dark: #08243A;
+      --retro-caramel: #B5732A;
+      --retro-caramel-dark: #8F5217;
+      --retro-caramel-light: #E5A85C;
+      --retro-steel: #7998AB;
+      --retro-steel-light: #C2D3DE;
+      --retro-sand: #F2E2C8;
+      --retro-sand-light: #FBF5EB;
+      --retro-charcoal: #1E293B;
+      --retro-muted: #576574;
     }
 
     * {
@@ -29,10 +31,10 @@
     }
 
     body {
-      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--bg-gradient);
-      color: var(--text-main);
-      padding: 2rem 1rem;
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: radial-gradient(circle at top center, #1e293b 0%, #081524 100%);
+      color: var(--retro-charcoal);
+      padding: 1.5rem 1rem;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -46,66 +48,102 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 1.5rem;
-      background: rgba(30, 41, 59, 0.8);
-      backdrop-filter: blur(8px);
-      padding: 0.85rem 1.25rem;
+      margin-bottom: 1.25rem;
+      background: rgba(14, 59, 92, 0.94);
+      backdrop-filter: blur(12px);
+      padding: 0.75rem 1.15rem;
       border-radius: 12px;
-      border: 1px solid var(--border-color);
+      border: 1px solid rgba(181, 115, 42, 0.4);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+      gap: 1rem;
+      flex-wrap: wrap;
     }
 
     .back-link {
-      color: #38bdf8;
+      color: var(--retro-sand);
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 700;
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      font-size: 0.95rem;
-      transition: color 0.2s ease;
+      gap: 0.35rem;
+      font-size: 0.85rem;
+      transition: color 0.15s ease;
     }
 
     .back-link:hover {
-      color: #7dd3fc;
+      color: #ffffff;
       text-decoration: underline;
     }
 
     .print-btn {
-      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      background: linear-gradient(135deg, var(--retro-caramel) 0%, var(--retro-caramel-dark) 100%);
       color: #ffffff;
       border: none;
-      padding: 0.65rem 1.25rem;
+      padding: 0.55rem 1.15rem;
       border-radius: 8px;
+      font-family: 'Space Grotesk', sans-serif;
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 0.85rem;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4);
+      gap: 0.45rem;
+      box-shadow: 0 4px 14px rgba(181, 115, 42, 0.4);
       transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
     .print-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(2, 132, 199, 0.5);
+      box-shadow: 0 6px 20px rgba(181, 115, 42, 0.55);
     }
 
     /* Flyer Sheet Container */
     .flyer-sheet {
       width: 100%;
       max-width: 880px;
-      background: #ffffff;
-      color: #0f172a;
-      border-radius: 16px;
-      padding: 2.2rem 2.4rem;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      background: var(--paper-bg);
+      color: var(--retro-charcoal);
+      border: 2px solid var(--retro-navy);
+      border-radius: 14px;
+      padding: 1.8rem 2.2rem;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
       position: relative;
     }
 
+    /* Heritage 4-Stripe Ribbon Accents */
+    .racing-ribbon-tl {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      height: 5px;
+      width: 140px;
+      border-radius: 12px 0 0 0;
+      overflow: hidden;
+      z-index: 10;
+    }
+
+    .racing-ribbon-br {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      display: flex;
+      height: 5px;
+      width: 140px;
+      border-radius: 0 0 12px 0;
+      overflow: hidden;
+      z-index: 10;
+    }
+
+    .ribbon-bar { height: 100%; flex: 1; }
+    .bar-caramel { background: var(--retro-caramel); }
+    .bar-steel { background: var(--retro-steel); }
+    .bar-sand { background: var(--retro-sand); }
+    .bar-navy { background: var(--retro-navy); }
+
     /* Header */
     .header {
-      border-bottom: 3px solid #0284c7;
+      border-bottom: 2px solid var(--retro-sand);
       padding-bottom: 0.85rem;
       margin-bottom: 1.15rem;
       display: flex;
@@ -114,35 +152,85 @@
       gap: 1rem;
     }
 
-    .header-titles h1 {
+    .header-main {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .retro-badge-emblem {
+      background: var(--retro-navy);
+      border: 2px solid var(--retro-caramel);
+      color: #ffffff;
+      padding: 0.35rem 0.65rem;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 2px 2px 0 var(--retro-caramel);
+      white-space: nowrap;
+    }
+
+    .badge-fll {
       font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: var(--retro-sand);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .badge-team-name {
+      font-family: 'Righteous', cursive, sans-serif;
+      font-size: 0.88rem;
+      line-height: 1;
+      color: #ffffff;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .header-titles h1 {
+      font-family: 'Righteous', cursive, sans-serif;
       font-size: 1.65rem;
-      color: #0369a1;
-      line-height: 1.2;
+      color: var(--retro-navy);
+      line-height: 1.15;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
       display: flex;
       align-items: center;
       gap: 0.5rem;
     }
 
     .header-titles p {
-      font-size: 0.92rem;
-      color: #475569;
-      font-weight: 600;
-      margin-top: 0.25rem;
+      font-family: 'Caveat', cursive;
+      font-size: 1.1rem;
+      color: var(--retro-caramel-dark);
+      font-weight: 700;
+      margin-top: 0.15rem;
+      line-height: 1.1;
     }
 
-    .badge-motto {
-      background: #e0f2fe;
-      color: #0369a1;
-      border: 2px solid #0284c7;
-      padding: 0.45rem 0.9rem;
-      border-radius: 10px;
+    .header-pills {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.25rem;
+    }
+
+    .season-pill {
+      background: var(--retro-sand);
+      color: var(--retro-navy);
+      border: 1.5px solid var(--retro-caramel);
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.72rem;
       font-weight: 800;
-      font-size: 0.78rem;
-      text-transform: uppercase;
       letter-spacing: 0.5px;
-      text-align: right;
-      line-height: 1.3;
+      text-transform: uppercase;
+      white-space: nowrap;
     }
 
     /* Core Values 6-Grid */
@@ -151,20 +239,22 @@
     }
 
     .section-title {
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: 'Righteous', cursive, sans-serif;
       font-size: 1.15rem;
-      color: #0f172a;
+      color: var(--retro-navy);
       margin-bottom: 0.45rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 0.45rem;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
     }
 
-
     .m-pill {
-      background: #0284c7;
+      background: var(--retro-navy);
       color: #ffffff;
+      font-family: 'Space Grotesk', sans-serif;
       font-weight: 800;
       padding: 0.05rem 0.4rem;
       border-radius: 4px;
@@ -174,12 +264,12 @@
       margin-right: 0.2rem;
     }
 
-    .m-pill.pill-d { background: #0284c7; }
-    .m-pill.pill-i1 { background: #7c3aed; }
-    .m-pill.pill-f { background: #d97706; }
-    .m-pill.pill-i2 { background: #0d9488; }
-    .m-pill.pill-i3 { background: #e11d48; }
-    .m-pill.pill-t { background: #2563eb; }
+    .m-pill.pill-d { background: var(--retro-navy); }
+    .m-pill.pill-i1 { background: var(--retro-caramel); }
+    .m-pill.pill-f { background: var(--retro-caramel-dark); }
+    .m-pill.pill-i2 { background: var(--retro-steel); }
+    .m-pill.pill-i3 { background: var(--retro-navy-dark); }
+    .m-pill.pill-t { background: var(--retro-caramel); }
 
     .difi-it-container {
       display: grid;
@@ -210,20 +300,21 @@
     }
 
     .block-badge.difi {
-      background: #e0f2fe;
-      color: #0369a1;
-      border: 1.5px solid #7dd3fc;
+      background: var(--retro-sand);
+      color: var(--retro-navy);
+      border: 1.5px solid var(--retro-caramel);
     }
 
     .block-badge.it {
-      background: #fdf2f8;
-      color: #be185d;
-      border: 1.5px solid #fbcfe8;
+      background: var(--retro-sand-light);
+      color: var(--retro-caramel-dark);
+      border: 1.5px solid var(--retro-caramel-dark);
     }
 
     .block-subtitle {
-      font-size: 0.74rem;
-      color: #64748b;
+      font-family: 'Caveat', cursive;
+      font-size: 0.95rem;
+      color: var(--retro-muted);
       font-weight: 600;
     }
 
@@ -257,13 +348,13 @@
     .divider-line {
       flex: 1;
       width: 2px;
-      background: linear-gradient(to bottom, transparent, #bae6fd 20%, #bae6fd 80%, transparent);
+      background: linear-gradient(to bottom, transparent, var(--retro-steel) 20%, var(--retro-steel) 80%, transparent);
     }
 
     .divider-badge {
-      background: #f0f9ff;
-      border: 1.5px solid #38bdf8;
-      color: #0284c7;
+      background: var(--paper-bg);
+      border: 1.5px solid var(--retro-navy);
+      color: var(--retro-navy);
       font-family: 'Space Grotesk', sans-serif;
       font-size: 0.76rem;
       font-weight: 800;
@@ -275,22 +366,23 @@
     }
 
     .value-card {
-      background: #f8fafc;
-      border: 1.5px solid #e2e8f0;
+      background: #ffffff;
+      border: 1.5px solid var(--retro-navy);
       border-radius: 10px;
       padding: 0.7rem 0.8rem;
-      border-top: 4px solid var(--primary);
+      border-top: 4px solid var(--retro-navy);
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
+      box-shadow: 2px 2px 0 var(--retro-sand);
     }
 
-    .value-card.discovery { border-top-color: #0284c7; }
-    .value-card.innovation { border-top-color: #7c3aed; }
-    .value-card.fun { border-top-color: #d97706; }
-    .value-card.impact { border-top-color: #0d9488; }
-    .value-card.inclusion { border-top-color: #e11d48; }
-    .value-card.teamwork { border-top-color: #2563eb; }
+    .value-card.discovery { border-top-color: var(--retro-navy); }
+    .value-card.innovation { border-top-color: var(--retro-caramel); }
+    .value-card.fun { border-top-color: var(--retro-caramel-dark); }
+    .value-card.impact { border-top-color: var(--retro-steel); }
+    .value-card.inclusion { border-top-color: var(--retro-navy-dark); }
+    .value-card.teamwork { border-top-color: var(--retro-caramel); }
 
     .value-header {
       display: flex;
@@ -300,21 +392,23 @@
     }
 
     .value-header h3 {
+      font-family: 'Righteous', cursive, sans-serif;
       font-size: 0.95rem;
-      font-weight: 800;
-      color: #0f172a;
+      color: var(--retro-navy);
+      letter-spacing: 0.3px;
     }
 
     .value-text {
       font-size: 0.78rem;
-      color: #475569;
+      color: var(--retro-charcoal);
       line-height: 1.38;
     }
 
     /* Gracious Professionalism Callout */
     .gp-banner {
-      background: #eff6ff;
-      border-left: 5px solid #0284c7;
+      background: var(--retro-sand-light);
+      border: 1.5px solid var(--retro-steel);
+      border-left: 6px solid var(--retro-caramel);
       border-radius: 8px;
       padding: 0.75rem 1.1rem;
       margin-bottom: 1.25rem;
@@ -326,20 +420,21 @@
 
     .gp-text {
       font-size: 0.82rem;
-      color: #1e293b;
+      color: var(--retro-charcoal);
       line-height: 1.4;
     }
 
     .gp-text strong {
-      color: #0369a1;
+      color: var(--retro-navy);
     }
 
     .gp-badge {
-      background: #ffffff;
-      border: 1.5px solid #0284c7;
-      color: #0369a1;
+      background: var(--retro-navy);
+      border: 1.5px solid var(--retro-caramel);
+      color: #ffffff;
       padding: 0.35rem 0.75rem;
       border-radius: 999px;
+      font-family: 'Space Grotesk', sans-serif;
       font-weight: 800;
       font-size: 0.74rem;
       white-space: nowrap;
@@ -347,8 +442,8 @@
 
     /* Plus'ing Feature Box */
     .plusing-feature {
-      background: #faf5ff;
-      border: 2px solid #c084fc;
+      background: var(--paper-bg);
+      border: 2px solid var(--retro-caramel);
       border-radius: 12px;
       padding: 1.1rem 1.3rem;
       margin-bottom: 1.25rem;
@@ -362,27 +457,28 @@
     }
 
     .plusing-header h2 {
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: 'Righteous', cursive, sans-serif;
       font-size: 1.15rem;
-      color: #6b21a8;
+      color: var(--retro-caramel-dark);
       display: flex;
       align-items: center;
       gap: 0.45rem;
+      letter-spacing: 0.4px;
     }
 
     .plusing-tag {
-      background: #f3e8ff;
-      color: #7e22ce;
-      border: 1px solid #d8b4fe;
+      background: var(--retro-caramel);
+      color: #ffffff;
       padding: 0.2rem 0.65rem;
       border-radius: 999px;
+      font-family: 'Space Grotesk', sans-serif;
       font-weight: 700;
       font-size: 0.74rem;
     }
 
     .plusing-explainer {
       font-size: 0.84rem;
-      color: #334155;
+      color: var(--retro-charcoal);
       line-height: 1.45;
       margin-bottom: 0.85rem;
     }
@@ -398,22 +494,25 @@
       background: #ffffff;
       border-radius: 8px;
       padding: 0.65rem 0.75rem;
-      border: 1px solid #e9d5ff;
+      border: 1.5px solid var(--retro-steel);
+      box-shadow: 1px 1px 0 var(--retro-sand);
     }
 
     .reason-box h4 {
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 0.8rem;
       font-weight: 800;
-      color: #6b21a8;
+      color: var(--retro-navy);
       margin-bottom: 0.25rem;
       display: flex;
       align-items: center;
       gap: 0.35rem;
+      text-transform: uppercase;
     }
 
     .reason-box p {
       font-size: 0.74rem;
-      color: #475569;
+      color: var(--retro-muted);
       line-height: 1.35;
     }
 
@@ -435,26 +534,28 @@
     }
 
     .compare-card.yes-and {
-      background: #f0fdf4;
-      border: 1.5px solid #bbf7d0;
+      background: var(--retro-sand-light);
+      border: 1.5px solid var(--retro-caramel);
     }
 
     .compare-card h4 {
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 0.82rem;
       font-weight: 800;
       margin-bottom: 0.4rem;
       display: flex;
       align-items: center;
       gap: 0.35rem;
+      text-transform: uppercase;
     }
 
     .compare-card.no-way h4 { color: #be123c; }
-    .compare-card.yes-and h4 { color: #15803d; }
+    .compare-card.yes-and h4 { color: var(--retro-caramel-dark); }
 
     .compare-dialogue {
       font-size: 0.76rem;
       line-height: 1.4;
-      color: #1e293b;
+      color: var(--retro-charcoal);
     }
 
     .dialogue-bubble {
@@ -462,20 +563,20 @@
       padding: 0.45rem 0.65rem;
       border-radius: 6px;
       margin-bottom: 0.35rem;
-      border: 1px solid rgba(0,0,0,0.08);
+      border: 1px solid var(--retro-steel);
     }
 
     /* Footer Pledge */
     .footer-bar {
-      background: #f8fafc;
-      border: 1.5px dashed #cbd5e1;
+      background: var(--retro-sand-light);
+      border: 1.5px dashed var(--retro-caramel);
       border-radius: 8px;
       padding: 0.65rem 1rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-size: 0.76rem;
-      color: #475569;
+      color: var(--retro-muted);
       font-weight: 600;
     }
 
@@ -547,15 +648,34 @@
   <!-- Flyer Sheet Container -->
   <div class="flyer-sheet">
 
+    <!-- Heritage 4-Stripe Ribbon Accents -->
+    <div class="racing-ribbon-tl" aria-hidden="true">
+      <div class="ribbon-bar bar-caramel"></div>
+      <div class="ribbon-bar bar-steel"></div>
+      <div class="ribbon-bar bar-sand"></div>
+      <div class="ribbon-bar bar-navy"></div>
+    </div>
+    <div class="racing-ribbon-br" aria-hidden="true">
+      <div class="ribbon-bar bar-navy"></div>
+      <div class="ribbon-bar bar-sand"></div>
+      <div class="ribbon-bar bar-steel"></div>
+      <div class="ribbon-bar bar-caramel"></div>
+    </div>
+
     <!-- Header -->
     <header class="header">
-      <div class="header-titles">
-        <h1>🌟 FIRST® Core Values in Action</h1>
-        <p>Team #76265 "Lego Legends" • BIOGLOW • <em>"We don't just build robots, we use robots to build students."</em></p>
+      <div class="header-main">
+        <div class="retro-badge-emblem">
+          <span class="badge-fll">FIRST FLL #76265</span>
+          <span class="badge-team-name">LEGO LEGENDS</span>
+        </div>
+        <div class="header-titles">
+          <h1>FIRST® Core Values in Action</h1>
+          <p>"We don't just build robots, we use robots to build students." &bull; BIOGLOW 2026</p>
+        </div>
       </div>
-      <div class="badge-motto">
-        🤖 FLL Team #76265<br>
-        "Lego Legends"
+      <div class="header-pills">
+        <span class="season-pill">2026 BIOGLOW Season</span>
       </div>
     </header>
 
@@ -567,7 +687,7 @@
 
       <!-- DIFI (2x2) on Left, IT (1x2) on Right with Separator -->
       <div class="difi-it-container">
-        
+
         <!-- Left: DIFI Block (2x2 Grid) -->
         <div class="pillar-block">
           <div class="block-header">

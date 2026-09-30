@@ -153,9 +153,9 @@ Kids love code words. Standardizing phrases removes emotional ambiguity:
 
 When heart rates climb above 120 BPM, short-term working memory severely degrades. Expecting a 10-year-old to remember 6 sequential mission numbers, motor speed settings, and attachment pins from memory is setting them up for failure.
 
-### The Laminated Run Card 
+### The Laminated Run Card
 
-Technicians are allowed to have a paper with their checklist on it. They cannot use it to position the robot or be on the table. The checklist should be taped to the kid's arms so its out of the way but easily accessible to read. 
+Technicians are allowed to have a paper with their checklist on it. They cannot use it to position the robot or be on the table. The checklist should be taped to the kid's arms so its out of the way but easily accessible to read.
 
 ```md
 +-----------------------------------------------------------+
@@ -190,11 +190,11 @@ flowchart TD
     Issue{"🚨 What just happened?"}
 
     Issue -->|"Robot stuck or spinning in place"| Abort["🛑 ABORT & RETRIEVE<br/>Pick up robot into Home immediately.<br/>Take touch penalty without hesitation.<br/>Clock is more valuable than 1 penalty!"]
-    
+
     Issue -->|"Attachment broke or bent"| Skip["⏭️ SKIP MISSION<br/>Do not try field repairs with LEGO bricks.<br/>Call: 'Skip Mission X, go to Run Y!'"]
-    
+
     Issue -->|"Wrong program started"| StopNow["⏹️ INSTANT STOP<br/>Hold Center Button 3 seconds / pick up bot.<br/>Reset to correct program.<br/>Re-launch calmly."]
-    
+
     Issue -->|"Technician freezes or cries"| TapOut["🤝 TAP OUT PROTOCOL<br/>Call 'Tap out!'<br/>Partner high-fives and tags in pit teammate.<br/>Clean swap in Home."]
 
     style Abort fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px;
@@ -213,7 +213,7 @@ In the heat of the moment, a kid might think: *"Wait, let me push the robot by h
 
 Kids are often terrified of touch penalties. They will stand frozen for 25 seconds watching a stuck robot grind its wheels against a border wall because they "don't want to lose points."
 
-- **Mentors must teach the math:**  
+- **Mentors must teach the math:**
    *A precision token penalty costs 5–10 points. But losing 25 seconds of match time costs 50 points from missing your final two mission runs!*
 - **A quick touch penalty is a smart strategic investment, not a mistake.**
 
@@ -253,11 +253,11 @@ In cockpit CRM, junior first officers were historically hesitant to correct olde
 
 Imagine Technician 1 is about to press launch, but selected Program 4 instead of Program 3:
 
-- **First Challenge (Inquiry):**  
+- **First Challenge (Inquiry):**
    Tech 2: *"Check program, Joey. Does the screen say 3?"*
-- **Second Challenge (Assertive Stop):**  
-   *(If Tech 1's finger is still moving toward the launch button)*  
-   Tech 2: *"HOLD! STOP LAUNCH! The screen says 4, we need Run 3!"*  
+- **Second Challenge (Assertive Stop):**
+   *(If Tech 1's finger is still moving toward the launch button)*
+   Tech 2: *"HOLD! STOP LAUNCH! The screen says 4, we need Run 3!"*
    *(Physically covers the button or waves hand over Hub).*
 - **Resolution:** Tech 1 looks, smiles, says: *"Good catch! Changing to 3 now."*
 
@@ -288,7 +288,7 @@ Human error is never the root cause; **human error is a symptom of a weak system
 | Maya forgot to click the motor attachment peg in, so the arm fell off. | *"Maya wasn't paying attention."* | *"Our checklist didn't have a physical tug-test. Let's add **'Tug test arm 2x'** to the laminated run card!"* |
 | The wrong program was launched. | *"You can't even read numbers!"* | *"The SPIKE hub numbers are small. Let's program the Hub light matrix to display a large graphic icon (e.g., a Whale for Run 1, a Shark for Run 2)."* |
 
-We **"Plus"** mistakes:  
+We **"Plus"** mistakes:
 *"We dropped points because our alignment slipped. **YES**, that happened, **AND** how can we engineer a mechanical wall jig this afternoon so it is physically impossible to align incorrectly ever again?"*
 
 ---
@@ -367,7 +367,10 @@ graph TD
 
 ## 🎒 Tournament Day Checklist for Mentors
 
+> For the comprehensive tournament protocol incorporating official FIRST® inclusion guidance, see the dedicated [🏆 Mentor CRM Competition Checklist](mentor_competition_crm_checklist.md) ([Printable HTML](mentor_competition_crm_checklist.html)).
+
 - [ ] **Mentor CRM Pocket Cue Card:** Printed 4"x6" cue card or lanyard badge ([Printable HTML](mentor_crm_cue_card.html) | [Guide](mentor_crm_cue_card.md)).
+- [ ] **Dedicated Checklists:** Review [Competition Checklist](mentor_competition_crm_checklist.md) and [Day-to-Day Workshop Checklist](mentor_day_to_day_crm_checklist.md).
 - [ ] **Laminated Run Cards:** 2 complete sets on keyrings (one at the table, one in the pit).
 - [ ] **Spare Attachment Pins:** Color-coded and pre-sorted in the pit box.
 - [ ] **Technician Role Badges:** Clean visual indicator of who is Technician 1 and Technician 2 for each scheduled match.

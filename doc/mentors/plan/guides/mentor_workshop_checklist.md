@@ -1,18 +1,21 @@
 # 📋 Mentor Workshop CRM Checklist: Everyday Session Facilitation
 
-> **Operational Checklist for Dividing, Conquering, and Ensuring Every Child is Heard**  
+> **Operational Checklist for Dividing, Conquering, and Ensuring Every Child is Heard**
 > *FIRST LEGO League Team #76265 "Lego Legends" • BIOGLOW*
 
 <div style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-left: 5px solid #0284c7; padding: 0.85rem 1.15rem; border-radius: 8px; margin-bottom: 1.25rem;">
-  <strong>🖨️ Printable Single-Page Checklist (Letter Size):</strong><br>
-  Print this 1-page operational checklist for your mentor clipboard or workshop table: <a href="mentor_workshop_checklist.html" style="font-weight: 700; color: #0369a1;">mentor_workshop_checklist.html &rarr;</a>
+  <strong>✨ Expanded Mentor CRM Checklists Available:</strong><br>
+  For the comprehensive checklists incorporating official <em>FIRST® Tips for Interacting with Teams</em> and inclusion practices, see:<br>
+  • <a href="mentor_day_to_day_crm_checklist.md" style="font-weight: 700; color: #0369a1;">📋 Day-to-Day Mentor CRM Checklist</a> (<a href="mentor_day_to_day_crm_checklist.html" style="color: #0284c7;">Printable HTML</a>)<br>
+  • <a href="mentor_competition_crm_checklist.md" style="font-weight: 700; color: #15803d;">🏆 Competition Day Mentor CRM Checklist</a> (<a href="mentor_competition_crm_checklist.html" style="color: #16a34a;">Printable HTML</a>)<br>
+  • Printable Single-Page Workshop Sheet: <a href="mentor_workshop_checklist.html" style="font-weight: 700; color: #0369a1;">mentor_workshop_checklist.html &rarr;</a>
 </div>
 
 ---
 
 ## 🎯 The Core Philosophy: "Hands in Pockets & Zero Unheard Hands"
 
-When 9 kids are building complex SPIKE Prime mechanisms and coding autonomous missions, **multiple hands go up simultaneously**. 
+When 9 kids are building complex SPIKE Prime mechanisms and coding autonomous missions, **multiple hands go up simultaneously**.
 
 Unmanaged, coaches get bottlenecked, kids yell louder out of fear of being ignored, and quiet students shut down. **This checklist keeps mentors coordinated and every child heard.**
 
@@ -92,6 +95,8 @@ flowchart LR
 
 ## 🔗 Related Resources
 
+* [📋 Day-to-Day Mentor CRM Checklist (Expanded)](mentor_day_to_day_crm_checklist.md) ([Printable HTML](mentor_day_to_day_crm_checklist.html))
+* [🏆 Competition Day Mentor CRM Checklist](mentor_competition_crm_checklist.md) ([Printable HTML](mentor_competition_crm_checklist.html))
 * [📄 Printable HTML Single-Page Checklist](mentor_workshop_checklist.html)
 * [📇 Mentor CRM Pocket Cue Card (4"x6" / Lanyard)](mentor_crm_cue_card.html)
 * [🧭 Coach Philosophy & Ambassador Handoffs](mentors_notes.md)
