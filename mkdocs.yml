@@ -1,6 +1,6 @@
-site_name: FLL Team #76265 • BIOGLOW
-site_description: Official Documentation, Engineering Notebook & Web Tools for FIRST LEGO League Team 76265 BIOGLOW (2026 Season)
-site_author: FLL Team #76265
+site_name: FLL Team #76265 "Lego Legends" • BIOGLOW
+site_description: Official Documentation, Engineering Notebook & Web Tools for FIRST LEGO League Team 76265 Lego Legends • BIOGLOW (2026 Season)
+site_author: FLL Team #76265 Lego Legends
 site_url: https://jaimeyu.github.io/FLL_76265_2026_BIOGLOW/
 repo_url: https://github.com/jaimeyu/FLL_76265_2026_BIOGLOW
 repo_name: jaimeyu/FLL_76265_2026_BIOGLOW
@@ -11,24 +11,28 @@ theme:
   name: material
   custom_dir: overrides
   language: en
+  font: false
   palette:
-    # Dark mode default (matching BIOGLOW aesthetic)
+    # Dark mode default (matching retro space mission control aesthetic)
     - scheme: slate
-      primary: blue
-      accent: teal
+      primary: custom
+      accent: amber
       toggle:
         icon: material/weather-sunny
-        name: Switch to light mode
-    # Light mode
+        name: Switch to retro paper mode
+    # Light mode (retro NASA paper aesthetic)
     - scheme: default
-      primary: blue
-      accent: teal
+      primary: custom
+      accent: amber
       toggle:
         icon: material/weather-night
-        name: Switch to dark mode
+        name: Switch to dark space mode
+
   features:
     - navigation.instant
     - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.sections
     - navigation.expand
     - navigation.top
@@ -37,6 +41,9 @@ theme:
     - search.share
     - content.code.copy
     - content.action.edit
+
+extra_css:
+  - stylesheets/retro_space.css
 
 markdown_extensions:
   - admonition

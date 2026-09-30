@@ -1,6 +1,6 @@
-# 📚 Student Guide: How to Write & Publish Team Documentation
+# 📚 Student Guide: How to Write & Publish Team Documentation — Lego Legends
 
-Welcome, Team BIOGLOW engineers and storytellers! 🌊🤖
+Welcome, Lego Legends engineers and storytellers! 🌊🤖
 
 In FIRST® LEGO® League, documenting your team journey is just as important as building the robot. The judges love to see how your ideas started, what failed, how you solved problems, and how your code evolved.
 

@@ -1,8 +1,8 @@
-# 🧭 Coach's Philosophy, Season Goals & Mentoring Strategies
+# 🧭 Coach's Philosophy, Season Goals & Mentoring Strategies — Lego Legends
 
 > *"We don't just build robots, we use robots to build students."*
 
-This guide captures our core coaching philosophy, long-term goals for the kids, and practical mentoring strategies for running fast-paced, high-engagement FIRST LEGO League sessions.
+This guide captures our core coaching philosophy, long-term goals for the kids, and practical mentoring strategies for running fast-paced, high-engagement FIRST LEGO League sessions for Team #76265 **Lego Legends**.
 
 ---
 

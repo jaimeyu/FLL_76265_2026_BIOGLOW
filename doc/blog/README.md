@@ -1,6 +1,6 @@
-# Team Blog (`doc/blog/`)
+# Team Blog (`doc/blog/`) — Lego Legends
 
-Markdown blog posts capturing team updates, engineering challenges, outreach milestones, and season stories.
+Markdown blog posts capturing team updates, engineering challenges, outreach milestones, and season stories for FLL Team #76265 **Lego Legends**.
 
 ## Post Naming & Privacy Rules
 - **Naming Format**: `YYYY-MM-DD-title-slug.md` (e.g. `2026-09-10-kickoff-meeting.md`)

@@ -1,6 +1,6 @@
-# Presentations & Judging Materials (`doc/presentations/`)
+# Presentations & Judging Materials (`doc/presentations/`) — Lego Legends
 
-Scripts, slide decks, outline notes, and Q&A prep for official FIRST LEGO League judging sessions.
+Scripts, slide decks, outline notes, and Q&A prep for official FIRST LEGO League judging sessions for FLL Team #76265 **Lego Legends**.
 
 ## Judging Categories
 1. **Innovation Project Presentation**: 5-minute presentation + 5-minute Q&A.

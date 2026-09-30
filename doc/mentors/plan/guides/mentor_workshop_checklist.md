@@ -1,7 +1,7 @@
 # 📋 Mentor Workshop CRM Checklist: Everyday Session Facilitation
 
 > **Operational Checklist for Dividing, Conquering, and Ensuring Every Child is Heard**  
-> *FIRST LEGO League Team #76265 BIOGLOW*
+> *FIRST LEGO League Team #76265 "Lego Legends" • BIOGLOW*
 
 <div style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-left: 5px solid #0284c7; padding: 0.85rem 1.15rem; border-radius: 8px; margin-bottom: 1.25rem;">
   <strong>🖨️ Printable Single-Page Checklist (Letter Size):</strong><br>

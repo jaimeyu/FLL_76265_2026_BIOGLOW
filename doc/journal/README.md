@@ -1,6 +1,6 @@
-# Engineering Journal & Meetup Notes (`doc/journal/`)
+# Engineering Journal & Meetup Notes (`doc/journal/`) — Lego Legends
 
-Meeting notes, build logs, code testing iteration records, and team decisions from every workshop.
+Meeting notes, build logs, code testing iteration records, and team decisions from every workshop of FLL Team #76265 **Lego Legends**.
 
 ## Log Entry Structure
 For each meeting log (e.g., `2026-09-06-meetup.md`):

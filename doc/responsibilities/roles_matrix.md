@@ -1,4 +1,4 @@
-# Team 76265 Job Roles & Responsibility Matrix
+# Team 76265 "Lego Legends" Job Roles & Responsibility Matrix
 
 **Season**: 2026 BIOGLOW  
 *(Note: Refer to team members by role identifier or Pokémon codename in accordance with the [AI Constitution](../AI_CONSTITUTION.md))*

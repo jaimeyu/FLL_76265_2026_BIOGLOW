@@ -1,8 +1,8 @@
-# FIRST LEGO League Team 76265 — AI Constitution & Safety Policy
+# FIRST LEGO League Team 76265 "Lego Legends" — AI Constitution & Safety Policy
 
 **Season**: 2026 BIOGLOW  
-**Team**: FLL #76265  
-**Repository**: [FLL_76265_2026_BIOGLOW](https://github.com/)  
+**Team**: FLL #76265 "Lego Legends"  
+**Repository**: [FLL_76265_2026_BIOGLOW](https://github.com/jaimeyu/FLL_76265_2026_BIOGLOW)  
 
 ---
 

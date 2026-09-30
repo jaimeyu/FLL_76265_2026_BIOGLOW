@@ -1,4 +1,4 @@
-# 📇 Mentor CRM Workshop Cue Card: Everyday Session Facilitation
+# 📇 Mentor CRM Workshop Cue Card: Everyday Session Facilitation — Lego Legends
 
 > **Everyday Hands-On Coaching Guide for FLL Team Sessions & Robotics Workshops**  
 > *Dividing, Conquering, and Ensuring Every Kid is Heard When Multiple Hands Go Up!*

@@ -1,6 +1,6 @@
 # FLL Season Schedule — Fall 2026
 
-**Team 76265 • BIOGLOW Season**
+**Team 76265 "Lego Legends" • BIOGLOW Season**
 
 * **In-Person Meetups:** Saturdays, 1:00 PM – 4:00 PM *(Hardware, building the field, driving base, robot game testing)*
 * **Midweek Virtual Sessions:** Wednesdays, 6:30 PM – 7:30 PM *(Innovation Project research, expert interviews, strategy discussions, coding logic)*

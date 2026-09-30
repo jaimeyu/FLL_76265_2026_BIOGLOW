@@ -1,6 +1,6 @@
-# Marketing & Outreach (`doc/marketing/`)
+# Marketing & Outreach (`doc/marketing/`) — Lego Legends
 
-Branding materials, logo concepts, team shirts design, community outreach logs, and sponsorship pitch documents for FLL Team 76265.
+Branding materials, logo concepts, team shirts design, community outreach logs, and sponsorship pitch documents for FLL Team #76265 **Lego Legends**.
 
 ## Contents
 - **Branding Guidelines**: Team colors, fonts, logo files, and shirt graphics.

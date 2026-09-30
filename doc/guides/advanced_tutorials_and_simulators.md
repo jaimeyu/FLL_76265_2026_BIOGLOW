@@ -1,4 +1,4 @@
-# 🎮 Advanced FLL Coding Tutorials, Simulators & Learning Hub
+# 🎮 Advanced FLL Coding Tutorials, Simulators & Learning Hub — Lego Legends
 
 > *"You don't need a physical robot in your hands 24/7 to become a world-class programmer."*
 

@@ -1,4 +1,4 @@
-# ✈️ Crew Resource Management (CRM) for FLL Technicians
+# ✈️ Crew Resource Management (CRM) for FLL Technicians — Lego Legends
 
 ## Mental Readiness, Stress Resilience & Field Operations for 10-Year-Olds
 

@@ -1,17 +1,18 @@
-# 🌊 Welcome to FLL Team #76265 — BIOGLOW
+# 🌊 Welcome to FLL Team #76265 "Lego Legends" — BIOGLOW
 
-<div style="text-align: center; margin: 1.5rem 0;">
-  <span style="background: linear-gradient(135deg, rgba(56,139,253,0.2), rgba(137,87,229,0.2)); border: 1px solid #388bfd; color: #58a6ff; font-weight: 700; padding: 0.35rem 1rem; border-radius: 20px; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase;">FIRST® LEGO® League • 2026 Season</span>
+<div style="text-align: center; margin: 1.5rem 0; display: flex; justify-content: center; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+  <span class="retro-emblem-badge"><span class="badge-tag">FIRST FLL #76265</span> <span class="badge-name">LEGO LEGENDS</span></span>
+  <span style="background: var(--retro-sand, #F2E2C8); border: 1.5px solid var(--retro-caramel, #B5732A); color: var(--retro-navy, #0E3B5C); font-weight: 800; padding: 0.35rem 1rem; border-radius: 20px; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase;">2026 BIOGLOW Season</span>
 </div>
 
-Welcome to the official digital engineering notebook, strategy hub, and documentation center for **FIRST LEGO League (FLL) Team #76265 — BIOGLOW**!
+Welcome to the official digital engineering notebook, strategy hub, and documentation center for **FIRST LEGO League (FLL) Team #76265 "Lego Legends" — BIOGLOW**!
 
-<div style="background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 10px; padding: 0.85rem 1.25rem; margin: 1.25rem 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+<div style="background: rgba(14, 59, 92, 0.15); border: 1.5px solid rgba(181, 115, 42, 0.45); border-radius: 10px; padding: 0.85rem 1.25rem; margin: 1.25rem 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
   <div>
     <strong>🌐 Official Website URL (GitHub Pages):</strong><br>
-    <a href="https://jaimeyu.github.io/FLL_76265_2026_BIOGLOW/" style="font-family: monospace; font-size: 0.95rem; font-weight: 700; color: #38bdf8;">https://jaimeyu.github.io/FLL_76265_2026_BIOGLOW/</a>
+    <a href="https://jaimeyu.github.io/FLL_76265_2026_BIOGLOW/" style="font-family: monospace; font-size: 0.95rem; font-weight: 700; color: var(--retro-caramel-light, #E5A85C);">https://jaimeyu.github.io/FLL_76265_2026_BIOGLOW/</a>
   </div>
-  <a href="https://github.com/jaimeyu/FLL_76265_2026_BIOGLOW" target="_blank" class="md-button" style="font-size: 0.82rem;">
+  <a href="https://github.com/jaimeyu/FLL_76265_2026_BIOGLOW" target="_blank" class="md-button md-button--primary" style="font-size: 0.82rem;">
     :octicons-mark-github-16: GitHub Repository
   </a>
 </div>

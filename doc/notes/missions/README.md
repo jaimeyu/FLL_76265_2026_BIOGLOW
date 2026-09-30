@@ -1,6 +1,6 @@
-# Mission Notes & Analysis (`doc/notes/missions/`)
+# Mission Notes & Analysis (`doc/notes/missions/`) — Lego Legends
 
-Documentation, breakdown notes, field strategy maps, and risk/reward analyses for BIOGLOW table missions.
+Documentation, breakdown notes, field strategy maps, and risk/reward analyses for BIOGLOW table missions for FLL Team #76265 **Lego Legends**.
 
 ## Mission Note Template
 When documenting a mission, include:

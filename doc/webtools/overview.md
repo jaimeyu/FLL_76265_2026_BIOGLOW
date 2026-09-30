@@ -1,6 +1,6 @@
-# Web Tools & GitHub Pages (`doc/webtools/` / `doc/webutils/`)
+# Web Tools & GitHub Pages (`doc/webtools/` / `doc/webutils/`) — Lego Legends
 
-This directory contains interactive web applications and utilities designed to be hosted via GitHub Pages for FLL Team 76265. Note: `doc/webutils` is configured as a symlink alias to `doc/webtools`.
+This directory contains interactive web applications and utilities designed to be hosted via GitHub Pages for FLL Team #76265 **Lego Legends**. Note: `doc/webutils` is configured as a symlink alias to `doc/webtools`.
 
 ## Included Tools
 - **`index.html`**: Master web dashboard featuring an interactive 2:30 match timer and resource navigation hub.

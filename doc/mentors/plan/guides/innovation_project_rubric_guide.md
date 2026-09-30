@@ -1,4 +1,4 @@
-# 💡 Mentor Coaching Guide: Driving the Innovation Project
+# 💡 Mentor Coaching Guide: Driving the Innovation Project — Lego Legends
 
 ## Mastering the 5 FLL Rubric Phases (Identify, Design, Create, Iterate, Communicate) While Empowering Student Ownership
 

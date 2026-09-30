@@ -1,6 +1,6 @@
-# Innovation Project & Robot Brainstorming (`doc/ideas/`)
+# Innovation Project & Robot Brainstorming (`doc/ideas/`) — Lego Legends
 
-Notes, sketches, research topics, and creative concepts for the **2026 SUBMERGED / Natural Habitats** Innovation Project and Robot Design.
+Notes, sketches, research topics, and creative concepts for the **2026 SUBMERGED / Natural Habitats** Innovation Project and Robot Design for FLL Team #76265 **Lego Legends**.
 
 ---
 

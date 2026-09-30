@@ -1,18 +1,18 @@
-# FLL Team 76265 — 2026 BIOGLOW
+# FLL Team 76265 "Lego Legends" — 2026 BIOGLOW
 
 [![Deploy Documentation to GitHub Pages](https://github.com/jaimeyu/FLL_76265_2026_BIOGLOW/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/jaimeyu/FLL_76265_2026_BIOGLOW/actions/workflows/deploy-pages.yml)
 [![Security & Privacy Scans](https://github.com/jaimeyu/FLL_76265_2026_BIOGLOW/actions/workflows/security-scan.yml/badge.svg)](https://github.com/jaimeyu/FLL_76265_2026_BIOGLOW/actions/workflows/security-scan.yml)
 [![GitHub Pages Documentation](https://img.shields.io/badge/GitHub%20Pages-Documentation%20Portal-2ea043?style=flat&logo=github)](https://jaimeyu.github.io/FLL_76265_2026_BIOGLOW/)
 [![Material for MkDocs](https://img.shields.io/badge/Docs%20Engine-Material%20for%20MkDocs-526cfe?style=flat&logo=materialformkdocs)](https://squidfunk.github.io/mkdocs-material/)
 [![FLL Season](https://img.shields.io/badge/FLL%20Season-2026%20BIOGLOW-388bfd?style=flat)](https://www.firstlegoleague.org/)
-[![Team 76265](https://img.shields.io/badge/FLL%20Team-%2376265-8957e5?style=flat)](#)
+[![Team 76265](https://img.shields.io/badge/FLL%20Team-%2376265%20Lego%20Legends-8957e5?style=flat)](#)
 [![AI Safety Policy](https://img.shields.io/badge/AI%20Policy-Enforced-success?style=flat&logo=shield)](AI_CONSTITUTION.md)
 
 > 🌐 **Official Website & Interactive Web Tools (GitHub Pages):**  
 > ### 👉 **[https://jaimeyu.github.io/FLL_76265_2026_BIOGLOW/](https://jaimeyu.github.io/FLL_76265_2026_BIOGLOW/)** 👈
 > *Browse our full Engineering Notebook, Mission Strategy guides, 3D CAD Studio, Match Timer, and printable flyers live in your browser!*
 
-Welcome to the official repository for **FIRST LEGO League (FLL) Team 76265** for the **2026 BIOGLOW** season!
+Welcome to the official repository for **FIRST LEGO League (FLL) Team 76265 "Lego Legends"** for the **2026 BIOGLOW** season!
 
 This repository serves as our centralized hub for robot programming, mission strategy, innovation project documentation, meeting journals, job role tracking, and interactive web tools.
 
