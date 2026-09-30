@@ -3,13 +3,12 @@
 > **Operational Checklist for Dividing, Conquering, and Ensuring Every Child is Heard**
 > *FIRST LEGO League Team #76265 "Lego Legends" • BIOGLOW*
 
-<div style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-left: 5px solid #0284c7; padding: 0.85rem 1.15rem; border-radius: 8px; margin-bottom: 1.25rem;">
-  <strong>✨ Expanded Mentor CRM Checklists Available:</strong><br>
-  For the comprehensive checklists incorporating official <em>FIRST® Tips for Interacting with Teams</em> and inclusion practices, see:<br>
-  • <a href="mentor_day_to_day_crm_checklist.md" style="font-weight: 700; color: #0369a1;">📋 Day-to-Day Mentor CRM Checklist</a> (<a href="mentor_day_to_day_crm_checklist.html" style="color: #0284c7;">Printable HTML</a>)<br>
-  • <a href="mentor_competition_crm_checklist.md" style="font-weight: 700; color: #15803d;">🏆 Competition Day Mentor CRM Checklist</a> (<a href="mentor_competition_crm_checklist.html" style="color: #16a34a;">Printable HTML</a>)<br>
-  • Printable Single-Page Workshop Sheet: <a href="mentor_workshop_checklist.html" style="font-weight: 700; color: #0369a1;">mentor_workshop_checklist.html &rarr;</a>
-</div>
+!!! info "✨ Expanded Mentor CRM Checklists Available"
+    For the comprehensive checklists incorporating official *FIRST® Tips for Interacting with Teams* and inclusion practices, see:
+
+    * [📋 Day-to-Day Mentor CRM Checklist](mentor_day_to_day_crm_checklist.md) ([Printable HTML](mentor_day_to_day_crm_checklist.html))
+    * [🏆 Competition Day Mentor CRM Checklist](mentor_competition_crm_checklist.md) ([Printable HTML](mentor_competition_crm_checklist.html))
+    * Printable Single-Page Workshop Sheet: [mentor_workshop_checklist.html](mentor_workshop_checklist.html)
 
 ---
 

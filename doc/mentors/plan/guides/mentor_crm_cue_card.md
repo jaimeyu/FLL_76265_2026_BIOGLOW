@@ -3,10 +3,8 @@
 > **Everyday Hands-On Coaching Guide for FLL Team Sessions & Robotics Workshops**
 > *Dividing, Conquering, and Ensuring Every Kid is Heard When Multiple Hands Go Up!*
 
-<div style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-left: 5px solid #0284c7; padding: 0.85rem 1.15rem; border-radius: 8px; margin-bottom: 1.25rem;">
-  <strong>🖨️ Printable Pocket Cue Cards (4" x 6" / Lanyard Badge Size):</strong><br>
-  Print this double-sided cardstock template to keep in your pocket or lanyard during sessions: <a href="mentor_crm_cue_card.html" style="font-weight: 700; color: #0369a1;">mentor_crm_cue_card.html &rarr;</a>
-</div>
+!!! info "🖨️ Printable Pocket Cue Cards (4\" x 6\" / Lanyard Badge Size)"
+    Print this double-sided cardstock template to keep in your pocket or lanyard during sessions: [mentor_crm_cue_card.html](mentor_crm_cue_card.html)
 
 ---
 

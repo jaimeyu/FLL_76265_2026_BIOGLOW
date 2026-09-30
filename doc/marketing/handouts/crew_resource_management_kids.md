@@ -1,12 +1,9 @@
 # 📋 How to Build Champion Checklists — Pokémon CRM Guide for Kids (Team #76265 "Lego Legends")
 
-<div style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-left: 6px solid #0284c7; padding: 1.2rem; border-radius: 8px; margin-bottom: 1.5rem;">
-  <h3 style="margin-top: 0; color: #0369a1;">🖨️ Printable Checklist Builder Worksheet</h3>
-  <p style="margin-bottom: 0.5rem; color: #1e293b;">
-    Want the print-ready handout with the interactive <strong>Run Card Workshop</strong> for team binders and pit tables?
-  </p>
-  <a href="crew_resource_management_kids.html" style="display: inline-block; background: #0284c7; color: white; padding: 0.55rem 1.15rem; border-radius: 6px; font-weight: 700; text-decoration: none;">📄 Open Printable Checklist Flyer &rarr;</a>
-</div>
+!!! info "🖨️ Printable Checklist Builder Worksheet"
+    Want the print-ready handout with the interactive **Run Card Workshop** for team binders and pit tables?
+
+    [📄 Open Printable Checklist Flyer &rarr;](crew_resource_management_kids.html)
 
 ![Pokémon Crew Resource Management Mission Control](images/pokemon_crm_crew.jpg)
 

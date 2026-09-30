@@ -4,10 +4,8 @@
 > *FIRST LEGO League Team #76265 "Lego Legends" • Season 2026 BIOGLOW*  
 > *Derived from Aviation CRM, FIRST® "Tips for Interacting with Teams", and Team 76265 Operational Doctrine.*
 
-<div style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-left: 5px solid #16a34a; padding: 0.85rem 1.15rem; border-radius: 8px; margin-bottom: 1.25rem;">
-  <strong>🖨️ Printable Single-Page Checklist (Letter / Clipboard Size):</strong><br>
-  Print this tournament day operational checklist for your mentor clipboard or lanyard binder: <a href="mentor_competition_crm_checklist.html" style="font-weight: 700; color: #15803d;">mentor_competition_crm_checklist.html &rarr;</a>
-</div>
+!!! success "🖨️ Printable Single-Page Checklist (Letter / Clipboard Size)"
+    Print this tournament day operational checklist for your mentor clipboard or lanyard binder: [mentor_competition_crm_checklist.html](mentor_competition_crm_checklist.html)
 
 ---
 
