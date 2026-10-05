@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <!-- Crisp drop filter for subtle depth -->
+    <filter id="card-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="1.5" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <!-- Outer Ring (White fill, vibrant royal blue border) -->
+  <circle cx="60" cy="60" r="54" fill="#ffffff" stroke="#1d4ed8" stroke-width="4.5"/>
+  
+  <!-- Subtle inner red accent guide circle -->
+  <circle cx="60" cy="60" r="49" fill="none" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="3 3" opacity="0.6"/>
+
+  <!-- Minimal Royal Crown perched above studs (Crimson Red with Gold/White details) -->
+  <g id="crown">
+    <!-- Crown Base Band -->
+    <path d="M 38 41 L 82 41 L 79 46 L 41 46 Z" fill="#b91c1c"/>
+    <!-- Crown Body (5 peaks: 3 prominent, 2 stepped) -->
+    <path d="M 39 41 
+             L 35 27 
+             L 46 34 
+             L 60 21 
+             L 74 34 
+             L 85 27 
+             L 81 41 Z" 
+          fill="#ef4444" 
+          stroke="#b91c1c" 
+          stroke-width="1.5" 
+          stroke-linejoin="round"/>
+    
+    <!-- Crown Jewels / Stud Dots (Royal Blue) -->
+    <circle cx="35" cy="26" r="3" fill="#1d4ed8"/>
+    <circle cx="60" cy="20" r="3.8" fill="#1d4ed8"/>
+    <circle cx="85" cy="26" r="3" fill="#1d4ed8"/>
+    
+    <!-- Center Jewel Accent -->
+    <circle cx="60" cy="33" r="2.2" fill="#ffffff"/>
+  </g>
+
+  <!-- Minimal 2-Stud LEGO Brick Body -->
+  <g id="brick">
+    <!-- Left Stud -->
+    <rect x="42" y="49" width="14" height="8" rx="2.5" fill="#1d4ed8"/>
+    <rect x="44" y="50" width="10" height="2" rx="1" fill="#60a5fa" opacity="0.8"/>
+
+    <!-- Right Stud -->
+    <rect x="64" y="49" width="14" height="8" rx="2.5" fill="#1d4ed8"/>
+    <rect x="66" y="50" width="10" height="2" rx="1" fill="#60a5fa" opacity="0.8"/>
+
+    <!-- Main Brick Body (Sleek Blue Outline / White Core / Red Center Band) -->
+    <rect x="33" y="56" width="54" height="34" rx="5" fill="#ffffff" stroke="#1d4ed8" stroke-width="4"/>
+    
+    <!-- Brick Bottom Tubes / Interior Indent hint -->
+    <rect x="39" y="65" width="42" height="16" rx="3" fill="#eff6ff" stroke="#93c5fd" stroke-width="1"/>
+    
+    <!-- Red Accent Emblem on Brick (Minimal heart/power spark) -->
+    <path d="M 54 73 L 60 67 L 66 73 L 60 79 Z" fill="#ef4444"/>
+    <circle cx="60" cy="73" r="1.5" fill="#ffffff"/>
+  </g>
+</svg>

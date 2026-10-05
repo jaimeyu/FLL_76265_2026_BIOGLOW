@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frustration Buster Pocket Checklist — Kid's Reset Guide | Team #76265 Lego Legends</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@400;500;600;700;800;900&family=Righteous&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Theme: White background with vibrant Red & Blue highlights */
+      --bg-canvas: #0b1329;
+      --card-white: #ffffff;
+      --fll-blue: #1d4ed8;
+      --fll-blue-dark: #1e3a8a;
+      --fll-blue-light: #eff6ff;
+      --fll-blue-border: #93c5fd;
+      
+      --fll-red: #dc2626;
+      --fll-red-dark: #991b1b;
+      --fll-red-light: #fef2f2;
+      --fll-red-border: #fca5a5;
+
+      --duck-yellow: #eab308;
+      --duck-yellow-light: #fef9c3;
+      --duck-border: #fde047;
+
+      --text-dark: #0f172a;
+      --text-muted: #475569;
+      --text-subtle: #64748b;
+      --border-gray: #cbd5e1;
+      --cut-line-color: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: radial-gradient(circle at top center, #1e293b 0%, #081524 100%);
+      color: var(--text-dark);
+      padding: 1.5rem 1rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Screen-Only Toolbar */
+    .screen-toolbar {
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+      background: rgba(15, 23, 42, 0.94);
+      backdrop-filter: blur(12px);
+      padding: 0.75rem 1.15rem;
+      border-radius: 12px;
+      border: 1px solid rgba(59, 130, 246, 0.35);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .toolbar-links {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+    }
+
+    .back-link {
+      color: #93c5fd;
+      text-decoration: none;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.85rem;
+      transition: color 0.15s ease;
+    }
+
+    .back-link:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .btn {
+      color: #ffffff;
+      border: none;
+      padding: 0.55rem 1.15rem;
+      border-radius: 8px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .print-btn {
+      background: linear-gradient(135deg, #ef4444 0%, #1d4ed8 100%);
+      box-shadow: 0 4px 14px rgba(220, 38, 38, 0.4);
+    }
+
+    .print-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(29, 78, 216, 0.55);
+    }
+
+    .toggle-btn {
+      background: #334155;
+      color: #f1f5f9;
+    }
+
+    .toggle-btn:hover {
+      background: #475569;
+    }
+
+    /* Print Sheet Canvas (A4 Dimensions scaled for on-screen preview) */
+    .print-sheet {
+      width: 210mm;
+      min-height: 297mm;
+      max-width: 100%;
+      background: #ffffff;
+      border-radius: 6px;
+      padding: 8mm;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Print sheet instruction bar (visible on screen and subtle in print) */
+    .sheet-meta-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.72rem;
+      color: var(--text-subtle);
+      margin-bottom: 4mm;
+      padding-bottom: 2mm;
+      border-bottom: 1px dashed var(--border-gray);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+    }
+
+    .sheet-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: #eff6ff;
+      color: var(--fll-blue);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      border: 1px solid var(--fll-blue-border);
+    }
+
+    /* 4-Up Grid (2 Columns x 2 Rows) */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 5mm;
+      flex: 1;
+      position: relative;
+    }
+
+    /* Cutting guide lines centered between the 4 cards */
+    .cut-line-v {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: calc(50% - 0.5px);
+      width: 1px;
+      border-left: 1px dashed var(--cut-line-color);
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .cut-line-h {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: calc(50% - 0.5px);
+      height: 1px;
+      border-top: 1px dashed var(--cut-line-color);
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .cut-marker-center {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: #ffffff;
+      color: var(--cut-line-color);
+      font-size: 0.65rem;
+      padding: 1px 3px;
+      border-radius: 50%;
+      border: 1px dashed var(--cut-line-color);
+      z-index: 11;
+      pointer-events: none;
+    }
+
+    /* Individual Pocket Card (Target size ~93mm x 134mm) */
+    .pocket-card {
+      background: #ffffff;
+      border: 2px solid var(--fll-blue);
+      border-radius: 10px;
+      padding: 3mm 3.2mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05);
+    }
+
+    /* Red top highlight accent strip */
+    .pocket-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3.5px;
+      background: linear-gradient(90deg, var(--fll-red) 0%, var(--fll-blue) 100%);
+    }
+
+    /* Optional Corner Punch Hole Guide for Lanyard */
+    .punch-hole-guide {
+      position: absolute;
+      top: 2.5mm;
+      right: 2.5mm;
+      width: 4.5mm;
+      height: 4.5mm;
+      border-radius: 50%;
+      border: 1px dashed var(--cut-line-color);
+      background: #f8fafc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5px;
+      color: #94a3b8;
+    }
+
+    /* Card Header */
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 2.5mm;
+      margin-top: 0.5mm;
+      margin-bottom: 1.8mm;
+      padding-bottom: 1.5mm;
+      border-bottom: 1.5px solid #e2e8f0;
+      position: relative;
+    }
+
+    .card-logo {
+      width: 11mm;
+      height: 9.2mm;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .header-text {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .card-eyebrow {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 5.6pt;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--fll-blue);
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .card-title {
+      font-family: 'Righteous', 'Space Grotesk', cursive, sans-serif;
+      font-size: 9.8pt;
+      color: var(--text-dark);
+      line-height: 1.1;
+      margin-top: 1px;
+    }
+
+    .card-title .red-text {
+      color: var(--fll-red);
+    }
+
+    .card-title .blue-text {
+      color: var(--fll-blue);
+    }
+
+    /* Section 1: Frustration Triggers */
+    .section-triggers {
+      background: var(--fll-red-light);
+      border: 1px solid var(--fll-red-border);
+      border-left: 3px solid var(--fll-red);
+      border-radius: 5px;
+      padding: 1.4mm 1.8mm;
+      margin-bottom: 1.6mm;
+    }
+
+    .section-title-red {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 6.2pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: var(--fll-red-dark);
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      margin-bottom: 1mm;
+    }
+
+    .triggers-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8mm;
+    }
+
+    .trigger-item {
+      display: flex;
+      align-items: center;
+      gap: 1.8mm;
+      font-size: 6.2pt;
+      font-weight: 600;
+      color: var(--text-dark);
+      line-height: 1.15;
+    }
+
+    .checkbox-box {
+      width: 3.2mm;
+      height: 3.2mm;
+      border: 1.2px solid var(--fll-red);
+      border-radius: 2px;
+      background: #ffffff;
+      flex-shrink: 0;
+    }
+
+    .trigger-detail {
+      font-weight: 400;
+      color: var(--text-muted);
+      font-size: 5.4pt;
+    }
+
+    /* Section 2: The 4-Step Reset Solutions */
+    .section-solutions {
+      background: var(--fll-blue-light);
+      border: 1px solid var(--fll-blue-border);
+      border-left: 3px solid var(--fll-blue);
+      border-radius: 5px;
+      padding: 1.5mm 1.8mm;
+      margin-bottom: 1.6mm;
+    }
+
+    .section-title-blue {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 6.2pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: var(--fll-blue-dark);
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      margin-bottom: 1.2mm;
+    }
+
+    .solution-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 1mm;
+    }
+
+    .solution-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5mm;
+      font-size: 6.1pt;
+      line-height: 1.2;
+    }
+
+    .step-badge {
+      background: var(--fll-blue);
+      color: #ffffff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 5.2pt;
+      width: 3.3mm;
+      height: 3.3mm;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 0.2mm;
+    }
+
+    .step-content strong {
+      color: var(--text-dark);
+      font-weight: 700;
+    }
+
+    .partner-quote {
+      display: inline-block;
+      font-family: 'Caveat', cursive, sans-serif;
+      font-size: 7.2pt;
+      font-weight: 700;
+      color: #1e3a8a;
+      background: rgba(219, 234, 254, 0.7);
+      padding: 0 2px;
+      border-radius: 2px;
+    }
+
+    .problem-prompts {
+      margin-top: 0.6mm;
+      padding-left: 1.5mm;
+      border-left: 1.5px solid var(--fll-blue-border);
+      font-size: 5.4pt;
+      color: var(--text-muted);
+      line-height: 1.2;
+    }
+
+    /* Section 3: Visual Decision Tree / Flowchart */
+    .section-flowchart {
+      background: #f8fafc;
+      border: 1px solid var(--border-gray);
+      border-radius: 5px;
+      padding: 1.4mm 1.8mm;
+      margin-bottom: 1.2mm;
+    }
+
+    .flow-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 6pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1mm;
+    }
+
+    .flow-nodes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.4mm;
+    }
+
+    .flow-box {
+      border-radius: 4px;
+      padding: 1.2mm 1.4mm;
+      font-size: 5.6pt;
+      line-height: 1.2;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .flow-box-red {
+      background: var(--fll-red-light);
+      border: 1px solid var(--fll-red-border);
+      border-top: 2px solid var(--fll-red);
+    }
+
+    .flow-box-blue {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-top: 2px solid #16a34a;
+    }
+
+    .flow-box-header {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 5.8pt;
+      margin-bottom: 0.5mm;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .flow-box-red .flow-box-header {
+      color: var(--fll-red-dark);
+    }
+
+    .flow-box-blue .flow-box-header {
+      color: #166534;
+    }
+
+    .action-arrow {
+      font-weight: 700;
+      margin: 0.4mm 0;
+      font-size: 5.5pt;
+    }
+
+    .flow-box-red .action-arrow {
+      color: var(--fll-red);
+    }
+
+    .flow-box-blue .action-arrow {
+      color: #15803d;
+    }
+
+    .action-target {
+      font-weight: 800;
+      background: #ffffff;
+      padding: 0.5mm 1mm;
+      border-radius: 3px;
+      border: 0.8px solid rgba(0,0,0,0.1);
+      font-size: 5.4pt;
+      margin-top: 0.4mm;
+    }
+
+    /* Footer */
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1.2mm;
+      border-top: 1px solid #e2e8f0;
+      font-size: 5.2pt;
+      color: var(--text-subtle);
+      font-weight: 600;
+    }
+
+    .motto-text {
+      font-family: 'Caveat', cursive, sans-serif;
+      font-size: 6.8pt;
+      font-weight: 700;
+      color: var(--fll-blue);
+    }
+
+    /* Print Styles (Strictly 1 Page A4) */
+    @page {
+      size: A4 portrait;
+      margin: 6mm;
+    }
+
+    @media print {
+      body {
+        background: #ffffff !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      .screen-toolbar {
+        display: none !important;
+      }
+
+      .print-sheet {
+        width: 100% !important;
+        min-height: 100% !important;
+        height: 285mm !important;
+        max-width: 100% !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      .sheet-meta-bar {
+        margin-bottom: 2mm !important;
+        padding-bottom: 1mm !important;
+      }
+
+      .cards-grid {
+        height: calc(285mm - 7mm) !important;
+        gap: 4mm !important;
+      }
+
+      .pocket-card {
+        box-shadow: none !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+        border: 1.8px solid var(--fll-blue) !important;
+      }
+
+      .cut-line-v, .cut-line-h {
+        border-color: #94a3b8 !important;
+      }
+    }
+
+    /* Responsive preview for mobile devices */
+    @media (max-width: 768px) {
+      .print-sheet {
+        width: 100%;
+        min-height: auto;
+        padding: 10px;
+      }
+      .cards-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 15px;
+      }
+      .cut-line-v, .cut-line-h, .cut-marker-center {
+        display: none;
+      }
+      .pocket-card {
+        padding: 12px;
+      }
+      .card-eyebrow { font-size: 0.65rem; }
+      .card-title { font-size: 1.15rem; }
+      .section-title-red, .section-title-blue, .flow-title { font-size: 0.75rem; }
+      .trigger-item, .solution-step { font-size: 0.72rem; }
+      .partner-quote { font-size: 0.85rem; }
+      .flow-box { font-size: 0.68rem; }
+      .card-footer { font-size: 0.65rem; }
+      .motto-text { font-size: 0.85rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Screen Toolbar -->
+  <div class="screen-toolbar">
+    <div class="toolbar-links">
+      <a href="frustration_checklist_kids.md" class="back-link">&larr; Markdown Guide & Story</a>
+      <a href="crew_resource_management_kids.html" class="back-link">⚡ Pokémon CRM Flyer</a>
+      <a href="../mentors/plan/guides/mentor_crm_cue_card.html" class="back-link">📇 Mentor Cue Card</a>
+      <a href="../mentors/plan/sessions/2026-oct-04.md" class="back-link">📅 Session 4 Notes</a>
+    </div>
+    <div class="toolbar-actions">
+      <button onclick="window.print()" class="btn print-btn">
+        🖨️ Print 4 Pocket Cards (A4)
+      </button>
+    </div>
+  </div>
+
+  <!-- A4 Printable Sheet Container (Holds exactly 4 pocket cards) -->
+  <div class="print-sheet">
+
+    <!-- Top instructions / cut header -->
+    <div class="sheet-meta-bar">
+      <span>✂️ Cut along dashed lines &bull; Pocket Size (4 Cards per A4 Sheet)</span>
+      <span class="sheet-badge">
+        <img src="images/logo_lego_legends_clean.png" alt="LEGO Legends" width="16" height="13" style="vertical-align: middle; object-fit: contain;">
+        FIRST LEGO LEAGUE #76265 &bull; LEGO LEGENDS
+      </span>
+      <span>Keep in Pocket or Lanyard</span>
+    </div>
+
+    <!-- 2x2 Grid of Pocket Cards -->
+    <div class="cards-grid">
+      
+      <!-- Center Cutting Guides -->
+      <div class="cut-line-v"></div>
+      <div class="cut-line-h"></div>
+      <div class="cut-marker-center">✂️</div>
+
+      <!-- ================= CARD 1 ================= -->
+      <div class="pocket-card">
+        <div class="punch-hole-guide">⚪</div>
+
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Cleaned Official LEGO Legends Crown Logo -->
+          <img class="card-logo" src="images/logo_lego_legends_clean.png" alt="LEGO Legends Crown Emblem">
+
+          <div class="header-text">
+            <div class="card-eyebrow">
+              <span>FIRST LEGO LEAGUE</span> &bull; <span>#76265</span>
+            </div>
+            <h1 class="card-title">
+              <span class="red-text">RESET</span> & <span class="blue-text">SOLVE</span>
+            </h1>
+          </div>
+        </div>
+
+        <!-- Section 1: Frustration Triggers -->
+        <div class="section-triggers">
+          <div class="section-title-red">
+            <span>🛑</span> 1. I'm Frustrated Because:
+          </div>
+          <div class="triggers-list">
+            <div class="trigger-item">
+              <div class="checkbox-box"></div>
+              <div>
+                <strong>1. Something isn't working</strong>
+                <span class="trigger-detail">(Code bug, wheel slip, sensor)</span>
+              </div>
+            </div>
+            <div class="trigger-item">
+              <div class="checkbox-box"></div>
+              <div>
+                <strong>2. It's broken!</strong>
+                <span class="trigger-detail">(Piece snapped, cracked, missing)</span>
+              </div>
+            </div>
+            <div class="trigger-item">
+              <div class="checkbox-box"></div>
+              <div>
+                <strong>3. It's too hard!</strong>
+                <span class="trigger-detail">(Brain is stuck, feeling overwhelmed)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 2: 4-Step Reset Solutions -->
+        <div class="section-solutions">
+          <div class="section-title-blue">
+            <span>🌬️</span> 2. The 4-Step Reset:
+          </div>
+          <div class="solution-steps">
+            <div class="solution-step">
+              <div class="step-badge">1</div>
+              <div class="step-content">
+                <strong>Deep Breath Reset:</strong> Inhale 4s, exhale 4s.<br>
+                Tell partner: <span class="partner-quote">"Hey, let's chill out & take a breath!"</span>
+              </div>
+            </div>
+            <div class="solution-step">
+              <div class="step-badge">2</div>
+              <div class="step-content">
+                <strong>Identify & Explain:</strong>
+                <div class="problem-prompts">
+                  &bull; <em>"What did I expect it to do?"</em><br>
+                  &bull; <em>"What actually happened just now?"</em>
+                </div>
+              </div>
+            </div>
+            <div class="solution-step">
+              <div class="step-badge">3</div>
+              <div class="step-content">
+                <strong>Find the Rubber Ducky: 🦆</strong><br>
+                Explain the problem out loud to the duck, step by step!
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 3: Visual Decision Tree -->
+        <div class="section-flowchart">
+          <div class="flow-title">
+            <span>🔀 3. What To Do Next:</span>
+            <span style="font-size: 5pt; color: var(--fll-blue);">CHOOSE YOUR PATH &darr;</span>
+          </div>
+          <div class="flow-nodes">
+            <!-- Path A: Broken Part -->
+            <div class="flow-box flow-box-red">
+              <div>
+                <div class="flow-box-header">🧱 LEGO Part Broken?</div>
+                <div>Piece cracked or lost? Don't panic!</div>
+              </div>
+              <div class="action-target">
+                <span style="color: var(--fll-red); font-weight: 800;">&rarr; GO TO MENTOR!</span><br>
+                Mentors check the <strong>Hidden Stash 📦</strong> or order a replacement part 🛒.
+              </div>
+            </div>
+
+            <!-- Path B: Brain Stuck -->
+            <div class="flow-box flow-box-blue">
+              <div>
+                <div class="flow-box-header">🤯 Brain Stuck?</div>
+                <div>Tough code or build problem?</div>
+              </div>
+              <div class="action-target">
+                <span style="color: #15803d; font-weight: 800;">&rarr; DUCK &bull; NOTES &bull; SWAP</span><br>
+                Duck 🦆 &rarr; Write notes 📝 &rarr; Swap tasks 5 mins 🔄. Still stuck? Ask Mentor!
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card Footer -->
+        <div class="card-footer">
+          <span class="motto-text">"Smooth is Fast &bull; Reset & Solve!"</span>
+          <span>Card 1 &bull; Lego Legends #76265</span>
+        </div>
+      </div>
+
+      <!-- ================= CARD 2 ================= -->
+      <div class="pocket-card">
+        <div class="punch-hole-guide">⚪</div>
+
+        <div class="card-header">
+          <img class="card-logo" src="images/logo_lego_legends_clean.png" alt="LEGO Legends Crown Emblem">
+
+          <div class="header-text">
+            <div class="card-eyebrow">
+              <span>FIRST LEGO LEAGUE</span> &bull; <span>#76265</span>
+            </div>
+            <h1 class="card-title">
+              <span class="red-text">RESET</span> & <span class="blue-text">SOLVE</span>
+            </h1>
+          </div>
+        </div>
+
+        <div class="section-triggers">
+          <div class="section-title-red">
+            <span>🛑</span> 1. I'm Frustrated Because:
+          </div>
+          <div class="triggers-list">
+            <div class="trigger-item">
+              <div class="checkbox-box"></div>
+              <div>
+                <strong>1. Something isn't working</strong>
+                <span class="trigger-detail">(Code bug, wheel slip, sensor)</span>
+              </div>
+            </div>
+            <div class="trigger-item">
+              <div class="checkbox-box"></div>
+              <div>
+                <strong>2. It's broken!</strong>
+                <span class="trigger-detail">(Piece snapped, cracked, missing)</span>
+              </div>
+            </div>
+            <div class="trigger-item">
+              <div class="checkbox-box"></div>
+              <div>
+                <strong>3. It's too hard!</strong>
+                <span class="trigger-detail">(Brain is stuck, feeling overwhelmed)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-solutions">
+          <div class="section-title-blue">
+            <span>🌬️</span> 2. The 4-Step Reset:
+          </div>
+          <div class="solution-steps">
+            <div class="solution-step">
+              <div class="step-badge">1</div>
+              <div class="step-content">
+                <strong>Deep Breath Reset:</strong> Inhale 4s, exhale 4s.<br>
+                Tell partner: <span class="partner-quote">"Hey, let's chill out & take a breath!"</span>
+              </div>
+            </div>
+            <div class="solution-step">
+              <div class="step-badge">2</div>
+              <div class="step-content">
+                <strong>Identify & Explain:</strong>
+                <div class="problem-prompts">
+                  &bull; <em>"What did I expect it to do?"</em><br>
+                  &bull; <em>"What actually happened just now?"</em>
+                </div>
+              </div>
+            </div>
+            <div class="solution-step">
+              <div class="step-badge">3</div>
+              <div class="step-content">
+                <strong>Find the Rubber Ducky: 🦆</strong><br>
+                Explain the problem out loud to the duck, step by step!
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-flowchart">
+          <div class="flow-title">
+            <span>🔀 3. What To Do Next:</span>
+            <span style="font-size: 5pt; color: var(--fll-blue);">CHOOSE YOUR PATH &darr;</span>
+          </div>
+          <div class="flow-nodes">
+            <div class="flow-box flow-box-red">
+              <div>
+                <div class="flow-box-header">🧱 LEGO Part Broken?</div>
+                <div>Piece cracked or lost? Don't panic!</div>
+              </div>
+              <div class="action-target">
+                <span style="color: var(--fll-red); font-weight: 800;">&rarr; GO TO MENTOR!</span><br>
+                Mentors check the <strong>Hidden Stash 📦</strong> or order a replacement part 🛒.
+              </div>
+            </div>
+
+            <div class="flow-box flow-box-blue">
+              <div>
+                <div class="flow-box-header">🤯 Brain Stuck?</div>
+                <div>Tough code or build problem?</div>
+              </div>
+              <div class="action-target">
+                <span style="color: #15803d; font-weight: 800;">&rarr; DUCK &bull; NOTES &bull; SWAP</span><br>
+                Duck 🦆 &rarr; Write notes 📝 &rarr; Swap tasks 5 mins 🔄. Still stuck? Ask Mentor!
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <span class="motto-text">"Smooth is Fast &bull; Reset & Solve!"</span>
+          <span>Card 2 &bull; Lego Legends #76265</span>
+        </div>
+      </div>
+
+      <!-- ================= CARD 3 ================= -->
+      <div class="pocket-card">
+        <div class="punch-hole-guide">⚪</div>
+
+        <div class="card-header">
+          <img class="card-logo" src="images/logo_lego_legends_clean.png" alt="LEGO Legends Crown Emblem">
+
+          <div class="header-text">
+            <div class="card-eyebrow">
+              <span>FIRST LEGO LEAGUE</span> &bull; <span>#76265</span>
+            </div>
+            <h1 class="card-title">
+              <span class="red-text">RESET</span> & <span class="blue-text">SOLVE</span>
+            </h1>
+          </div>
+        </div>
+
+        <div class="section-triggers">
+          <div class="section-title-red">
+            <span>🛑</span> 1. I'm Frustrated Because:
+          </div>
+          <div class="triggers-list">
+            <div class="trigger-item">
+              <div class="checkbox-box"></div>
+              <div>
+                <strong>1. Something isn't working</strong>
+                <span class="trigger-detail">(Code bug, wheel slip, sensor)</span>
+              </div>
+            </div>
+            <div class="trigger-item">
+              <div class="checkbox-box"></div>
+              <div>
+                <strong>2. It's broken!</strong>
+                <span class="trigger-detail">(Piece snapped, cracked, missing)</span>
+              </div>
+            </div>
+            <div class="trigger-item">
+              <div class="checkbox-box"></div>
+              <div>
+                <strong>3. It's too hard!</strong>
+                <span class="trigger-detail">(Brain is stuck, feeling overwhelmed)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-solutions">
+          <div class="section-title-blue">
+            <span>🌬️</span> 2. The 4-Step Reset:
+          </div>
+          <div class="solution-steps">
+            <div class="solution-step">
+              <div class="step-badge">1</div>
+              <div class="step-content">
+                <strong>Deep Breath Reset:</strong> Inhale 4s, exhale 4s.<br>
+                Tell partner: <span class="partner-quote">"Hey, let's chill out & take a breath!"</span>
+              </div>
+            </div>
+            <div class="solution-step">
+              <div class="step-badge">2</div>
+              <div class="step-content">
+                <strong>Identify & Explain:</strong>
+                <div class="problem-prompts">
+                  &bull; <em>"What did I expect it to do?"</em><br>
+                  &bull; <em>"What actually happened just now?"</em>
+                </div>
+              </div>
+            </div>
+            <div class="solution-step">
+              <div class="step-badge">3</div>
+              <div class="step-content">
+                <strong>Find the Rubber Ducky: 🦆</strong><br>
+                Explain the problem out loud to the duck, step by step!
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-flowchart">
+          <div class="flow-title">
+            <span>🔀 3. What To Do Next:</span>
+            <span style="font-size: 5pt; color: var(--fll-blue);">CHOOSE YOUR PATH &darr;</span>
+          </div>
+          <div class="flow-nodes">
+            <div class="flow-box flow-box-red">
+              <div>
+                <div class="flow-box-header">🧱 LEGO Part Broken?</div>
+                <div>Piece cracked or lost? Don't panic!</div>
+              </div>
+              <div class="action-target">
+                <span style="color: var(--fll-red); font-weight: 800;">&rarr; GO TO MENTOR!</span><br>
+                Mentors check the <strong>Hidden Stash 📦</strong> or order a replacement part 🛒.
+              </div>
+            </div>
+
+            <div class="flow-box flow-box-blue">
+              <div>
+                <div class="flow-box-header">🤯 Brain Stuck?</div>
+                <div>Tough code or build problem?</div>
+              </div>
+              <div class="action-target">
+                <span style="color: #15803d; font-weight: 800;">&rarr; DUCK &bull; NOTES &bull; SWAP</span><br>
+                Duck 🦆 &rarr; Write notes 📝 &rarr; Swap tasks 5 mins 🔄. Still stuck? Ask Mentor!
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <span class="motto-text">"Smooth is Fast &bull; Reset & Solve!"</span>
+          <span>Card 3 &bull; Lego Legends #76265</span>
+        </div>
+      </div>
+
+      <!-- ================= CARD 4 ================= -->
+      <div class="pocket-card">
+        <div class="punch-hole-guide">⚪</div>
+
+        <div class="card-header">
+          <img class="card-logo" src="images/logo_lego_legends_clean.png" alt="LEGO Legends Crown Emblem">
+
+          <div class="header-text">
+            <div class="card-eyebrow">
+              <span>FIRST LEGO LEAGUE</span> &bull; <span>#76265</span>
+            </div>
+            <h1 class="card-title">
+              <span class="red-text">RESET</span> & <span class="blue-text">SOLVE</span>
+            </h1>
+          </div>
+        </div>
+
+        <div class="section-triggers">
+          <div class="section-title-red">
+            <span>🛑</span> 1. I'm Frustrated Because:
+          </div>
+          <div class="triggers-list">
+            <div class="trigger-item">
+              <div class="checkbox-box"></div>
+              <div>
+                <strong>1. Something isn't working</strong>
+                <span class="trigger-detail">(Code bug, wheel slip, sensor)</span>
+              </div>
+            </div>
+            <div class="trigger-item">
+              <div class="checkbox-box"></div>
+              <div>
+                <strong>2. It's broken!</strong>
+                <span class="trigger-detail">(Piece snapped, cracked, missing)</span>
+              </div>
+            </div>
+            <div class="trigger-item">
+              <div class="checkbox-box"></div>
+              <div>
+                <strong>3. It's too hard!</strong>
+                <span class="trigger-detail">(Brain is stuck, feeling overwhelmed)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-solutions">
+          <div class="section-title-blue">
+            <span>🌬️</span> 2. The 4-Step Reset:
+          </div>
+          <div class="solution-steps">
+            <div class="solution-step">
+              <div class="step-badge">1</div>
+              <div class="step-content">
+                <strong>Deep Breath Reset:</strong> Inhale 4s, exhale 4s.<br>
+                Tell partner: <span class="partner-quote">"Hey, let's chill out & take a breath!"</span>
+              </div>
+            </div>
+            <div class="solution-step">
+              <div class="step-badge">2</div>
+              <div class="step-content">
+                <strong>Identify & Explain:</strong>
+                <div class="problem-prompts">
+                  &bull; <em>"What did I expect it to do?"</em><br>
+                  &bull; <em>"What actually happened just now?"</em>
+                </div>
+              </div>
+            </div>
+            <div class="solution-step">
+              <div class="step-badge">3</div>
+              <div class="step-content">
+                <strong>Find the Rubber Ducky: 🦆</strong><br>
+                Explain the problem out loud to the duck, step by step!
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-flowchart">
+          <div class="flow-title">
+            <span>🔀 3. What To Do Next:</span>
+            <span style="font-size: 5pt; color: var(--fll-blue);">CHOOSE YOUR PATH &darr;</span>
+          </div>
+          <div class="flow-nodes">
+            <div class="flow-box flow-box-red">
+              <div>
+                <div class="flow-box-header">🧱 LEGO Part Broken?</div>
+                <div>Piece cracked or lost? Don't panic!</div>
+              </div>
+              <div class="action-target">
+                <span style="color: var(--fll-red); font-weight: 800;">&rarr; GO TO MENTOR!</span><br>
+                Mentors check the <strong>Hidden Stash 📦</strong> or order a replacement part 🛒.
+              </div>
+            </div>
+
+            <div class="flow-box flow-box-blue">
+              <div>
+                <div class="flow-box-header">🤯 Brain Stuck?</div>
+                <div>Tough code or build problem?</div>
+              </div>
+              <div class="action-target">
+                <span style="color: #15803d; font-weight: 800;">&rarr; DUCK &bull; NOTES &bull; SWAP</span><br>
+                Duck 🦆 &rarr; Write notes 📝 &rarr; Swap tasks 5 mins 🔄. Still stuck? Ask Mentor!
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <span class="motto-text">"Smooth is Fast &bull; Reset & Solve!"</span>
+          <span>Card 4 &bull; Lego Legends #76265</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
