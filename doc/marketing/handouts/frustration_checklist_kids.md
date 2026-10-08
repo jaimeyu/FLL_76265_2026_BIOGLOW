@@ -131,6 +131,6 @@ Software engineers at Google and NASA use **Rubber Duck Debugging**:
 
 * 🖨️ [Printable Pocket Reset Cards (4 per A4 Sheet)](frustration_checklist_kids.html)
 * ⚡ [Pokémon CRM Guide for Kids (Run Cards & Checklists)](crew_resource_management_kids.html)
-* 📇 [Mentor Workshop Cue Card (Queuing & Socratic Prompts)](../mentors/plan/guides/mentor_crm_cue_card.html)
+* 📇 [Mentor Workshop Cue Card (Queuing & Socratic Prompts)](../../mentors/plan/guides/mentor_crm_cue_card.md)
 * 👥 [Team Roles Matrix & Leadership Responsibilities](../../responsibilities/roles_matrix.md)
 * ✏️ [Printable Robot Design Sketchpad](mission_design_sketchpad.html)
