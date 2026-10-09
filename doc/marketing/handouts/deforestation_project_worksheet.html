@@ -1,0 +1,2081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deforestation Solutions Worksheet — FLL Team #76265 "Lego Legends" • BIOGLOW</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@400;500;600;700;800&family=Righteous&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <!-- html2canvas for 1-click full-worksheet image export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <style>
+    :root {
+      /* Retro NASA / 70s Heritage Space-Age Palette with Forest Accents */
+      --paper-bg: #FAF6EE;
+      --retro-navy: #0E3B5C;
+      --retro-navy-dark: #08243A;
+      --retro-caramel: #B5732A;
+      --retro-caramel-dark: #8F5217;
+      --retro-caramel-light: #E5A85C;
+      --retro-steel: #7998AB;
+      --retro-steel-light: #C2D3DE;
+      --retro-sand: #F2E2C8;
+      --retro-sand-light: #FBF5EB;
+      --retro-charcoal: #1E293B;
+      --retro-muted: #576574;
+      --forest-emerald: #15803D;
+      --forest-emerald-dark: #14532D;
+      --forest-emerald-light: #DCFCE7;
+      --forest-moss: #166534;
+      --border-color: #334155;
+      --primary: var(--retro-navy);
+      --card-bg: var(--paper-bg);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: radial-gradient(circle at top center, #1e293b 0%, #081524 100%);
+      color: var(--retro-charcoal);
+      padding: 1.25rem 0.75rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Screen Toolbar Controls */
+    .screen-toolbar {
+      width: 100%;
+      max-width: 980px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 1.1rem;
+      background: rgba(14, 59, 92, 0.94);
+      backdrop-filter: blur(12px);
+      padding: 0.75rem 1.1rem;
+      border-radius: 12px;
+      border: 1px solid rgba(181, 115, 42, 0.4);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+    }
+
+    .toolbar-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      color: var(--retro-sand);
+      text-decoration: none;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.82rem;
+      transition: color 0.15s ease;
+    }
+
+    .nav-link:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    .autosave-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(22, 101, 52, 0.35);
+      border: 1px solid rgba(74, 222, 128, 0.4);
+      color: #86efac;
+      padding: 0.3rem 0.65rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+    }
+
+    .autosave-pill.saving {
+      background: rgba(202, 138, 4, 0.3);
+      border-color: rgba(250, 204, 21, 0.5);
+      color: #fef08a;
+    }
+
+    .autosave-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 6px #4ade80;
+    }
+
+    .autosave-pill.saving .autosave-dot {
+      background: #facc15;
+      box-shadow: 0 0 6px #facc15;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+    }
+
+    .tool-btn {
+      background: rgba(255, 255, 255, 0.12);
+      color: #f1f5f9;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 0.38rem 0.7rem;
+      border-radius: 7px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 0.78rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all 0.15s ease;
+      text-decoration: none;
+    }
+
+    .tool-btn:hover {
+      background: rgba(255, 255, 255, 0.22);
+      transform: translateY(-1px);
+    }
+
+    .btn-save {
+      background: linear-gradient(135deg, var(--forest-emerald) 0%, var(--forest-moss) 100%);
+      border-color: rgba(134, 239, 172, 0.4);
+      color: #ffffff;
+    }
+
+    .btn-spark {
+      background: linear-gradient(135deg, var(--retro-caramel) 0%, var(--retro-caramel-dark) 100%);
+      border: none;
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(181, 115, 42, 0.4);
+    }
+
+    .btn-print {
+      background: linear-gradient(135deg, var(--retro-steel) 0%, var(--retro-navy) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #ffffff;
+    }
+
+    .btn-export {
+      background: linear-gradient(135deg, #1070A3 0%, var(--retro-navy) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #ffffff;
+    }
+
+    /* Worksheet Paper Container */
+    .worksheet-paper {
+      width: 100%;
+      max-width: 980px;
+      background: var(--paper-bg);
+      color: var(--retro-charcoal);
+      border: 2px solid var(--retro-navy);
+      border-radius: 14px;
+      padding: 1.6rem 2rem;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    /* Heritage 4-Stripe Ribbon Accents */
+    .racing-ribbon-tl {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      height: 6px;
+      width: 180px;
+      border-radius: 12px 0 0 0;
+      overflow: hidden;
+      z-index: 10;
+    }
+
+    .racing-ribbon-br {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      display: flex;
+      height: 6px;
+      width: 180px;
+      border-radius: 0 0 12px 0;
+      overflow: hidden;
+      z-index: 10;
+    }
+
+    .ribbon-bar { height: 100%; flex: 1; }
+    .bar-forest { background: var(--forest-emerald); }
+    .bar-caramel { background: var(--retro-caramel); }
+    .bar-steel { background: var(--retro-steel); }
+    .bar-sand { background: var(--retro-sand); }
+    .bar-navy { background: var(--retro-navy); }
+
+    /* Header Bar */
+    .sheet-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--retro-sand);
+      padding-bottom: 0.85rem;
+      gap: 1rem;
+    }
+
+    .header-main {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .retro-badge-emblem {
+      background: var(--retro-navy);
+      border: 2px solid var(--retro-caramel);
+      color: #ffffff;
+      padding: 0.4rem 0.75rem;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 2px 2px 0 var(--retro-caramel);
+      white-space: nowrap;
+    }
+
+    .badge-fll {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 700;
+      color: var(--retro-sand);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .badge-team-name {
+      font-family: 'Righteous', cursive, sans-serif;
+      font-size: 0.95rem;
+      line-height: 1;
+      color: #ffffff;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .header-title-block h1 {
+      font-family: 'Righteous', cursive, sans-serif;
+      font-size: 1.45rem;
+      color: var(--retro-navy);
+      line-height: 1.15;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    .header-title-block p {
+      font-family: 'Caveat', cursive;
+      font-size: 1.15rem;
+      color: var(--forest-moss);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-top: 2px;
+    }
+
+    .header-pills {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.35rem;
+    }
+
+    .season-pill {
+      background: var(--forest-emerald-light);
+      color: var(--forest-moss);
+      border: 1.5px solid var(--forest-emerald);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .motto-text {
+      font-family: 'Caveat', cursive;
+      font-size: 0.95rem;
+      color: var(--retro-muted);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    /* Team Information Fill-in Row */
+    .meta-bar {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1.6fr;
+      gap: 0.75rem;
+      background: #ffffff;
+      border: 1.5px solid var(--retro-navy);
+      border-radius: 8px;
+      padding: 0.6rem 0.9rem;
+      font-size: 0.82rem;
+      box-shadow: 2px 2px 0 var(--retro-sand);
+    }
+
+    .meta-field {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .meta-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: var(--retro-navy);
+      white-space: nowrap;
+    }
+
+    .meta-input {
+      width: 100%;
+      border: none;
+      border-bottom: 1.5px dotted var(--retro-navy);
+      background: transparent;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--retro-charcoal);
+      padding: 0.15rem 0.3rem;
+      outline: none;
+      transition: all 0.15s ease;
+    }
+
+    .meta-input:focus {
+      border-bottom-color: var(--forest-emerald);
+      background: rgba(220, 252, 231, 0.4);
+    }
+
+    /* Mission Callout Banner */
+    .mission-callout {
+      background: linear-gradient(135deg, rgba(14, 59, 92, 0.05) 0%, rgba(21, 128, 61, 0.1) 100%);
+      border: 1.5px solid var(--forest-emerald);
+      border-left: 6px solid var(--forest-emerald);
+      border-radius: 8px;
+      padding: 0.85rem 1.1rem;
+    }
+
+    .mission-callout-title {
+      font-family: 'Righteous', cursive, sans-serif;
+      font-size: 1rem;
+      color: var(--retro-navy);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .mission-callout p {
+      font-size: 0.88rem;
+      line-height: 1.45;
+      color: var(--retro-charcoal);
+    }
+
+    /* Inspiration Cards Grid */
+    .inspiration-box {
+      background: #ffffff;
+      border: 1.5px solid var(--retro-caramel);
+      border-radius: 10px;
+      padding: 0.9rem 1.1rem;
+      box-shadow: 2px 2px 0 var(--retro-sand);
+    }
+
+    .inspiration-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.65rem;
+    }
+
+    .inspiration-title {
+      font-family: 'Righteous', cursive, sans-serif;
+      font-size: 0.98rem;
+      color: var(--retro-caramel-dark);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      letter-spacing: 0.4px;
+    }
+
+    .inspiration-hint {
+      font-family: 'Caveat', cursive;
+      font-size: 0.95rem;
+      color: var(--retro-muted);
+      font-weight: 600;
+    }
+
+    .spark-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 0.65rem;
+    }
+
+    .spark-card {
+      background: var(--paper-bg);
+      border: 1.5px solid var(--retro-steel);
+      border-radius: 8px;
+      padding: 0.65rem 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      position: relative;
+    }
+
+    .spark-card:hover {
+      border-color: var(--forest-emerald);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      background: #ffffff;
+    }
+
+    .spark-card-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--retro-navy);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .spark-card-desc {
+      font-size: 0.76rem;
+      color: var(--retro-muted);
+      line-height: 1.35;
+    }
+
+    .spark-card-action {
+      margin-top: auto;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--forest-emerald);
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    /* Section Steps */
+    .step-section {
+      background: #ffffff;
+      border: 1.5px solid var(--retro-navy);
+      border-radius: 10px;
+      padding: 1.1rem 1.25rem;
+      box-shadow: 2px 2px 0 var(--retro-sand);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      page-break-inside: avoid;
+    }
+
+    .step-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1.5px solid var(--retro-sand);
+      padding-bottom: 0.45rem;
+      gap: 0.75rem;
+    }
+
+    .step-title-group {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .step-badge {
+      background: var(--retro-navy);
+      color: #ffffff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 0.2rem 0.55rem;
+      border-radius: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .step-title {
+      font-family: 'Righteous', cursive, sans-serif;
+      font-size: 1.1rem;
+      color: var(--retro-navy);
+      letter-spacing: 0.4px;
+    }
+
+    .step-subtitle {
+      font-family: 'Caveat', cursive;
+      font-size: 1rem;
+      color: var(--retro-muted);
+      font-weight: 600;
+    }
+
+    .field-block {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .field-prompt {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--retro-navy);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .field-hint {
+      font-size: 0.76rem;
+      color: var(--retro-muted);
+      font-style: italic;
+    }
+
+    .input-textarea {
+      width: 100%;
+      border: 1.5px solid var(--retro-steel);
+      border-radius: 6px;
+      background: var(--paper-bg);
+      padding: 0.55rem 0.75rem;
+      font-family: inherit;
+      font-size: 0.85rem;
+      line-height: 1.45;
+      color: var(--retro-charcoal);
+      outline: none;
+      resize: vertical;
+      min-height: 60px;
+      transition: all 0.15s ease;
+    }
+
+    .input-textarea:focus {
+      border-color: var(--forest-emerald);
+      background: #ffffff;
+      box-shadow: 0 0 0 2px rgba(21, 128, 61, 0.15);
+    }
+
+    .input-line {
+      width: 100%;
+      border: none;
+      border-bottom: 1.5px dotted var(--retro-navy);
+      background: transparent;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--retro-charcoal);
+      padding: 0.25rem 0.35rem;
+      outline: none;
+    }
+
+    .input-line:focus {
+      border-bottom-color: var(--forest-emerald);
+      background: rgba(220, 252, 231, 0.4);
+    }
+
+    /* Judge Tip Callout */
+    .judge-tip {
+      background: rgba(242, 226, 200, 0.45);
+      border: 1px dashed var(--retro-caramel);
+      border-radius: 6px;
+      padding: 0.5rem 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      color: var(--retro-caramel-dark);
+      font-weight: 600;
+    }
+
+    .judge-tip-icon { font-size: 1.05rem; }
+
+    /* Superpower Checkboxes */
+    .checkbox-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0.45rem 0.85rem;
+      background: var(--paper-bg);
+      border: 1px solid var(--retro-sand);
+      border-radius: 8px;
+      padding: 0.65rem 0.85rem;
+    }
+
+    .check-label {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--retro-charcoal);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .check-label input[type="checkbox"],
+    .check-label input[type="radio"] {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--forest-emerald);
+      cursor: pointer;
+    }
+
+    /* Experiment Testing Options */
+    .experiment-options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      background: var(--paper-bg);
+      border: 1.5px solid var(--retro-steel);
+      border-radius: 8px;
+      padding: 0.75rem 0.95rem;
+    }
+
+    .experiment-radio-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+    }
+
+    .experiment-radio-row input[type="radio"] {
+      margin-top: 3px;
+      accent-color: var(--forest-emerald);
+    }
+
+    .experiment-text-group {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .exp-title {
+      font-weight: 700;
+      color: var(--retro-navy);
+    }
+
+    .exp-desc {
+      font-size: 0.76rem;
+      color: var(--retro-muted);
+    }
+
+    /* Impact 4-Quadrant Grid */
+    .impact-quad-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+
+    @media (max-width: 650px) {
+      .impact-quad-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .impact-card {
+      background: var(--paper-bg);
+      border: 1.5px solid var(--retro-steel);
+      border-radius: 8px;
+      padding: 0.65rem 0.85rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .impact-card-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--retro-navy);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* Pitch Prep Timer & Checklist */
+    .pitch-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    @media (max-width: 720px) {
+      .pitch-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .pitch-timer-box {
+      background: var(--retro-navy-dark);
+      color: #ffffff;
+      border-radius: 8px;
+      padding: 0.85rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      border: 1.5px solid var(--retro-caramel);
+    }
+
+    .pitch-timer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .pitch-timer-title {
+      font-family: 'Righteous', cursive, sans-serif;
+      font-size: 0.88rem;
+      color: var(--retro-sand);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .pitch-timer-display {
+      font-family: 'Space Grotesk', monospace;
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: #facc15;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+
+    .pitch-phase-indicator {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-align: center;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+    }
+
+    .pitch-timer-controls {
+      display: flex;
+      gap: 0.45rem;
+      justify-content: center;
+    }
+
+    .pitch-btn {
+      padding: 0.35rem 0.8rem;
+      border-radius: 6px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: all 0.15s ease;
+    }
+
+    .pitch-btn-start { background: var(--forest-emerald); color: #ffffff; }
+    .pitch-btn-pause { background: var(--retro-caramel); color: #ffffff; }
+    .pitch-btn-reset { background: rgba(255, 255, 255, 0.2); color: #ffffff; }
+
+    /* Interactive Sketchpad Canvas Area */
+    .sketchpad-section {
+      background: #ffffff;
+      border: 1.5px solid var(--retro-navy);
+      border-radius: 10px;
+      padding: 1.1rem 1.25rem;
+      box-shadow: 2px 2px 0 var(--retro-sand);
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      page-break-inside: avoid;
+    }
+
+    .canvas-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(14, 59, 92, 0.08);
+      border: 1px solid var(--retro-steel);
+      border-radius: 8px;
+      padding: 0.45rem 0.65rem;
+      gap: 0.45rem;
+    }
+
+    .canvas-tools-group,
+    .canvas-colors-group,
+    .canvas-actions-group {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      flex-wrap: wrap;
+    }
+
+    .c-btn {
+      padding: 0.3rem 0.55rem;
+      border-radius: 5px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      border: 1px solid var(--retro-steel);
+      background: #ffffff;
+      color: var(--retro-charcoal);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      transition: all 0.15s ease;
+    }
+
+    .c-btn:hover { background: var(--retro-sand); }
+    .c-btn.active {
+      background: var(--retro-navy);
+      color: #ffffff;
+      border-color: var(--retro-navy);
+    }
+
+    .color-swatch {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 0 1px var(--retro-steel);
+      cursor: pointer;
+      transition: transform 0.15s ease;
+    }
+
+    .color-swatch:hover { transform: scale(1.15); }
+    .color-swatch.active {
+      transform: scale(1.2);
+      box-shadow: 0 0 0 2px var(--retro-navy);
+    }
+
+    .canvas-container {
+      position: relative;
+      width: 100%;
+      height: 340px;
+      background: var(--paper-bg);
+      border: 1.5px solid var(--retro-navy);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.06);
+    }
+
+    /* Grid Styles */
+    .canvas-dot-grid {
+      background-image: radial-gradient(var(--retro-steel) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+
+    .canvas-line-grid {
+      background-image: 
+        linear-gradient(to right, rgba(121, 152, 171, 0.25) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(121, 152, 171, 0.25) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+
+    .canvas-blank {
+      background-image: none;
+    }
+
+    #sketchCanvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: crosshair;
+      touch-action: none;
+    }
+
+    /* Bibliography Table */
+    .biblio-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8rem;
+    }
+
+    .biblio-table th {
+      background: var(--retro-navy);
+      color: #ffffff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      text-align: left;
+      padding: 0.45rem 0.65rem;
+      border: 1px solid var(--retro-navy);
+    }
+
+    .biblio-table td {
+      border: 1px solid var(--retro-steel);
+      padding: 0.45rem 0.65rem;
+      background: var(--paper-bg);
+      vertical-align: top;
+    }
+
+    .biblio-table input,
+    .biblio-table textarea {
+      width: 100%;
+      border: none;
+      background: transparent;
+      font-family: inherit;
+      font-size: 0.78rem;
+      outline: none;
+      color: var(--retro-charcoal);
+    }
+
+    .biblio-table input:focus,
+    .biblio-table textarea:focus {
+      background: rgba(220, 252, 231, 0.4);
+    }
+
+    .btn-delete-row {
+      background: transparent;
+      border: none;
+      color: #ef4444;
+      cursor: pointer;
+      font-size: 0.9rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .btn-delete-row:hover { background: rgba(239, 68, 68, 0.1); }
+
+    /* Printable Footer */
+    .sheet-footer {
+      margin-top: 0.75rem;
+      padding-top: 0.45rem;
+      border-top: 1px dashed var(--retro-steel);
+      display: flex;
+      justify-content: space-between;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.72rem;
+      color: var(--retro-muted);
+    }
+
+    /* Print Media Styles */
+    @media print {
+      body {
+        background: #ffffff;
+        padding: 0;
+      }
+
+      .screen-toolbar,
+      .canvas-toolbar,
+      .pitch-timer-controls,
+      #btnAddSourceRow,
+      .btn-delete-row {
+        display: none !important;
+      }
+
+      .worksheet-paper {
+        max-width: 100%;
+        box-shadow: none;
+        border: 1px solid #000000;
+        padding: 0.8rem;
+        gap: 0.8rem;
+      }
+
+      .step-section {
+        box-shadow: none;
+        border: 1px solid #333333;
+        page-break-inside: avoid;
+        margin-bottom: 0.6rem;
+      }
+
+      .input-textarea {
+        background: transparent;
+        border: 1px solid #999999;
+      }
+
+      .canvas-container {
+        border: 1px solid #000000;
+        height: 280px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Screen Toolbar Controls -->
+  <header class="screen-toolbar">
+    <div class="toolbar-nav">
+      <a href="../README.md" class="nav-link">← Handouts & Resources</a>
+      <a href="../../../index.md" class="nav-link">🏠 Home</a>
+      <div class="autosave-pill" id="autosavePill">
+        <span class="autosave-dot"></span>
+        <span id="autosaveStatusText">Saved locally</span>
+      </div>
+    </div>
+
+    <div class="toolbar-actions">
+      <button class="tool-btn btn-save" id="btnSaveNow" title="Force immediate save to HTML5 LocalStorage">💾 Save Now</button>
+      <button class="tool-btn" id="btnExportJSON" title="Export answers and drawing as a JSON backup file">📥 Export JSON</button>
+      <label class="tool-btn" title="Restore answers and drawing from a JSON backup file">
+        📤 Import JSON
+        <input type="file" id="importFileInput" accept=".json" style="display: none;">
+      </label>
+      <button class="tool-btn" id="btnResetWorksheet" title="Reset worksheet to clean state">🧹 Reset</button>
+      <button class="tool-btn btn-print" id="btnPrint" title="Print clean worksheet or save as PDF">🖨️ Print / PDF</button>
+      <button class="tool-btn btn-export" id="btnExportJPG" title="Export 2x high-resolution JPG image">🖼️ Export JPG</button>
+    </div>
+  </header>
+
+  <!-- Worksheet Printable Page Container -->
+  <main class="worksheet-paper" id="worksheetSheet">
+    <!-- Top Racing Ribbon -->
+    <div class="racing-ribbon-tl">
+      <div class="ribbon-bar bar-forest"></div>
+      <div class="ribbon-bar bar-caramel"></div>
+      <div class="ribbon-bar bar-steel"></div>
+      <div class="ribbon-bar bar-sand"></div>
+      <div class="ribbon-bar bar-navy"></div>
+    </div>
+
+    <!-- Sheet Header -->
+    <header class="sheet-header">
+      <div class="header-main">
+        <div class="retro-badge-emblem">
+          <span class="badge-fll">FIRST® LEGO® League</span>
+          <span class="badge-team-name">#76265 LEGO LEGENDS</span>
+        </div>
+        <div class="header-title-block">
+          <h1>FLL Innovation Project Worksheet: Deforestation Solutions</h1>
+          <p>Transform Big Ideas into Real-World STEM Solutions!</p>
+        </div>
+      </div>
+      <div class="header-pills">
+        <span class="season-pill">🌲 BIOGLOW • 2026 Season</span>
+        <span class="motto-text">Research • Innovate • Test • Share</span>
+      </div>
+    </header>
+
+    <!-- Team Information -->
+    <section class="meta-bar">
+      <div class="meta-field">
+        <label for="studentName" class="meta-label">Student Name:</label>
+        <input type="text" id="studentName" class="meta-input" placeholder="e.g. Innovator Name">
+      </div>
+      <div class="meta-field">
+        <label for="worksheetDate" class="meta-label">Date:</label>
+        <input type="date" id="worksheetDate" class="meta-input">
+      </div>
+      <div class="meta-field">
+        <label for="teamNameNumber" class="meta-label">Team Name & Number:</label>
+        <input type="text" id="teamNameNumber" class="meta-input" value="76265 Lego Legends • BIOGLOW">
+      </div>
+    </section>
+
+    <!-- The Mission Banner -->
+    <div class="mission-callout">
+      <div class="mission-callout-title">🎯 The Mission</div>
+      <p>
+        Welcome to the <strong>FLL Innovation Project Challenge</strong>! Deforestation threatens forests, wildlife, and ecosystems across the globe. Your mission is to explore a specific problem caused by or linked to deforestation, design a creative real-world solution, and test whether it can work!
+      </p>
+    </div>
+
+    <!-- Inspiration Box: Team Brainstorm Ideas -->
+    <section class="inspiration-box">
+      <div class="inspiration-header">
+        <div class="inspiration-title">💡 Inspiration Box: Team Brainstorm Ideas</div>
+        <span class="inspiration-hint">Click any idea below to spark your proposal!</span>
+      </div>
+      <div class="spark-grid">
+        <div class="spark-card" data-spark="paper">
+          <div class="spark-card-title">🍂 Alternative Paper & Materials</div>
+          <div class="spark-card-desc">Making paper from fallen autumn leaves, agricultural waste, or fast-growing bamboo instead of cutting trees.</div>
+          <div class="spark-card-action">✨ Load as Starting Idea</div>
+        </div>
+        <div class="spark-card" data-spark="supertrees">
+          <div class="spark-card-title">🧬 Super-Trees & Bio-Tech / Grafting</div>
+          <div class="spark-card-desc">Combining plant species to create hardy, fast-growing, or disease-resistant trees for reforested areas.</div>
+          <div class="spark-card-action">✨ Load as Starting Idea</div>
+        </div>
+        <div class="spark-card" data-spark="planting">
+          <div class="spark-card-title">🚁 Smart Planting & Habitat Shelters</div>
+          <div class="spark-card-desc">Designing bio-degradable seed capsules, drone drop-pods, or temporary micro-shelters for displaced animals.</div>
+          <div class="spark-card-action">✨ Load as Starting Idea</div>
+        </div>
+        <div class="spark-card" data-spark="rules">
+          <div class="spark-card-title">🛰️ Smarter Rules & Protections</div>
+          <div class="spark-card-desc">Creating community app-based tree tracking, smart sensors that alert forest rangers to illegal logging, or eco-incentive systems.</div>
+          <div class="spark-card-action">✨ Load as Starting Idea</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 1: Choose Your Idea & Problem Statement -->
+    <section class="step-section">
+      <div class="step-header">
+        <div class="step-title-group">
+          <span class="step-badge">Step 1</span>
+          <h2 class="step-title">Choose Your Idea & Problem Statement</h2>
+        </div>
+        <span class="step-subtitle">Define the specific challenge & big solution</span>
+      </div>
+
+      <div class="field-block">
+        <label for="problemFocus" class="field-prompt">
+          What specific deforestation problem are you focusing on?
+        </label>
+        <span class="field-hint">(e.g., Too many trees cut down for paper, soil erosion after clear-cutting, loss of animal habitats)</span>
+        <textarea id="problemFocus" class="input-textarea" placeholder="Describe the specific problem clearly..."></textarea>
+      </div>
+
+      <div class="field-block">
+        <label for="solutionIdea" class="field-prompt">
+          What is your team's proposed solution idea?
+        </label>
+        <span class="field-hint">(Describe how your idea solves or prevents this problem)</span>
+        <textarea id="solutionIdea" class="input-textarea" placeholder="Describe your team's creative solution..."></textarea>
+      </div>
+
+      <div class="judge-tip">
+        <span class="judge-tip-icon">🏆</span>
+        <div><strong>Judge Tip:</strong> FLL Judges love clear, focused problem statements! Make sure you can state your problem in 1–2 easy sentences.</div>
+      </div>
+    </section>
+
+    <!-- Step 2: Research Check (Has someone already invented this?) -->
+    <section class="step-section">
+      <div class="step-header">
+        <div class="step-title-group">
+          <span class="step-badge">Step 2</span>
+          <h2 class="step-title">Research Check (Has someone already invented this?)</h2>
+        </div>
+        <span class="step-subtitle">Spend 5 minutes on a search or reviewing books</span>
+      </div>
+
+      <div class="field-block">
+        <label for="existingTools" class="field-prompt">
+          Existing Tools & Companies: What products, technology, or projects already exist that are similar to your idea?
+        </label>
+        <textarea id="existingTools" class="input-textarea" placeholder="List existing companies, patents, non-profits, or current methods..."></textarea>
+      </div>
+
+      <div class="field-block">
+        <label for="judgeSecret" class="field-prompt">
+          The "Judge Secret" (Building On Existing Solutions): How does your team's idea build on or improve what already exists?
+        </label>
+        <textarea id="judgeSecret" class="input-textarea" placeholder="How does your solution improve on existing tools?"></textarea>
+      </div>
+    </section>
+
+    <!-- Step 3: Innovation Check (What is our special twist?) -->
+    <section class="step-section">
+      <div class="step-header">
+        <div class="step-title-group">
+          <span class="step-badge">Step 3</span>
+          <h2 class="step-title">Innovation Check (What is our special twist?)</h2>
+        </div>
+        <span class="step-subtitle">What makes your solution unique and standout?</span>
+      </div>
+
+      <div class="field-block">
+        <span class="field-prompt">What is your solution's "Superpower"? (Check all that apply)</span>
+        <div class="checkbox-grid">
+          <label class="check-label">
+            <input type="checkbox" id="powerCheaper" class="storage-cb">
+            <span>It is cheaper to make or build.</span>
+          </label>
+          <label class="check-label">
+            <input type="checkbox" id="powerFaster" class="storage-cb">
+            <span>It works faster than existing methods.</span>
+          </label>
+          <label class="check-label">
+            <input type="checkbox" id="powerRecycled" class="storage-cb">
+            <span>It uses recycled or natural materials.</span>
+          </label>
+          <label class="check-label">
+            <input type="checkbox" id="powerCommunity" class="storage-cb">
+            <span>It is easier for local communities to use.</span>
+          </label>
+          <label class="check-label">
+            <input type="checkbox" id="powerNewTech" class="storage-cb">
+            <span>It uses new technology in a clever way.</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="field-block">
+        <label for="specialTwist" class="field-prompt">
+          Explain your team's special twist in detail:
+        </label>
+        <textarea id="specialTwist" class="input-textarea" placeholder="What is the clever innovation or combination that makes your idea special?"></textarea>
+      </div>
+
+      <div class="judge-tip">
+        <span class="judge-tip-icon">🏆</span>
+        <div><strong>Judge Tip:</strong> Innovation doesn't mean inventing magic! Combining two existing ideas in a clever new way is a fantastic innovation.</div>
+      </div>
+    </section>
+
+    <!-- Step 4: Feasibility & Hands-On Experiment Check -->
+    <section class="step-section">
+      <div class="step-header">
+        <div class="step-title-group">
+          <span class="step-badge">Step 4</span>
+          <h2 class="step-title">Feasibility & Hands-On Experiment Check</h2>
+        </div>
+        <span class="step-subtitle">Great ideas need real-world testing!</span>
+      </div>
+
+      <div class="field-block">
+        <label for="materialsTech" class="field-prompt">
+          Materials, Tech & Experts Needed: What supplies or community experts (botanists, foresters, engineers) do you need to consult?
+        </label>
+        <textarea id="materialsTech" class="input-textarea" placeholder="List materials, software, testing tools, and expert roles to reach out to..."></textarea>
+      </div>
+
+      <div class="field-block">
+        <span class="field-prompt">Our Hands-On Experiment / Testing Idea: (Select one or write your own)</span>
+        <div class="experiment-options-list">
+          <label class="experiment-radio-row">
+            <input type="radio" name="experimentChoice" value="grafting" id="expGrafting" checked>
+            <div class="experiment-text-group">
+              <span class="exp-title">🌱 Grafting / Plant Test:</span>
+              <span class="exp-desc">Try grafting plant stems or testing stem growth across different soil types.</span>
+            </div>
+          </label>
+          <label class="experiment-radio-row">
+            <input type="radio" name="experimentChoice" value="paper" id="expPaper">
+            <div class="experiment-text-group">
+              <span class="exp-title">🍂 Leaf/Plant Paper Test:</span>
+              <span class="exp-desc">Blend dried leaves or agricultural husks with water and starch to create non-wood paper.</span>
+            </div>
+          </label>
+          <label class="experiment-radio-row">
+            <input type="radio" name="experimentChoice" value="erosion" id="expErosion">
+            <div class="experiment-text-group">
+              <span class="exp-title">🌧️ Soil Erosion Test:</span>
+              <span class="exp-desc">Pour water over bare soil vs. root-covered soil to see which holds together better.</span>
+            </div>
+          </label>
+          <label class="experiment-radio-row">
+            <input type="radio" name="experimentChoice" value="custom" id="expCustom">
+            <div class="experiment-text-group">
+              <span class="exp-title">🔬 Custom Prototype Test:</span>
+              <input type="text" id="customExpText" class="input-line" placeholder="Describe your custom hands-on test...">
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <div class="field-block">
+        <label for="experimentLearnings" class="field-prompt">
+          What did you learn (or expect to learn) from this test?
+        </label>
+        <textarea id="experimentLearnings" class="input-textarea" placeholder="Results, measurements, observations, and key takeaways..."></textarea>
+      </div>
+    </section>
+
+    <!-- Step 5: Impact Check (Who or what does it save?) -->
+    <section class="step-section">
+      <div class="step-header">
+        <div class="step-title-group">
+          <span class="step-badge">Step 5</span>
+          <h2 class="step-title">Impact Check (Who or what does it save?)</h2>
+        </div>
+        <span class="step-subtitle">Measure the positive change your innovation brings!</span>
+      </div>
+
+      <div class="impact-quad-grid">
+        <div class="impact-card">
+          <div class="impact-card-title">🌲 Trees & Forests:</div>
+          <textarea id="impactTrees" class="input-textarea" placeholder="How many trees or hectares are saved/replanted?"></textarea>
+        </div>
+        <div class="impact-card">
+          <div class="impact-card-title">🦊 Animals & Habitats:</div>
+          <textarea id="impactAnimals" class="input-textarea" placeholder="Which species or wildlife corridors benefit?"></textarea>
+        </div>
+        <div class="impact-card">
+          <div class="impact-card-title">💧 Soil, Water, or Air:</div>
+          <textarea id="impactSoilWater" class="input-textarea" placeholder="How does it stop erosion, purify water, or absorb CO₂?"></textarea>
+        </div>
+        <div class="impact-card">
+          <div class="impact-card-title">🏘️ Human Communities:</div>
+          <textarea id="impactCommunities" class="input-textarea" placeholder="How does it help local farmers, indigenous groups, or cities?"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 6: Your 1-Minute Pitch Deliverable -->
+    <section class="step-section">
+      <div class="step-header">
+        <div class="step-title-group">
+          <span class="step-badge">Step 6</span>
+          <h2 class="step-title">Your 1-Minute Pitch Deliverable</h2>
+        </div>
+        <span class="step-subtitle">Prepare to present your progress to your team!</span>
+      </div>
+
+      <div class="pitch-container">
+        <!-- Checklist -->
+        <div class="field-block">
+          <span class="field-prompt">📋 Pitch Preparation Checklist</span>
+          <div class="checkbox-grid" style="grid-template-columns: 1fr;">
+            <label class="check-label">
+              <input type="checkbox" id="pitchCheckProblem" class="storage-cb">
+              <span>I can explain the problem clearly in 20 seconds.</span>
+            </label>
+            <label class="check-label">
+              <input type="checkbox" id="pitchCheckSolution" class="storage-cb">
+              <span>I can explain our innovative solution in 20 seconds.</span>
+            </label>
+            <label class="check-label">
+              <input type="checkbox" id="pitchCheckTest" class="storage-cb">
+              <span>I can share how we tested it or plan to test it in 20 seconds.</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- 60-Second Rehearsal Timer -->
+        <div class="pitch-timer-box">
+          <div class="pitch-timer-header">
+            <span class="pitch-timer-title">⏱️ 60-Sec Rehearsal Timer</span>
+            <span class="pitch-phase-indicator" id="pitchPhaseText">Phase 1: The Problem (0-20s)</span>
+          </div>
+          <div class="pitch-timer-display" id="pitchTimerDisplay">01:00</div>
+          <div class="pitch-timer-controls">
+            <button class="pitch-btn pitch-btn-start" id="btnStartPitchTimer">▶ Start</button>
+            <button class="pitch-btn pitch-btn-pause" id="btnPausePitchTimer">⏸ Pause</button>
+            <button class="pitch-btn pitch-btn-reset" id="btnResetPitchTimer">↺ Reset</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 Pitch Bullet Points -->
+      <div class="field-block" style="margin-top: 0.5rem;">
+        <span class="field-prompt">🎤 Draft Your 3 Pitch Bullet Points</span>
+        <div style="display: flex; flex-direction: column; gap: 0.45rem;">
+          <div class="meta-field">
+            <strong style="color: var(--retro-navy); font-size: 0.8rem; width: 110px;">The Problem:</strong>
+            <input type="text" id="pitchPointProblem" class="input-line" placeholder="Our specific challenge in 1 punchy sentence...">
+          </div>
+          <div class="meta-field">
+            <strong style="color: var(--forest-emerald); font-size: 0.8rem; width: 110px;">Our Solution:</strong>
+            <input type="text" id="pitchPointSolution" class="input-line" placeholder="Our innovation and how it works...">
+          </div>
+          <div class="meta-field">
+            <strong style="color: var(--retro-caramel); font-size: 0.8rem; width: 110px;">The Big Impact:</strong>
+            <input type="text" id="pitchPointImpact" class="input-line" placeholder="The measurable impact and future vision...">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Design & Prototype Sketch Box -->
+    <section class="sketchpad-section">
+      <div class="step-header">
+        <div class="step-title-group">
+          <span class="step-badge">Design</span>
+          <h2 class="step-title">Design & Prototype Sketch Box</h2>
+        </div>
+        <span class="step-subtitle">Draw your idea, label key parts, and show how it works!</span>
+      </div>
+
+      <!-- Canvas Toolbar -->
+      <div class="canvas-toolbar">
+        <div class="canvas-tools-group">
+          <button class="c-btn active" id="btnToolPen" data-tool="pen">✏️ Pen</button>
+          <button class="c-btn" id="btnToolHighlighter" data-tool="highlighter">🖍️ Marker</button>
+          <button class="c-btn" id="btnToolLine" data-tool="line">📏 Line</button>
+          <button class="c-btn" id="btnToolArrow" data-tool="arrow">↗️ Arrow</button>
+          <button class="c-btn" id="btnToolEraser" data-tool="eraser">🧽 Eraser</button>
+        </div>
+
+        <div class="canvas-colors-group">
+          <div class="color-swatch active" style="background: #1e293b;" data-color="#1e293b" title="Charcoal"></div>
+          <div class="color-swatch" style="background: #15803d;" data-color="#15803d" title="Forest Green"></div>
+          <div class="color-swatch" style="background: #b5732a;" data-color="#b5732a" title="Caramel"></div>
+          <div class="color-swatch" style="background: #0e3b5c;" data-color="#0e3b5c" title="Navy"></div>
+          <div class="color-swatch" style="background: #dc2626;" data-color="#dc2626" title="Red"></div>
+          <div class="color-swatch" style="background: #eab308;" data-color="#eab308" title="Gold"></div>
+        </div>
+
+        <div class="canvas-actions-group">
+          <button class="c-btn" id="btnGridToggle">📐 Grid: Dots</button>
+          <button class="c-btn" id="btnUndoCanvas">↩️ Undo</button>
+          <button class="c-btn" id="btnClearCanvas">🗑️ Clear</button>
+        </div>
+      </div>
+
+      <!-- Interactive Drawing Canvas -->
+      <div class="canvas-container canvas-dot-grid" id="canvasContainer">
+        <canvas id="sketchCanvas"></canvas>
+      </div>
+
+      <div class="field-block">
+        <label for="sketchNotes" class="field-prompt">Key Labels & Notes:</label>
+        <textarea id="sketchNotes" class="input-textarea" placeholder="Component labels, dimensions, mechanical connections, notes on how it works..."></textarea>
+      </div>
+    </section>
+
+    <!-- Step 7: References & Sources -->
+    <section class="step-section">
+      <div class="step-header">
+        <div class="step-title-group">
+          <span class="step-badge">Step 7</span>
+          <h2 class="step-title">References & Sources</h2>
+        </div>
+        <span class="step-subtitle">Keep track of all books, articles, videos, and experts!</span>
+      </div>
+
+      <p style="font-size: 0.8rem; color: var(--retro-muted); line-height: 1.4;">
+        Whenever you read an article, watch an educational video, or interview an expert, log it here. This forms your team's official bibliography for competition day!
+      </p>
+
+      <table class="biblio-table" id="biblioTable">
+        <thead>
+          <tr>
+            <th style="width: 22%;">Source Type</th>
+            <th style="width: 38%;">Source Title / Link / Person</th>
+            <th style="width: 35%;">Key Facts & Insights Learned</th>
+            <th style="width: 5%; text-align: center;">✕</th>
+          </tr>
+        </thead>
+        <tbody id="biblioTbody">
+          <!-- Default rows populated via JS and restored from localStorage -->
+        </tbody>
+      </table>
+
+      <div style="display: flex; justify-content: flex-start;">
+        <button class="tool-btn" id="btnAddSourceRow" style="color: var(--retro-navy); border-color: var(--retro-navy); background: rgba(14, 59, 92, 0.08);">
+          ➕ Add Another Source
+        </button>
+      </div>
+    </section>
+
+    <!-- Bottom Racing Ribbon -->
+    <div class="racing-ribbon-br">
+      <div class="ribbon-bar bar-navy"></div>
+      <div class="ribbon-bar bar-sand"></div>
+      <div class="ribbon-bar bar-steel"></div>
+      <div class="ribbon-bar bar-caramel"></div>
+      <div class="ribbon-bar bar-forest"></div>
+    </div>
+
+    <!-- Sheet Footer -->
+    <footer class="sheet-footer">
+      <span>🌲 FIRST® LEGO® League #76265 "Lego Legends" • BIOGLOW Innovation Project Challenge</span>
+      <span>Official Team Notebook Documentation • HTML5 LocalStorage Auto-Save</span>
+    </footer>
+  </main>
+
+  <script>
+    /* =========================================================================
+       1. HTML5 LocalStorage Persistence System (Autosave & State Restore)
+       ========================================================================= */
+    const STORAGE_KEY = 'fll_76265_deforestation_worksheet_v1';
+    let autosaveTimer = null;
+
+    const DEFAULT_BIBLIO_ROWS = [
+      { type: '🌐 Website / Article', title: 'Link: ', facts: '' },
+      { type: '📖 Book / Document', title: 'Title: ', facts: '' },
+      { type: '🎬 Video / Media', title: 'Title/URL: ', facts: '' },
+      { type: '🧑‍🔬 Expert Interview', title: 'Name & Title: ', facts: '' }
+    ];
+
+    function markAutosaving() {
+      const pill = document.getElementById('autosavePill');
+      const text = document.getElementById('autosaveStatusText');
+      pill.classList.add('saving');
+      text.textContent = 'Saving...';
+    }
+
+    function markAutosaved() {
+      const pill = document.getElementById('autosavePill');
+      const text = document.getElementById('autosaveStatusText');
+      pill.classList.remove('saving');
+      const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      text.textContent = `Saved locally (${time})`;
+    }
+
+    function getWorksheetState() {
+      // Gather text inputs and textareas
+      const state = {
+        studentName: document.getElementById('studentName').value,
+        worksheetDate: document.getElementById('worksheetDate').value,
+        teamNameNumber: document.getElementById('teamNameNumber').value,
+        problemFocus: document.getElementById('problemFocus').value,
+        solutionIdea: document.getElementById('solutionIdea').value,
+        existingTools: document.getElementById('existingTools').value,
+        judgeSecret: document.getElementById('judgeSecret').value,
+        specialTwist: document.getElementById('specialTwist').value,
+        materialsTech: document.getElementById('materialsTech').value,
+        customExpText: document.getElementById('customExpText').value,
+        experimentLearnings: document.getElementById('experimentLearnings').value,
+        impactTrees: document.getElementById('impactTrees').value,
+        impactAnimals: document.getElementById('impactAnimals').value,
+        impactSoilWater: document.getElementById('impactSoilWater').value,
+        impactCommunities: document.getElementById('impactCommunities').value,
+        pitchPointProblem: document.getElementById('pitchPointProblem').value,
+        pitchPointSolution: document.getElementById('pitchPointSolution').value,
+        pitchPointImpact: document.getElementById('pitchPointImpact').value,
+        sketchNotes: document.getElementById('sketchNotes').value,
+        // Checkboxes
+        powerCheaper: document.getElementById('powerCheaper').checked,
+        powerFaster: document.getElementById('powerFaster').checked,
+        powerRecycled: document.getElementById('powerRecycled').checked,
+        powerCommunity: document.getElementById('powerCommunity').checked,
+        powerNewTech: document.getElementById('powerNewTech').checked,
+        pitchCheckProblem: document.getElementById('pitchCheckProblem').checked,
+        pitchCheckSolution: document.getElementById('pitchCheckSolution').checked,
+        pitchCheckTest: document.getElementById('pitchCheckTest').checked,
+        // Radio
+        experimentChoice: (document.querySelector('input[name="experimentChoice"]:checked') || {}).value || 'grafting',
+        // Bibliography
+        biblioRows: getBiblioRowsData(),
+        // Canvas Data URL
+        canvasData: canvas ? canvas.toDataURL('image/png') : null,
+        updatedAt: new Date().toISOString()
+      };
+      return state;
+    }
+
+    function saveWorksheetState() {
+      try {
+        const state = getWorksheetState();
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        markAutosaved();
+      } catch (err) {
+        console.warn('LocalStorage save failed:', err);
+      }
+    }
+
+    function debounceAutosave() {
+      markAutosaving();
+      clearTimeout(autosaveTimer);
+      autosaveTimer = setTimeout(saveWorksheetState, 400);
+    }
+
+    function restoreWorksheetState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) {
+          // Initialize clean defaults
+          const dateInput = document.getElementById('worksheetDate');
+          if (!dateInput.value) {
+            dateInput.value = new Date().toISOString().split('T')[0];
+          }
+          renderBiblioRows(DEFAULT_BIBLIO_ROWS);
+          return;
+        }
+
+        const state = JSON.parse(raw);
+        // Fill text fields
+        for (const [key, val] of Object.entries(state)) {
+          const el = document.getElementById(key);
+          if (el) {
+            if (el.type === 'checkbox') {
+              el.checked = Boolean(val);
+            } else if (el.type !== 'radio' && el.tagName !== 'CANVAS') {
+              el.value = val || '';
+            }
+          }
+        }
+
+        // Restore radio button
+        if (state.experimentChoice) {
+          const r = document.querySelector(`input[name="experimentChoice"][value="${state.experimentChoice}"]`);
+          if (r) r.checked = true;
+        }
+
+        // Restore bibliography
+        if (Array.isArray(state.biblioRows) && state.biblioRows.length > 0) {
+          renderBiblioRows(state.biblioRows);
+        } else {
+          renderBiblioRows(DEFAULT_BIBLIO_ROWS);
+        }
+
+        // Restore canvas image
+        if (state.canvasData && canvas && ctx) {
+          const img = new Image();
+          img.onload = () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(img, 0, 0);
+            saveCanvasHistory();
+          };
+          img.src = state.canvasData;
+        }
+
+        markAutosaved();
+      } catch (err) {
+        console.error('Failed to restore worksheet state:', err);
+        renderBiblioRows(DEFAULT_BIBLIO_ROWS);
+      }
+    }
+
+    /* =========================================================================
+       2. Bibliography Table Dynamic Management
+       ========================================================================= */
+    function getBiblioRowsData() {
+      const rows = [];
+      const tbody = document.getElementById('biblioTbody');
+      tbody.querySelectorAll('tr').forEach(tr => {
+        const typeInput = tr.querySelector('.biblio-type-input');
+        const titleInput = tr.querySelector('.biblio-title-input');
+        const factsInput = tr.querySelector('.biblio-facts-input');
+        rows.push({
+          type: typeInput ? typeInput.value : '',
+          title: titleInput ? titleInput.value : '',
+          facts: factsInput ? factsInput.value : ''
+        });
+      });
+      return rows;
+    }
+
+    function renderBiblioRows(rows) {
+      const tbody = document.getElementById('biblioTbody');
+      tbody.innerHTML = '';
+      rows.forEach((row, idx) => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><input type="text" class="biblio-type-input" value="${escapeHtml(row.type)}" placeholder="Source Type"></td>
+          <td><input type="text" class="biblio-title-input" value="${escapeHtml(row.title)}" placeholder="Title, link, or expert name"></td>
+          <td><input type="text" class="biblio-facts-input" value="${escapeHtml(row.facts)}" placeholder="Key insights learned"></td>
+          <td style="text-align: center;"><button class="btn-delete-row" title="Delete Row">✕</button></td>
+        `;
+        tbody.appendChild(tr);
+
+        tr.querySelectorAll('input').forEach(inp => inp.addEventListener('input', debounceAutosave));
+        tr.querySelector('.btn-delete-row').addEventListener('click', () => {
+          tr.remove();
+          debounceAutosave();
+        });
+      });
+    }
+
+    function addBiblioRow() {
+      const tbody = document.getElementById('biblioTbody');
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td><input type="text" class="biblio-type-input" value="🌐 Source" placeholder="Source Type"></td>
+        <td><input type="text" class="biblio-title-input" value="" placeholder="Title, link, or expert name"></td>
+        <td><input type="text" class="biblio-facts-input" value="" placeholder="Key insights learned"></td>
+        <td style="text-align: center;"><button class="btn-delete-row" title="Delete Row">✕</button></td>
+      `;
+      tbody.appendChild(tr);
+
+      tr.querySelectorAll('input').forEach(inp => inp.addEventListener('input', debounceAutosave));
+      tr.querySelector('.btn-delete-row').addEventListener('click', () => {
+        tr.remove();
+        debounceAutosave();
+      });
+      debounceAutosave();
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    /* =========================================================================
+       3. Interactive Prototype Sketchpad (HTML5 Canvas)
+       ========================================================================= */
+    const canvas = document.getElementById('sketchCanvas');
+    const ctx = canvas.getContext('2d');
+    const canvasContainer = document.getElementById('canvasContainer');
+
+    let currentTool = 'pen';
+    let currentColor = '#1e293b';
+    let isDrawing = false;
+    let startX = 0;
+    let startY = 0;
+    let snapshot = null;
+    let canvasHistory = [];
+    const MAX_HISTORY = 20;
+
+    function resizeCanvas() {
+      const rect = canvasContainer.getBoundingClientRect();
+      const prevData = canvasHistory.length > 0 ? canvasHistory[canvasHistory.length - 1] : null;
+
+      canvas.width = rect.width;
+      canvas.height = rect.height;
+
+      if (prevData) {
+        const img = new Image();
+        img.onload = () => ctx.drawImage(img, 0, 0);
+        img.src = prevData;
+      }
+    }
+
+    function saveCanvasHistory() {
+      canvasHistory.push(canvas.toDataURL());
+      if (canvasHistory.length > MAX_HISTORY) canvasHistory.shift();
+    }
+
+    function undoCanvas() {
+      if (canvasHistory.length > 1) {
+        canvasHistory.pop(); // Remove current
+        const prev = canvasHistory[canvasHistory.length - 1];
+        const img = new Image();
+        img.onload = () => {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.drawImage(img, 0, 0);
+          debounceAutosave();
+        };
+        img.src = prev;
+      } else if (canvasHistory.length === 1) {
+        canvasHistory.pop();
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        debounceAutosave();
+      }
+    }
+
+    function clearCanvas() {
+      if (confirm('Clear the sketch area?')) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        saveCanvasHistory();
+        debounceAutosave();
+      }
+    }
+
+    function getCanvasPoint(e) {
+      const rect = canvas.getBoundingClientRect();
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      return {
+        x: clientX - rect.left,
+        y: clientY - rect.top
+      };
+    }
+
+    function startDraw(e) {
+      e.preventDefault();
+      isDrawing = true;
+      const pt = getCanvasPoint(e);
+      startX = pt.x;
+      startY = pt.y;
+
+      if (currentTool === 'line' || currentTool === 'arrow') {
+        snapshot = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      } else {
+        ctx.beginPath();
+        ctx.moveTo(startX, startY);
+      }
+    }
+
+    function draw(e) {
+      if (!isDrawing) return;
+      e.preventDefault();
+      const pt = getCanvasPoint(e);
+
+      if (currentTool === 'pen') {
+        ctx.strokeStyle = currentColor;
+        ctx.lineWidth = 2.5;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        ctx.globalAlpha = 1.0;
+        ctx.lineTo(pt.x, pt.y);
+        ctx.stroke();
+      } else if (currentTool === 'highlighter') {
+        ctx.strokeStyle = currentColor;
+        ctx.lineWidth = 14;
+        ctx.lineCap = 'square';
+        ctx.lineJoin = 'round';
+        ctx.globalAlpha = 0.35;
+        ctx.lineTo(pt.x, pt.y);
+        ctx.stroke();
+      } else if (currentTool === 'eraser') {
+        ctx.clearRect(pt.x - 12, pt.y - 12, 24, 24);
+      } else if (currentTool === 'line' || currentTool === 'arrow') {
+        ctx.putImageData(snapshot, 0, 0);
+        ctx.strokeStyle = currentColor;
+        ctx.fillStyle = currentColor;
+        ctx.lineWidth = 2.5;
+        ctx.lineCap = 'round';
+        ctx.globalAlpha = 1.0;
+
+        ctx.beginPath();
+        ctx.moveTo(startX, startY);
+        ctx.lineTo(pt.x, pt.y);
+        ctx.stroke();
+
+        if (currentTool === 'arrow') {
+          const angle = Math.atan2(pt.y - startY, pt.x - startX);
+          const headlen = 10;
+          ctx.beginPath();
+          ctx.moveTo(pt.x, pt.y);
+          ctx.lineTo(pt.x - headlen * Math.cos(angle - Math.PI / 6), pt.y - headlen * Math.sin(angle - Math.PI / 6));
+          ctx.lineTo(pt.x - headlen * Math.cos(angle + Math.PI / 6), pt.y - headlen * Math.sin(angle + Math.PI / 6));
+          ctx.closePath();
+          ctx.fill();
+        }
+      }
+    }
+
+    function endDraw(e) {
+      if (isDrawing) {
+        ctx.globalAlpha = 1.0;
+        isDrawing = false;
+        saveCanvasHistory();
+        debounceAutosave();
+      }
+    }
+
+    // Grid mode cycling
+    const gridStyles = ['canvas-dot-grid', 'canvas-line-grid', 'canvas-blank'];
+    const gridLabels = ['Grid: Dots', 'Grid: Lines', 'Grid: Blank'];
+    let currentGridIndex = 0;
+
+    function cycleGrid() {
+      canvasContainer.classList.remove(gridStyles[currentGridIndex]);
+      currentGridIndex = (currentGridIndex + 1) % gridStyles.length;
+      canvasContainer.classList.add(gridStyles[currentGridIndex]);
+      document.getElementById('btnGridToggle').textContent = `📐 ${gridLabels[currentGridIndex]}`;
+    }
+
+    /* =========================================================================
+       4. 60-Second Pitch Rehearsal Countdown Timer
+       ========================================================================= */
+    let pitchSeconds = 60;
+    let pitchInterval = null;
+
+    function updatePitchDisplay() {
+      const mins = Math.floor(pitchSeconds / 60);
+      const secs = pitchSeconds % 60;
+      document.getElementById('pitchTimerDisplay').textContent = 
+        `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+
+      const phaseText = document.getElementById('pitchPhaseText');
+      if (pitchSeconds > 40) {
+        phaseText.textContent = 'Phase 1: The Problem (0-20s)';
+        phaseText.style.background = 'rgba(239, 68, 68, 0.25)';
+      } else if (pitchSeconds > 20) {
+        phaseText.textContent = 'Phase 2: Our Solution (20-40s)';
+        phaseText.style.background = 'rgba(34, 197, 94, 0.25)';
+      } else {
+        phaseText.textContent = 'Phase 3: The Big Impact (40-60s)';
+        phaseText.style.background = 'rgba(234, 179, 8, 0.25)';
+      }
+    }
+
+    function startPitchTimer() {
+      if (pitchInterval) return;
+      pitchInterval = setInterval(() => {
+        if (pitchSeconds > 0) {
+          pitchSeconds--;
+          updatePitchDisplay();
+        } else {
+          clearInterval(pitchInterval);
+          pitchInterval = null;
+          alert('⏰ 1-Minute Pitch Complete! Great job!');
+        }
+      }, 1000);
+    }
+
+    function pausePitchTimer() {
+      clearInterval(pitchInterval);
+      pitchInterval = null;
+    }
+
+    function resetPitchTimer() {
+      pausePitchTimer();
+      pitchSeconds = 60;
+      updatePitchDisplay();
+    }
+
+    /* =========================================================================
+       5. Inspiration Sparks Auto-Filler
+       ========================================================================= */
+    const SPARK_DATA = {
+      paper: {
+        problem: "Too many native trees and old-growth forests are clear-cut just to produce single-use paper and cardboard packaging.",
+        solution: "A local community pulping and bio-pressing process that transforms fallen autumn leaves and agricultural crop husks into durable non-wood paper.",
+        existing: "Tree-free stone paper, hemp paper, and bamboo products.",
+        secret: "Collects fallen leaves that municipal cities already sweep into waste, turning a seasonal fire/waste hazard into local paper without logging.",
+        twist: "Uses natural vegetable starch as a non-toxic binding agent so the paper is 100% home-compostable in 4 weeks."
+      },
+      supertrees: {
+        problem: "Reforested areas suffer high seedling mortality due to prolonged droughts, poor nutrient-depleted soil, and fungal blight.",
+        solution: "A grafting and bio-inoculation system that pairs hardy local rootstocks with fast-canopy native branches, plus mycorrhizal fungal boosters.",
+        existing: "Industrial orchard grafting techniques and commercial timber seed banks.",
+        secret: "Applies orchard root-grafting to endangered forest ecosystems instead of fruit crops, creating drought-resistant pioneer trees.",
+        twist: "Pre-inoculates root bundles with beneficial local fungi that accelerate nutrient transfer across tree networks."
+      },
+      planting: {
+        problem: "Steep slopes and dense brush make replanting clear-cut forests slow, dangerous, and expensive for volunteer crews.",
+        solution: "Biodegradable drone-delivered seed pods shaped like aerodynamic seed-drill capsules that burrow into soil on impact.",
+        existing: "Seed balls, agricultural fertilizer spray drones, and manual tree planters.",
+        secret: "Combines aerodynamic pod geometry with water-absorbing hydrogel and rodent-repelling natural chili powder to protect seeds.",
+        twist: "The pod shell dissolves after the first rain, providing an initial moisture and fertilizer pocket for germination."
+      },
+      rules: {
+        problem: "Rangers cannot monitor vast forest reserves, allowing illegal logging trucks and clear-cutting to go undetected for weeks.",
+        solution: "Solar-powered acoustic sensors mounted high in tree canopies that detect chainsaw and engine frequencies and alert rangers via LoRa radio.",
+        existing: "Commercial satellite forest monitoring (Global Forest Watch) and ranger patrols.",
+        secret: "Satellites only see trees days after they have been cut; audio canopy sensors detect chainsaws within seconds in real-time.",
+        twist: "Ultra-low power microphone nodes disguised inside recycled weather-proof birdhouse enclosures powered by tiny canopy solar cells."
+      }
+    };
+
+    function applySpark(sparkId) {
+      const data = SPARK_DATA[sparkId];
+      if (!data) return;
+
+      if (confirm(`Load the "${sparkId.toUpperCase()}" brainstorm idea into your worksheet?`)) {
+        document.getElementById('problemFocus').value = data.problem;
+        document.getElementById('solutionIdea').value = data.solution;
+        document.getElementById('existingTools').value = data.existing;
+        document.getElementById('judgeSecret').value = data.secret;
+        document.getElementById('specialTwist').value = data.twist;
+        debounceAutosave();
+      }
+    }
+
+    /* =========================================================================
+       6. Export & Import Handlers (JSON, JPG, Print)
+       ========================================================================= */
+    function exportAsJSON() {
+      const state = getWorksheetState();
+      const student = (state.studentName || 'Innovator').replace(/[^a-zA-Z0-9_-]/g, '_');
+      const filename = `FLL76265_Deforestation_Worksheet_${student}.json`;
+
+      const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function importFromJSON(file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const state = JSON.parse(e.target.result);
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+          restoreWorksheetState();
+          alert('Worksheet restored successfully from JSON backup!');
+        } catch (err) {
+          alert('Invalid JSON backup file: ' + err.message);
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    async function exportAsJPG() {
+      const paper = document.getElementById('worksheetSheet');
+      const innovator = (document.getElementById('studentName').value.trim() || 'Innovator').replace(/[^a-zA-Z0-9_\-]/g, '_');
+      const filename = `FLL76265_Deforestation_Worksheet_${innovator}.jpg`;
+
+      try {
+        const canvasShot = await html2canvas(paper, {
+          scale: 2.0,
+          useCORS: true,
+          backgroundColor: '#ffffff'
+        });
+
+        const link = document.createElement('a');
+        link.download = filename;
+        link.href = canvasShot.toDataURL('image/jpeg', 0.95);
+        link.click();
+      } catch (err) {
+        alert('Could not generate JPG export: ' + err.message);
+      }
+    }
+
+    function resetWorksheet() {
+      if (confirm('Are you sure you want to reset this worksheet? All entered text and sketches will be cleared.')) {
+        localStorage.removeItem(STORAGE_KEY);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        canvasHistory = [];
+        location.reload();
+      }
+    }
+
+    /* =========================================================================
+       7. Initialization & Event Listeners
+       ========================================================================= */
+    window.addEventListener('DOMContentLoaded', () => {
+      resizeCanvas();
+      restoreWorksheetState();
+      saveCanvasHistory();
+
+      // Autosave listeners for inputs & textareas
+      document.querySelectorAll('input, textarea').forEach(el => {
+        el.addEventListener('input', debounceAutosave);
+        el.addEventListener('change', debounceAutosave);
+      });
+
+      // Toolbar buttons
+      document.getElementById('btnSaveNow').addEventListener('click', saveWorksheetState);
+      document.getElementById('btnExportJSON').addEventListener('click', exportAsJSON);
+      document.getElementById('btnResetWorksheet').addEventListener('click', resetWorksheet);
+      document.getElementById('btnPrint').addEventListener('click', () => window.print());
+      document.getElementById('btnExportJPG').addEventListener('click', exportAsJPG);
+      document.getElementById('btnAddSourceRow').addEventListener('click', addBiblioRow);
+
+      document.getElementById('importFileInput').addEventListener('change', (e) => {
+        if (e.target.files && e.target.files[0]) {
+          importFromJSON(e.target.files[0]);
+        }
+      });
+
+      // Brainstorm spark cards
+      document.querySelectorAll('.spark-card').forEach(card => {
+        card.addEventListener('click', () => {
+          applySpark(card.dataset.spark);
+        });
+      });
+
+      // Canvas tool switching
+      document.querySelectorAll('.canvas-tools-group .c-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.canvas-tools-group .c-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentTool = btn.dataset.tool;
+        });
+      });
+
+      // Canvas color switching
+      document.querySelectorAll('.color-swatch').forEach(swatch => {
+        swatch.addEventListener('click', () => {
+          document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+          swatch.classList.add('active');
+          currentColor = swatch.dataset.color;
+        });
+      });
+
+      // Canvas action buttons
+      document.getElementById('btnGridToggle').addEventListener('click', cycleGrid);
+      document.getElementById('btnUndoCanvas').addEventListener('click', undoCanvas);
+      document.getElementById('btnClearCanvas').addEventListener('click', clearCanvas);
+
+      // Canvas draw events (Pointer events for mouse + touch)
+      canvas.addEventListener('pointerdown', startDraw);
+      canvas.addEventListener('pointermove', draw);
+      canvas.addEventListener('pointerup', endDraw);
+      canvas.addEventListener('pointercancel', endDraw);
+
+      // Pitch Timer Controls
+      document.getElementById('btnStartPitchTimer').addEventListener('click', startPitchTimer);
+      document.getElementById('btnPausePitchTimer').addEventListener('click', pausePitchTimer);
+      document.getElementById('btnResetPitchTimer').addEventListener('click', resetPitchTimer);
+    });
+
+    window.addEventListener('resize', () => {
+      // Re-scale canvas on window resize while preserving content
+      resizeCanvas();
+    });
+  </script>
+</body>
+</html>
