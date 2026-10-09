@@ -3,6 +3,7 @@
 This directory contains interactive web applications and utilities designed to be hosted via GitHub Pages for FLL Team #76265 **Lego Legends**. Note: `doc/webutils` is configured as a symlink alias to `doc/webtools`.
 
 ## Included Tools
+- **[🎮 3D Robot Simulator (Live WebGL)](https://jaimeyu.github.io/fll_sim/)**: Full 3D WebGL robotics simulator for SPIKE Prime with Rapier3D physics, authentic 2026 competition mat, official mission models, Python script runner, mouse pusher sandbox, and LEGO CAD model inspector.
 - **`index.html`**: Master web dashboard featuring an interactive 2:30 match timer and resource navigation hub.
 - **`bioglow_calculator.html`**: Interactive mission scoring calculator for practice runs.
 - **`mission_cad_studio.html`**: Interactive 3D Robot & Attachment CAD Studio with mouse/keyboard controls, LEGO parts catalog drawer, extensible LDraw (`.ldr`) and JSON import/export, and 1-click snapshot-to-flyer printing.

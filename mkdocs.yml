@@ -118,6 +118,7 @@ nav:
           - App Flyer & Setup Guide: marketing/spike_app/spike_app_flyer.html
   - 🛠️ Web Tools Hub:
       - Overview & Guide: webtools/overview.md
+      - 🎮 3D Robot Simulator (Live App): https://jaimeyu.github.io/fll_sim/
       - ⏱️ Launch Match Timer: webtools/index.html
       - 🧮 Launch Calculator: webtools/bioglow_calculator.html
       - 🧊 3D Robot & Attachment CAD: webtools/mission_cad_studio.html
