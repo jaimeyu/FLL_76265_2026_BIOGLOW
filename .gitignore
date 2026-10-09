@@ -11,7 +11,8 @@ __pycache__/
 fll-sim/
 
 # External / Proprietary Mission Models and PDFs
-mission_models/
+mission_models/*
+!mission_models/README.md
 downloads/
 *.pdf
 

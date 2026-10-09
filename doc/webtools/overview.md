@@ -28,5 +28,6 @@ All third-party libraries and specifications used by our web tools are 100% perm
 * **html2canvas**: Licensed under the [MIT License](https://github.com/niklasvh/html2canvas/blob/master/LICENSE) (Copyright &copy; 2012 Niklas von Hertzen).
 * **Google Fonts (`Outfit`, `Space Grotesk`)**: Licensed under the [SIL Open Font License 1.1](https://openfontlicense.org/).
 * **LDraw™ Standard & Specification**: Implements the open [LDraw File Format specification](https://www.ldraw.org/) (CCAL 2.0).
+* **FLL 3D Challenge Mission Models (`.io`)**: 3D BrickLink Studio models of official challenge missions (Bioglow, Unearthed, Submerged, Masterpiece, Superpowered) were created and published by [Komurobo](https://komurobo.com/fll/3d-models/) (`info@komurobo.com`). Komurobo is an independent robotics community initiative and is not affiliated with FIRST® or Robotique FIRST Québec.
 * **Trademark Disclaimer**: LEGO®, SPIKE™, and TECHNIC™ are trademarks of the LEGO Group of companies. FIRST® and FIRST® LEGO® League are trademarks of FIRST and the LEGO Group. These tools are non-commercial educational tools developed independently by and for FLL Team #76265 BIOGLOW under fair use, and are not sponsored, authorized, or endorsed by the LEGO Group or FIRST.
 
