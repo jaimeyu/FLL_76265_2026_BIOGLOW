@@ -10,6 +10,11 @@ __pycache__/
 # Local subprojects
 fll-sim/
 
+# External / Proprietary Mission Models and PDFs
+mission_models/
+downloads/
+*.pdf
+
 # OS artifacts
 .DS_Store
 Thumbs.db
