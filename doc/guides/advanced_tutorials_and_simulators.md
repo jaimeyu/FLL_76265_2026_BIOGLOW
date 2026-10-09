@@ -38,13 +38,15 @@ flowchart TD
 
 ### 1. 🌐 GearsBot — Fast, Browser-Based Prototyping
 
-* **Website:** [gears.aposteriori.com.pt](https://gears.aposteriori.com.pt/)
+* **Official Live App:** [gears.aposteriori.com.sg](https://gears.aposteriori.com.sg/) (or GitHub Pages mirror: [quirkycort.github.io/gears](https://quirkycort.github.io/gears/))
+* **GitHub Repository:** [QuirkyCort/gears](https://github.com/QuirkyCort/gears) (Active & Open Source, GPLv3)
+* **Popular Pybricks Fork:** [kendmaclean/gears_pybricks](https://github.com/kendmaclean/gears_pybricks) (tailored for Pybricks MicroPython)
 * **Platform:** 100% Web Browser (Chrome, Safari, Edge — runs great on Chromebooks and laptops).
 * **Cost:** **Free & Open Source**.
 * **Language Support:** Blockly / Scratch blocks (identical to the LEGO SPIKE App) and MicroPython.
 
 #### Why FLL Teams Love It:
-GearsBot is overwhelmingly the community favorite on Reddit (`r/FLL`) for quick algorithmic experimentation. You can jump directly into a web browser, select a virtual robot configured with dual color sensors, ultrasonic sensors, and a gyro, drop it onto a competition-style mat, and run code immediately.
+GearsBot is overwhelmingly the community favorite on Reddit (`r/FLL`) for quick algorithmic experimentation. Built on **Babylon.js** and physics engines, you can jump directly into a web browser, select a virtual robot configured with dual color sensors, ultrasonic sensors, and a gyro, drop it onto a competition-style mat, and run code immediately.
 
 #### Best Used For:
 - **Proportional Line Following:** Tuning P-controller constants without chasing a runaway robot across the room.
@@ -54,7 +56,7 @@ GearsBot is overwhelmingly the community favorite on Reddit (`r/FLL`) for quick 
 
 > [!TIP]
 > **Getting Started with GearsBot:**
-> 1. Visit [gears.aposteriori.com.pt](https://gears.aposteriori.com.pt/).
+> 1. Visit [gears.aposteriori.com.sg](https://gears.aposteriori.com.sg/) (or [quirkycort.github.io/gears](https://quirkycort.github.io/gears/)).
 > 2. Click **Simulator** in the top bar.
 > 3. Select an arena (e.g., Grid, Line Track, or custom mat image).
 > 4. Switch between the **Blocks** tab (looks like SPIKE Scratch) or **Python** tab.
