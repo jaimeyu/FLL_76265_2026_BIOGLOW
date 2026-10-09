@@ -3,7 +3,8 @@
   "allowed_emails": [
     "git@github-fll",
     "noreply@github.com",
-    "fll76265@example.com"
+    "fll76265@example.com",
+    "info@komurobo.com"
   ],
   "allowed_keywords": [
     "FLL",

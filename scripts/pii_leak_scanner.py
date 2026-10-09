@@ -66,6 +66,7 @@ def scan_file(filepath, repo_root, config):
     except Exception:
         pass
 
+    allowed_emails = config.get("allowed_emails", [])
     try:
         with open(full_path, 'r', encoding='utf-8', errors='ignore') as f:
             for line_no, line in enumerate(f, 1):
