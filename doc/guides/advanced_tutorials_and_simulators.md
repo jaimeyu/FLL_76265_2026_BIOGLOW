@@ -19,24 +19,52 @@ Here are the top simulators, video courses, and programming resources recommende
 flowchart TD
     Idea["💡 New Algorithm / Mission Route Idea"] --> Choice{"Which Simulator to Use?"}
 
-    Choice -->|"Fast, Browser-Based,<br/>Zero Install (Chromebook/PC/Mac)"| GB["🌐 GearsBot<br/>• Rapid 2D/3D Path Prototyping<br/>• Blocks (Scratch) & Python<br/>• Pre-set FLL Mats & Line Sensors"]
+    Choice -->|"Team In-House 3D Simulator<br/>(Top-Down View, SPIKE Word Blocks, CAD Inspector)"| SIM["🤖 FLL Robot Simulator (fll-sim)<br/>• Authentic SPIKE Prime Blocks & Python<br/>• Rapier3D 60Hz Physics & Dynamic Mat<br/>• Real-time Telemetry & Port Mapping<br/>• Studio 2.0 CAD Inspector & Digital Twins"]
 
-    Choice -->|"High-Fidelity Physics,<br/>Custom CAD Import"| VRT["🖥️ Virtual Robotics Toolkit (VRT)<br/>• Realistic Gravity, Friction & Wheel Slip<br/>• Import from Studio / CAD<br/>• LEGO MINDSTORMS / SPIKE"]
+    Choice -->|"Quick 2D/3D Grid Prototyping<br/>(Community Open Source)"| GB["🌐 GearsBot<br/>• Rapid 2D/3D Path Prototyping<br/>• Scratch Blocks & MicroPython<br/>• Pre-set FLL Mats & Line Sensors"]
 
-    GB --> TestCode["💻 Test Gyro, Line Follow & Logic"]
+    Choice -->|"Desktop Commercial Sandbox<br/>(Heavy PC/Mac)"| VRT["🖥️ Virtual Robotics Toolkit (VRT)<br/>• Realistic Gravity, Friction & Wheel Slip<br/>• Import from Studio / CAD<br/>• LEGO MINDSTORMS / SPIKE"]
+
+    SIM --> TestCode["💻 Test Gyro, Line Follow, Attachments & Logic"]
+    GB --> TestCode
     VRT --> TestPhysics["⚖️ Test Center of Mass & Attachment Lift"]
 
     TestCode --> RealBot["🤖 Deploy Tested Code to Physical Robot!"]
     TestPhysics --> RealBot
 
-    style GB fill:#e1f5fe,stroke:#0288d1,stroke-width:2px;
+    style SIM fill:#e0f2fe,stroke:#0284c7,stroke-width:2px;
+    style GB fill:#f0fdf4,stroke:#16a34a,stroke-width:2px;
     style VRT fill:#ede7f6,stroke:#7b1fa2,stroke-width:2px;
-    style RealBot fill:#e8f5e9,stroke:#388e3c,stroke-width:2px;
+    style RealBot fill:#fef3c7,stroke:#d97706,stroke-width:2px;
 ```
 
 ---
 
-### 1. 🌐 GearsBot — Fast, Browser-Based Prototyping
+### 1. 🤖 Team FLL Robot Simulator (`fll-sim`) — In-House High-Precision Physics & SPIKE Studio
+
+* **Official Live App:** [https://jaimeyu.github.io/fll_sim/](https://jaimeyu.github.io/fll_sim/)
+* **Platform:** 100% Web Browser (Zero-install WebGL & WebAssembly — runs smoothly on Chromebooks, Mac, and PC).
+* **Physics Engine:** Rapier3D Wasm at 60 Hz with compound pin clustering and high-friction mat kinematics.
+* **Code Environments:** Authentic LEGO® SPIKE™ Prime Word Blocks Studio & Async Python Runtime (`from spike import PrimeHub, MotorPair, ColorSensor`).
+* **Source & Documentation:** Included directly in this repository under `/fll-sim/`.
+
+![FLL Robot Simulator Workspace](../assets/images/simulator/01_overview.png)
+
+#### Why It's Our Team's Primary Training Ground:
+Developed specifically for Team #76265 **Lego Legends**, `fll-sim` gives every student access to a virtual competition mat and digital twin driving bases:
+- **Default Top-Down Alignment View**: View the 4×8 ft competition mat from directly overhead for precision line squaring, route planning, and mission alignment. Switch to 3D Isometric view anytime with orbiting camera controls.
+- **Authentic SPIKE Prime Word Blocks Studio**: Popout 3-column modal featuring LEGO-authentic color-coded categories, block palette drawer, draggable canvas with zoom controls, multi-tab script zip export, and auto-saving.
+- **Dockable Telemetry & Diagnostics**: Real-time readouts for Color Sensors C & D (reflected light %, RGB swatches), Ultrasonic Distance, 6-Axis Gyro IMU, and Motor Ports A–F (speed %, °/s, RPM, encoder angles) that dock to the bottom or right, or minimize to a compact 30px bar.
+- **Robot Architecture & Hardware Port Matrix**: Switch between the Advanced Driving Base (DroidBot-E) and Compact SPIKE Base, or remap ports to match your physical robot's wiring.
+- **3D CAD Model Inspector & Digital Twin Validator**: Load Studio 2.0 (`.io`) or LDraw (`.ldr`) robot and season mission models. Inspect pin clusters, rigid bodies, mass, and test physics with the virtual mouse grab hand and Technic push bar.
+
+| SPIKE Word Blocks Studio | 3D CAD Model Inspector & Digital Twin |
+|:---:|:---:|
+| ![Word Blocks Studio](../assets/images/simulator/08_spike_word_blocks_modal.png) | ![CAD Model Inspector](../assets/images/simulator/10_cad_inspector_robot.png) |
+
+---
+
+### 2. 🌐 GearsBot — Fast, Browser-Based Prototyping
 
 * **Official Live App:** [gears.aposteriori.com.sg](https://gears.aposteriori.com.sg/) (or GitHub Pages mirror: [quirkycort.github.io/gears](https://quirkycort.github.io/gears/))
 * **GitHub Repository:** [QuirkyCort/gears](https://github.com/QuirkyCort/gears) (Active & Open Source, GPLv3)
@@ -64,7 +92,7 @@ GearsBot is overwhelmingly the community favorite on Reddit (`r/FLL`) for quick 
 
 ---
 
-### 2. 🪐 Virtual Robotics Toolkit (VRT) — Physics-Based 3D Simulation
+### 3. 🪐 Virtual Robotics Toolkit (VRT) — Physics-Based 3D Simulation
 
 * **Website:** [virtualroboticstoolkit.com](https://www.virtualroboticstoolkit.com/)
 * **Platform:** Windows PC and macOS (Desktop application).
@@ -83,15 +111,16 @@ While GearsBot excels at fast code logic, **Virtual Robotics Toolkit (VRT)** is 
 
 ### 📊 Simulator Comparison Matrix
 
-| Feature | 🌐 GearsBot | 🪐 Virtual Robotics Toolkit (VRT) |
-| :--- | :--- | :--- |
-| **Installation** | None (instant in-browser) | Desktop download (Win/Mac) |
-| **Hardware Requirements** | Runs on anything (Chromebooks, tablets, laptops) | Needs dedicated GPU/decent CPU |
-| **Cost** | 100% Free | Commercial (Free trial available) |
-| **Code Formats** | Scratch Blocks, Python | LEGO MINDSTORMS, SPIKE, EV3 |
-| **Physics Realism** | Good for routing & sensor logic | Extremely high (friction, gravity, inertia) |
-| **Custom Model Import** | Modular pre-sets & customizable dimensions | Full custom CAD import (`.ldr`, `.io`) |
-| **Best For** | Daily practice, line following, gyro algorithms | Mechanical stability, CAD-to-sim validation |
+| Feature | 🤖 Team Simulator (`fll-sim`) | 🌐 GearsBot | 🪐 Virtual Robotics Toolkit (VRT) |
+| :--- | :--- | :--- | :--- |
+| **Installation** | None (instant in-browser) | None (instant in-browser) | Desktop download (Win/Mac) |
+| **Hardware Requirements** | Runs on anything (Chromebooks, laptops) | Runs on anything (Chromebooks, laptops) | Needs dedicated GPU/decent CPU |
+| **Cost** | 100% Free & Open Source | 100% Free & Open Source | Commercial (Free trial available) |
+| **Code Formats** | Authentic SPIKE Word Blocks, SPIKE Python | Scratch Blocks, MicroPython | LEGO MINDSTORMS, SPIKE, EV3 |
+| **Physics Engine** | Rapier3D Wasm 60Hz + Pin Clustering | Babylon.js + Cannon/Ammo | Custom high-end physics engine |
+| **Custom Model Import** | Direct Studio (`.io`) & LDraw (`.ldr`) import | Pre-set modular configurations | Studio (`.io`) & LDD import |
+| **Digital Twin Validator** | Built-in CAD Inspector & Kinematics sandbox | None | Manual collision mapping |
+| **Best For** | Official FLL mission practice, Word Blocks, CAD inspection | Quick 2D/3D line following, logic drills | Mechanical stress, heavy CAD validation |
 
 ---
 
@@ -146,28 +175,35 @@ As student coders outgrow Scratch blocks, Pybricks offers the fastest, most prec
 
 ## 🗺️ Recommended Student Learning Roadmap
 
-Where should a 10-year-old student coder start? Follow this 4-step training path:
+Where should a student coder start? Follow this 4-step progressive training pathway:
 
 ```mermaid
-timeline
-    title Student Coding Mastery Pathway
-    Step 1 : GearsBot Basics : Drive forward, stop on colored lines, execute 90° gyro turns in browser.
-    Step 2 : PrimeLessons Concepts : Learn Proportional (P) control and dual-sensor line squaring.
-    Step 3 : Physical Transfer : Implement reusable MyBlocks in SPIKE App for our team robot base.
-    Step 4 : Advanced Simulation : Import CAD models into VRT or try Pybricks for high-speed runs!
+flowchart LR
+    Step1["Step 1: Simulator Essentials<br/>• Top-Down Mat Navigation<br/>• Live Sensor Telemetry<br/>• First Autonomous Run"] --> Step2["Step 2: SPIKE Word Blocks<br/>• Precision Drive Blocks<br/>• Color Line Detection<br/>• Gyro 90° Precision Turns"]
+    Step2 --> Step3["Step 3: Advanced Algorithms<br/>• Proportional P-Controller<br/>• Dual-Sensor Line Squaring<br/>• Attachment Motor Actuation"]
+    Step3 --> Step4["Step 4: Digital Twins & Field Test<br/>• Studio 2.0 CAD Inspector<br/>• Physics Stress Testing<br/>• Physical Competition Robot!"]
+
+    style Step1 fill:#e0f2fe,stroke:#0284c7,stroke-width:2px;
+    style Step2 fill:#f0fdf4,stroke:#16a34a,stroke-width:2px;
+    style Step3 fill:#fef3c7,stroke:#d97706,stroke-width:2px;
+    style Step4 fill:#ede7f6,stroke:#7b1fa2,stroke-width:2px;
 ```
 
-1. **Step 1 — Virtual Experiments (GearsBot):**
-   - Spend 20 minutes in [GearsBot](https://gears.aposteriori.com.pt/).
-   - Write a program that drives until the color sensor sees a black line, then turns exactly 90 degrees using the gyro.
-2. **Step 2 — Master the Core Algorithmic Techniques (PrimeLessons):**
-   - Read the [PrimeLessons Gyro Straight guide](https://primelessons.org/).
-   - Understand why checking error (`target_angle - current_angle`) and multiplying by a small correction factor keeps the robot on target.
-3. **Step 3 — Field Validation on the Real Table:**
-   - Take the virtual algorithm and test it on Team 76265's competition mat.
-   - Observe the difference between virtual wheels (perfect grip) and physical rubber wheels (mat seams, battery voltage changes).
-4. **Step 4 — Attachment Architecture (FLLCasts & CAD):**
-   - Study passive triggers (forklifts, levers, rubber-band latches) on [FLLCasts](https://fllcasts.com/) and sketch ideas in our [Printable Design Sketchpad](../marketing/handouts/mission_design_sketchpad.html) or [3D CAD Studio](../webtools/mission_cad_studio.html).
+1. **Step 1 — Simulator Essentials (`fll-sim`):**
+   - Launch the [3D Robot Simulator](https://jaimeyu.github.io/fll_sim/).
+   - Follow **Tutorial 1: Navigating the 3D Mat & Your First Autonomous Run** to learn the 4×8 ft competition field, top-down view, and drive straight missions.
+2. **Step 2 — SPIKE Prime Word Blocks Studio:**
+   - Follow **Tutorial 2: Programming with LEGO SPIKE Prime Word Blocks**.
+   - Build a precision drive and attachment mission using authentic LEGO Word Blocks.
+   - Test gyro precision 90-degree turns and line stopping using the live telemetry dock.
+3. **Step 3 — Master Autonomous Navigation Algorithms:**
+   - Follow **Tutorial 3: Authentic SPIKE Python Programming & Autonomous Navigation**.
+   - Implement proportional line following (P-controller) and dual-sensor line squaring using Color Sensors C & D.
+   - Follow **Tutorial 4: Robot Architecture, Hardware Port Mapping & Calibration** to match your team's robot build.
+4. **Step 4 — Digital Twin Inspection & Competition Table Validation:**
+   - Follow **Tutorial 5: 3D CAD Model Inspector & Studio 2.0 Digital Twins**.
+   - Load and validate your team's BrickLink Studio (`.io`) robot model in the Rapier3D physics sandbox.
+   - Deploy your verified code to Team 76265's physical robot on the real mat with 100% confidence!
 
 ---
 
@@ -175,6 +211,13 @@ timeline
 
 | Resource | Category | Link | Access |
 | :--- | :--- | :--- | :--- |
+| **Team 3D Robot Simulator (`fll-sim`)** | Web Simulator | [Live Simulator](https://jaimeyu.github.io/fll_sim/) | Free (In Repo) |
+| **Tutorial 1: Navigating 3D Mat** | Simulator Guide | [Tutorial 1](https://jaimeyu.github.io/fll_sim/tutorials/01_getting_started/) | Free (In Repo) |
+| **Tutorial 2: SPIKE Word Blocks** | Programming | [Tutorial 2](https://jaimeyu.github.io/fll_sim/tutorials/02_word_blocks_programming/) | Free (In Repo) |
+| **Tutorial 3: Authentic SPIKE Python** | Autonomous Algorithms | [Tutorial 3](https://jaimeyu.github.io/fll_sim/tutorials/03_python_programming/) | Free (In Repo) |
+| **Tutorial 4: Robot Architecture & Ports** | Hardware Mapping | [Tutorial 4](https://jaimeyu.github.io/fll_sim/tutorials/04_robot_design_and_ports/) | Free (In Repo) |
+| **Tutorial 5: 3D CAD Model Inspector** | Digital Twins & Physics | [Tutorial 5](https://jaimeyu.github.io/fll_sim/tutorials/05_cad_inspector_digital_twins/) | Free (In Repo) |
+| **Simulator UI Component Reference** | Documentation | [UI Reference](https://jaimeyu.github.io/fll_sim/ui/components/) | Free (In Repo) |
 | **GearsBot Simulator** | Web Simulator | [gears.aposteriori.com.pt](https://gears.aposteriori.com.pt/) | Free |
 | **Virtual Robotics Toolkit** | 3D Physics Simulator | [virtualroboticstoolkit.com](https://www.virtualroboticstoolkit.com/) | Free Trial / Paid |
 | **PrimeLessons.org** | Lessons & Code | [primelessons.org](https://primelessons.org/) | Free |
@@ -184,3 +227,4 @@ timeline
 | **FLL Tutorials & Strategy** | Strategy & Judging | [flltutorials.com](https://flltutorials.com/) | Free |
 | **Team 3D CAD Studio** | Local Web Tool | [3D CAD Studio](../webtools/mission_cad_studio.html) | Free (In Repo) |
 | **Team Match Practice Timer** | Local Web Tool | [Interactive Timer](../webtools/index.html) | Free (In Repo) |
+
