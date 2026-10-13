@@ -19,3 +19,6 @@ downloads/
 # OS artifacts
 .DS_Store
 Thumbs.db
+
+# Agent & Teamwork scratch
+.agents/
