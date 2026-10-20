@@ -9,8 +9,13 @@
 [![AI Safety Policy](https://img.shields.io/badge/AI%20Policy-Enforced-success?style=flat&logo=shield)](AI_CONSTITUTION.md)
 
 > 🌐 **Official Website & Interactive Web Tools (GitHub Pages):**  
-> ### 👉 **[https://jaimeyu.github.io/FLL_76265_2026_BIOGLOW/](https://jaimeyu.github.io/FLL_76265_2026_BIOGLOW/)** 👈
-> *Browse our full Engineering Notebook, Mission Strategy guides, 3D CAD Studio, Match Timer, and printable flyers live in your browser!*
+> ### 👉 **[https://jaimeyu.github.io/FLL_76265_2026_BIOGLOW/](https://jaimeyu.github.io/FLL_76265_2026_BIOGLOW/)** 👈  
+> *Browse our full Engineering Notebook, Mission Strategy guides, 3D CAD Studio, Match Timer, and printable flyers live in your browser!*  
+>  
+> 🤖 **FLL Robot Simulator (Zero-Install 3D WebGL & Python Runtime):**  
+> * 🚀 **[Launch 3D Robot Simulator Live](https://jaimeyu.github.io/fll_sim/)**  
+> * 📖 **[Simulator Documentation & Student Curriculum](https://jaimeyu.github.io/fll_sim/docs/)**  
+> * 📊 **[Interactive Test Coverage Report](https://jaimeyu.github.io/fll_sim/coverage/)**
 
 Welcome to the official repository for **FIRST LEGO League (FLL) Team 76265 "Lego Legends"** for the **2026 BIOGLOW** season!
 

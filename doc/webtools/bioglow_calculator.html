@@ -428,13 +428,13 @@
       </div>
 
       <!-- M02 -->
-      <div class="mission" data-mission-id="m02" data-difficulty="2" data-ratio="10" data-points="20" data-order="2">
+      <div class="mission" data-mission-id="m02" data-difficulty="2" data-ratio="15" data-points="30" data-order="2">
         <div class="mission-header">
           <div class="mission-title">M02: Exploding Seeds</div>
           <div class="meta-badges">
             <span class="badge-diff diff-2">Diff: 2 (Med)</span>
-            <span class="badge-ratio">Ratio: 10.0</span>
-            <span class="mission-points" id="pts-m02">0 / 20</span>
+            <span class="badge-ratio">Ratio: 15.0</span>
+            <span class="mission-points" id="pts-m02">0 / 30</span>
           </div>
         </div>
         <div class="strategy-box">
@@ -443,7 +443,7 @@
         <div class="tasks-container">
           <div class="task slider-container">
             <label for="m02-seeds">Seeds released (10 pts each): <strong id="m02-val">0</strong></label>
-            <input type="range" id="m02-seeds" min="0" max="2" value="0" class="score-input multiplier" data-pts="10" data-mission="m02" oninput="document.getElementById('m02-val').innerText = this.value">
+            <input type="range" id="m02-seeds" min="0" max="3" value="0" class="score-input multiplier" data-pts="10" data-mission="m02" oninput="document.getElementById('m02-val').innerText = this.value">
           </div>
         </div>
       </div>
@@ -781,13 +781,13 @@
   const completedCountDisplay = document.getElementById('completed-count');
   
   const missionMax = {
-    m01: 30, m02: 20, m03: 30, m04: 30, m05: 30,
+    m01: 30, m02: 30, m03: 30, m04: 30, m05: 30,
     m06: 30, m07: 30, m08: 20, m09: 20, m10: 20,
     m11: 20, m12: 30, m13: 20, m14: 20, m15: 30
   };
 
   const missionRatios = {
-    m01: 30.0, m02: 10.0, m03: 30.0, m04: 15.0, m05: 30.0,
+    m01: 30.0, m02: 15.0, m03: 30.0, m04: 15.0, m05: 30.0,
     m06: 15.0, m07: 15.0, m08: 6.6,  m09: 6.6,  m10: 6.6,
     m11: 10.0, m12: 10.0, m13: 6.6,  m14: 10.0, m15: 10.0
   };

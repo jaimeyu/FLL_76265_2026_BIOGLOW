@@ -23,22 +23,17 @@
 | | **Oct 14 (Virtual)** | Code review & Scratch block library sync | Finalize questions for Zoo experts | Review team secret goals progress |
 | **Oct 17** | | *(Offsite Event)* | **Zoo Field Trip** (Biologist interview) | Team spirit & exploration |
 | | **Oct 21 (Virtual)** | Map mission attachment ideas to field | Zoo observations debrief & problem selection | Select lead presentation speakers |
-| **Oct 24** | | Guided Mission Practice Runs | Project research & solution prototyping | Assign roles matrix tasks |
+| **Oct 25 (Session 5)** | | **Sprint Session 1:** 3-Track Mission Coding (A: Static, B: Dynamic, C: R&D) | **Strike Team Breakouts:** Builders, Researchers, Marketers | **Digital Logo Prototype Review** & Core Values |
 | | **Oct 28 (Virtual)** | Software modularization check | Solution user testing feedback review | Judging rubric walkthrough |
-| **Oct 31** | | Assemble advanced driving base | **Decide on Final Innovation Project Solution** | Halloween team fun & costumes! |
+| **Nov 1 (Session 6)** | | **Sprint Session 2:** Mission Combination Sprints (Chaining M01+M03, M02+M04) | **Strike Team Swap:** Presentation Board Layout & Prototype Refinement | **Final Team Logo Vote** & Core Values |
 | | **Nov 4 (Virtual)** | Autonomous navigation strategies | Draft 5-minute presentation script outline | Slide deck responsibilities |
-| **Nov 7** | | Continue robot missions practice | Project prototype build & diagrams | **Robot Design & Strategy Finalized** |
+| **Nov 8 (Session 7)** | | **Sprint Session 3:** Lock Core Reliability (Group A) & Reach Logic (Group B) | **Build Team Presentation:** 5-min script drafting & physical trifold assembly | **Finalize Team Swag** (buttons/stickers) & task distribution |
 | | **Nov 11 (Virtual)** | Timer run analysis (2:30 practice prep) | Script review & speaking practice | Refine presentation visual aids |
-| **Nov 14** | | Robot mission practice & timing | Project presentation rehearsal | **Design team shirts** *(Switch to 2 days/wk)* |
+| **Nov 15 (Session 8)** | | **Sprint Session 4:** Core Mission Tuning & Reach Go/No-Go Gate | **Mid-Month Checkpoint:** Full Script Read-Through & Missing Props Audit | **Flex Catch-Up Buffer** (25 min) |
 | | **Nov 18 (Virtual)** | Code optimization & bug fixes | Presentation Q&A mock judging prep | Review Core Values examples for judges |
-| **Nov 21** | | Full 2:30 match practice runs | Presentation practice with prototype | Tournament checklist prep |
-| | **Nov 25 (Virtual)** | Scrimmage run order review | Polish presentation slides & visual props | Judge binder review |
-| **Nov 28** | | Finalize robot missions plan & run order | Full dress rehearsal of Innovation presentation | Practice Q&A under pressure |
-| | **Dec 2 (Virtual)** | Code freeze: verify all backup files | Final script memorization check | Parent spectator details & event logistics |
-| **Dec 5** | | Mock tournament match rounds | Full team presentation with mock judges | **Team Shirt Delivery & Distribution** |
-| | **Dec 9 (Virtual)** | Final tournament pep talk & packing checklist | Review Core Values poster & team binder | Celebrate season growth & milestones |
-| **Dec 12** | | Final robot check & tuning | Finalize presentation layout & display board | Packing day: robot, charger, spares, field kits |
-| **Dec 19** | | **Holiday Party & Scrimmage** | **Pot-luck Celebration & Awards** | Family & Friends Robot Demonstration! 🎉 |
+| **Nov 22 (Session 9)** | | **Sprint Session 5:** Final Reliability Tweaks & **Official Code Freeze** | **Family & Friends Dress Rehearsal:** Full 5-min pitch, mock Q&A & live matches | **Family Showcase & Celebration** 🎉 |
+| | **Nov 25 (Virtual)** | Final packing checklist & tournament pep talk | Review Core Values poster & team binder | Parent spectator details & event logistics |
+| **Nov 29 🏆** | | **OFFICIAL TOURNAMENT EVENT DAY** | **Robot Game Matches & Innovation Judging** | **FIRST LEGO League Tournament Showcase! 🚀** |
 
 ---
 
