@@ -3,19 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Session 6 Innovation Homework: Tree-Free Paper Solutions | FLL #76265 Lego Legends</title>
+  <title>Session 6 Homework Handout — Tree-Free Paper Solutions | FLL #76265 Lego Legends</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@400;500;600;700;800&family=Righteous&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      /* Retro NASA / 70s Heritage Space-Age Palette with Forest Accents */
+      /* Retro Space-Age Palette with Forest Emerald Accents */
       --paper-bg: #FAF6EE;
       --retro-navy: #0E3B5C;
       --retro-navy-dark: #08243A;
       --retro-caramel: #B5732A;
       --retro-caramel-dark: #8F5217;
-      --retro-caramel-light: #E5A85C;
       --retro-steel: #7998AB;
       --retro-steel-light: #C2D3DE;
       --retro-sand: #F2E2C8;
@@ -25,9 +24,6 @@
       --forest-emerald: #15803D;
       --forest-emerald-dark: #14532D;
       --forest-emerald-light: #DCFCE7;
-      --primary: var(--retro-navy);
-      --card-bg: var(--paper-bg);
-      --border-color: #334155;
     }
 
     * {
@@ -40,7 +36,7 @@
       font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background: radial-gradient(circle at top center, #1e293b 0%, #081524 100%);
       color: var(--retro-charcoal);
-      padding: 1.25rem 0.75rem;
+      padding: 1.25rem 0.5rem;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -50,7 +46,7 @@
     /* Screen Toolbar Controls */
     .screen-toolbar {
       width: 100%;
-      max-width: 960px;
+      max-width: 860px;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
@@ -120,10 +116,10 @@
       background: #ffffff;
       color: var(--retro-navy);
       border: 1px solid var(--retro-steel);
-      padding: 0.4rem 0.8rem;
+      padding: 0.45rem 0.85rem;
       border-radius: 6px;
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       font-weight: 700;
       cursor: pointer;
       display: inline-flex;
@@ -157,29 +153,40 @@
       color: #ffffff;
     }
 
-    /* Main Worksheet Container */
-    .worksheet {
+    /* Outer Wrapper */
+    .handout-container {
       width: 100%;
-      max-width: 960px;
-      background: var(--paper-bg);
-      border: 3px solid var(--retro-navy);
-      border-radius: 14px;
-      padding: 1.5rem 1.6rem;
-      position: relative;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
-      margin-bottom: 2rem;
+      max-width: 860px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
     }
 
-    /* 4-Stripe Heritage Ribbons */
-    .racing-ribbon-tl {
+    /* Individual Printable Sheet (Page 1 and Page 2) */
+    .handout-page {
+      width: 100%;
+      background: var(--paper-bg);
+      border: 2.5px solid var(--retro-navy);
+      border-radius: 12px;
+      padding: 1.25rem 1.35rem;
+      position: relative;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 0.85rem;
+    }
+
+    /* 5-Stripe Heritage Ribbons */
+    .racing-ribbon {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
-      height: 7px;
+      height: 6px;
       display: flex;
-      border-top-left-radius: 11px;
-      border-top-right-radius: 11px;
+      border-top-left-radius: 9px;
+      border-top-right-radius: 9px;
       overflow: hidden;
     }
     .ribbon-bar { flex: 1; height: 100%; }
@@ -189,54 +196,66 @@
     .bar-sand { background: var(--retro-sand); }
     .bar-navy { background: var(--retro-navy); }
 
-    /* Header */
+    /* Header Block */
     .sheet-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 1.25rem;
+      gap: 1rem;
       border-bottom: 2px solid var(--retro-caramel);
-      padding-bottom: 0.9rem;
-      margin-top: 0.35rem;
-      margin-bottom: 1rem;
+      padding-bottom: 0.65rem;
+      margin-top: 0.15rem;
     }
 
     .header-main {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 0.85rem;
     }
 
     .team-logo {
-      width: 65px;
-      height: 65px;
+      width: 58px;
+      height: 58px;
       object-fit: contain;
       filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
     }
 
     .header-titles h1 {
       font-family: 'Righteous', cursive, sans-serif;
-      font-size: 1.5rem;
+      font-size: 1.35rem;
       color: var(--retro-navy);
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.4px;
       line-height: 1.15;
     }
 
     .header-titles p {
       font-family: 'Caveat', cursive;
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 700;
       color: var(--forest-emerald);
-      margin-top: 2px;
+      margin-top: 1px;
+    }
+
+    .page-tag {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      background: var(--retro-sand);
+      border: 1px solid var(--retro-caramel);
+      color: var(--retro-navy);
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     .retro-badge-emblem {
       background: var(--retro-navy);
       border: 2px solid var(--retro-caramel);
       color: #ffffff;
-      padding: 0.4rem 0.75rem;
-      border-radius: 10px;
+      padding: 0.35rem 0.65rem;
+      border-radius: 8px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -247,7 +266,7 @@
 
     .badge-fll {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.62rem;
+      font-size: 0.58rem;
       font-weight: 700;
       color: var(--retro-sand);
       letter-spacing: 1px;
@@ -256,35 +275,33 @@
 
     .badge-team-name {
       font-family: 'Righteous', cursive, sans-serif;
-      font-size: 0.95rem;
+      font-size: 0.88rem;
       color: #ffffff;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.4px;
       text-transform: uppercase;
-      margin-top: 1px;
     }
 
     /* Student Meta Bar */
     .meta-bar {
       display: grid;
-      grid-template-columns: 1.4fr 1fr 1.6fr;
+      grid-template-columns: 1.3fr 0.9fr 1.6fr;
       gap: 0.75rem;
       background: #ffffff;
       border: 1.5px solid var(--retro-navy);
-      border-radius: 10px;
-      padding: 0.7rem 1rem;
-      margin-bottom: 1rem;
+      border-radius: 8px;
+      padding: 0.5rem 0.85rem;
       box-shadow: 2px 2px 0 var(--retro-sand);
     }
 
     .meta-field {
       display: flex;
       flex-direction: column;
-      gap: 0.25rem;
+      gap: 0.2rem;
     }
 
     .meta-label {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.74rem;
+      font-size: 0.72rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.5px;
@@ -293,14 +310,14 @@
 
     .meta-input {
       font-family: 'Outfit', sans-serif;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 600;
       border: none;
       border-bottom: 1.5px dotted var(--retro-caramel);
       background: transparent;
       color: var(--retro-charcoal);
       outline: none;
-      padding: 0.2rem 0;
+      padding: 0.15rem 0;
     }
 
     .strike-team-radio {
@@ -308,11 +325,11 @@
       align-items: center;
       gap: 0.6rem;
       flex-wrap: wrap;
-      margin-top: 0.15rem;
+      margin-top: 0.1rem;
     }
 
     .radio-pill {
-      font-size: 0.76rem;
+      font-size: 0.75rem;
       font-weight: 600;
       display: inline-flex;
       align-items: center;
@@ -320,32 +337,31 @@
       cursor: pointer;
     }
 
-    /* Mission Callout */
+    /* Mission Box */
     .mission-box {
       background: var(--retro-sand-light);
       border: 1.5px solid var(--retro-sand);
-      border-left: 6px solid var(--forest-emerald);
-      border-radius: 8px;
-      padding: 0.75rem 1rem;
-      margin-bottom: 1.1rem;
+      border-left: 5px solid var(--forest-emerald);
+      border-radius: 6px;
+      padding: 0.55rem 0.85rem;
     }
 
     .mission-box-title {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 700;
       color: var(--forest-emerald-dark);
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.2rem;
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.35rem;
     }
 
     .mission-box p {
-      font-size: 0.86rem;
-      line-height: 1.45;
+      font-size: 0.82rem;
+      line-height: 1.4;
       color: var(--retro-charcoal);
     }
 
@@ -353,9 +369,8 @@
     .spark-section {
       background: #ffffff;
       border: 1.5px solid var(--retro-steel);
-      border-radius: 10px;
-      padding: 0.85rem 1rem;
-      margin-bottom: 1.25rem;
+      border-radius: 8px;
+      padding: 0.65rem 0.85rem;
       box-shadow: 2px 2px 0 var(--retro-sand);
     }
 
@@ -363,39 +378,39 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 0.65rem;
+      margin-bottom: 0.5rem;
       flex-wrap: wrap;
-      gap: 0.4rem;
+      gap: 0.3rem;
     }
 
     .spark-title {
       font-family: 'Righteous', cursive, sans-serif;
-      font-size: 1rem;
+      font-size: 0.92rem;
       color: var(--retro-navy);
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.35rem;
       text-transform: uppercase;
     }
 
     .spark-hint {
       font-family: 'Caveat', cursive;
-      font-size: 1.05rem;
+      font-size: 1rem;
       color: var(--retro-caramel-dark);
       font-weight: 700;
     }
 
     .spark-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 0.65rem;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.55rem;
     }
 
     .spark-card {
       background: var(--retro-sand-light);
       border: 1px solid var(--retro-steel-light);
-      border-radius: 8px;
-      padding: 0.55rem 0.65rem;
+      border-radius: 6px;
+      padding: 0.45rem 0.55rem;
       cursor: pointer;
       transition: all 0.15s ease;
       display: flex;
@@ -406,35 +421,35 @@
     .spark-card:hover {
       border-color: var(--forest-emerald);
       transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.08);
       background: #ffffff;
     }
 
     .spark-card-title {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.8rem;
+      font-size: 0.74rem;
       font-weight: 700;
       color: var(--retro-navy);
-      margin-bottom: 0.2rem;
+      margin-bottom: 0.15rem;
       display: flex;
       align-items: center;
-      gap: 0.3rem;
+      gap: 0.25rem;
     }
 
     .spark-card-desc {
-      font-size: 0.74rem;
+      font-size: 0.69rem;
       color: var(--retro-muted);
-      line-height: 1.35;
-      margin-bottom: 0.4rem;
+      line-height: 1.3;
+      margin-bottom: 0.35rem;
     }
 
     .spark-btn {
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       font-weight: 700;
       color: var(--forest-emerald);
       align-self: flex-start;
       background: var(--forest-emerald-light);
-      padding: 0.15rem 0.45rem;
+      padding: 0.1rem 0.35rem;
       border-radius: 4px;
       border: 1px solid rgba(21, 128, 61, 0.3);
     }
@@ -442,10 +457,9 @@
     /* Step Blocks */
     .step-card {
       background: #ffffff;
-      border: 2px solid var(--retro-navy);
-      border-radius: 10px;
-      padding: 1rem 1.15rem;
-      margin-bottom: 1.2rem;
+      border: 1.5px solid var(--retro-navy);
+      border-radius: 8px;
+      padding: 0.75rem 0.95rem;
       box-shadow: 2px 2px 0 var(--retro-sand);
     }
 
@@ -453,91 +467,92 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.45rem;
       flex-wrap: wrap;
-      gap: 0.4rem;
+      gap: 0.3rem;
     }
 
     .step-badge-title {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.45rem;
     }
 
     .step-badge {
       background: var(--retro-navy);
       color: #ffffff;
       font-family: 'Righteous', cursive;
-      font-size: 0.78rem;
-      padding: 0.2rem 0.55rem;
-      border-radius: 6px;
-      letter-spacing: 0.5px;
+      font-size: 0.72rem;
+      padding: 0.18rem 0.5rem;
+      border-radius: 5px;
+      letter-spacing: 0.4px;
     }
 
     .step-title {
       font-family: 'Righteous', cursive;
-      font-size: 1.05rem;
+      font-size: 0.96rem;
       color: var(--retro-navy);
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.4px;
     }
 
     .step-tag {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.7rem;
+      font-size: 0.66rem;
       font-weight: 700;
       color: var(--retro-caramel-dark);
       background: var(--retro-sand);
-      padding: 0.2rem 0.6rem;
+      padding: 0.15rem 0.5rem;
       border-radius: 999px;
       text-transform: uppercase;
     }
 
     .step-prompt {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 600;
       color: var(--retro-charcoal);
-      margin-bottom: 0.45rem;
-      line-height: 1.4;
+      margin-bottom: 0.35rem;
+      line-height: 1.35;
     }
 
     .problem-options-list {
       display: flex;
       flex-direction: column;
-      gap: 0.35rem;
-      margin-bottom: 0.75rem;
+      gap: 0.25rem;
+      margin-bottom: 0.55rem;
       background: var(--retro-sand-light);
-      padding: 0.6rem 0.85rem;
-      border-radius: 8px;
+      padding: 0.45rem 0.65rem;
+      border-radius: 6px;
       border: 1px dashed var(--retro-caramel);
     }
 
     .option-item {
       display: flex;
       align-items: flex-start;
-      gap: 0.45rem;
-      font-size: 0.82rem;
+      gap: 0.4rem;
+      font-size: 0.77rem;
       font-weight: 500;
       color: var(--retro-charcoal);
       cursor: pointer;
+      line-height: 1.3;
     }
 
     .option-item input[type="radio"] {
-      margin-top: 3px;
+      margin-top: 2px;
     }
 
     .custom-textarea {
       width: 100%;
-      min-height: 75px;
+      min-height: 68px;
       border: 1.5px solid var(--retro-steel);
       border-radius: 6px;
-      padding: 0.6rem 0.75rem;
+      padding: 0.5rem 0.65rem;
       font-family: 'Outfit', sans-serif;
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       color: var(--retro-charcoal);
       background: #fafafa;
       resize: vertical;
-      line-height: 1.4;
+      line-height: 1.45;
       outline: none;
       transition: border-color 0.15s ease;
     }
@@ -548,11 +563,44 @@
       box-shadow: 0 0 0 2px rgba(21, 128, 61, 0.2);
     }
 
+    .coach-callout-inline {
+      font-size: 0.74rem;
+      color: var(--retro-caramel-dark);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      margin-top: 0.35rem;
+      background: var(--retro-sand-light);
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+    }
+
+    /* Handwrite lines for printable blank sheets */
+    .ruled-writing-lines {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      width: 100%;
+      margin-top: 0.35rem;
+    }
+
+    .ruled-line {
+      height: 28px;
+      border-bottom: 1.5px dotted var(--retro-caramel);
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: 2px;
+      font-size: 0.84rem;
+      font-weight: 500;
+      color: var(--retro-charcoal);
+    }
+
     /* Canvas Drawing Area */
     .canvas-container {
-      margin-top: 0.75rem;
+      margin-top: 0.55rem;
       border: 1.5px solid var(--retro-steel);
-      border-radius: 8px;
+      border-radius: 6px;
       background: #ffffff;
       overflow: hidden;
       display: flex;
@@ -564,40 +612,34 @@
       justify-content: space-between;
       align-items: center;
       background: var(--retro-sand-light);
-      padding: 0.4rem 0.75rem;
+      padding: 0.35rem 0.65rem;
       border-bottom: 1px solid var(--retro-steel-light);
       flex-wrap: wrap;
-      gap: 0.4rem;
+      gap: 0.35rem;
     }
 
     .canvas-tools {
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.35rem;
     }
 
     .canvas-btn {
       background: #ffffff;
       border: 1px solid var(--retro-steel);
       border-radius: 4px;
-      padding: 0.25rem 0.55rem;
-      font-size: 0.75rem;
+      padding: 0.2rem 0.45rem;
+      font-size: 0.72rem;
       font-weight: 600;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 0.25rem;
-    }
-
-    .canvas-btn.active {
-      background: var(--retro-navy);
-      color: #ffffff;
-      border-color: var(--retro-navy);
+      gap: 0.2rem;
     }
 
     .color-dot {
-      width: 16px;
-      height: 16px;
+      width: 14px;
+      height: 14px;
       border-radius: 50%;
       border: 1px solid rgba(0,0,0,0.2);
       cursor: pointer;
@@ -606,11 +648,11 @@
 
     .sketch-canvas {
       width: 100%;
-      height: 160px;
+      height: 165px;
       touch-action: none;
       cursor: crosshair;
       background: #ffffff;
-      background-image: radial-gradient(circle, #cbd5e1 1px, transparent 1px);
+      background-image: radial-gradient(circle, #cbd5e1 1.2px, transparent 1.2px);
       background-size: 16px 16px;
     }
 
@@ -618,22 +660,21 @@
     .plus-section {
       background: var(--retro-sand-light);
       border: 1.5px solid var(--retro-caramel);
-      border-radius: 8px;
-      padding: 0.75rem 1rem;
-      margin-bottom: 1.2rem;
+      border-radius: 6px;
+      padding: 0.55rem 0.85rem;
     }
 
     .plus-title {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 700;
       color: var(--retro-caramel-dark);
       text-transform: uppercase;
       letter-spacing: 0.5px;
       display: flex;
       align-items: center;
-      gap: 0.35rem;
-      margin-bottom: 0.3rem;
+      gap: 0.3rem;
+      margin-bottom: 0.25rem;
     }
 
     .plus-input {
@@ -642,85 +683,135 @@
       border-bottom: 1.5px dotted var(--retro-caramel);
       background: transparent;
       font-family: 'Caveat', cursive;
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 700;
       color: var(--retro-navy);
-      padding: 0.25rem 0;
+      padding: 0.2rem 0;
       outline: none;
     }
 
     .checklist-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 0.45rem;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.4rem;
       background: #ffffff;
       border: 1.5px solid var(--retro-navy);
-      border-radius: 8px;
-      padding: 0.65rem 0.95rem;
-      margin-bottom: 1rem;
+      border-radius: 6px;
+      padding: 0.5rem 0.75rem;
     }
 
     .check-item {
       display: flex;
       align-items: center;
-      gap: 0.45rem;
-      font-size: 0.78rem;
+      gap: 0.35rem;
+      font-size: 0.74rem;
       font-weight: 600;
       color: var(--retro-charcoal);
     }
 
     .check-item input[type="checkbox"] {
-      width: 14px;
-      height: 14px;
+      width: 13px;
+      height: 13px;
       accent-color: var(--forest-emerald);
       cursor: pointer;
     }
 
-    /* Printable Page Settings */
+    .page-turn-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--retro-muted);
+      border-top: 1px solid var(--retro-sand);
+      padding-top: 0.35rem;
+    }
+
+    /* ==========================================================================
+       PRINT STYLING (Strict Letter Size Front & Back 2-Page Handout)
+       ========================================================================== */
     @media print {
+      @page {
+        size: letter portrait;
+        margin: 0.28in 0.32in;
+      }
+
       body {
         background: #ffffff !important;
         padding: 0 !important;
         color: #000000 !important;
+        min-height: auto !important;
       }
 
-      .screen-toolbar {
+      .screen-toolbar,
+      .canvas-toolbar,
+      .spark-btn {
         display: none !important;
       }
 
-      .worksheet {
+      .handout-container {
+        max-width: 100% !important;
+        width: 100% !important;
+        display: block !important;
+        gap: 0 !important;
+        padding: 0 !important;
+      }
+
+      .handout-page {
         max-width: 100% !important;
         width: 100% !important;
         box-shadow: none !important;
         border: 2px solid #000000 !important;
         border-radius: 0 !important;
-        padding: 0.2in 0.3in !important;
+        padding: 0.22in 0.26in !important;
+        min-height: 10.05in !important;
+        max-height: 10.25in !important;
         background: #ffffff !important;
-        margin: 0 !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        box-sizing: border-box !important;
       }
 
-      .racing-ribbon-tl {
+      .page-1 {
+        page-break-after: always !important;
+        break-after: page !important;
+      }
+
+      .page-2 {
+        page-break-after: avoid !important;
+        break-after: avoid !important;
+      }
+
+      .racing-ribbon {
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
       }
 
-      .spark-btn, .canvas-toolbar {
-        display: none !important;
+      .spark-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 0.35rem !important;
+      }
+
+      .spark-card {
+        background: #f8fafc !important;
+        border: 1px solid #94a3b8 !important;
+        padding: 0.3rem 0.4rem !important;
       }
 
       .custom-textarea {
-        border: 1px solid #999999 !important;
+        border: 1px solid #94a3b8 !important;
         background: transparent !important;
       }
 
       .sketch-canvas {
-        border-top: 1px solid #cccccc !important;
-        height: 140px !important;
-      }
-
-      @page {
-        size: letter portrait;
-        margin: 0.25in 0.35in;
+        height: 155px !important;
+        border-top: 1px solid #94a3b8 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
       }
     }
   </style>
@@ -739,209 +830,258 @@
       </div>
     </div>
     <div class="toolbar-actions">
-      <button class="tool-btn btn-save" id="btnSave" title="Save draft to browser storage">💾 Save Now</button>
+      <button class="tool-btn btn-save" id="btnSave" title="Save draft to browser storage">💾 Save Draft</button>
       <button class="tool-btn" id="btnReset" title="Clear and start fresh">🧹 Clear</button>
-      <button class="tool-btn btn-print" onclick="window.print()" title="Print worksheet or save as PDF">🖨️ Print / PDF</button>
+      <button class="tool-btn btn-print" onclick="window.print()" title="Print 2-page physical handout (Letter Size)">🖨️ Print Handout (Letter)</button>
     </div>
   </header>
 
-  <!-- Worksheet Container -->
-  <main class="worksheet" id="worksheetMain">
-    <!-- Top 4-Stripe Heritage Ribbon -->
-    <div class="racing-ribbon-tl" aria-hidden="true">
-      <div class="ribbon-bar bar-forest"></div>
-      <div class="ribbon-bar bar-caramel"></div>
-      <div class="ribbon-bar bar-steel"></div>
-      <div class="ribbon-bar bar-sand"></div>
-      <div class="ribbon-bar bar-navy"></div>
-    </div>
+  <!-- 2-Page Handout Container -->
+  <div class="handout-container">
 
-    <!-- Sheet Header -->
-    <header class="sheet-header">
-      <div class="header-main">
-        <img src="images/logo_lego_legends_clean.png" alt="LEGO Legends Logo" class="team-logo">
-        <div class="header-titles">
-          <h1>🌲 Innovation Homework: Tree-Free Paper Solutions</h1>
-          <p>Session 6 Take-Home Challenge • "Solve big problems with creative STEM thinking!"</p>
-        </div>
-      </div>
-      <div class="retro-badge-emblem">
-        <span class="badge-fll">FIRST® LEGO® LEAGUE</span>
-        <span class="badge-team-name">#76265 LEGO LEGENDS</span>
-      </div>
-    </header>
-
-    <!-- Student Information Bar -->
-    <section class="meta-bar">
-      <div class="meta-field">
-        <label for="studentName" class="meta-label">Student Name:</label>
-        <input type="text" id="studentName" class="meta-input" placeholder="Your Name">
-      </div>
-      <div class="meta-field">
-        <label for="dueDate" class="meta-label">Date:</label>
-        <input type="text" id="dueDate" class="meta-input" value="Sunday Session">
-      </div>
-      <div class="meta-field">
-        <span class="meta-label">My Strike Team:</span>
-        <div class="strike-team-radio">
-          <label class="radio-pill"><input type="radio" name="strikeTeam" value="Builders"> 🔨 Builders</label>
-          <label class="radio-pill"><input type="radio" name="strikeTeam" value="Researchers"> 🔬 Researchers</label>
-          <label class="radio-pill"><input type="radio" name="strikeTeam" value="Marketers"> 📢 Marketers</label>
-        </div>
-      </div>
-    </section>
-
-    <!-- Mission Brief Box -->
-    <div class="mission-box">
-      <div class="mission-box-title">🎯 The Mission Brief</div>
-      <p>
-        Trees give our planet fresh oxygen, store carbon, and shelter wild animals. Yet billions of live trees are cut down every year just for paper. In <strong>Session 6</strong>, our team asked: <em>"Can we make paper or write without cutting down trees?"</em> Your mission is to pick ONE specific problem, explain why it matters, design a solution, and explain how it helps!
-      </p>
-    </div>
-
-    <!-- Brainstorm Spark Bank (Quick Notes) -->
-    <section class="spark-section">
-      <div class="spark-title-row">
-        <div class="spark-title">💡 Team Brainstorm Spark Bank</div>
-        <span class="spark-hint">Click any spark below to load ideas into your worksheet!</span>
-      </div>
-      <div class="spark-grid">
-        <div class="spark-card" onclick="loadSpark('leaves')">
-          <div class="spark-card-title">🍂 Fallen Autumn Leaves</div>
-          <div class="spark-card-desc">Boiling fallen yard leaves with baking soda/ash to create smooth, natural writing paper without cutting trees.</div>
-          <span class="spark-btn">✨ Use This Spark</span>
-        </div>
-        <div class="spark-card" onclick="loadSpark('crops')">
-          <div class="spark-card-title">🌾 Local Prairie Canola & Wheat</div>
-          <div class="spark-card-desc">Using leftover farm straw, weed stalks, or prairie grass from local fields after harvest.</div>
-          <span class="spark-btn">✨ Use This Spark</span>
-        </div>
-        <div class="spark-card" onclick="loadSpark('bamboo')">
-          <div class="spark-card-title">🎋 Fast-Growing Bamboo & Kelp</div>
-          <div class="spark-card-desc">Bamboo shoots grow up to 3 feet per day; ocean kelp grows super fast without freshwater or fertilizers.</div>
-          <span class="spark-btn">✨ Use This Spark</span>
-        </div>
-        <div class="spark-card" onclick="loadSpark('tools')">
-          <div class="spark-card-title">🧼 Clean Classroom Press Tool</div>
-          <div class="spark-card-desc">A mess-free, compact mechanical squeezer and mesh frame that lets schools make paper in 5 minutes.</div>
-          <span class="spark-btn">✨ Use This Spark</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Step 1: Identify Problem -->
-    <section class="step-card">
-      <div class="step-header">
-        <div class="step-badge-title">
-          <span class="step-badge">Step 1</span>
-          <h2 class="step-title">Identify Which Problem You Want to Solve</h2>
-        </div>
-        <span class="step-tag">Problem Statement</span>
-      </div>
-      <p class="step-prompt">Choose one problem area from our brainstorm OR create your own:</p>
-      
-      <div class="problem-options-list">
-        <label class="option-item">
-          <input type="radio" name="probPreset" onchange="selectProblem('Too many live trees are chopped down for everyday school worksheets and notebook paper.')">
-          <span>🌲 <strong>Live Tree Cutting:</strong> Millions of trees chopped down for school paper, hurting forest wildlife and oxygen.</span>
-        </label>
-        <label class="option-item">
-          <input type="radio" name="probPreset" onchange="selectProblem('Local alternative plant materials (like fallen leaves, weeds, or wheat straw) are wasted instead of used for paper.')">
-          <span>🍂 <strong>Wasted Local Fibers:</strong> Autumn leaves and weeds end up in landfills instead of being turned into usable paper.</span>
-        </label>
-        <label class="option-item">
-          <input type="radio" name="probPreset" onchange="selectProblem('Making homemade alternative paper is too watery, messy, slow, and hard for schools or kids to do.')">
-          <span>🧼 <strong>Messy & Slow Process:</strong> Making tree-free paper by hand is currently too drippy and difficult to do easily.</span>
-        </label>
-        <label class="option-item">
-          <input type="radio" name="probPreset" onchange="selectProblem('People and schools don\'t know about tree-free paper options or find digital pens too expensive and easy to break.')">
-          <span>💡 <strong>Knowledge & Cost Gap:</strong> People don\'t know tree-free paper exists, and electronic tablets cost too much.</span>
-        </label>
+    <!-- ====================================================================
+         PAGE 1: MISSION BRIEF, BRAINSTORM SPARKS, PROBLEM & IMPACT
+         ==================================================================== -->
+    <main class="handout-page page-1">
+      <!-- Top 5-Stripe Heritage Ribbon -->
+      <div class="racing-ribbon" aria-hidden="true">
+        <div class="ribbon-bar bar-forest"></div>
+        <div class="ribbon-bar bar-caramel"></div>
+        <div class="ribbon-bar bar-steel"></div>
+        <div class="ribbon-bar bar-sand"></div>
+        <div class="ribbon-bar bar-navy"></div>
       </div>
 
-      <label for="step1Problem" class="meta-label">Write your exact Problem Statement in your own words:</label>
-      <textarea id="step1Problem" class="custom-textarea" placeholder="The problem I want to solve is..."></textarea>
-    </section>
-
-    <!-- Step 2: Why It Is Good to Solve -->
-    <section class="step-card">
-      <div class="step-header">
-        <div class="step-badge-title">
-          <span class="step-badge">Step 2</span>
-          <h2 class="step-title">Why It Is Good to Solve</h2>
-        </div>
-        <span class="step-tag">Importance & Impact</span>
-      </div>
-      <p class="step-prompt">Why is fixing this problem important? Who or what does it help? What happens if nobody fixes it?</p>
-      <textarea id="step2WhyGood" class="custom-textarea" placeholder="It is good to solve because it protects... It saves clean water because... If we don't solve this, then..."></textarea>
-    </section>
-
-    <!-- Step 3: My Solution Idea & Sketch -->
-    <section class="step-card">
-      <div class="step-header">
-        <div class="step-badge-title">
-          <span class="step-badge">Step 3</span>
-          <h2 class="step-title">My Creative Solution Idea</h2>
-        </div>
-        <span class="step-tag">Innovation & Design</span>
-      </div>
-      <p class="step-prompt">What is your idea, tool, invention, or recipe? How does someone use it?</p>
-      
-      <div style="margin-bottom: 0.6rem;">
-        <label for="solutionName" class="meta-label">My Solution Name / Project Title:</label>
-        <input type="text" id="solutionName" class="meta-input" style="width: 100%;" placeholder="e.g., The Leaf-Press 3000, Prairie Pulp School Kit, Kelp-Pad">
-      </div>
-
-      <label for="step3Solution" class="meta-label">Describe how your solution works step-by-step:</label>
-      <textarea id="step3Solution" class="custom-textarea" placeholder="Step 1: Gather the material... Step 2: Process it using... Step 3: Use it for..."></textarea>
-
-      <!-- Drawing Canvas -->
-      <div class="canvas-container">
-        <div class="canvas-toolbar">
-          <span style="font-family: 'Space Grotesk', sans-serif; font-size: 0.74rem; font-weight: 700; color: var(--retro-navy);">
-            ✏️ Quick Sketch & Blueprint Pad (Draw your tool or invention!)
-          </span>
-          <div class="canvas-tools">
-            <span class="color-dot" style="background: #0E3B5C;" onclick="setCanvasColor('#0E3B5C')" title="Navy"></span>
-            <span class="color-dot" style="background: #15803D;" onclick="setCanvasColor('#15803D')" title="Green"></span>
-            <span class="color-dot" style="background: #B5732A;" onclick="setCanvasColor('#B5732A')" title="Caramel"></span>
-            <button class="canvas-btn" onclick="clearCanvas()">🧹 Clear Sketch</button>
+      <!-- Header -->
+      <header class="sheet-header">
+        <div class="header-main">
+          <img src="images/logo_lego_legends_clean.png" alt="LEGO Legends Logo" class="team-logo">
+          <div class="header-titles">
+            <h1>🌲 Innovation Project: Tree-Free Paper Solutions</h1>
+            <p>Session 6 Student Homework • "Solve Big Problems with Creative STEM Thinking!"</p>
           </div>
         </div>
-        <canvas id="sketchPad" class="sketch-canvas" width="900" height="180"></canvas>
-      </div>
-    </section>
-
-    <!-- Step 4: Why Solution Helps Problem -->
-    <section class="step-card">
-      <div class="step-header">
-        <div class="step-badge-title">
-          <span class="step-badge">Step 4</span>
-          <h2 class="step-title">Why the Solution Helps Our Problem</h2>
+        <div class="retro-badge-emblem">
+          <span class="badge-fll">FIRST® LEGO® LEAGUE</span>
+          <span class="badge-team-name">#76265 LEGO LEGENDS</span>
         </div>
-        <span class="step-tag">Effectiveness & Proof</span>
+      </header>
+
+      <!-- Student Info Bar -->
+      <section class="meta-bar">
+        <div class="meta-field">
+          <label for="studentName" class="meta-label">Student Name:</label>
+          <input type="text" id="studentName" class="meta-input" placeholder="Your Name">
+        </div>
+        <div class="meta-field">
+          <label for="dueDate" class="meta-label">Date Due:</label>
+          <input type="text" id="dueDate" class="meta-input" value="Sunday Session @ 1:00 PM">
+        </div>
+        <div class="meta-field">
+          <span class="meta-label">My Strike Team:</span>
+          <div class="strike-team-radio">
+            <label class="radio-pill"><input type="radio" name="strikeTeam" value="Builders"> 🔨 Builders</label>
+            <label class="radio-pill"><input type="radio" name="strikeTeam" value="Researchers"> 🔬 Researchers</label>
+            <label class="radio-pill"><input type="radio" name="strikeTeam" value="Marketers"> 📢 Marketers</label>
+          </div>
+        </div>
+      </section>
+
+      <!-- Mission Callout -->
+      <div class="mission-box">
+        <div class="mission-box-title">🎯 The Mission Brief</div>
+        <p>
+          Trees give our planet oxygen and shelter wild animals, but billions of trees are cut down every year just for paper. In <strong>Session 6</strong>, our team asked: <em>"Can we make paper or write without cutting living trees?"</em> Pick ONE specific problem, explain why it matters, design your solution on Page 2, and explain how it helps!
+        </p>
       </div>
-      <p class="step-prompt">How does your solution actually fix or improve the problem from Step 1? Why is it better than what people do today?</p>
-      <textarea id="step4WhyHelps" class="custom-textarea" placeholder="This solution directly solves our problem because... It is much better than cutting trees or buying expensive digital pens because..."></textarea>
-    </section>
 
-    <!-- Step 5: Plus'ing Collaboration Prompt -->
-    <section class="plus-section">
-      <div class="plus-title">🤝 Team Plus'ing (+) Question for Next Sunday</div>
-      <p style="font-size: 0.82rem; color: var(--retro-charcoal); margin-bottom: 0.4rem;">
-        What is one cool question or extra feature you want to ask your teammates during our Session 7 idea swap?
-      </p>
-      <input type="text" id="plusQuestion" class="plus-input" placeholder="&ldquo;Hey teammate, what do you think would happen if we added...&rdquo;">
-    </section>
+      <!-- Brainstorm Spark Bank -->
+      <section class="spark-section">
+        <div class="spark-title-row">
+          <div class="spark-title">💡 Team Brainstorm Spark Bank (Quick Notes)</div>
+          <span class="spark-hint">Click any spark to load into your worksheet!</span>
+        </div>
+        <div class="spark-grid">
+          <div class="spark-card" onclick="loadSpark('leaves')">
+            <div class="spark-card-title">🍂 Fallen Leaves</div>
+            <div class="spark-card-desc">Simmering fallen yard leaves with baking soda into pulp for smooth, tree-free paper.</div>
+            <span class="spark-btn">✨ Use Spark</span>
+          </div>
+          <div class="spark-card" onclick="loadSpark('crops')">
+            <div class="spark-card-title">🌾 Prairie Crops</div>
+            <div class="spark-card-desc">Turning leftover local wheat straw and canola stems from harvest into durable pulp.</div>
+            <span class="spark-btn">✨ Use Spark</span>
+          </div>
+          <div class="spark-card" onclick="loadSpark('bamboo')">
+            <div class="spark-card-title">🎋 Bamboo & Kelp</div>
+            <div class="spark-card-desc">Bamboo grows 3 ft/day; marine kelp grows rapidly in ocean water without tree logging.</div>
+            <span class="spark-btn">✨ Use Spark</span>
+          </div>
+          <div class="spark-card" onclick="loadSpark('tools')">
+            <div class="spark-card-title">🧼 Clean School Press</div>
+            <div class="spark-card-desc">A mess-free mechanical squeezer that removes 90% water in seconds without soggy blenders.</div>
+            <span class="spark-btn">✨ Use Spark</span>
+          </div>
+        </div>
+      </section>
 
-    <!-- Completion Checklist -->
-    <section class="checklist-grid">
-      <label class="check-item"><input type="checkbox" id="chk1"> 1. Named my specific problem</label>
-      <label class="check-item"><input type="checkbox" id="chk2"> 2. Explained why it's good to solve</label>
-      <label class="check-item"><input type="checkbox" id="chk3"> 3. Described solution & drew sketch</label>
-      <label class="check-item"><input type="checkbox" id="chk4"> 4. Explained how solution fixes problem</label>
-    </section>
-  </main>
+      <!-- Step 1: Identify Problem -->
+      <section class="step-card">
+        <div class="step-header">
+          <div class="step-badge-title">
+            <span class="step-badge">Step 1</span>
+            <h2 class="step-title">Identify Which Problem You Want to Solve</h2>
+          </div>
+          <span class="step-tag">Problem Statement</span>
+        </div>
+        <p class="step-prompt">Select one problem area from our brainstorm OR create your own:</p>
+        
+        <div class="problem-options-list">
+          <label class="option-item">
+            <input type="radio" name="probPreset" onchange="selectProblem('Too many live trees are chopped down for everyday school worksheets and notebook paper.')">
+            <span>🌲 <strong>Live Tree Cutting:</strong> Millions of trees chopped down for school paper, harming forest wildlife and oxygen.</span>
+          </label>
+          <label class="option-item">
+            <input type="radio" name="probPreset" onchange="selectProblem('Local alternative plant materials (like fallen leaves, weeds, or wheat straw) are wasted in landfills instead of being used for paper.')">
+            <span>🍂 <strong>Wasted Local Fibers:</strong> Autumn leaves and crop stalks end up in landfills instead of being recycled into paper.</span>
+          </label>
+          <label class="option-item">
+            <input type="radio" name="probPreset" onchange="selectProblem('Making alternative paper is too watery, messy, slow, and hard for schools or kids to do.')">
+            <span>🧼 <strong>Messy & Slow DIY:</strong> Making tree-free paper by hand is currently too drippy, wet, and difficult for classrooms.</span>
+          </label>
+          <label class="option-item">
+            <input type="radio" name="probPreset" onchange="selectProblem('People and schools don\'t know tree-free paper exists, and electronic tablets cost too much and break easily.')">
+            <span>💡 <strong>Knowledge & Cost Gap:</strong> People don\'t know tree-free paper exists, and digital tablets cost too much for schools.</span>
+          </label>
+        </div>
+
+        <label for="step1Problem" class="meta-label">Write your exact Problem Statement in your own words:</label>
+        <textarea id="step1Problem" class="custom-textarea" placeholder="The specific problem I want to solve is..."></textarea>
+      </section>
+
+      <!-- Step 2: Why It Is Good to Solve -->
+      <section class="step-card">
+        <div class="step-header">
+          <div class="step-badge-title">
+            <span class="step-badge">Step 2</span>
+            <h2 class="step-title">Why It Is Good to Solve</h2>
+          </div>
+          <span class="step-tag">Importance & Value</span>
+        </div>
+        <p class="step-prompt">Why is fixing this problem important? Who or what does it help? What happens if nobody fixes it?</p>
+        <textarea id="step2WhyGood" class="custom-textarea" placeholder="It is good to solve because it protects... It saves clean water because... If we don't fix this, then..."></textarea>
+        <div class="coach-callout-inline">
+          🏆 <strong>Coach Tip:</strong> Judges love knowing who benefits (e.g. "Saves 50 trees in our neighborhood and keeps owl nesting habitats safe!").
+        </div>
+      </section>
+
+      <!-- Page 1 Footer -->
+      <div class="page-turn-footer">
+        <span>FLL Team #76265 Lego Legends • BIOGLOW 2026</span>
+        <span>👉 Turn over to Page 2 for Solution Design & Sketchpad!</span>
+        <span>Page 1 of 2</span>
+      </div>
+    </main>
+
+    <!-- ====================================================================
+         PAGE 2: SOLUTION, SKETCHPAD, EFFECTIVENESS, PLUS'ING & CHECKLIST
+         ==================================================================== -->
+    <main class="handout-page page-2">
+      <!-- Top 5-Stripe Heritage Ribbon -->
+      <div class="racing-ribbon" aria-hidden="true">
+        <div class="ribbon-bar bar-forest"></div>
+        <div class="ribbon-bar bar-caramel"></div>
+        <div class="ribbon-bar bar-steel"></div>
+        <div class="ribbon-bar bar-sand"></div>
+        <div class="ribbon-bar bar-navy"></div>
+      </div>
+
+      <!-- Page 2 Mini Header -->
+      <header class="sheet-header" style="border-bottom-color: var(--retro-steel);">
+        <div class="header-main">
+          <div class="header-titles">
+            <h1 style="font-size: 1.15rem;">📐 Innovation Solution Blueprint & Impact Analysis</h1>
+            <p>Session 6 Homework Sheet • Page 2 • "Design, Sketch & Explain"</p>
+          </div>
+        </div>
+        <span class="page-tag">Page 2 of 2</span>
+      </header>
+
+      <!-- Step 3: My Creative Solution Idea -->
+      <section class="step-card">
+        <div class="step-header">
+          <div class="step-badge-title">
+            <span class="step-badge">Step 3</span>
+            <h2 class="step-title">My Creative Solution Idea</h2>
+          </div>
+          <span class="step-tag">Design & Mechanism</span>
+        </div>
+        <p class="step-prompt">What is your idea, tool, invention, or recipe? How does someone use it?</p>
+        
+        <div style="margin-bottom: 0.45rem;">
+          <label for="solutionName" class="meta-label">My Solution Name / Project Title:</label>
+          <input type="text" id="solutionName" class="meta-input" style="width: 100%;" placeholder="e.g. The Leaf-Press 3000, Prairie Pulp School Kit, Kelp-Pad">
+        </div>
+
+        <label for="step3Solution" class="meta-label">Describe how your solution works step-by-step:</label>
+        <textarea id="step3Solution" class="custom-textarea" style="min-height: 58px;" placeholder="Step 1: Gather the material... Step 2: Process it using... Step 3: Use it for..."></textarea>
+
+        <!-- Sketchpad Container -->
+        <div class="canvas-container">
+          <div class="canvas-toolbar">
+            <span style="font-family: 'Space Grotesk', sans-serif; font-size: 0.74rem; font-weight: 700; color: var(--retro-navy);">
+              ✏️ Quick Sketch & Blueprint Pad (Draw your tool, invention, or plant material!)
+            </span>
+            <div class="canvas-tools">
+              <span class="color-dot" style="background: #0E3B5C;" onclick="setCanvasColor('#0E3B5C')" title="Navy"></span>
+              <span class="color-dot" style="background: #15803D;" onclick="setCanvasColor('#15803D')" title="Green"></span>
+              <span class="color-dot" style="background: #B5732A;" onclick="setCanvasColor('#B5732A')" title="Caramel"></span>
+              <button class="canvas-btn" onclick="clearCanvas()">🧹 Clear</button>
+            </div>
+          </div>
+          <canvas id="sketchPad" class="sketch-canvas" width="820" height="165"></canvas>
+        </div>
+      </section>
+
+      <!-- Step 4: Why Solution Helps Problem -->
+      <section class="step-card">
+        <div class="step-header">
+          <div class="step-badge-title">
+            <span class="step-badge">Step 4</span>
+            <h2 class="step-title">Why the Solution Helps Our Problem</h2>
+          </div>
+          <span class="step-tag">Effectiveness</span>
+        </div>
+        <p class="step-prompt">How does your solution actually fix or improve the problem from Step 1? Why is it better than what people do today?</p>
+        <textarea id="step4WhyHelps" class="custom-textarea" style="min-height: 65px;" placeholder="This solution directly solves our problem because... It is much better than cutting trees or buying expensive digital pens because..."></textarea>
+      </section>
+
+      <!-- Step 5: Plus'ing Collaboration Prompt -->
+      <section class="plus-section">
+        <div class="plus-title">🤝 Team Plus'ing (+) Question for Next Sunday</div>
+        <p style="font-size: 0.78rem; color: var(--retro-charcoal); margin-bottom: 0.3rem;">
+          What is one cool question or extra feature you want to ask your teammates during our Session 7 idea swap?
+        </p>
+        <input type="text" id="plusQuestion" class="plus-input" placeholder="&ldquo;Hey teammate, what do you think would happen if we added...&rdquo;">
+      </section>
+
+      <!-- Completion Checklist -->
+      <section class="checklist-grid">
+        <label class="check-item"><input type="checkbox" id="chk1"> 1. Named my problem</label>
+        <label class="check-item"><input type="checkbox" id="chk2"> 2. Explained why it matters</label>
+        <label class="check-item"><input type="checkbox" id="chk3"> 3. Described & sketched idea</label>
+        <label class="check-item"><input type="checkbox" id="chk4"> 4. Explained how it fixes problem</label>
+      </section>
+
+      <!-- Page 2 Footer -->
+      <div class="page-turn-footer">
+        <span>FLL Team #76265 Lego Legends • BIOGLOW 2026</span>
+        <span>⭐ Bring this completed sheet to Sunday Practice @ 1:00 PM!</span>
+        <span>Page 2 of 2</span>
+      </div>
+    </main>
+
+  </div>
 
   <!-- Interactive Logic & Auto-Save -->
   <script>
@@ -956,10 +1096,9 @@
     function resizeCanvas() {
       const rect = canvas.getBoundingClientRect();
       if (rect.width > 0 && canvas.width !== rect.width) {
-        // Save existing drawing
         const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
         canvas.width = rect.width;
-        canvas.height = 180;
+        canvas.height = 165;
         ctx.lineCap = 'round';
         ctx.lineJoin = 'round';
         ctx.lineWidth = 2.5;
@@ -1096,7 +1235,7 @@
 
     document.getElementById('btnSave').addEventListener('click', () => {
       autoSave();
-      alert('Draft saved to browser storage! You can come back and edit or print anytime.');
+      alert('Draft saved to browser storage! You can print or edit anytime.');
     });
 
     document.getElementById('btnReset').addEventListener('click', () => {

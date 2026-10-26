@@ -2,6 +2,9 @@
 
 Documentation, breakdown notes, field strategy maps, and risk/reward analyses for BIOGLOW table missions for FLL Team #76265 **Lego Legends**.
 
+## 📊 Live Mission Status & Strategy Scoreboard
+* 👉 **[Open the BIOGLOW Mission Status & Points Tracker &rarr;](status.md)**: Track current verified code, prototypes, time budgets, and multi-mission run combinations across all 15 missions.
+
 ## Mission Note Template
 When documenting a mission, include:
 1. **Mission Name & Number**

@@ -80,6 +80,7 @@ nav:
       - Overview: journal/README.md
   - 🎯 Mission Notes:
       - Overview: notes/missions/README.md
+      - 📊 Mission Status & Points Tracker: notes/missions/status.md
   - 💡 Innovation Project:
       - Overview: ideas/README.md
       - 🌲 Deforestation Solutions Worksheet: marketing/handouts/deforestation_project_worksheet.html
@@ -117,6 +118,8 @@ nav:
       - 📝 Handouts:
           - 😤 Frustration Buster Pocket Cards: marketing/handouts/frustration_checklist_kids.md
           - ⚡ Pokémon CRM Crew Flyer: marketing/handouts/crew_resource_management_kids.md
+          - 🌲 Session 6 Tree-Free Paper Homework: marketing/handouts/session_6_homework.html
+          - 📄 Session 6 Homework Sheet (Markdown): marketing/handouts/session_6_homework.md
           - 🎯 Printable Goals Worksheet: marketing/handouts/goals_worksheet.html
           - ✏️ Printable Design & Mission Sketchpad: marketing/handouts/mission_design_sketchpad.html
           - 🚀 Robot Motion & Code Storyboard (v2): marketing/handouts/mission_design_sketchpad_v2.html
