@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Session 6 Innovation Homework: Tree-Free Paper Solutions | FLL #76265 Lego Legends</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@400;500;600;700;800&family=Righteous&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Retro NASA / 70s Heritage Space-Age Palette with Forest Accents */
+      --paper-bg: #FAF6EE;
+      --retro-navy: #0E3B5C;
+      --retro-navy-dark: #08243A;
+      --retro-caramel: #B5732A;
+      --retro-caramel-dark: #8F5217;
+      --retro-caramel-light: #E5A85C;
+      --retro-steel: #7998AB;
+      --retro-steel-light: #C2D3DE;
+      --retro-sand: #F2E2C8;
+      --retro-sand-light: #FBF5EB;
+      --retro-charcoal: #1E293B;
+      --retro-muted: #576574;
+      --forest-emerald: #15803D;
+      --forest-emerald-dark: #14532D;
+      --forest-emerald-light: #DCFCE7;
+      --primary: var(--retro-navy);
+      --card-bg: var(--paper-bg);
+      --border-color: #334155;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: radial-gradient(circle at top center, #1e293b 0%, #081524 100%);
+      color: var(--retro-charcoal);
+      padding: 1.25rem 0.75rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Screen Toolbar Controls */
+    .screen-toolbar {
+      width: 100%;
+      max-width: 960px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 1.1rem;
+      background: rgba(14, 59, 92, 0.94);
+      backdrop-filter: blur(12px);
+      padding: 0.75rem 1.1rem;
+      border-radius: 12px;
+      border: 1px solid rgba(181, 115, 42, 0.4);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+    }
+
+    .toolbar-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      color: var(--retro-sand);
+      text-decoration: none;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.82rem;
+      transition: color 0.15s ease;
+    }
+
+    .nav-link:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    .autosave-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.76rem;
+      color: #bbf7d0;
+      background: rgba(21, 128, 61, 0.35);
+      border: 1px solid rgba(74, 222, 128, 0.4);
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+
+    .autosave-dot {
+      width: 7px;
+      height: 7px;
+      background: #4ade80;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #4ade80;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      flex-wrap: wrap;
+    }
+
+    .tool-btn {
+      background: #ffffff;
+      color: var(--retro-navy);
+      border: 1px solid var(--retro-steel);
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all 0.15s ease;
+    }
+
+    .tool-btn:hover {
+      background: var(--retro-sand);
+      transform: translateY(-1px);
+    }
+
+    .btn-save {
+      background: var(--retro-caramel);
+      color: #ffffff;
+      border-color: var(--retro-caramel-dark);
+    }
+    .btn-save:hover {
+      background: var(--retro-caramel-dark);
+      color: #ffffff;
+    }
+
+    .btn-print {
+      background: var(--forest-emerald);
+      color: #ffffff;
+      border-color: var(--forest-emerald-dark);
+    }
+    .btn-print:hover {
+      background: var(--forest-emerald-dark);
+      color: #ffffff;
+    }
+
+    /* Main Worksheet Container */
+    .worksheet {
+      width: 100%;
+      max-width: 960px;
+      background: var(--paper-bg);
+      border: 3px solid var(--retro-navy);
+      border-radius: 14px;
+      padding: 1.5rem 1.6rem;
+      position: relative;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+      margin-bottom: 2rem;
+    }
+
+    /* 4-Stripe Heritage Ribbons */
+    .racing-ribbon-tl {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 7px;
+      display: flex;
+      border-top-left-radius: 11px;
+      border-top-right-radius: 11px;
+      overflow: hidden;
+    }
+    .ribbon-bar { flex: 1; height: 100%; }
+    .bar-forest { background: var(--forest-emerald); }
+    .bar-caramel { background: var(--retro-caramel); }
+    .bar-steel { background: var(--retro-steel); }
+    .bar-sand { background: var(--retro-sand); }
+    .bar-navy { background: var(--retro-navy); }
+
+    /* Header */
+    .sheet-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.25rem;
+      border-bottom: 2px solid var(--retro-caramel);
+      padding-bottom: 0.9rem;
+      margin-top: 0.35rem;
+      margin-bottom: 1rem;
+    }
+
+    .header-main {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .team-logo {
+      width: 65px;
+      height: 65px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+    }
+
+    .header-titles h1 {
+      font-family: 'Righteous', cursive, sans-serif;
+      font-size: 1.5rem;
+      color: var(--retro-navy);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      line-height: 1.15;
+    }
+
+    .header-titles p {
+      font-family: 'Caveat', cursive;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--forest-emerald);
+      margin-top: 2px;
+    }
+
+    .retro-badge-emblem {
+      background: var(--retro-navy);
+      border: 2px solid var(--retro-caramel);
+      color: #ffffff;
+      padding: 0.4rem 0.75rem;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      box-shadow: 2px 2px 0 var(--retro-caramel);
+      white-space: nowrap;
+    }
+
+    .badge-fll {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 700;
+      color: var(--retro-sand);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .badge-team-name {
+      font-family: 'Righteous', cursive, sans-serif;
+      font-size: 0.95rem;
+      color: #ffffff;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-top: 1px;
+    }
+
+    /* Student Meta Bar */
+    .meta-bar {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1.6fr;
+      gap: 0.75rem;
+      background: #ffffff;
+      border: 1.5px solid var(--retro-navy);
+      border-radius: 10px;
+      padding: 0.7rem 1rem;
+      margin-bottom: 1rem;
+      box-shadow: 2px 2px 0 var(--retro-sand);
+    }
+
+    .meta-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .meta-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--retro-navy);
+    }
+
+    .meta-input {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border: none;
+      border-bottom: 1.5px dotted var(--retro-caramel);
+      background: transparent;
+      color: var(--retro-charcoal);
+      outline: none;
+      padding: 0.2rem 0;
+    }
+
+    .strike-team-radio {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 0.15rem;
+    }
+
+    .radio-pill {
+      font-size: 0.76rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      cursor: pointer;
+    }
+
+    /* Mission Callout */
+    .mission-box {
+      background: var(--retro-sand-light);
+      border: 1.5px solid var(--retro-sand);
+      border-left: 6px solid var(--forest-emerald);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .mission-box-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--forest-emerald-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .mission-box p {
+      font-size: 0.86rem;
+      line-height: 1.45;
+      color: var(--retro-charcoal);
+    }
+
+    /* Spark Grid / Brainstorm Notes */
+    .spark-section {
+      background: #ffffff;
+      border: 1.5px solid var(--retro-steel);
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+      margin-bottom: 1.25rem;
+      box-shadow: 2px 2px 0 var(--retro-sand);
+    }
+
+    .spark-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.65rem;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .spark-title {
+      font-family: 'Righteous', cursive, sans-serif;
+      font-size: 1rem;
+      color: var(--retro-navy);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      text-transform: uppercase;
+    }
+
+    .spark-hint {
+      font-family: 'Caveat', cursive;
+      font-size: 1.05rem;
+      color: var(--retro-caramel-dark);
+      font-weight: 700;
+    }
+
+    .spark-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.65rem;
+    }
+
+    .spark-card {
+      background: var(--retro-sand-light);
+      border: 1px solid var(--retro-steel-light);
+      border-radius: 8px;
+      padding: 0.55rem 0.65rem;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .spark-card:hover {
+      border-color: var(--forest-emerald);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      background: #ffffff;
+    }
+
+    .spark-card-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--retro-navy);
+      margin-bottom: 0.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .spark-card-desc {
+      font-size: 0.74rem;
+      color: var(--retro-muted);
+      line-height: 1.35;
+      margin-bottom: 0.4rem;
+    }
+
+    .spark-btn {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--forest-emerald);
+      align-self: flex-start;
+      background: var(--forest-emerald-light);
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      border: 1px solid rgba(21, 128, 61, 0.3);
+    }
+
+    /* Step Blocks */
+    .step-card {
+      background: #ffffff;
+      border: 2px solid var(--retro-navy);
+      border-radius: 10px;
+      padding: 1rem 1.15rem;
+      margin-bottom: 1.2rem;
+      box-shadow: 2px 2px 0 var(--retro-sand);
+    }
+
+    .step-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .step-badge-title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .step-badge {
+      background: var(--retro-navy);
+      color: #ffffff;
+      font-family: 'Righteous', cursive;
+      font-size: 0.78rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .step-title {
+      font-family: 'Righteous', cursive;
+      font-size: 1.05rem;
+      color: var(--retro-navy);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .step-tag {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--retro-caramel-dark);
+      background: var(--retro-sand);
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      text-transform: uppercase;
+    }
+
+    .step-prompt {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--retro-charcoal);
+      margin-bottom: 0.45rem;
+      line-height: 1.4;
+    }
+
+    .problem-options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      margin-bottom: 0.75rem;
+      background: var(--retro-sand-light);
+      padding: 0.6rem 0.85rem;
+      border-radius: 8px;
+      border: 1px dashed var(--retro-caramel);
+    }
+
+    .option-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.45rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--retro-charcoal);
+      cursor: pointer;
+    }
+
+    .option-item input[type="radio"] {
+      margin-top: 3px;
+    }
+
+    .custom-textarea {
+      width: 100%;
+      min-height: 75px;
+      border: 1.5px solid var(--retro-steel);
+      border-radius: 6px;
+      padding: 0.6rem 0.75rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.88rem;
+      color: var(--retro-charcoal);
+      background: #fafafa;
+      resize: vertical;
+      line-height: 1.4;
+      outline: none;
+      transition: border-color 0.15s ease;
+    }
+
+    .custom-textarea:focus {
+      border-color: var(--forest-emerald);
+      background: #ffffff;
+      box-shadow: 0 0 0 2px rgba(21, 128, 61, 0.2);
+    }
+
+    /* Canvas Drawing Area */
+    .canvas-container {
+      margin-top: 0.75rem;
+      border: 1.5px solid var(--retro-steel);
+      border-radius: 8px;
+      background: #ffffff;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .canvas-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--retro-sand-light);
+      padding: 0.4rem 0.75rem;
+      border-bottom: 1px solid var(--retro-steel-light);
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .canvas-tools {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .canvas-btn {
+      background: #ffffff;
+      border: 1px solid var(--retro-steel);
+      border-radius: 4px;
+      padding: 0.25rem 0.55rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .canvas-btn.active {
+      background: var(--retro-navy);
+      color: #ffffff;
+      border-color: var(--retro-navy);
+    }
+
+    .color-dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 1px solid rgba(0,0,0,0.2);
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .sketch-canvas {
+      width: 100%;
+      height: 160px;
+      touch-action: none;
+      cursor: crosshair;
+      background: #ffffff;
+      background-image: radial-gradient(circle, #cbd5e1 1px, transparent 1px);
+      background-size: 16px 16px;
+    }
+
+    /* Plus'ing & Checklist footer */
+    .plus-section {
+      background: var(--retro-sand-light);
+      border: 1.5px solid var(--retro-caramel);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .plus-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--retro-caramel-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .plus-input {
+      width: 100%;
+      border: none;
+      border-bottom: 1.5px dotted var(--retro-caramel);
+      background: transparent;
+      font-family: 'Caveat', cursive;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--retro-navy);
+      padding: 0.25rem 0;
+      outline: none;
+    }
+
+    .checklist-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0.45rem;
+      background: #ffffff;
+      border: 1.5px solid var(--retro-navy);
+      border-radius: 8px;
+      padding: 0.65rem 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--retro-charcoal);
+    }
+
+    .check-item input[type="checkbox"] {
+      width: 14px;
+      height: 14px;
+      accent-color: var(--forest-emerald);
+      cursor: pointer;
+    }
+
+    /* Printable Page Settings */
+    @media print {
+      body {
+        background: #ffffff !important;
+        padding: 0 !important;
+        color: #000000 !important;
+      }
+
+      .screen-toolbar {
+        display: none !important;
+      }
+
+      .worksheet {
+        max-width: 100% !important;
+        width: 100% !important;
+        box-shadow: none !important;
+        border: 2px solid #000000 !important;
+        border-radius: 0 !important;
+        padding: 0.2in 0.3in !important;
+        background: #ffffff !important;
+        margin: 0 !important;
+      }
+
+      .racing-ribbon-tl {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      .spark-btn, .canvas-toolbar {
+        display: none !important;
+      }
+
+      .custom-textarea {
+        border: 1px solid #999999 !important;
+        background: transparent !important;
+      }
+
+      .sketch-canvas {
+        border-top: 1px solid #cccccc !important;
+        height: 140px !important;
+      }
+
+      @page {
+        size: letter portrait;
+        margin: 0.25in 0.35in;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Screen Toolbar -->
+  <header class="screen-toolbar">
+    <div class="toolbar-nav">
+      <a href="../README.md" class="nav-link">← Handouts & Resources</a>
+      <a href="session_6_homework.md" class="nav-link">📄 Markdown Homework</a>
+      <a href="deforestation_project_worksheet.html" class="nav-link">🌲 Deforestation Project</a>
+      <div class="autosave-pill" id="autosavePill">
+        <span class="autosave-dot"></span>
+        <span id="autosaveText">Draft saved locally</span>
+      </div>
+    </div>
+    <div class="toolbar-actions">
+      <button class="tool-btn btn-save" id="btnSave" title="Save draft to browser storage">💾 Save Now</button>
+      <button class="tool-btn" id="btnReset" title="Clear and start fresh">🧹 Clear</button>
+      <button class="tool-btn btn-print" onclick="window.print()" title="Print worksheet or save as PDF">🖨️ Print / PDF</button>
+    </div>
+  </header>
+
+  <!-- Worksheet Container -->
+  <main class="worksheet" id="worksheetMain">
+    <!-- Top 4-Stripe Heritage Ribbon -->
+    <div class="racing-ribbon-tl" aria-hidden="true">
+      <div class="ribbon-bar bar-forest"></div>
+      <div class="ribbon-bar bar-caramel"></div>
+      <div class="ribbon-bar bar-steel"></div>
+      <div class="ribbon-bar bar-sand"></div>
+      <div class="ribbon-bar bar-navy"></div>
+    </div>
+
+    <!-- Sheet Header -->
+    <header class="sheet-header">
+      <div class="header-main">
+        <img src="images/logo_lego_legends_clean.png" alt="LEGO Legends Logo" class="team-logo">
+        <div class="header-titles">
+          <h1>🌲 Innovation Homework: Tree-Free Paper Solutions</h1>
+          <p>Session 6 Take-Home Challenge • "Solve big problems with creative STEM thinking!"</p>
+        </div>
+      </div>
+      <div class="retro-badge-emblem">
+        <span class="badge-fll">FIRST® LEGO® LEAGUE</span>
+        <span class="badge-team-name">#76265 LEGO LEGENDS</span>
+      </div>
+    </header>
+
+    <!-- Student Information Bar -->
+    <section class="meta-bar">
+      <div class="meta-field">
+        <label for="studentName" class="meta-label">Student Name:</label>
+        <input type="text" id="studentName" class="meta-input" placeholder="Your Name">
+      </div>
+      <div class="meta-field">
+        <label for="dueDate" class="meta-label">Date:</label>
+        <input type="text" id="dueDate" class="meta-input" value="Sunday Session">
+      </div>
+      <div class="meta-field">
+        <span class="meta-label">My Strike Team:</span>
+        <div class="strike-team-radio">
+          <label class="radio-pill"><input type="radio" name="strikeTeam" value="Builders"> 🔨 Builders</label>
+          <label class="radio-pill"><input type="radio" name="strikeTeam" value="Researchers"> 🔬 Researchers</label>
+          <label class="radio-pill"><input type="radio" name="strikeTeam" value="Marketers"> 📢 Marketers</label>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission Brief Box -->
+    <div class="mission-box">
+      <div class="mission-box-title">🎯 The Mission Brief</div>
+      <p>
+        Trees give our planet fresh oxygen, store carbon, and shelter wild animals. Yet billions of live trees are cut down every year just for paper. In <strong>Session 6</strong>, our team asked: <em>"Can we make paper or write without cutting down trees?"</em> Your mission is to pick ONE specific problem, explain why it matters, design a solution, and explain how it helps!
+      </p>
+    </div>
+
+    <!-- Brainstorm Spark Bank (Quick Notes) -->
+    <section class="spark-section">
+      <div class="spark-title-row">
+        <div class="spark-title">💡 Team Brainstorm Spark Bank</div>
+        <span class="spark-hint">Click any spark below to load ideas into your worksheet!</span>
+      </div>
+      <div class="spark-grid">
+        <div class="spark-card" onclick="loadSpark('leaves')">
+          <div class="spark-card-title">🍂 Fallen Autumn Leaves</div>
+          <div class="spark-card-desc">Boiling fallen yard leaves with baking soda/ash to create smooth, natural writing paper without cutting trees.</div>
+          <span class="spark-btn">✨ Use This Spark</span>
+        </div>
+        <div class="spark-card" onclick="loadSpark('crops')">
+          <div class="spark-card-title">🌾 Local Prairie Canola & Wheat</div>
+          <div class="spark-card-desc">Using leftover farm straw, weed stalks, or prairie grass from local fields after harvest.</div>
+          <span class="spark-btn">✨ Use This Spark</span>
+        </div>
+        <div class="spark-card" onclick="loadSpark('bamboo')">
+          <div class="spark-card-title">🎋 Fast-Growing Bamboo & Kelp</div>
+          <div class="spark-card-desc">Bamboo shoots grow up to 3 feet per day; ocean kelp grows super fast without freshwater or fertilizers.</div>
+          <span class="spark-btn">✨ Use This Spark</span>
+        </div>
+        <div class="spark-card" onclick="loadSpark('tools')">
+          <div class="spark-card-title">🧼 Clean Classroom Press Tool</div>
+          <div class="spark-card-desc">A mess-free, compact mechanical squeezer and mesh frame that lets schools make paper in 5 minutes.</div>
+          <span class="spark-btn">✨ Use This Spark</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 1: Identify Problem -->
+    <section class="step-card">
+      <div class="step-header">
+        <div class="step-badge-title">
+          <span class="step-badge">Step 1</span>
+          <h2 class="step-title">Identify Which Problem You Want to Solve</h2>
+        </div>
+        <span class="step-tag">Problem Statement</span>
+      </div>
+      <p class="step-prompt">Choose one problem area from our brainstorm OR create your own:</p>
+      
+      <div class="problem-options-list">
+        <label class="option-item">
+          <input type="radio" name="probPreset" onchange="selectProblem('Too many live trees are chopped down for everyday school worksheets and notebook paper.')">
+          <span>🌲 <strong>Live Tree Cutting:</strong> Millions of trees chopped down for school paper, hurting forest wildlife and oxygen.</span>
+        </label>
+        <label class="option-item">
+          <input type="radio" name="probPreset" onchange="selectProblem('Local alternative plant materials (like fallen leaves, weeds, or wheat straw) are wasted instead of used for paper.')">
+          <span>🍂 <strong>Wasted Local Fibers:</strong> Autumn leaves and weeds end up in landfills instead of being turned into usable paper.</span>
+        </label>
+        <label class="option-item">
+          <input type="radio" name="probPreset" onchange="selectProblem('Making homemade alternative paper is too watery, messy, slow, and hard for schools or kids to do.')">
+          <span>🧼 <strong>Messy & Slow Process:</strong> Making tree-free paper by hand is currently too drippy and difficult to do easily.</span>
+        </label>
+        <label class="option-item">
+          <input type="radio" name="probPreset" onchange="selectProblem('People and schools don\'t know about tree-free paper options or find digital pens too expensive and easy to break.')">
+          <span>💡 <strong>Knowledge & Cost Gap:</strong> People don\'t know tree-free paper exists, and electronic tablets cost too much.</span>
+        </label>
+      </div>
+
+      <label for="step1Problem" class="meta-label">Write your exact Problem Statement in your own words:</label>
+      <textarea id="step1Problem" class="custom-textarea" placeholder="The problem I want to solve is..."></textarea>
+    </section>
+
+    <!-- Step 2: Why It Is Good to Solve -->
+    <section class="step-card">
+      <div class="step-header">
+        <div class="step-badge-title">
+          <span class="step-badge">Step 2</span>
+          <h2 class="step-title">Why It Is Good to Solve</h2>
+        </div>
+        <span class="step-tag">Importance & Impact</span>
+      </div>
+      <p class="step-prompt">Why is fixing this problem important? Who or what does it help? What happens if nobody fixes it?</p>
+      <textarea id="step2WhyGood" class="custom-textarea" placeholder="It is good to solve because it protects... It saves clean water because... If we don't solve this, then..."></textarea>
+    </section>
+
+    <!-- Step 3: My Solution Idea & Sketch -->
+    <section class="step-card">
+      <div class="step-header">
+        <div class="step-badge-title">
+          <span class="step-badge">Step 3</span>
+          <h2 class="step-title">My Creative Solution Idea</h2>
+        </div>
+        <span class="step-tag">Innovation & Design</span>
+      </div>
+      <p class="step-prompt">What is your idea, tool, invention, or recipe? How does someone use it?</p>
+      
+      <div style="margin-bottom: 0.6rem;">
+        <label for="solutionName" class="meta-label">My Solution Name / Project Title:</label>
+        <input type="text" id="solutionName" class="meta-input" style="width: 100%;" placeholder="e.g., The Leaf-Press 3000, Prairie Pulp School Kit, Kelp-Pad">
+      </div>
+
+      <label for="step3Solution" class="meta-label">Describe how your solution works step-by-step:</label>
+      <textarea id="step3Solution" class="custom-textarea" placeholder="Step 1: Gather the material... Step 2: Process it using... Step 3: Use it for..."></textarea>
+
+      <!-- Drawing Canvas -->
+      <div class="canvas-container">
+        <div class="canvas-toolbar">
+          <span style="font-family: 'Space Grotesk', sans-serif; font-size: 0.74rem; font-weight: 700; color: var(--retro-navy);">
+            ✏️ Quick Sketch & Blueprint Pad (Draw your tool or invention!)
+          </span>
+          <div class="canvas-tools">
+            <span class="color-dot" style="background: #0E3B5C;" onclick="setCanvasColor('#0E3B5C')" title="Navy"></span>
+            <span class="color-dot" style="background: #15803D;" onclick="setCanvasColor('#15803D')" title="Green"></span>
+            <span class="color-dot" style="background: #B5732A;" onclick="setCanvasColor('#B5732A')" title="Caramel"></span>
+            <button class="canvas-btn" onclick="clearCanvas()">🧹 Clear Sketch</button>
+          </div>
+        </div>
+        <canvas id="sketchPad" class="sketch-canvas" width="900" height="180"></canvas>
+      </div>
+    </section>
+
+    <!-- Step 4: Why Solution Helps Problem -->
+    <section class="step-card">
+      <div class="step-header">
+        <div class="step-badge-title">
+          <span class="step-badge">Step 4</span>
+          <h2 class="step-title">Why the Solution Helps Our Problem</h2>
+        </div>
+        <span class="step-tag">Effectiveness & Proof</span>
+      </div>
+      <p class="step-prompt">How does your solution actually fix or improve the problem from Step 1? Why is it better than what people do today?</p>
+      <textarea id="step4WhyHelps" class="custom-textarea" placeholder="This solution directly solves our problem because... It is much better than cutting trees or buying expensive digital pens because..."></textarea>
+    </section>
+
+    <!-- Step 5: Plus'ing Collaboration Prompt -->
+    <section class="plus-section">
+      <div class="plus-title">🤝 Team Plus'ing (+) Question for Next Sunday</div>
+      <p style="font-size: 0.82rem; color: var(--retro-charcoal); margin-bottom: 0.4rem;">
+        What is one cool question or extra feature you want to ask your teammates during our Session 7 idea swap?
+      </p>
+      <input type="text" id="plusQuestion" class="plus-input" placeholder="&ldquo;Hey teammate, what do you think would happen if we added...&rdquo;">
+    </section>
+
+    <!-- Completion Checklist -->
+    <section class="checklist-grid">
+      <label class="check-item"><input type="checkbox" id="chk1"> 1. Named my specific problem</label>
+      <label class="check-item"><input type="checkbox" id="chk2"> 2. Explained why it's good to solve</label>
+      <label class="check-item"><input type="checkbox" id="chk3"> 3. Described solution & drew sketch</label>
+      <label class="check-item"><input type="checkbox" id="chk4"> 4. Explained how solution fixes problem</label>
+    </section>
+  </main>
+
+  <!-- Interactive Logic & Auto-Save -->
+  <script>
+    const STORAGE_KEY = 'fll_76265_session6_hw';
+
+    // Canvas setup
+    const canvas = document.getElementById('sketchPad');
+    const ctx = canvas.getContext('2d');
+    let isDrawing = false;
+    let currentColor = '#0E3B5C';
+
+    function resizeCanvas() {
+      const rect = canvas.getBoundingClientRect();
+      if (rect.width > 0 && canvas.width !== rect.width) {
+        // Save existing drawing
+        const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        canvas.width = rect.width;
+        canvas.height = 180;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        ctx.lineWidth = 2.5;
+        ctx.strokeStyle = currentColor;
+        ctx.putImageData(imgData, 0, 0);
+      }
+    }
+    window.addEventListener('resize', resizeCanvas);
+    setTimeout(resizeCanvas, 200);
+
+    function setCanvasColor(color) {
+      currentColor = color;
+      ctx.strokeStyle = color;
+    }
+
+    function clearCanvas() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      autoSave();
+    }
+
+    function getCoords(e) {
+      const rect = canvas.getBoundingClientRect();
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      return {
+        x: (clientX - rect.left) * (canvas.width / rect.width),
+        y: (clientY - rect.top) * (canvas.height / rect.height)
+      };
+    }
+
+    function startDraw(e) {
+      isDrawing = true;
+      const pos = getCoords(e);
+      ctx.beginPath();
+      ctx.moveTo(pos.x, pos.y);
+      if (e.cancelable && e.type.startsWith('touch')) e.preventDefault();
+    }
+
+    function draw(e) {
+      if (!isDrawing) return;
+      const pos = getCoords(e);
+      ctx.lineTo(pos.x, pos.y);
+      ctx.stroke();
+      if (e.cancelable && e.type.startsWith('touch')) e.preventDefault();
+    }
+
+    function stopDraw() {
+      if (isDrawing) {
+        isDrawing = false;
+        autoSave();
+      }
+    }
+
+    canvas.addEventListener('mousedown', startDraw);
+    canvas.addEventListener('mousemove', draw);
+    window.addEventListener('mouseup', stopDraw);
+    canvas.addEventListener('touchstart', startDraw, { passive: false });
+    canvas.addEventListener('touchmove', draw, { passive: false });
+    window.addEventListener('touchend', stopDraw);
+
+    // Auto-Save and Load
+    function getFormData() {
+      const strikeRadio = document.querySelector('input[name="strikeTeam"]:checked');
+      return {
+        studentName: document.getElementById('studentName').value,
+        dueDate: document.getElementById('dueDate').value,
+        strikeTeam: strikeRadio ? strikeRadio.value : '',
+        step1Problem: document.getElementById('step1Problem').value,
+        step2WhyGood: document.getElementById('step2WhyGood').value,
+        solutionName: document.getElementById('solutionName').value,
+        step3Solution: document.getElementById('step3Solution').value,
+        step4WhyHelps: document.getElementById('step4WhyHelps').value,
+        plusQuestion: document.getElementById('plusQuestion').value,
+        chk1: document.getElementById('chk1').checked,
+        chk2: document.getElementById('chk2').checked,
+        chk3: document.getElementById('chk3').checked,
+        chk4: document.getElementById('chk4').checked,
+        canvasImg: canvas.toDataURL()
+      };
+    }
+
+    function autoSave() {
+      try {
+        const data = getFormData();
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        const pillText = document.getElementById('autosaveText');
+        if (pillText) {
+          pillText.textContent = 'Saved ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        }
+      } catch (err) {
+        console.warn('AutoSave error:', err);
+      }
+    }
+
+    function loadSaved() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
+        const data = JSON.parse(raw);
+        if (data.studentName) document.getElementById('studentName').value = data.studentName;
+        if (data.dueDate) document.getElementById('dueDate').value = data.dueDate;
+        if (data.strikeTeam) {
+          const radio = document.querySelector(`input[name="strikeTeam"][value="${data.strikeTeam}"]`);
+          if (radio) radio.checked = true;
+        }
+        if (data.step1Problem) document.getElementById('step1Problem').value = data.step1Problem;
+        if (data.step2WhyGood) document.getElementById('step2WhyGood').value = data.step2WhyGood;
+        if (data.solutionName) document.getElementById('solutionName').value = data.solutionName;
+        if (data.step3Solution) document.getElementById('step3Solution').value = data.step3Solution;
+        if (data.step4WhyHelps) document.getElementById('step4WhyHelps').value = data.step4WhyHelps;
+        if (data.plusQuestion) document.getElementById('plusQuestion').value = data.plusQuestion;
+        if (data.chk1) document.getElementById('chk1').checked = data.chk1;
+        if (data.chk2) document.getElementById('chk2').checked = data.chk2;
+        if (data.chk3) document.getElementById('chk3').checked = data.chk3;
+        if (data.chk4) document.getElementById('chk4').checked = data.chk4;
+
+        if (data.canvasImg) {
+          const img = new Image();
+          img.onload = () => {
+            ctx.drawImage(img, 0, 0);
+          };
+          img.src = data.canvasImg;
+        }
+      } catch (err) {
+        console.warn('Load error:', err);
+      }
+    }
+
+    // Attach autosave listeners to all inputs
+    document.querySelectorAll('input, textarea').forEach(el => {
+      el.addEventListener('input', autoSave);
+      el.addEventListener('change', autoSave);
+    });
+
+    document.getElementById('btnSave').addEventListener('click', () => {
+      autoSave();
+      alert('Draft saved to browser storage! You can come back and edit or print anytime.');
+    });
+
+    document.getElementById('btnReset').addEventListener('click', () => {
+      if (confirm('Are you sure you want to clear your answers on this worksheet?')) {
+        localStorage.removeItem(STORAGE_KEY);
+        location.reload();
+      }
+    });
+
+    // Helper functions for preset sparks
+    function selectProblem(text) {
+      document.getElementById('step1Problem').value = text;
+      autoSave();
+    }
+
+    function loadSpark(type) {
+      if (type === 'leaves') {
+        document.getElementById('step1Problem').value = 'Millions of live trees are cut down for paper while tons of fallen autumn leaves and garden trimmings are raked into plastic bags and thrown away.';
+        document.getElementById('solutionName').value = 'The Autumn Leaf-Pulp Kit';
+        document.getElementById('step2WhyGood').value = 'It saves local neighborhood trees and prevents deforestation! It also keeps organic leaves out of landfills and gives schools free, natural art materials.';
+        document.getElementById('step3Solution').value = '1. Rake fallen autumn leaves.\n2. Simmer them with natural washing soda to break down fibers.\n3. Blend with water into pulp and press on a wire mesh screen to dry into rustic paper!';
+        document.getElementById('step4WhyHelps').value = 'Instead of chopping mature forest trees, we harvest leaves that have ALREADY naturally fallen to the ground. Zero trees harmed!';
+      } else if (type === 'crops') {
+        document.getElementById('step1Problem').value = 'Tree paper uses too much forest wood, while local prairie farmers have thousands of tons of leftover wheat straw and canola stems that get burned or wasted.';
+        document.getElementById('solutionName').value = 'Prairie Straw Eco-Paper';
+        document.getElementById('step2WhyGood').value = 'It helps prairie farmers reuse leftover agricultural stalks and protects boreal forests from being logged for wood pulp.';
+        document.getElementById('step3Solution').value = '1. Collect dry wheat or canola stalks after harvest.\n2. Grind the fibers and mix with starch binders.\n3. Roll into smooth, durable paper for school notebook printing.';
+        document.getElementById('step4WhyHelps').value = 'Agricultural crop stalks grow back every single year, whereas trees take 20 to 50 years to grow. It provides a fast, renewable local source!';
+      } else if (type === 'bamboo') {
+        document.getElementById('step1Problem').value = 'Softwood trees take decades to grow back after being logged, causing long-lasting forest habitat loss.';
+        document.getElementById('solutionName').value = 'Hyper-Grow Bamboo & Ocean Kelp Paper';
+        document.getElementById('step2WhyGood').value = 'Bamboo and ocean kelp grow super fast without needing chemical fertilizers, protecting soil biodiversity and ancient forests.';
+        document.getElementById('step3Solution').value = '1. Harvest fast-growing bamboo shoots or seaweed.\n2. Extract the natural cellulose fibers with clean water.\n3. Press into ultra-smooth, bright paper sheets.';
+        document.getElementById('step4WhyHelps').value = 'Bamboo shoots can grow 3 feet in a single day and regenerate from existing roots without replanting. It replaces slow-growing forest trees completely!';
+      } else if (type === 'tools') {
+        document.getElementById('step1Problem').value = 'Kids and teachers don\'t make tree-free paper because existing methods are too watery, messy, and take days to dry in a classroom.';
+        document.getElementById('solutionName').value = 'The Clean-Press Classroom Squeezer';
+        document.getElementById('step2WhyGood').value = 'It lets schools and community centers easily turn weed fibers and paper scraps into fresh cards without making a giant watery mess.';
+        document.getElementById('step3Solution').value = '1. A sealed hand-crank mini roller with built-in absorbent sponge pads.\n2. Pressing a damp fiber mat squeezes 90% of water into a sealed reservoir in 15 seconds.\n3. The paper sheet pops out nearly dry!';
+        document.getElementById('step4WhyHelps').value = 'By removing the mess and long drying time, thousands of classrooms will actually adopt tree-free paper making instead of relying on tree-based paper!';
+      }
+      autoSave();
+    }
+
+    // Initialize on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      loadSaved();
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      ctx.lineWidth = 2.5;
+      ctx.strokeStyle = currentColor;
+    });
+  </script>
+</body>
+</html>
