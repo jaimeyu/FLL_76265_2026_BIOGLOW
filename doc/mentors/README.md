@@ -38,3 +38,12 @@ Detailed, minute-by-minute meeting agendas with materials checklists, Team Roles
 * **[Competition Mentor CRM Checklist (`plan/guides/mentor_competition_crm_checklist.md`)](plan/guides/mentor_competition_crm_checklist.md)**: Tournament-day checklist for pit setup, queue timing, and judge room support.
 * **[Workshop Facilitation Checklist (`plan/guides/mentor_workshop_checklist.md`)](plan/guides/mentor_workshop_checklist.md)**: Room prep, safety checks, battery charging protocol, and student dismissals.
 * **[Mentor CRM Pocket Cue Card (`plan/guides/mentor_crm_cue_card.md`)](plan/guides/mentor_crm_cue_card.md)**: Printable pocket reference card with calming scripts and de-escalation prompts for high-stress moments.
+
+---
+
+## ✅ Printable Room Closeout Checklists (ATAA)
+
+Shared end-of-session printouts for **ATAA — Alberta Tech Alliance Association** rooms with Student + Mentor 2-step verification, Severity/Action logs, and automatic sequential sheet numbering:
+
+* **[🏟️ FLL Playing Fields End-of-Session Checklist (`checklists/playing_fields_checklist.html`)](checklists/playing_fields_checklist.html)**: Mission models, broken-element fixes, mats, tables/chairs, sweeping, charging, and missing-parts log (`PF-001`+).
+* **[🪑 Boardroom End-of-Session Checklist (`checklists/boardroom_checklist.html`)](checklists/boardroom_checklist.html)**: Food/crumbs check & violation log, chairs, coasters, phone/wires, lights, and reference photo box (`BR-001`+).
