@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FLL Playing Fields End-of-Session Checklist | ATAA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --fll-blue: #1d4ed8;
+      --fll-blue-dark: #1e3a8a;
+      --fll-blue-light: #eff6ff;
+      --fll-red: #dc2626;
+      --fll-red-light: #fef2f2;
+      --amber: #b45309;
+      --amber-light: #fffbeb;
+      --ink: #0f172a;
+      --muted: #475569;
+      --line: #cbd5e1;
+      --line-dark: #64748b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    @page {
+      size: letter portrait;
+      margin: 0.35in;
+    }
+
+    body {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #0f172a;
+      color: var(--ink);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* Screen-only toolbar */
+    .screen-toolbar {
+      width: 100%;
+      max-width: 8.5in;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #1e293b;
+      color: #f8fafc;
+      padding: 0.65rem 1rem;
+      border-radius: 10px;
+      border: 1px solid #334155;
+      font-size: 0.85rem;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .batch-controls {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #0f172a;
+      border: 1px solid #475569;
+      border-radius: 7px;
+      padding: 0.25rem 0.55rem;
+      font-size: 0.78rem;
+      color: #cbd5e1;
+    }
+
+    .batch-controls input {
+      width: 54px;
+      background: #1e293b;
+      color: #ffffff;
+      border: 1px solid #475569;
+      border-radius: 4px;
+      padding: 0.2rem 0.35rem;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-align: center;
+    }
+
+    .batch-controls label {
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .btn {
+      appearance: none;
+      border: none;
+      border-radius: 7px;
+      padding: 0.45rem 0.9rem;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.82rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .btn-primary {
+      background: var(--fll-blue);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background: var(--fll-blue-dark);
+    }
+
+    .btn-secondary {
+      background: #334155;
+      color: #e2e8f0;
+    }
+
+    .btn-secondary:hover {
+      background: #475569;
+    }
+
+    /* Letter sheet container */
+    .sheet {
+      width: 8.5in;
+      min-height: 10.3in;
+      background: #ffffff;
+      padding: 0.4in 0.45in;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* Header */
+    .sheet-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-bottom: 3px solid var(--fll-blue-dark);
+      padding-bottom: 7px;
+    }
+
+    .team-kicker {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 9.5pt;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--fll-blue);
+    }
+
+    .sheet-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 17pt;
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-top: 2px;
+    }
+
+    .header-badges {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+    }
+
+    .room-badge {
+      background: var(--fll-blue-dark);
+      color: #ffffff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 9pt;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 5px;
+      white-space: nowrap;
+    }
+
+    .serial-badge {
+      font-family: 'Space Grotesk', monospace;
+      font-size: 8.5pt;
+      font-weight: 700;
+      color: var(--ink);
+      background: #f1f5f9;
+      border: 1.5px solid var(--ink);
+      border-radius: 4px;
+      padding: 2px 8px;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+    }
+
+    /* Metadata Grid */
+    .meta-grid {
+      display: grid;
+      grid-template-columns: 1.7fr 1fr 0.9fr 0.9fr;
+      gap: 8px;
+      background: var(--fll-blue-light);
+      border: 1px solid #bfdbfe;
+      border-radius: 6px;
+      padding: 7px 10px;
+    }
+
+    .meta-field {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .meta-label {
+      font-size: 7.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--fll-blue-dark);
+    }
+
+    .meta-line {
+      border-bottom: 1.5px solid var(--line-dark);
+      height: 16px;
+    }
+
+    /* Instructions Banner */
+    .instructions {
+      font-size: 8.5pt;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2px;
+    }
+
+    .instructions strong {
+      color: var(--ink);
+    }
+
+    /* Checklist Table */
+    .checklist-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 9.2pt;
+    }
+
+    .checklist-table th {
+      background: #f1f5f9;
+      color: var(--ink);
+      font-size: 7.8pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 5px 7px;
+      border: 1px solid var(--line);
+      text-align: left;
+    }
+
+    .checklist-table th.col-check {
+      width: 62px;
+      text-align: center;
+    }
+
+    .checklist-table tr.section-row td {
+      background: #e2e8f0;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 8.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--fll-blue-dark);
+      padding: 4px 8px;
+      border: 1px solid var(--line);
+    }
+
+    .checklist-table td {
+      padding: 5px 8px;
+      border: 1px solid var(--line);
+      vertical-align: middle;
+      line-height: 1.25;
+    }
+
+    .checklist-table td.col-check {
+      text-align: center;
+    }
+
+    .box {
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      border: 1.8px solid var(--ink);
+      border-radius: 2.5px;
+      vertical-align: middle;
+      background: #ffffff;
+    }
+
+    .box-sm {
+      display: inline-block;
+      width: 11px;
+      height: 11px;
+      border: 1.4px solid var(--ink);
+      border-radius: 2px;
+      vertical-align: -1.5px;
+      margin-right: 2px;
+      background: #ffffff;
+    }
+
+    .must-tag {
+      display: inline-block;
+      background: var(--fll-red-light);
+      color: var(--fll-red);
+      border: 1px solid #fca5a5;
+      font-size: 7.4pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 0.5px 5px;
+      border-radius: 3px;
+      margin-left: 5px;
+      letter-spacing: 0.02em;
+    }
+
+    .item-note {
+      color: var(--muted);
+      font-size: 8.2pt;
+    }
+
+    /* Abnormalities & Missing Parts Log */
+    .log-section {
+      border: 1.5px solid var(--line-dark);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .log-header {
+      background: var(--amber-light);
+      border-bottom: 1.5px solid var(--line-dark);
+      padding: 5px 9px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .log-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 9.2pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--amber);
+    }
+
+    .log-hint {
+      font-size: 7.8pt;
+      color: var(--muted);
+    }
+
+    .log-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 8.2pt;
+    }
+
+    .log-table th {
+      background: #f8fafc;
+      font-size: 7.4pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--muted);
+      padding: 4px 7px;
+      border-bottom: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      text-align: left;
+    }
+
+    .log-table th:last-child,
+    .log-table td:last-child {
+      border-right: none;
+    }
+
+    .log-table td {
+      padding: 6px 7px;
+      border-bottom: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      height: 29px;
+      vertical-align: middle;
+    }
+
+    .log-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .col-desc {
+      width: 47%;
+    }
+
+    .col-sev {
+      width: 22%;
+      white-space: nowrap;
+    }
+
+    .col-act {
+      width: 31%;
+      white-space: nowrap;
+    }
+
+    .chk-group {
+      display: flex;
+      gap: 7px;
+      align-items: center;
+      font-size: 7.6pt;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    /* Two-tier Sign-off Boxes */
+    .signoff-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    .signoff-card {
+      border: 1.5px solid var(--ink);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .signoff-card-header {
+      padding: 4px 9px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 8.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .signoff-student .signoff-card-header {
+      background: var(--fll-blue-light);
+      color: var(--fll-blue-dark);
+      border-bottom: 1.5px solid var(--ink);
+    }
+
+    .signoff-mentor .signoff-card-header {
+      background: #f1f5f9;
+      color: var(--ink);
+      border-bottom: 1.5px solid var(--ink);
+    }
+
+    .signoff-body {
+      padding: 7px 9px 8px;
+      display: grid;
+      grid-template-columns: 1fr 0.7fr;
+      gap: 8px 10px;
+    }
+
+    .sig-field {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .sig-field.full {
+      grid-column: 1 / -1;
+    }
+
+    .sig-label {
+      font-size: 7.2pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .sig-line {
+      border-bottom: 1.3px solid var(--line-dark);
+      height: 17px;
+    }
+
+    .sheet-footer {
+      font-size: 7.4pt;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid var(--line);
+      padding-top: 4px;
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+        padding: 0;
+        display: block;
+      }
+
+      .screen-toolbar {
+        display: none !important;
+      }
+
+      .sheet {
+        width: 100%;
+        min-height: 0;
+        padding: 0;
+        box-shadow: none;
+        break-after: page;
+        page-break-after: always;
+      }
+
+      .sheet:last-child {
+        break-after: auto;
+        page-break-after: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="screen-toolbar">
+    <div>
+      <strong>FLL Playing Fields Checklist</strong> — Set pages below (keep printer Copies = 1) for unique serial #s
+    </div>
+    <div class="toolbar-actions">
+      <div class="batch-controls" title="Keep your printer dialog Copies set to 1 so each page gets a unique number">
+        <label for="startNum">Start #</label>
+        <input type="number" id="startNum" value="1" min="1" max="9999">
+        <label for="copyCount">Pages</label>
+        <input type="number" id="copyCount" value="1" min="1" max="200">
+      </div>
+      <a class="btn btn-secondary" href="boardroom_checklist.html">Boardroom &rarr;</a>
+      <button class="btn btn-primary" id="printBatchBtn">Print Numbered</button>
+    </div>
+  </div>
+
+  <div id="sheetStack">
+  <main class="sheet">
+    <!-- Header -->
+    <header class="sheet-header">
+      <div>
+        <div class="team-kicker">ATAA &mdash; Alberta Tech Alliance Association</div>
+        <h1 class="sheet-title">FLL Playing Fields End-of-Session Checklist</h1>
+      </div>
+      <div class="header-badges">
+        <div class="room-badge">Room: Playing Fields</div>
+        <div class="serial-badge">Sheet #<span class="serial-num">PF-001</span></div>
+      </div>
+    </header>
+
+    <!-- Metadata -->
+    <section class="meta-grid" aria-label="Session Metadata">
+      <div class="meta-field">
+        <span class="meta-label">Team Name &amp; Team #</span>
+        <div class="meta-line"></div>
+      </div>
+      <div class="meta-field">
+        <span class="meta-label">Date</span>
+        <div class="meta-line"></div>
+      </div>
+      <div class="meta-field">
+        <span class="meta-label">Field / Table #(s)</span>
+        <div class="meta-line"></div>
+      </div>
+      <div class="meta-field">
+        <span class="meta-label">Checkout Time</span>
+        <div class="meta-line"></div>
+      </div>
+    </section>
+
+    <div class="instructions">
+      <span><strong>2-Step Verification:</strong> Student Lead inspects &amp; checks <strong>Student</strong> column first; Mentor verifies &amp; checks <strong>Mentor</strong> column before dismissal.</span>
+      <span><span class="box-sm"></span> = Verified OK</span>
+    </div>
+
+    <!-- Checklist -->
+    <table class="checklist-table">
+      <thead>
+        <tr>
+          <th>Inspection Item</th>
+          <th class="col-check">Student</th>
+          <th class="col-check">Mentor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="section-row">
+          <td colspan="3">1. Field &amp; Mission Models</td>
+        </tr>
+        <tr>
+          <td><strong>Are all mission elements on the field?</strong> <span class="item-note">(If missing &amp; not found, log below for replacement)</span></td>
+          <td class="col-check"><span class="box"></span></td>
+          <td class="col-check"><span class="box"></span></td>
+        </tr>
+        <tr>
+          <td><strong>Are any elements broken or detached?</strong> <span class="must-tag">Must Fix Before Leaving</span></td>
+          <td class="col-check"><span class="box"></span></td>
+          <td class="col-check"><span class="box"></span></td>
+        </tr>
+        <tr>
+          <td><strong>Are the playing fields clean?</strong> <span class="item-note">(Mats wiped/clear of debris, dual-lock secure, no heavy items on mat)</span></td>
+          <td class="col-check"><span class="box"></span></td>
+          <td class="col-check"><span class="box"></span></td>
+        </tr>
+        <tr>
+          <td><strong>Loose LEGO sweep completed</strong> <span class="item-note">(Check under &amp; around field tables for stray parts <em>before</em> sweeping)</span></td>
+          <td class="col-check"><span class="box"></span></td>
+          <td class="col-check"><span class="box"></span></td>
+        </tr>
+
+        <tr class="section-row">
+          <td colspan="3">2. Tables, Chairs &amp; Room Cleanup</td>
+        </tr>
+        <tr>
+          <td><strong>Are the field tables put back correctly?</strong> <span class="item-note">(Aligned, locked/braked if applicable, walkways clear)</span></td>
+          <td class="col-check"><span class="box"></span></td>
+          <td class="col-check"><span class="box"></span></td>
+        </tr>
+        <tr>
+          <td><strong>Are foldable tables clean and put away?</strong> <span class="item-note">(Wiped down, folded safely, stored in designated spot)</span></td>
+          <td class="col-check"><span class="box"></span></td>
+          <td class="col-check"><span class="box"></span></td>
+        </tr>
+        <tr>
+          <td><strong>Are all chairs put back?</strong> <span class="item-note">(Pushed in or stacked neatly in designated area)</span></td>
+          <td class="col-check"><span class="box"></span></td>
+          <td class="col-check"><span class="box"></span></td>
+        </tr>
+        <tr>
+          <td><strong>Are the floors swept and cleaned?</strong> <span class="item-note">(Broom &amp; dustpan returned to storage)</span></td>
+          <td class="col-check"><span class="box"></span></td>
+          <td class="col-check"><span class="box"></span></td>
+        </tr>
+        <tr>
+          <td><strong>Is all garbage &amp; recycling put away?</strong> <span class="item-note">(Bins emptied if full; no wrappers or bottles left behind)</span></td>
+          <td class="col-check"><span class="box"></span></td>
+          <td class="col-check"><span class="box"></span></td>
+        </tr>
+
+        <tr class="section-row">
+          <td colspan="3">3. Equipment, Charging &amp; Closeout</td>
+        </tr>
+        <tr>
+          <td><strong>Robots, hubs &amp; batteries</strong> <span class="item-note">(Powered off, plugged in to charge, stored safely)</span></td>
+          <td class="col-check"><span class="box"></span></td>
+          <td class="col-check"><span class="box"></span></td>
+        </tr>
+        <tr>
+          <td><strong>Parts bins, tools &amp; laptops</strong> <span class="item-note">(Lids closed, kits/chargers/tools returned to designated storage)</span></td>
+          <td class="col-check"><span class="box"></span></td>
+          <td class="col-check"><span class="box"></span></td>
+        </tr>
+        <tr>
+          <td><strong>Displays, lights &amp; doors</strong> <span class="item-note">(Screens/TV off, lights off, doors closed/secured)</span></td>
+          <td class="col-check"><span class="box"></span></td>
+          <td class="col-check"><span class="box"></span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Abnormalities Log -->
+    <section class="log-section" aria-label="Abnormalities and Missing Parts Log">
+      <div class="log-header">
+        <span class="log-title">Mentor / Lead Abnormalities &amp; Missing Parts Log</span>
+        <span class="log-hint">e.g., &ldquo;Leaf cutters missing &mdash; cannot find, need to order replacement&rdquo;</span>
+      </div>
+      <table class="log-table">
+        <thead>
+          <tr>
+            <th class="col-desc">Abnormality / Missing Part / Damage Description</th>
+            <th class="col-sev">Severity</th>
+            <th class="col-act">Action / Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td></td>
+            <td><div class="chk-group"><span><span class="box-sm"></span>Low</span><span><span class="box-sm"></span>Med</span><span><span class="box-sm"></span>High</span></div></td>
+            <td><div class="chk-group"><span><span class="box-sm"></span>Fixed</span><span><span class="box-sm"></span>Replace</span><span><span class="box-sm"></span>Follow-Up</span></div></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><div class="chk-group"><span><span class="box-sm"></span>Low</span><span><span class="box-sm"></span>Med</span><span><span class="box-sm"></span>High</span></div></td>
+            <td><div class="chk-group"><span><span class="box-sm"></span>Fixed</span><span><span class="box-sm"></span>Replace</span><span><span class="box-sm"></span>Follow-Up</span></div></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><div class="chk-group"><span><span class="box-sm"></span>Low</span><span><span class="box-sm"></span>Med</span><span><span class="box-sm"></span>High</span></div></td>
+            <td><div class="chk-group"><span><span class="box-sm"></span>Fixed</span><span><span class="box-sm"></span>Replace</span><span><span class="box-sm"></span>Follow-Up</span></div></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><div class="chk-group"><span><span class="box-sm"></span>Low</span><span><span class="box-sm"></span>Med</span><span><span class="box-sm"></span>High</span></div></td>
+            <td><div class="chk-group"><span><span class="box-sm"></span>Fixed</span><span><span class="box-sm"></span>Replace</span><span><span class="box-sm"></span>Follow-Up</span></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Two-Tier Verification Sign-Off -->
+    <section class="signoff-grid" aria-label="Sign-Off Verification">
+      <div class="signoff-card signoff-student">
+        <div class="signoff-card-header">
+          <span>Step 1: Student Lead Sign-Off</span>
+          <span>First Check</span>
+        </div>
+        <div class="signoff-body">
+          <div class="sig-field">
+            <span class="sig-label">Student Name / Initials</span>
+            <div class="sig-line"></div>
+          </div>
+          <div class="sig-field">
+            <span class="sig-label">Time</span>
+            <div class="sig-line"></div>
+          </div>
+          <div class="sig-field full">
+            <span class="sig-label">Signature</span>
+            <div class="sig-line"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="signoff-card signoff-mentor">
+        <div class="signoff-card-header">
+          <span>Step 2: Mentor Final Sign-Off</span>
+          <span>Final Verification</span>
+        </div>
+        <div class="signoff-body">
+          <div class="sig-field">
+            <span class="sig-label">Mentor Name / Initials</span>
+            <div class="sig-line"></div>
+          </div>
+          <div class="sig-field">
+            <span class="sig-label">Time</span>
+            <div class="sig-line"></div>
+          </div>
+          <div class="sig-field full">
+            <span class="sig-label">Signature</span>
+            <div class="sig-line"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="sheet-footer">
+      <span>ATAA &mdash; Alberta Tech Alliance Association</span>
+      <span>File completed sheet in the Mentor Binder at end of session.</span>
+      <span>ID: <strong class="serial-num">PF-001</strong></span>
+    </footer>
+  </main>
+  </div>
+
+  <script>
+    const PREFIX = 'PF';
+    const STORAGE_KEY = 'ataa_pf_next_sheet_num';
+    const stack = document.getElementById('sheetStack');
+    const templateSheet = stack.querySelector('.sheet');
+    const startInput = document.getElementById('startNum');
+    const countInput = document.getElementById('copyCount');
+    const printBtn = document.getElementById('printBatchBtn');
+
+    function formatId(n) {
+      return `${PREFIX}-${String(n).padStart(3, '0')}`;
+    }
+
+    function applySerial(sheetEl, num) {
+      const id = formatId(num);
+      sheetEl.querySelectorAll('.serial-num').forEach((el) => {
+        el.textContent = id;
+      });
+    }
+
+    // Restore last used next number from localStorage if available
+    try {
+      const saved = parseInt(localStorage.getItem(STORAGE_KEY), 10);
+      if (saved && saved > 0) startInput.value = saved;
+    } catch (_) {}
+
+    applySerial(templateSheet, parseInt(startInput.value, 10) || 1);
+
+    startInput.addEventListener('input', () => {
+      const n = Math.max(1, parseInt(startInput.value, 10) || 1);
+      applySerial(templateSheet, n);
+    });
+
+    let lastBatchEnd = null;
+
+    function restoreSingleView() {
+      while (stack.children.length > 1) {
+        stack.removeChild(stack.lastElementChild);
+      }
+      if (lastBatchEnd !== null) {
+        startInput.value = lastBatchEnd;
+        applySerial(templateSheet, lastBatchEnd);
+        try { localStorage.setItem(STORAGE_KEY, String(lastBatchEnd)); } catch (_) {}
+        lastBatchEnd = null;
+      }
+    }
+
+    window.addEventListener('afterprint', restoreSingleView);
+
+    printBtn.addEventListener('click', () => {
+      const start = Math.max(1, parseInt(startInput.value, 10) || 1);
+      const count = Math.min(200, Math.max(1, parseInt(countInput.value, 10) || 1));
+
+      while (stack.children.length > 1) {
+        stack.removeChild(stack.lastElementChild);
+      }
+      applySerial(templateSheet, start);
+
+      for (let i = 1; i < count; i++) {
+        const clone = templateSheet.cloneNode(true);
+        applySerial(clone, start + i);
+        stack.appendChild(clone);
+      }
+
+      lastBatchEnd = start + count;
+      window.print();
+    });
+  </script>
+</body>
+</html>
