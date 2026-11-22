@@ -237,15 +237,24 @@
 
     /* Instructions Banner */
     .instructions {
-      font-size: 8.5pt;
+      font-size: 8.2pt;
       color: var(--muted);
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 8px;
       padding: 0 2px;
+      white-space: nowrap;
     }
 
     .instructions strong {
+      color: var(--ink);
+    }
+
+    .legend-chip {
+      white-space: nowrap;
+      flex-shrink: 0;
+      font-weight: 600;
       color: var(--ink);
     }
 
@@ -479,16 +488,11 @@
     }
 
     .col-desc {
-      width: 47%;
-    }
-
-    .col-sev {
-      width: 22%;
-      white-space: nowrap;
+      width: 66%;
     }
 
     .col-act {
-      width: 31%;
+      width: 34%;
       white-space: nowrap;
     }
 
@@ -586,10 +590,11 @@
     }
 
     .signoff-body {
-      padding: 6px 9px 7px;
+      padding: 7px 8px 8px;
       display: grid;
-      grid-template-columns: 1fr 0.7fr;
-      gap: 7px 10px;
+      grid-template-columns: 1.35fr 0.65fr;
+      gap: 7px 9px;
+      align-items: end;
     }
 
     .sig-field {
@@ -607,6 +612,7 @@
       font-weight: 700;
       text-transform: uppercase;
       color: var(--muted);
+      white-space: nowrap;
     }
 
     .sig-line {
@@ -699,8 +705,8 @@
     </section>
 
     <div class="instructions">
-      <span><strong>2-Step Verification:</strong> Student Lead inspects &amp; checks <strong>Student</strong> column first; Mentor verifies &amp; checks <strong>Mentor</strong> column before leaving.</span>
-      <span><span class="box-sm"></span> = Verified OK</span>
+      <span><strong>2-Step Verification:</strong> Student Lead checks first; Mentor verifies before leaving.</span>
+      <span class="legend-chip"><span class="box-sm"></span> = Verified OK</span>
     </div>
 
     <!-- Checklist -->
@@ -788,24 +794,20 @@
         <thead>
           <tr>
             <th class="col-desc">Violation / Issue Description</th>
-            <th class="col-sev">Severity</th>
             <th class="col-act">Action / Status</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td></td>
-            <td><div class="chk-group"><span><span class="box-sm"></span>Low</span><span><span class="box-sm"></span>Med</span><span><span class="box-sm"></span>High</span></div></td>
             <td><div class="chk-group"><span><span class="box-sm"></span>Cleaned</span><span><span class="box-sm"></span>Fixed</span><span><span class="box-sm"></span>Follow-Up</span></div></td>
           </tr>
           <tr>
             <td></td>
-            <td><div class="chk-group"><span><span class="box-sm"></span>Low</span><span><span class="box-sm"></span>Med</span><span><span class="box-sm"></span>High</span></div></td>
             <td><div class="chk-group"><span><span class="box-sm"></span>Cleaned</span><span><span class="box-sm"></span>Fixed</span><span><span class="box-sm"></span>Follow-Up</span></div></td>
           </tr>
           <tr>
             <td></td>
-            <td><div class="chk-group"><span><span class="box-sm"></span>Low</span><span><span class="box-sm"></span>Med</span><span><span class="box-sm"></span>High</span></div></td>
             <td><div class="chk-group"><span><span class="box-sm"></span>Cleaned</span><span><span class="box-sm"></span>Fixed</span><span><span class="box-sm"></span>Follow-Up</span></div></td>
           </tr>
         </tbody>
@@ -816,12 +818,12 @@
     <section class="signoff-grid" aria-label="Sign-Off Verification">
       <div class="signoff-card signoff-student">
         <div class="signoff-card-header">
-          <span>Step 1: Student Lead Sign-Off</span>
+          <span>Step 1: Student Lead</span>
           <span>First Check</span>
         </div>
         <div class="signoff-body">
           <div class="sig-field">
-            <span class="sig-label">Student Name / Initials</span>
+            <span class="sig-label">Student Name</span>
             <div class="sig-line"></div>
           </div>
           <div class="sig-field">
@@ -837,12 +839,12 @@
 
       <div class="signoff-card signoff-mentor">
         <div class="signoff-card-header">
-          <span>Step 2: Mentor Final Sign-Off</span>
-          <span>Final Verification</span>
+          <span>Step 2: Mentor Sign-Off</span>
+          <span>Final Check</span>
         </div>
         <div class="signoff-body">
           <div class="sig-field">
-            <span class="sig-label">Mentor Name / Initials</span>
+            <span class="sig-label">Mentor Name</span>
             <div class="sig-line"></div>
           </div>
           <div class="sig-field">
@@ -876,7 +878,7 @@
     <footer class="sheet-footer">
       <span>ATAA &mdash; Alberta Tech Alliance Association</span>
       <span>File completed sheet in the Mentor Binder at end of session.</span>
-      <span>Version: <strong>v1.0</strong> &bull; ID: <strong class="serial-num">BR-001</strong></span>
+      <span>Version: <strong>v1.1</strong> &bull; ID: <strong class="serial-num">BR-001</strong></span>
     </footer>
   </main>
   </div>
