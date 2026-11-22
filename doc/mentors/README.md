@@ -18,7 +18,7 @@ Detailed, minute-by-minute meeting agendas with materials checklists, Team Roles
 | **Session 6** | Nov 1, 2026 | **Strike Team Swap, Final Logo Vote & Mission Combining**<br/>Cross-training rotation; presentation board wireframing; chaining runs on mat. | [📖 View Plan](plan/sessions/2026-nov-01.md) |
 | **Session 7** | Nov 8, 2026 | **Script Drafting, Presentation Board Build, Swag & Core Mission Logic**<br/>Writing 5-min script; assembling physical trifold; finalizing team buttons/stickers. | [📖 View Plan](plan/sessions/2026-nov-08.md) |
 | **Session 8** | Nov 15, 2026 | **Mid-Month Checkpoint, Full Script Read-Through & Flex Buffer**<br/>Standing script rehearsal & prop audit; reach mission go/no-go gate; 25m catch-up flex. | [📖 View Plan](plan/sessions/2026-nov-15.md) |
-| **Session 9** | Nov 22, 2026 | **Dress Rehearsal Day, Code Freeze & Family Showcase**<br/>Timed rehearsal & mock Q&A; official code freeze; live matches with parent audience. | [📖 View Plan](plan/sessions/2026-nov-22.md) |
+| **Session 9** | Nov 22, 2026 | **Tiger Team Sprint, Robot Shipping Prep & Bag-and-Tag**<br/>Robot shipping prep, attachments & jigs, Google Drive backup (no USBs/OPSEC), logo lock, team celly & bag-and-tag. | [📖 View Plan](plan/sessions/2026-nov-22.md) |
 | **🏆 Event** | **Nov 29, 2026** | **Official FIRST LEGO League Tournament Event Day!** | [📅 Master Schedule](plan/schedule.md) |
 
 ---
