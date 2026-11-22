@@ -138,11 +138,11 @@
       width: 8.5in;
       min-height: 10.3in;
       background: #ffffff;
-      padding: 0.4in 0.45in;
+      padding: 0.35in 0.42in;
       box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 8px;
     }
 
     /* Header */
@@ -208,12 +208,12 @@
     /* Metadata Grid */
     .meta-grid {
       display: grid;
-      grid-template-columns: 1.7fr 1fr 0.9fr 0.9fr;
-      gap: 8px;
+      grid-template-columns: 1.8fr 1fr 0.9fr;
+      gap: 10px;
       background: var(--fll-blue-light);
       border: 1px solid #bfdbfe;
       border-radius: 6px;
-      padding: 7px 10px;
+      padding: 6px 10px;
     }
 
     .meta-field {
@@ -232,20 +232,29 @@
 
     .meta-line {
       border-bottom: 1.5px solid var(--line-dark);
-      height: 16px;
+      height: 15px;
     }
 
     /* Instructions Banner */
     .instructions {
-      font-size: 8.5pt;
+      font-size: 8.2pt;
       color: var(--muted);
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 8px;
       padding: 0 2px;
+      white-space: nowrap;
     }
 
     .instructions strong {
+      color: var(--ink);
+    }
+
+    .legend-chip {
+      white-space: nowrap;
+      flex-shrink: 0;
+      font-weight: 600;
       color: var(--ink);
     }
 
@@ -253,47 +262,57 @@
     .checklist-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 9.2pt;
+      font-size: 8.9pt;
     }
 
     .checklist-table th {
       background: #f1f5f9;
       color: var(--ink);
-      font-size: 7.8pt;
+      font-size: 7.6pt;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.04em;
-      padding: 5px 7px;
+      padding: 4px 6px;
       border: 1px solid var(--line);
       text-align: left;
     }
 
-    .checklist-table th.col-check {
-      width: 62px;
+    .checklist-table th.col-group {
       text-align: center;
+      padding: 3px 4px;
+    }
+
+    .checklist-table th.col-sub {
+      width: 34px;
+      text-align: center;
+      font-size: 7.2pt;
+      padding: 2.5px 4px;
+      background: #f8fafc;
+      color: var(--muted);
     }
 
     .checklist-table tr.section-row td {
       background: #e2e8f0;
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 8.5pt;
+      font-size: 8.2pt;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.04em;
       color: var(--fll-blue-dark);
-      padding: 4px 8px;
+      padding: 3.5px 8px;
       border: 1px solid var(--line);
     }
 
     .checklist-table td {
-      padding: 5px 8px;
+      padding: 4px 7px;
       border: 1px solid var(--line);
       vertical-align: middle;
-      line-height: 1.25;
+      line-height: 1.22;
     }
 
     .checklist-table td.col-check {
       text-align: center;
+      padding: 4px 3px;
     }
 
     .box {
@@ -391,10 +410,10 @@
     }
 
     .log-table td {
-      padding: 6px 7px;
+      padding: 5px 7px;
       border-bottom: 1px solid var(--line);
       border-right: 1px solid var(--line);
-      height: 29px;
+      height: 26px;
       vertical-align: middle;
     }
 
@@ -403,16 +422,11 @@
     }
 
     .col-desc {
-      width: 47%;
-    }
-
-    .col-sev {
-      width: 22%;
-      white-space: nowrap;
+      width: 66%;
     }
 
     .col-act {
-      width: 31%;
+      width: 34%;
       white-space: nowrap;
     }
 
@@ -510,10 +524,11 @@
     }
 
     .signoff-body {
-      padding: 7px 9px 8px;
+      padding: 7px 8px 8px;
       display: grid;
-      grid-template-columns: 1fr 0.7fr;
-      gap: 8px 10px;
+      grid-template-columns: 1.35fr 0.65fr;
+      gap: 7px 9px;
+      align-items: end;
     }
 
     .sig-field {
@@ -531,6 +546,7 @@
       font-weight: 700;
       text-transform: uppercase;
       color: var(--muted);
+      white-space: nowrap;
     }
 
     .sig-line {
@@ -616,35 +632,39 @@
         <div class="meta-line"></div>
       </div>
       <div class="meta-field">
-        <span class="meta-label">Field / Table #(s)</span>
-        <div class="meta-line"></div>
-      </div>
-      <div class="meta-field">
         <span class="meta-label">Checkout Time</span>
         <div class="meta-line"></div>
       </div>
     </section>
 
     <div class="instructions">
-      <span><strong>2-Step Verification:</strong> Student Lead inspects &amp; checks <strong>Student</strong> column first; Mentor verifies &amp; checks <strong>Mentor</strong> column before dismissal.</span>
-      <span><span class="box-sm"></span> = Verified OK</span>
+      <span><strong>2-Step Verification:</strong> Student Lead checks first; Mentor verifies before dismissal (F1 = Field 1, F2 = Field 2).</span>
+      <span class="legend-chip"><span class="box-sm"></span> = Verified OK</span>
     </div>
 
     <!-- Checklist -->
     <table class="checklist-table">
       <thead>
         <tr>
-          <th>Inspection Item</th>
-          <th class="col-check">Student</th>
-          <th class="col-check">Mentor</th>
+          <th rowspan="2">Inspection Item</th>
+          <th colspan="2" class="col-group">Student</th>
+          <th colspan="2" class="col-group">Mentor</th>
+        </tr>
+        <tr>
+          <th class="col-sub">F1</th>
+          <th class="col-sub">F2</th>
+          <th class="col-sub">F1</th>
+          <th class="col-sub">F2</th>
         </tr>
       </thead>
       <tbody>
         <tr class="section-row">
-          <td colspan="3">1. Field &amp; Mission Models</td>
+          <td colspan="5">1. Field &amp; Mission Models (Check Each Field Used)</td>
         </tr>
         <tr>
-          <td><strong>Are all mission elements on the field?</strong> <span class="item-note">(If missing &amp; not found, log below for replacement)</span></td>
+          <td><strong>Are all mission elements on the field?</strong> <span class="item-note">(If missing &amp; not found, log below)</span></td>
+          <td class="col-check"><span class="box"></span></td>
+          <td class="col-check"><span class="box"></span></td>
           <td class="col-check"><span class="box"></span></td>
           <td class="col-check"><span class="box"></span></td>
         </tr>
@@ -652,69 +672,75 @@
           <td><strong>Are any elements broken or detached?</strong> <span class="must-tag">Must Fix Before Leaving</span></td>
           <td class="col-check"><span class="box"></span></td>
           <td class="col-check"><span class="box"></span></td>
-        </tr>
-        <tr>
-          <td><strong>Are the playing fields clean?</strong> <span class="item-note">(Mats wiped/clear of debris, dual-lock secure, no heavy items on mat)</span></td>
           <td class="col-check"><span class="box"></span></td>
           <td class="col-check"><span class="box"></span></td>
         </tr>
         <tr>
-          <td><strong>Loose LEGO sweep completed</strong> <span class="item-note">(Check under &amp; around field tables for stray parts <em>before</em> sweeping)</span></td>
+          <td><strong>Are the playing fields clean?</strong> <span class="item-note">(Mats wiped/clear, dual-lock secure, nothing left on mat)</span></td>
+          <td class="col-check"><span class="box"></span></td>
+          <td class="col-check"><span class="box"></span></td>
+          <td class="col-check"><span class="box"></span></td>
+          <td class="col-check"><span class="box"></span></td>
+        </tr>
+        <tr>
+          <td><strong>Loose LEGO sweep completed</strong> <span class="item-note">(Check under &amp; around tables for stray parts <em>before</em> sweeping)</span></td>
+          <td class="col-check"><span class="box"></span></td>
+          <td class="col-check"><span class="box"></span></td>
           <td class="col-check"><span class="box"></span></td>
           <td class="col-check"><span class="box"></span></td>
         </tr>
 
         <tr class="section-row">
-          <td colspan="3">2. Tables, Chairs &amp; Room Cleanup</td>
+          <td colspan="5">2. Tables, Chairs &amp; Room Cleanup</td>
         </tr>
         <tr>
-          <td><strong>Are the field tables put back correctly?</strong> <span class="item-note">(Aligned, locked/braked if applicable, walkways clear)</span></td>
-          <td class="col-check"><span class="box"></span></td>
-          <td class="col-check"><span class="box"></span></td>
+          <td><strong>Are the field tables put back correctly?</strong> <span class="item-note">(Aligned, braked if applicable, walkways clear)</span></td>
+          <td colspan="2" class="col-check"><span class="box"></span></td>
+          <td colspan="2" class="col-check"><span class="box"></span></td>
         </tr>
         <tr>
-          <td><strong>Are foldable tables clean and put away?</strong> <span class="item-note">(Wiped down, folded safely, stored in designated spot)</span></td>
-          <td class="col-check"><span class="box"></span></td>
-          <td class="col-check"><span class="box"></span></td>
+          <td><strong>Are foldable tables clean and put away?</strong> <span class="item-note">(Wiped down, folded safely, stored)</span></td>
+          <td colspan="2" class="col-check"><span class="box"></span></td>
+          <td colspan="2" class="col-check"><span class="box"></span></td>
         </tr>
         <tr>
           <td><strong>Are all chairs put back?</strong> <span class="item-note">(Pushed in or stacked neatly in designated area)</span></td>
-          <td class="col-check"><span class="box"></span></td>
-          <td class="col-check"><span class="box"></span></td>
+          <td colspan="2" class="col-check"><span class="box"></span></td>
+          <td colspan="2" class="col-check"><span class="box"></span></td>
         </tr>
         <tr>
           <td><strong>Are the floors swept and cleaned?</strong> <span class="item-note">(Broom &amp; dustpan returned to storage)</span></td>
-          <td class="col-check"><span class="box"></span></td>
-          <td class="col-check"><span class="box"></span></td>
+          <td colspan="2" class="col-check"><span class="box"></span></td>
+          <td colspan="2" class="col-check"><span class="box"></span></td>
         </tr>
         <tr>
-          <td><strong>Is all garbage &amp; recycling put away?</strong> <span class="item-note">(Bins emptied if full; no wrappers or bottles left behind)</span></td>
-          <td class="col-check"><span class="box"></span></td>
-          <td class="col-check"><span class="box"></span></td>
+          <td><strong>Is all garbage &amp; recycling put away?</strong> <span class="item-note">(Bins emptied if full; no wrappers/bottles left)</span></td>
+          <td colspan="2" class="col-check"><span class="box"></span></td>
+          <td colspan="2" class="col-check"><span class="box"></span></td>
         </tr>
 
         <tr class="section-row">
-          <td colspan="3">3. Equipment, Charging &amp; Closeout</td>
+          <td colspan="5">3. Equipment, Charging &amp; Closeout</td>
         </tr>
         <tr>
           <td><strong>Robots, hubs &amp; batteries</strong> <span class="item-note">(Powered off, plugged in to charge, stored safely)</span></td>
-          <td class="col-check"><span class="box"></span></td>
-          <td class="col-check"><span class="box"></span></td>
+          <td colspan="2" class="col-check"><span class="box"></span></td>
+          <td colspan="2" class="col-check"><span class="box"></span></td>
         </tr>
         <tr>
-          <td><strong>Parts bins, tools &amp; laptops</strong> <span class="item-note">(Lids closed, kits/chargers/tools returned to designated storage)</span></td>
-          <td class="col-check"><span class="box"></span></td>
-          <td class="col-check"><span class="box"></span></td>
+          <td><strong>Parts bins, tools &amp; laptops</strong> <span class="item-note">(Lids closed, kits/chargers/tools returned to storage)</span></td>
+          <td colspan="2" class="col-check"><span class="box"></span></td>
+          <td colspan="2" class="col-check"><span class="box"></span></td>
         </tr>
         <tr>
           <td><strong>Displays, lights &amp; doors</strong> <span class="item-note">(Screens/TV off, lights off, doors closed/secured)</span></td>
-          <td class="col-check"><span class="box"></span></td>
-          <td class="col-check"><span class="box"></span></td>
+          <td colspan="2" class="col-check"><span class="box"></span></td>
+          <td colspan="2" class="col-check"><span class="box"></span></td>
         </tr>
         <tr>
-          <td><strong>Photo proof posted to Slack before leaving</strong> <span class="must-tag">Required</span> <span class="item-note">(Photo of this <strong>completed checklist</strong> + <strong>playing fields</strong> via QR below)</span></td>
-          <td class="col-check"><span class="box"></span></td>
-          <td class="col-check"><span class="box"></span></td>
+          <td><strong>Photo proof posted to Slack before leaving</strong> <span class="must-tag">Required</span> <span class="item-note">(Photo of this <strong>checklist</strong> + <strong>fields</strong> via QR below)</span></td>
+          <td colspan="2" class="col-check"><span class="box"></span></td>
+          <td colspan="2" class="col-check"><span class="box"></span></td>
         </tr>
       </tbody>
     </table>
@@ -723,35 +749,30 @@
     <section class="log-section" aria-label="Abnormalities and Missing Parts Log">
       <div class="log-header">
         <span class="log-title">Mentor / Lead Abnormalities &amp; Missing Parts Log</span>
-        <span class="log-hint">e.g., &ldquo;Leaf cutters missing &mdash; cannot find, need to order replacement&rdquo;</span>
+        <span class="log-hint">e.g., &ldquo;F1 leaf cutters missing &mdash; cannot find, need replacement&rdquo;</span>
       </div>
       <table class="log-table">
         <thead>
           <tr>
-            <th class="col-desc">Abnormality / Missing Part / Damage Description</th>
-            <th class="col-sev">Severity</th>
+            <th class="col-desc">Abnormality / Missing Part / Damage Description (Note F1 or F2)</th>
             <th class="col-act">Action / Status</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td></td>
-            <td><div class="chk-group"><span><span class="box-sm"></span>Low</span><span><span class="box-sm"></span>Med</span><span><span class="box-sm"></span>High</span></div></td>
             <td><div class="chk-group"><span><span class="box-sm"></span>Fixed</span><span><span class="box-sm"></span>Replace</span><span><span class="box-sm"></span>Follow-Up</span></div></td>
           </tr>
           <tr>
             <td></td>
-            <td><div class="chk-group"><span><span class="box-sm"></span>Low</span><span><span class="box-sm"></span>Med</span><span><span class="box-sm"></span>High</span></div></td>
             <td><div class="chk-group"><span><span class="box-sm"></span>Fixed</span><span><span class="box-sm"></span>Replace</span><span><span class="box-sm"></span>Follow-Up</span></div></td>
           </tr>
           <tr>
             <td></td>
-            <td><div class="chk-group"><span><span class="box-sm"></span>Low</span><span><span class="box-sm"></span>Med</span><span><span class="box-sm"></span>High</span></div></td>
             <td><div class="chk-group"><span><span class="box-sm"></span>Fixed</span><span><span class="box-sm"></span>Replace</span><span><span class="box-sm"></span>Follow-Up</span></div></td>
           </tr>
           <tr>
             <td></td>
-            <td><div class="chk-group"><span><span class="box-sm"></span>Low</span><span><span class="box-sm"></span>Med</span><span><span class="box-sm"></span>High</span></div></td>
             <td><div class="chk-group"><span><span class="box-sm"></span>Fixed</span><span><span class="box-sm"></span>Replace</span><span><span class="box-sm"></span>Follow-Up</span></div></td>
           </tr>
         </tbody>
@@ -762,12 +783,12 @@
     <section class="signoff-grid" aria-label="Sign-Off Verification">
       <div class="signoff-card signoff-student">
         <div class="signoff-card-header">
-          <span>Step 1: Student Lead Sign-Off</span>
+          <span>Step 1: Student Lead</span>
           <span>First Check</span>
         </div>
         <div class="signoff-body">
           <div class="sig-field">
-            <span class="sig-label">Student Name / Initials</span>
+            <span class="sig-label">Student Name</span>
             <div class="sig-line"></div>
           </div>
           <div class="sig-field">
@@ -783,12 +804,12 @@
 
       <div class="signoff-card signoff-mentor">
         <div class="signoff-card-header">
-          <span>Step 2: Mentor Final Sign-Off</span>
-          <span>Final Verification</span>
+          <span>Step 2: Mentor Sign-Off</span>
+          <span>Final Check</span>
         </div>
         <div class="signoff-body">
           <div class="sig-field">
-            <span class="sig-label">Mentor Name / Initials</span>
+            <span class="sig-label">Mentor Name</span>
             <div class="sig-line"></div>
           </div>
           <div class="sig-field">
@@ -822,7 +843,7 @@
     <footer class="sheet-footer">
       <span>ATAA &mdash; Alberta Tech Alliance Association</span>
       <span>File completed sheet in the Mentor Binder at end of session.</span>
-      <span>Version: <strong>v1.0</strong> &bull; ID: <strong class="serial-num">PF-001</strong></span>
+      <span>Version: <strong>v1.1</strong> &bull; ID: <strong class="serial-num">PF-001</strong></span>
     </footer>
   </main>
   </div>
